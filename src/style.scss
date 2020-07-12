@@ -1,0 +1,78 @@
+@import 'normalize-scss';
+@include normalize();
+
+
+//    -----   Variables  -----
+$font_montserrat_regular: Montserrat-Regular serif;
+$font_didot: Didot serif;
+
+
+//    -----  END Variables  -----
+
+@font-face {
+    font-family: 'Didot';
+    src: url('~@/fonts/Didot.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url('~@/fonts/montserrat-2/Montserrat-Regular.otf') format('font-opentype'),
+         url('~@/fonts/montserrat-2/Montserrat-Regular.ttf') format('font-truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('~@/fonts/montserrat-2/Montserrat-Bold.otf') format('font-opentype'),
+         url('~@/fonts/montserrat-2/Montserrat-Bold.ttf') format('font-truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('~@/fonts/montserrat-2/Montserrat-Medium.otf') format('font-opentype'),
+         url('~@/fonts/montserrat-2/Montserrat-Medium.ttf') format('font-truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url('~@/fonts/montserrat-2/Montserrat-Light.otf') format('font-opentype'),
+         url('~@/fonts/montserrat-2/Montserrat-Light.ttf') format('font-truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $base-color: black;
+@media screen and (min-width: 900px) {
+    $base-color: #c6538c;
+}
+
+@media screen and (max-width: 900px) {
+    $base-color: #071d66;
+}
+
+@function get-vw($target) { 
+    $vw-context: (1000*.01) * 1px;
+    @return ($target/$vw-context) * 1vw;
+  }
+
+
+body{
+    // font-size: get-vw(10px);
+}
