@@ -1,61 +1,71 @@
 <template>
     <b-col cols="3" class="centered">
-        <b-card
-                img-src="item.images[0]"
-                img-alt="item.name"
-                img-top
-                tag="article"
-                style="max-width: 20rem;"
-                class="mb-2 product-card"
-        >
-            <b-card-text>
-                {{item.name}}
-                {{item.images[0]}}
-            </b-card-text>
+        <router-link :to="{name: 'item', params: { id: item.id }}" class="product-card__link">
+            <b-card
+                    :img-src="item.images[0]+item.id"
+                    img-alt="item.name"
+                    img-top
+                    tag="article"
+                    style="max-width: 20rem;"
+                    class="mb-2 product-card"
+            >
+                <b-card-text>
+                    {{item.name}}
+                </b-card-text>
 
-            <div class="product-card__price-wrap">
-                <span class="product-card__price">{{item.price.new}}</span>
-                <span class="product-card__price-old">{{item.price.new}}</span>
-            </div>
-
-            <div class="product-card__rating">
-                <div class="rating">
-                    <input type="radio" name="rating" value="5" id="5">
-                    <label for="5">☆</label>
-                    <input type="radio" name="rating" value="4" id="4">
-                    <label for="4">☆</label>
-                    <input type="radio" name="rating" value="3" id="3">
-                    <label for="3">☆</label>
-                    <input type="radio" name="rating" value="2" id="2">
-                    <label for="2">☆</label>
-                    <input type="radio" name="rating" value="1" id="1">
-                    <label for="1">☆</label>
+                <div class="product-card__price-wrap">
+                    <span class="product-card__price">{{item.price.new}}</span>
+                    <span class="product-card__price-old">{{item.price.new}}</span>
                 </div>
-                <span>({{item.reting.count}})</span>
-            </div>
+
+                <div class="product-card__rating">
+                    <div class="rating">
+                        <input type="radio" name="rating" value="5" id="5">
+                        <label for="5">☆</label>
+                        <input type="radio" name="rating" value="4" id="4">
+                        <label for="4">☆</label>
+                        <input type="radio" name="rating" value="3" id="3">
+                        <label for="3">☆</label>
+                        <input type="radio" name="rating" value="2" id="2">
+                        <label for="2">☆</label>
+                        <input type="radio" name="rating" value="1" id="1">
+                        <label for="1">☆</label>
+                    </div>
+                    <span>({{item.reting.count}})</span>
+                </div>
+                <div class="product-icons">
+                    <ProductIcon 
+                        v-for="(icon, index) in item.icons" 
+                        :key="index"  
+                        :icon="icon" />
+                </div>
 
 
-        </b-card>
+            </b-card>
+        </router-link>
     </b-col>
 </template>
 
 <script>
+import ProductIcon from './ProductIcon.vue';
 
 export default {
     name: 'ProductCard',
     data() {
       return {
-
+        
       }
     },
     props: {
         item: Object
     },
     components:{
-        
+        ProductIcon
     },
     methods:{
-
+        urlIcon(icon){
+            return '~@/assets/product_icons/' + icon;
+        }
     }
 }
 </script>
@@ -65,10 +75,19 @@ export default {
 @import "@/style.scss";
 
 
+    .product-card__link{
+        &:hover{
+            text-decoration: none;
+        }
+    }
+
     .product-card{
         width: 100%;
         border: none;
-        img{
+        &:hover{
+            text-decoration: none;
+        }
+        &>img{
             border: 1px solid grey;
             border-radius: 4px;
         }
@@ -158,22 +177,15 @@ export default {
         opacity: 0.4
     }
 
-    body {
-        background: #222225;
-        color: white
-    }
 
-    h1,
-    p {
-        text-align: center
-    }
 
-    h1 {
-        margin-top: 150px
+    .product-icons{
+        display: flex;
     }
-
-    p {
-        font-size: 1.2rem
+    .product-icon{
+        width: 50px;
+        height: 50px;
+        background-size: cover;
     }
 
     @media only screen and (max-width: 600px) {

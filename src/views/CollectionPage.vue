@@ -43,7 +43,7 @@ export default {
         products:[{
           id: 1,
           name: 'Unique Military-style Beaded Brooch with Vintage Button',
-          images: ['https://loremflickr.com/320/240?random=3','https://loremflickr.com/320/240?random=3'],
+          images: ['https://loremflickr.com/320/240?random=','https://loremflickr.com/320/240?random='],
           reting: {
             count: 17,
             stars: 3
@@ -52,11 +52,11 @@ export default {
             new: '250$',
             old: '299$'
           },
-          icons: ['exclusive', 'new', 'free-shiping']
+          icons: ['exclusive-2.svg', 'best.svg', 'free-shiping.svg']
         },{
           id: 2,
           name: 'Black Beetle Brooch (Japanese Bead Embroidery))',
-          images: ['https://loremflickr.com/320/240?random=3','https://loremflickr.com/320/240?random=3'],
+          images: ['https://loremflickr.com/320/240?random=','https://loremflickr.com/320/240?random='],
           reting: {
             count: 13,
             stars: 5
@@ -65,11 +65,11 @@ export default {
             new: '250$',
             old: '299$'
           },
-          icons: ['exclusive', 'new', 'free-shiping']
+          icons: ['exclusive-2.svg', 'new.svg', 'free-shiping.svg']
         },{
           id: 3,
           name: 'White agate daisy drop earrings sterling silver',
-          images: ['https://loremflickr.com/320/240?random=3','https://loremflickr.com/320/240?random=3'],
+          images: ['https://loremflickr.com/320/240?random=','https://loremflickr.com/320/240?random='],
           reting: {
             count: 10,
             stars: 2
@@ -78,11 +78,11 @@ export default {
             new: '250$',
             old: '299$'
           },
-          icons: ['exclusive', 'new', 'free-shiping']
+          icons: ['exclusive.svg', 'new.svg']
         },{
           id: 4,
           name: 'Photography - Ferntebrae',
-          images: ['https://loremflickr.com/320/240?random=3','https://loremflickr.com/320/240?random=3'],
+          images: ['https://loremflickr.com/320/240?random=','https://loremflickr.com/320/240?random='],
           reting: {
             count: 19,
             stars: 4
@@ -91,7 +91,7 @@ export default {
             new: '250$',
             old: '299$'
           },
-          icons: ['exclusive', 'new', 'free-shiping']
+          icons: ['exclusive.svg', 'new.svg', 'free-shiping.svg']
         }]
       }
   },
@@ -120,11 +120,11 @@ export default {
     .header-block__text-wrap{
       position: absolute;
       right: 5%;
-      top: 15%;
+      top: 20%;
     }
     h2{
       font-family: $font_montserrat_regular;
-      font-size: 50px;
+      font-size: 2.5rem;
       font-weight: normal;
       font-stretch: normal;
       font-style: normal;
@@ -135,7 +135,7 @@ export default {
     }
     h1{
       font-family: $font_didot;
-      font-size: 60px;
+      font-size: 2.8rem;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
