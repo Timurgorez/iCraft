@@ -1,13 +1,12 @@
 <template>
-    <b-col cols="3" class="centered">
+    <b-col cols="12" sm="6" md="4" lg="3" class="centered">
         <router-link :to="{name: 'item', params: { id: item.id }}" class="product-card__link">
             <b-card
                     :img-src="item.images[0]+item.id"
                     img-alt="item.name"
                     img-top
-                    tag="article"
-                    style="max-width: 20rem;"
-                    class="mb-2 product-card"
+                    tag="div"
+                    class="mb-5 product-card"
             >
                 <b-card-text>
                     {{item.name}}
@@ -18,21 +17,6 @@
                     <span class="product-card__price-old">{{item.price.new}}</span>
                 </div>
 
-                <div class="product-card__rating">
-                    <div class="rating">
-                        <input type="radio" name="rating" value="5" id="5">
-                        <label for="5">☆</label>
-                        <input type="radio" name="rating" value="4" id="4">
-                        <label for="4">☆</label>
-                        <input type="radio" name="rating" value="3" id="3">
-                        <label for="3">☆</label>
-                        <input type="radio" name="rating" value="2" id="2">
-                        <label for="2">☆</label>
-                        <input type="radio" name="rating" value="1" id="1">
-                        <label for="1">☆</label>
-                    </div>
-                    <span>({{item.reting.count}})</span>
-                </div>
                 <div class="product-icons">
                     <ProductIcon 
                         v-for="(icon, index) in item.icons" 
@@ -103,7 +87,7 @@ export default {
             font-style: normal;
             line-height: 1.28;
             letter-spacing: normal;
-            color: #262626;
+            color: $text_color;
             text-align: left;
         }
         .product-card__price{
@@ -124,58 +108,19 @@ export default {
             font-style: normal;
             line-height: normal;
             letter-spacing: normal;
-            color: #262626;
+            color: $text_color;
             text-decoration: line-through;
             padding-left: 27px;
         }
         .product-card__rating{
             display: inline-flex;
             span{
-                padding-top: 11px;
+                padding-top: 14px;
             }
         }
     }
 
 
-
-
-
-    .rating {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-    }
-
-    .rating>input {
-        display: none
-    }
-
-    .rating>label {
-        position: relative;
-        width: 1em;
-        font-size: 2vw;
-        color: #ffb000;
-        cursor: pointer
-    }
-
-    .rating>label::before {
-        content: "\2605";
-        position: absolute;
-        opacity: 0
-    }
-
-    .rating>label:hover:before,
-    .rating>label:hover~label:before {
-        opacity: 1 !important
-    }
-
-    .rating>input:checked~label:before {
-        opacity: 1
-    }
-
-    .rating:hover>input:checked~label:before {
-        opacity: 0.4
-    }
 
 
 

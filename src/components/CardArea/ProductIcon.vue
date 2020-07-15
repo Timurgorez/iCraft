@@ -1,6 +1,6 @@
 <template>
-    <div :style="{'background-image': `url("~@/assets/product_icons/new.svg")`}">
-       
+    <div class="product-icon" :style="{backgroundImage: 'url(~@/assets/product_icons/' + icon + '})'}">
+    <img src="~@/assets/product_icons/new.svg" alt="">
     </div>
 </template>
 
@@ -10,17 +10,26 @@ export default {
     name: 'ProductCard',
     data() {
       return {
-        
+          
       }
     },
     props: {
-        item: Object
+        icon: String
     },
     components:{
         
     },
+    computed:{
+        url(){
+            return {
+                backgroundImage: 'url(~@/assets/product_icons/'+this.icon+'})'
+            }
+        }
+    },
     methods:{
-        
+        getLink(){
+            return "~@/assets/product_icons/" + this.icon;
+        }
     }
 }
 </script>
