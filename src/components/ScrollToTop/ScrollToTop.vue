@@ -48,7 +48,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "@/style.scss";
 
 .scroll-to-top{
     width: 50px;
@@ -69,6 +68,16 @@ export default {
     background-size: cover;
     width: 19px;
     height: 19px;
+}
+
+    
+@media only screen and (max-width: 480px) {
+    .scroll-to-top{
+        width: 35px;
+        height: 35px;
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 </style>

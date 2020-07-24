@@ -30,7 +30,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import "@/style.scss";
 
 .currency-lang-block{
   display: flex;
@@ -53,6 +52,24 @@ export default {
   display: inline-flex;
   background: url('~@/assets/arrow.svg') no-repeat 50% 50%;
   margin-left: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .currency-lang-block{
+    // position: absolute;
+    bottom: 18px;
+    right: 30px;
+    img{
+      width: 22px;
+      height: 22px;
+    }
+    .dropdown-menu{
+      font-size: 14px;
+    }
+    .currency-lang-block__text{
+      font-size: 14px;
+    }
+  }
 }
 
 </style>

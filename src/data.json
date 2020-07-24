@@ -11,14 +11,18 @@
           "stars":3
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"90",
+          "old":"110",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive-2.svg",
           "best.svg",
           "free-shiping.svg"
-       ]
+       ],
+       "category": ["Knitted Hats", "Toddler Toys", "Home Decor"],
+       "dominant_color": "#7f13a6"
     },
     {
        "id":2,
@@ -32,14 +36,18 @@
           "stars":5
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"155",
+          "old":"220",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive-2.svg",
           "new.svg",
           "free-shiping.svg"
-       ]
+       ],
+       "category": ["Gold Jewelry", "Home Decor"],
+       "dominant_color": "#7f13a6"
     },
     {
        "id":3,
@@ -53,13 +61,17 @@
           "stars":2
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"300",
+          "old":"399",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive.svg",
           "new.svg"
-       ]
+       ],
+       "category": ["Wedding Jewelry", "Home Decor"],
+       "dominant_color": "#ff36a5"
     },
     {
        "id":4,
@@ -73,14 +85,18 @@
           "stars":4
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"429",
+          "old":"550",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive.svg",
           "new.svg",
           "free-shiping.svg"
-       ]
+       ],
+       "category": ["iPod/ Phone Accessories", "Home Decor"],
+       "dominant_color": "Multi-Colored"
     },
     {
        "id":5,
@@ -94,14 +110,18 @@
           "stars":4
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"25",
+          "old":"30",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive.svg",
           "new.svg",
           "free-shiping.svg"
-       ]
+       ],
+       "category": ["Toys & Games", "Home Decor"],
+       "dominant_color": "#ff36a5"
     },
     {
        "id":6,
@@ -115,14 +135,18 @@
           "stars":4
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"5",
+          "old":"8",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive.svg",
           "new.svg",
           "free-shiping.svg"
-       ]
+       ],
+       "category": ["Swarovski Cristal Jewelry", "Home Decor"],
+       "dominant_color": "#f36b26"
     },
     {
        "id":7,
@@ -136,14 +160,18 @@
           "stars":4
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"99",
+          "old":"89",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive.svg",
           "new.svg",
           "free-shiping.svg"
-       ]
+       ],
+       "category": ["Toys & Games", "Chain Charms"],
+       "dominant_color": "Multi-Colored"
     },
     {
        "id":8,
@@ -157,14 +185,18 @@
           "stars":4
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"150",
+          "old":"169",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive.svg",
           "new.svg",
           "free-shiping.svg"
-       ]
+       ],
+       "category": ["Silver Earrings", "Home Decor", "Blankets"],
+       "dominant_color": "#c90000"
     },
     {
        "id":9,
@@ -178,14 +210,18 @@
           "stars":4
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"14",
+          "old":"15",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive.svg",
           "new.svg",
           "free-shiping.svg"
-       ]
+       ],
+       "category": ["Chain Charms", "Home Decor"],
+       "dominant_color": "Multi-Colored"
     },
     {
        "id":10,
@@ -199,14 +235,18 @@
           "stars":4
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"30",
+          "old":"35",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive.svg",
           "new.svg",
           "free-shiping.svg"
-       ]
+       ],
+       "category": ["Toys & Games", "Toddler Toys", "Beanie Hats"],
+       "dominant_color": "#ffffff"
     },
     {
        "id":11,
@@ -220,14 +260,18 @@
           "stars":4
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"44",
+          "old":"55",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive.svg",
           "new.svg",
           "free-shiping.svg"
-       ]
+       ],
+       "category": ["Stafish Jewelry", "Eirings", "Blankets"],
+       "dominant_color": "#7f13a6"
     },
     {
        "id":12,
@@ -241,13 +285,17 @@
           "stars":4
        },
        "price":{
-          "new":"250$",
-          "old":"299$"
+          "new":"250",
+          "old":"299",
+          "currency_code": "USD",
+          "currency_formatting": "$"
        },
        "icons":[
           "exclusive.svg",
           "new.svg",
           "free-shiping.svg"
-       ]
+       ],
+       "category": ["Gold Jewelry", "Knitted Hats"],
+       "dominant_color": "#808080"
     }
  ]

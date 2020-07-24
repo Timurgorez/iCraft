@@ -1,18 +1,12 @@
 @import 'normalize-scss';
+@import "./variables.scss";
 @include normalize();
 
 
-//    -----   Variables  -----
-$font_montserrat_regular: Montserrat-Regular serif;
-$font_didot: Didot serif;
-$bg_grey: #f6f6f6;
-$text_color: #262626;
-
-//    -----  END Variables  -----
 
 @font-face {
     font-family: 'Didot';
-    src: url('~@/fonts/Didot.ttf');
+    src: url('~@/fonts/Didot.ttf') format('font-truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -46,34 +40,27 @@ $text_color: #262626;
     font-weight: normal;
     font-style: normal;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// $base-color: black;
-@media screen and (min-width: 900px) {
-    $base-color: #c6538c;
+@font-face {
+    font-family: 'Montserrat-Italic';
+    src: url('~@/fonts/montserrat-2/Montserrat-Italic.otf') format('font-opentype'),
+         url('~@/fonts/montserrat-2/Montserrat-Italic.ttf') format('font-truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-@media screen and (max-width: 900px) {
-    $base-color: #071d66;
-}
 
-@function get-vw($target) { 
-    $vw-context: (1000*.01) * 1px;
-    @return ($target/$vw-context) * 1vw;
-  }
+
+
+
 
 
 body{
-    // font-size: get-vw(10px);
+    font-size: 16px;
+}
+
+
+@media only screen and (max-width: 480px) {
+    body{
+        font-size: 14px;
+    }
 }

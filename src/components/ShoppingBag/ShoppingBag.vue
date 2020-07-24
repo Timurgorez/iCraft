@@ -1,26 +1,30 @@
 <template>
-  <div class="shoping-card-block">
-    <span class="shoping-card-block__count">{{countProduct}}</span>
-  </div>
+  <router-link :to="{name: 'ShoppingBag' }" class="product-card__link">
+    <div class="shoping-card-block">
+      <span class="shoping-card-block__count">{{countProduct}}</span>
+    </div>
+  </router-link>
 </template>
 
 <script>
 export default {
-  name: 'ShopingCard',
+  name: 'ShoppingBag',
   props: {
     products: Array
   },
   data (){
       return {
-        countProduct: 2
+        countProduct: 2,
       }
+  },
+  methods:{
+    
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import "@/style.scss";
 
 
 .shoping-card-block{
@@ -48,5 +52,24 @@ export default {
         font-size: 14px;
         font-weight: 500;
     }
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+  .shoping-card-block{
+    // position: absolute;
+    // bottom: 25px;
+    // right: 150px;
+  }
+  .shoping-card-block{
+    width: 22px;
+    height: 22px;
+    .shoping-card-block__count{
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
 </style>

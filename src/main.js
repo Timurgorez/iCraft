@@ -1,5 +1,3 @@
-import '@/style.scss';
-
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -18,6 +16,7 @@ Vue.use(IconsPlugin);
 // Import Bootstrap and Bootstrap-Vue css
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+
 
 
 Vue.config.productionTip = false

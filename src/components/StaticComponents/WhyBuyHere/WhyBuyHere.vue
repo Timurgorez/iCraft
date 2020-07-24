@@ -7,25 +7,25 @@
                 </b-col>
             </b-row>
             <b-row align-h="center" class="text-center">
-                <b-col cols="12" sm="6" lg="3" class="centered">
+                <b-col cols="6" sm="6" lg="3" class="centered">
                     <div class="why-buy-here__card">
                         <img src="~@/assets/static-images/handmade.svg" alt="handmade">
                         <p>35, 000+<br> Handmade Items</p>
                     </div>
                 </b-col>
-                <b-col cols="12" sm="6" lg="3" class="centered">
+                <b-col cols="6" sm="6" lg="3" class="centered">
                     <div class="why-buy-here__card">
                         <img src="~@/assets/static-images/plest.svg" alt="eplestco">
                         <p>7,500+ Trusted<br> Crafters Worldwide</p>
                     </div>
                 </b-col>
-                <b-col cols="12" sm="6" lg="3" class="centered">
+                <b-col cols="6" sm="6" lg="3" class="centered">
                     <div class="why-buy-here__card">
                         <img src="~@/assets/static-images/eco.svg" alt="eco">
                         <p>Shop Local<br> & Eco-friendly</p>
                     </div>
                 </b-col>
-                <b-col cols="12" sm="6" lg="3" class="centered">
+                <b-col cols="6" sm="6" lg="3" class="centered">
                     <div class="why-buy-here__card">
                         <img src="~@/assets/static-images/protect.svg" alt="protect">
                         <p>Shop<br> Securely</p>
@@ -59,14 +59,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "@/style.scss";
 
 .why-buy-here{
     min-height: 340px;
     background-color: $bg_grey;
 }
 .why-buy-here__title{
-    font-family: Didot, serif;
+    font-family: $font_didot;
     font-size: 30px;
     font-weight: normal;
     font-stretch: normal;
