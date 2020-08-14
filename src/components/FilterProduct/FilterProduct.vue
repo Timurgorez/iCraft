@@ -72,30 +72,34 @@
             class="filter-block__filter"
             align-v="stretch"
           >
-            <b-col v-show="showAllFilters.includes('price')" cols="12" md="3" class="filter-block__filter-price">
+            <b-col v-show="showAllFilters.includes('priceFilter')" cols="12" md="3" class="filter-block__filter-price">
               <p class="filter-block__mobile">Price range</p>
               <PriceGroup
+                ref="priceFilter"
                 @model_price="model_price_trigger"
                 @model_price_min="model_price_min_trigger"
                 @model_price_max="model_price_max_trigger"
               />
             </b-col>
-            <b-col v-show="showAllFilters.includes('color')" cols="12" md="3" class="filter-block__filter-color" @click="openColorFilter">
+            <b-col v-show="showAllFilters.includes('colorFilter')" cols="12" md="3" class="filter-block__filter-color" @click="openColorFilter">
               <p class="filter-block__mobile">Color</p>
               <CheckboxColorGroup
+                ref="colorFilter"
                 :colors="colors"
                 @model_color="model_color_trigger"
               />
             </b-col>
-            <b-col v-show="showAllFilters.includes('category')" cols="12" md="4" class="filter-block__filter-category"  @click="openCategoryFilter">
+            <b-col v-show="showAllFilters.includes('categoryFilter')" cols="12" md="4" class="filter-block__filter-category"  @click="openCategoryFilter">
               <p class="filter-block__mobile">Category</p>
               <CheckboxCategoryGroup
+                ref="categoryFilter"
                 @model_category="model_category_trigger"
               />
             </b-col>
-            <b-col v-show="showAllFilters.includes('sort')" cols="12" md="2" class="filter-block__filter-sort" @click="openSortFilter">
+            <b-col v-show="showAllFilters.includes('sortFilter')" cols="12" md="2" class="filter-block__filter-sort" @click="openSortFilter">
               <p class="filter-block__mobile">Sort by:</p>
               <SortGroup
+                ref="sortFilter"
                 :model_sort="model_sort"
                 @model_sort="model_sort_trigger"
               />
@@ -196,7 +200,7 @@ export default {
       ],
       selected_colors: [],
       countOfColors: [],
-      showAllFilters: ['price', 'color', 'category', 'sort' ],
+      showAllFilters: ['priceFilter', 'colorFilter', 'categoryFilter', 'sortFilter' ],
     };
   },
   methods: {
@@ -229,21 +233,21 @@ export default {
       }
     },
     openSortFilter(e) {
-      this.openFilter('sort', e);
+      this.openFilter('sortFilter', e);
     },
     openColorFilter(e) {
-      this.openFilter('color', e);
+      this.openFilter('colorFilter', e);
     },
     openCategoryFilter(e) {
-      this.openFilter('category', e);
+      this.openFilter('categoryFilter', e);
     },
     openPriceFilter(e) {
-      this.openFilter('price', e);
+      this.openFilter('priceFilter', e);
     },
     resizeHandler(e) {
       console.log(this.countOfColors);
       if (e.target.innerWidth > 768){
-        this.showAllFilters = ['price', 'color', 'category', 'sort' ];
+        this.showAllFilters = ['priceFilter', 'colorFilter', 'categoryFilter', 'sortFilter' ];
         return (this.countOfColors = this.colors.slice(1, 3));
       }else{
         this.showFilter = false;
@@ -256,7 +260,11 @@ export default {
       return (this.countOfColors = this.colors.slice(1, 3));
     },
     onCleanHandler() {
-      location.reload();
+      if(this.showAllFilters.length == 4){
+        this.showAllFilters.forEach(el => this.$refs[el].clearFilter());
+      }else{
+        this.$refs[this.showAllFilters[0]].clearFilter();
+      }
     },
     onApplyHandler() {
       console.log("onApplyHandler");
@@ -265,8 +273,6 @@ export default {
       let newProduct = [];
 
       this.productsForFilter = data;
-
-      console.warn(this.model_price);
 
       if(this.model_price_min && this.model_price_min > 0 || this.model_price_max && this.model_price_max > 0 || this.model_price){
         newProduct = this.productsForFilter.filter(current => {
@@ -320,7 +326,6 @@ export default {
           let check = false;
           this.model_color.forEach(el => {
             if(current.dominant_color == el){
-              console.log('model_color  --> ', this.model_color);
               check = true;
               }
           });
@@ -331,8 +336,6 @@ export default {
       if (newProduct.length > 0) {
         this.productsForFilter = newProduct;
       }
-
-      console.log("newProduct", newProduct);
       
       this.$emit('filterProduct', newProduct);
     }

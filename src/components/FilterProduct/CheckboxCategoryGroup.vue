@@ -74,6 +74,10 @@ export default {
         this.model_category = [];
       }
     },
+    clearFilter(){
+      this.model_category = [];
+      this.all = true;
+    }
   },
   watch:{
     model_category(val){

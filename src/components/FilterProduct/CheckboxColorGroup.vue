@@ -66,6 +66,10 @@ export default {
       }else{
         this.model_color = [];
       }
+    },
+    clearFilter(){
+      this.all = true;
+      this.model_color = [];
     }
   },
   created() {
