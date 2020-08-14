@@ -33,7 +33,7 @@ export default {
 .product-icon {
   width: 42px;
   height: 42px;
-  background-size: contain;
+  background-size: cover;
   margin-right: 13px;
   background-repeat: no-repeat;
 }
@@ -56,9 +56,10 @@ export default {
 
 @media only screen and (max-width: 580px) {
   .product-icon {
-    width: 33px;
-    height: 33px;
-    margin-right: 6px;  }
+    width: 25px;
+    height: 25px;
+    margin-right: 6px;
+  }
 }
 
 </style>

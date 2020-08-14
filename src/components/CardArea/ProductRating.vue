@@ -59,7 +59,7 @@ export default {
 @media only screen and (max-width: 580px) {
     .product-rating__star-wrap{
         img{
-            height: 14px;
+            height: 12px;
         }
     }
     .product-rating{
