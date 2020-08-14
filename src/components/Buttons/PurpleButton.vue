@@ -26,10 +26,8 @@ export default {
     },
     methods:{
         onClick(){
-            console.log('child componennt');
             this.$emit('clickHandler');
         },
-        
     },
     
 }

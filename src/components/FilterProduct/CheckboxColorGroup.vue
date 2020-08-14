@@ -62,14 +62,14 @@ export default {
     onChangeAllHandler(e){
       if(e.target.checked) {
         this.model_color = [];
-        this.model_color = this.colors.map(el => el.color);
+        this.model_color = this.colors.map(el => el.colors);
       }else{
         this.model_color = [];
       }
     },
     clearFilter(){
       this.all = true;
-      this.model_color = [];
+      this.model_color = this.colors.map(el => el.color);
     }
   },
   created() {

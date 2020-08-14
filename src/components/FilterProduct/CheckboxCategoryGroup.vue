@@ -75,7 +75,7 @@ export default {
       }
     },
     clearFilter(){
-      this.model_category = [];
+      this.model_category = this.categories.map(el => el.value);
       this.all = true;
     }
   },
