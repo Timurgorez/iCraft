@@ -4,6 +4,7 @@
       <input class="checkbox-category-group__input" 
         @change="onChangeAllHandler"
         id="category-all"
+        v-model="all"
         type="checkbox" 
         name="category" 
         value="all" />
@@ -38,6 +39,7 @@ export default {
   },
   data() {
     return {
+      all: true,
       model_category: [],
       categories: [
         { value: "Gold Jewelry", name: "Gold Jewelry" },
@@ -76,8 +78,12 @@ export default {
   watch:{
     model_category(val){
       this.$emit('model_category', val);
+      this.all = this.model_category.length === this.categories.length;
       return val;
     },
+  },
+  created() {
+    this.model_category = this.categories.map(el => el.value);
   }
 };
 </script>

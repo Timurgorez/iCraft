@@ -23,7 +23,7 @@ export default {
   },
   data() {
     return {
-      model_sort: '',
+      model_sort: "Featured",
 
 
       sorting_data: [

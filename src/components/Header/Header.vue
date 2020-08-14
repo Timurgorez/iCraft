@@ -1,6 +1,5 @@
 <template>
     <div class="header-block">
-      <img class="header-block__image" src="~@/assets/desctop/pages/collectionPage/group.png" alt="">
       <div class="shoping-card-lang-block">
         <ShoppingBag />
         <CurrencyLang />
@@ -37,15 +36,13 @@ export default {
   .header-block {
     min-height: 100px;
     width: 100%;
-    background-color: #fff;
     background-size: 120%;
     background-repeat: no-repeat;
     position: relative;
-    box-shadow: 0px 0px 40px rgba(0,0,0,0.3);
     z-index: 1;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-end;
 
     .header-block__image{
       width: 280px;

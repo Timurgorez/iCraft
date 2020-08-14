@@ -8,7 +8,7 @@
         v-model="model_price" 
         type="radio" 
         name="price" 
-        :value="item.filter" />
+        :value="item" />
       <label class="radio-group__radio-label" :for="'price'+index">{{item.name}}</label>
     </div>
 
@@ -27,7 +27,11 @@ export default {
   },
   data() {
     return {
-      model_price: '',
+      model_price:  {
+        name: 'ALL',
+        value: 'all',
+        filter: {from: 0, to: 999999999}
+      },
       model_price_min: '',
       model_price_max: '',
 

@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: 'Didot';
-    src: url('~@/fonts/Didot.ttf') format('font-truetype');
+    src: url('~@/fonts/Didot.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -14,36 +14,36 @@
 
 @font-face {
     font-family: 'Montserrat-Regular';
-    src: url('~@/fonts/montserrat-2/Montserrat-Regular.otf') format('font-opentype'),
-         url('~@/fonts/montserrat-2/Montserrat-Regular.ttf') format('font-truetype');
+    src: url('~@/fonts/montserrat-2/Montserrat-Regular.otf') format('opentype'),
+         url('~@/fonts/montserrat-2/Montserrat-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'Montserrat-Bold';
-    src: url('~@/fonts/montserrat-2/Montserrat-Bold.otf') format('font-opentype'),
-         url('~@/fonts/montserrat-2/Montserrat-Bold.ttf') format('font-truetype');
+    src: url('~@/fonts/montserrat-2/Montserrat-Bold.otf') format('opentype'),
+         url('~@/fonts/montserrat-2/Montserrat-Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'Montserrat-Medium';
-    src: url('~@/fonts/montserrat-2/Montserrat-Medium.otf') format('font-opentype'),
-         url('~@/fonts/montserrat-2/Montserrat-Medium.ttf') format('font-truetype');
+    src: url('~@/fonts/montserrat-2/Montserrat-Medium.otf') format('opentype'),
+         url('~@/fonts/montserrat-2/Montserrat-Medium.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'Montserrat-Light';
-    src: url('~@/fonts/montserrat-2/Montserrat-Light.otf') format('font-opentype'),
-         url('~@/fonts/montserrat-2/Montserrat-Light.ttf') format('font-truetype');
+    src: url('~@/fonts/montserrat-2/Montserrat-Light.otf') format('opentype'),
+         url('~@/fonts/montserrat-2/Montserrat-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'Montserrat-Italic';
-    src: url('~@/fonts/montserrat-2/Montserrat-Italic.otf') format('font-opentype'),
-         url('~@/fonts/montserrat-2/Montserrat-Italic.ttf') format('font-truetype');
+    src: url('~@/fonts/montserrat-2/Montserrat-Italic.otf') format('opentype'),
+         url('~@/fonts/montserrat-2/Montserrat-Italic.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -58,6 +58,11 @@ body{
     font-size: 16px;
 }
 
+.default-max-container {
+    max-width: $max-default-container-size;
+    padding-left: 30px;
+    padding-right: 30px;
+}
 
 @media only screen and (max-width: 480px) {
     body{

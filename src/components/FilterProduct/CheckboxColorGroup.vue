@@ -8,20 +8,19 @@
         id="color-all"
         type="checkbox" 
         name="color" 
-        value="all" 
+        value="all"
+        v-model="all"
         />
       <label 
-        class="checkbox-color-group__label" 
+        class="checkbox-color-group__label align-items-start"
         for="color-all"
         >
         <span>ALL</span>
       </label>
     </div>
 
-
-
-    <div 
-      class="checkbox-color-group__color-wrap" 
+    <div
+      class="checkbox-color-group__color-wrap"
       v-for="(item, index) of colors" 
       :key="index" 
       :style="[{
@@ -35,7 +34,7 @@
         v-model="model_color" 
         type="checkbox" 
         name="color" 
-        :value="item.color" 
+        :value="item.color"
         />
       <label 
         class="checkbox-color-group__label" 
@@ -55,6 +54,7 @@ export default {
   },
   data() {
     return {
+      all: true,
       model_color: [],
     };
   },
@@ -68,9 +68,13 @@ export default {
       }
     }
   },
+  created() {
+     this.model_color = this.colors.map(el => el.color);
+  },
   watch:{
     model_color(val){
       this.$emit('model_color', val);
+      this.all = this.model_color.length === this.colors.length;
       return val;
     },
   }
@@ -91,7 +95,7 @@ export default {
   position: relative;
   width: 42px;
   height: 42px;
-  margin: 20px;
+  margin: 10px;
   border-radius: 2px
 }
 .checkbox-color-group__color-wrap:first-child{
@@ -110,13 +114,17 @@ export default {
 
 .checkbox-color-group__label{
   font-family: $font_montserrat_regular;
-  font-size: 13px;
+  font-size: 12px;
   width: 100%;
   height: 100%;
   position: relative;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   span{
-    position: absolute;
-    bottom: -20px;
+    position: relative;
+    bottom: -30px;
     left: 0;
   }
 }

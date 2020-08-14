@@ -1,12 +1,42 @@
 //    -----   Variables  -----
 $font_montserrat_regular: Montserrat-Regular, serif;
 $font_montserrat_italic: Montserrat-Italic, serif;
+$font_montserrat_medium: Montserrat-Medium, serif;
 $font_didot: Didot, serif;
 $bg_grey: #f6f6f6;
 $text_color: #262626;
 $text_color_red: #c90000;
-$border_grey_color: #909090;
+$border_grey_color: #ebebeb;
+$border_hover_grey_color: #909090;
 $purple_color: #bc00ff;
 $purple_color_btn: #7f13a6;
+$purple_light_color: #9b87e1;
+$max-default-container-size: 1820px;
 
 //    -----  END Variables  -----
+
+// ----  CUSTOMIZE GRID SIZE ----
+//$grid-breakpoints: (
+//        xs: 0,
+//        sm: 576px,
+//        md: 768px,
+//        lg: 992px,
+//        xl: 1200px,
+//        ex: 1440px,
+//        max: 1920px
+//);
+
+//$container-max-widths: (
+//        sm: 540px,
+//        md: 720px,
+//        lg: 960px,
+//        xl: 1140px,
+//        ex: 1340px,
+//        max: 1820px
+//);
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+// BootstrapVue and its default variables
+@import '../node_modules/bootstrap-vue/src/index.scss';
+
+// ----  CUSTOMIZE GRID SIZE ----

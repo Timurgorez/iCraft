@@ -38,10 +38,10 @@ export default {
 <style scoped lang="scss">
 
 .purple-custom-btn{
-    border: 1px solid $purple_color_btn;
+    border: 1.5px solid $purple_color_btn;
     font-family: $font_montserrat_regular;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: bold;
     line-height: 1.25;
     text-align: center;
     color: $purple_color_btn;

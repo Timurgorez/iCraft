@@ -28,8 +28,8 @@ export default {
 
 
 .shoping-card-block{
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
     display: flex;
     background: url('~@/assets/bag.svg') no-repeat 50% 50%;
     background-size: contain;
@@ -45,8 +45,8 @@ export default {
         background-color: #c90000;
         border-radius: 50%;
         position: absolute;
-        top: -5px;
-        right: -10px;
+        top: -10px;
+        right: -15px;
         color: #fff;
         font-family: $font_montserrat_regular;
         font-size: 14px;

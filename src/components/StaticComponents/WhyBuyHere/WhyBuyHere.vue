@@ -1,5 +1,5 @@
 <template>
-    <div class="why-buy-here">
+    <div class="why-buy-here mt-5">
         <b-container fluid="xl">
             <b-row align-h="center" class="text-center">
                 <b-col cols="12" class="centered">

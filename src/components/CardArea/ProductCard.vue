@@ -1,21 +1,37 @@
 <template>
     <b-col v-if="limit > index" cols="6" sm="6" md="4" lg="3" class="centered product-card-wrap">
         <router-link :to="{name: 'item', params: { id: item.id }}" class="product-card__link">
-            <b-card
-                    :img-src="item.images[0]+item.id"
-                    img-alt="item.name"
-                    img-top
-                    tag="div"
-                    class="product-card"
-            >
-                <b-card-text>
-                    {{item.name}}
-                </b-card-text>
+            <b-card class="product-card">
+              <!--              <b-img fluid :src="item.images[0]"-->
+              <!--                     :class="imgBorder ? 'hover-border' : ''"-->
+              <!--                     @mouseover="hover = true"-->
+              <!--                     @mouseleave="hover = false"></b-img>-->
+
+              <div v-if="item.sale" class="product-card__sale d-flex flex-row justify-content-start align-items-center">
+                <p class="product-card__sale-text">{{ item.sale }}% Off</p>
+              </div>
+              <div class="product-card__image d-flex flex-column justify-content-end align-items-end"
+                   :style="{backgroundImage: 'url(' + item.images[0] + ')'}"
+                   @mouseover="hover = true"
+                   @mouseleave="hover = false">
+
+                <div v-if="hover"  class="product-card__add-to-cart d-flex justify-content-center align-items-center">
+                  <div class="product-card__add-to-card-icon"></div>
+                </div>
+              </div>
+              <b-card-text>
+                <div class="product-card__mobile d-flex d-sm-flex d-md-none d-lg-none d-xl-none flex-row justify-content-center align-items-center">
+                  <div class="product-card__add-to-cart d-flex justify-content-center align-items-center">
+                    <div class="product-card__add-to-card-icon"></div>
+                  </div>
+                </div>
+                {{item.name}}
+              </b-card-text>
 
                 <div class="product-card__bottom-wrap">
-                    <div class="product-card__price-wrap">
-                        <span class="product-card__price">{{item.price.new}} {{item.price.currency_formatting}}</span>
-                        <span class="product-card__price-old">{{item.price.old}} {{item.price.currency_formatting}}</span>
+                    <div class="product-card__price-wrap d-flex  flex-sm-row flex-md-row flex-column flex-wrap justify-content-start align-items-start">
+                        <span class="product-card__price">{{item.price.currency_formatting}}{{item.price.new}} {{item.price.currency_code}}</span>
+                        <span class="product-card__price-old">{{item.price.currency_formatting}}{{item.price.old}} {{item.price.currency_code}}</span>
                     </div>
 
                     <ProductRating :rating="item.reting"/>
@@ -27,7 +43,6 @@
                             :icon="icon" />
                     </div>
                 </div>
-
             </b-card>
         </router-link>
     </b-col>
@@ -41,7 +56,7 @@ export default {
     name: 'ProductCard',
     data() {
       return {
-        
+        hover: false
       }
     },
     props: {
@@ -63,122 +78,232 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
+.product-card__link {
+  &:hover {
+    text-decoration: none;
+  }
+}
 
-    .product-card__link{
-        &:hover{
-            text-decoration: none;
-        }
+.product-card {
+  width: 100%;
+  border: none;
+  height: 100%;
+  padding-bottom: 30px;
+
+  &:hover {
+    text-decoration: none;
+
+  }
+
+  //& > img {
+  //  border: 1px solid grey;
+  //  border-radius: 4px;
+  //  max-height: 41vh;
+  //
+  //  &:hover {
+  //    border: solid 3px $purple_light_color;
+  //    cursor: pointer;
+  //  }
+  //}
+  .card-body {
+    padding: 12px 0 225px 0;
+    text-align: left;
+    position: relative;
+  }
+
+  .card-text {
+    font-family: $font_montserrat_medium;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    color: $text_color;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 5px;
+    max-height: 90px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .product-card__mobile {
+   // display: none;
+  }
+
+  .product-card__sale {
+    background-image: url("~@/assets/red-rectangle.svg");
+    background-size: cover;
+    max-width: 120px;
+    max-height: 38px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 20px;
+    left: -10px;
+  }
+
+  .product-card__sale-text {
+    font-family: $font_montserrat_regular;
+    font-size: 20px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    margin-bottom: 0;
+    padding-left: 10px;
+  }
+
+  .product-card__price {
+    font-family: $font_montserrat_regular;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #c90000;
+  }
+
+  .product-card__price-old {
+    font-family: $font_montserrat_regular;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: $text_color;
+    text-decoration: line-through;
+    padding-left: 27px;
+  }
+
+  .product-card__bottom-wrap {
+    //position: absolute;
+    bottom: 0;
+    right: 12px;
+    left: 0;
+  }
+
+  .product-card__image {
+    max-width: 400px;
+    max-height: 375px;
+    min-height: 140px;
+    min-width: 130px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+    border: 2px solid $border_grey_color;
+    border-radius: 4px;
+
+    &:hover {
+      border: solid 2px $border_hover_grey_color;
+      cursor: pointer;
+    }
+  }
+
+  .product-card__add-to-cart {
+    position: relative;
+    right: 20px;
+    top: -15px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.5);
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+
+  .product-card__add-to-card-icon {
+    background-image: url("~@/assets/bag-2.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+}
+
+.hover-border.product-card > img{
+  border: solid 3px $purple_light_color;
+  cursor: pointer;
+}
+
+.product-card__price-wrap {
+  margin-bottom: 10px;
+}
+
+
+.product-icons {
+  display: flex;
+}
+
+@media only screen and (max-width: 768px){
+  .product-card__mobile {
+    position: relative;
+    top: 3px;
+    margin-bottom: 7px;
+    .product-card__add-to-cart {
+      right: 0;
+      top: 0;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  h1 {
+    font-size: 14px
+  }
+
+  p {
+    font-size: 12px
+  }
+
+  .product-card-wrap {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .product-card {
+    .card-text {
+      font-size: 14px;
     }
 
-    .product-card{
-        width: 100%;
-        border: none;
-        height: 100%;
-        padding-bottom: 30px;
-        &:hover{
-            text-decoration: none;
-        }
-        &>img{
-            border: 1px solid grey;
-            border-radius: 4px;
-        }
-        .card-body{
-            padding: 12px;
-            padding-bottom: 135px;
-            text-align: left;
-            position: relative;
-        }
-        .card-text{
-            font-family: Montserrat;
-            font-size: 18px;
-            font-weight: 500;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.28;
-            letter-spacing: normal;
-            color: $text_color;
-            text-align: left;
-            display: inline-block;
-            margin-bottom: 5px;
-            max-height: 90px;
-            overflow: hidden;
-        }
-        .product-card__price{
-            font-family: Montserrat;
-            font-size: 18px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
-            color: #c90000;
-        }
-        .product-card__price-old{
-            font-family: Montserrat;
-            font-size: 18px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
-            color: $text_color;
-            text-decoration: line-through;
-            padding-left: 27px;
-        }
-        .product-card__bottom-wrap{
-            position: absolute;
-            bottom: 0;
-            right: 12px;
-            left: 12px;
-        }
+    .product-card__price,
+    .product-card__price-old {
+      font-size: 14px;
     }
 
-
-    .product-card__price-wrap{
-        margin-bottom: 10px;
+    .card-body {
+      padding: 6px 6px 50px 6px;
     }
 
-
-
-    .product-icons{
-        display: flex;
-    }
-    
-
-    @media only screen and (max-width: 580px) {
-        h1 {
-            font-size: 14px
-        }
-
-        p {
-            font-size: 12px
-        }
-
-        .product-card-wrap{
-            padding-right: 10px;
-            padding-left: 10px;
-        }
-
-        .product-card{
-            .card-text{
-                font-size: 14px;
-            }
-            .product-card__price,
-            .product-card__price-old{
-                font-size: 14px;
-            }
-            .card-body{
-                padding: 6px 6px 105px 6px;
-            }
-            .product-card__price-wrap{
-                margin-bottom: 0;
-                
-            }
-            .product-card__bottom-wrap{
-                right: 6px;
-                left: 6px;
-            }
-        }
+    .product-card__price-wrap {
+      margin-bottom: 0;
 
     }
+
+    .product-card__bottom-wrap {
+      right: 6px;
+      left: 6px;
+    }
+
+    .product-card__image {
+      height: 50%;
+    }
+
+    .product-card__price-old {
+      padding-left: 0;
+    }
+  }
+
+}
 </style>

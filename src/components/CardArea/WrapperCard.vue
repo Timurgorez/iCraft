@@ -1,6 +1,6 @@
 <template>
-    <b-container fluid="xl" class="wrapper-card">
-        <b-row align-h="center">
+    <b-container  class="wrapper-card default-max-container">
+        <b-row align-h="start">
             <ProductCard v-for="( item, index ) in productItems" :item="item" :key="item.id" :limit="limit" :index="index" />
         </b-row>
     </b-container>
