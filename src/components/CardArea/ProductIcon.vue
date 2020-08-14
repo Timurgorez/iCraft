@@ -1,7 +1,7 @@
 <template>
-    <div class="product-icon" :style="{backgroundImage: `url(~@/assets/product_icons/${icon})`}">
-    <!-- <img :src="url" alt=""> -->
-    <img src="@/assets/product_icons/new.svg" alt="">
+    <div :class="'product-icon product-icon__'+ icon" >
+<!--     <img :src="url" alt=""> -->
+<!--    <img src="@/assets/product_icons/new.svg" alt="">-->
     </div>
 </template>
 
@@ -21,9 +21,6 @@ export default {
         
     },
     computed:{
-        url(){
-            return '~@/assets/product_icons/' + this.icon;
-        }
     },
     methods:{
         
@@ -33,30 +30,35 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.product-icon {
+  width: 42px;
+  height: 42px;
+  background-size: contain;
+  margin-right: 13px;
+  background-repeat: no-repeat;
+}
 
+.product-icon__new {
+  background-image: url("~@/assets/product_icons/new.svg");
+}
 
+.product-icon__exclusive {
+  background-image: url("~@/assets/product_icons/exclusive.svg");
+}
 
-    .product-icon{
-        width: 42px;
-        height: 42px;
-        background-size: cover;
-        margin-right: 13px;
-        img{
-            width: 42px;
-            height: 42px;
-        }
-    }
+.product-icon__free-delivery {
+  background-image: url("~@/assets/product_icons/free-delivery.svg");
+}
 
-    @media only screen and (max-width: 580px) {
-        .product-icon{
-            width: 33px;
-            height: 33px;
-            margin-right: 6px;
-            img{
-                width: 33px;
-                height: 33px;
-            }
-        }
-    }
+.product-icon__best {
+  background-image: url("~@/assets/product_icons/best.svg");
+}
+
+@media only screen and (max-width: 580px) {
+  .product-icon {
+    width: 33px;
+    height: 33px;
+    margin-right: 6px;  }
+}
 
 </style>

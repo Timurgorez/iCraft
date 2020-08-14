@@ -17,9 +17,9 @@
           "currency_formatting": "$"
        },
        "icons":[
-          "exclusive-2.svg",
-          "best.svg",
-          "free-shiping.svg"
+          "exclusive",
+          "best",
+          "free-delivery"
        ],
        "category": ["Knitted Hats", "Toddler Toys", "Home Decor"],
        "dominant_color": "#7f13a6"
@@ -42,9 +42,9 @@
        },
 
        "icons":[
-          "exclusive-2.svg",
-          "new.svg",
-          "free-shiping.svg"
+          "exclusive",
+          "new",
+          "free-delivery"
        ],
        "category": ["Gold Jewelry", "Home Decor"],
        "dominant_color": "#7f13a6"
@@ -66,8 +66,8 @@
           "currency_formatting": "$"
        },
        "icons":[
-          "exclusive.svg",
-          "new.svg"
+          "exclusive",
+          "new"
        ],
        "category": ["Wedding Jewelry", "Home Decor"],
        "dominant_color": "#ff36a5"
@@ -90,9 +90,10 @@
           "currency_formatting": "$"
        },
        "icons":[
-          "exclusive.svg",
-          "new.svg",
-          "free-shiping.svg"
+          "exclusive",
+          "new",
+          "free-delivery",
+          "best"
        ],
        "category": ["iPod/ Phone Accessories", "Home Decor"],
        "dominant_color": "Multi-Colored"
@@ -114,9 +115,9 @@
           "currency_formatting": "$"
        },
        "icons":[
-          "exclusive.svg",
-          "new.svg",
-          "free-shiping.svg"
+          "exclusive",
+          "new",
+          "free-delivery"
        ],
        "category": ["Toys & Games", "Home Decor"],
        "dominant_color": "#ff36a5"
@@ -138,9 +139,9 @@
           "currency_formatting": "$"
        },
        "icons":[
-          "exclusive.svg",
-          "new.svg",
-          "free-shiping.svg"
+          "exclusive",
+          "new",
+          "free-delivery"
        ],
        "category": ["Swarovski Cristal Jewelry", "Home Decor"],
        "dominant_color": "#f36b26"
@@ -162,9 +163,10 @@
           "currency_formatting": "$"
        },
        "icons":[
-          "exclusive.svg",
-          "new.svg",
-          "free-shiping.svg"
+          "exclusive",
+          "new",
+          "free-delivery",
+          "best"
        ],
        "category": ["Toys & Games", "Chain Charms"],
        "dominant_color": "Multi-Colored"
@@ -187,9 +189,9 @@
           "currency_formatting": "$"
        },
        "icons":[
-          "exclusive.svg",
-          "new.svg",
-          "free-shiping.svg"
+          "exclusive",
+          "new",
+          "free-delivery"
        ],
        "category": ["Silver Earrings", "Home Decor", "Blankets"],
        "dominant_color": "#c90000"
@@ -211,9 +213,10 @@
           "currency_formatting": "$"
        },
        "icons":[
-          "exclusive.svg",
-          "new.svg",
-          "free-shiping.svg"
+          "exclusive",
+          "new",
+          "free-delivery",
+          "best"
        ],
        "category": ["Chain Charms", "Home Decor"],
        "dominant_color": "Multi-Colored"
@@ -235,9 +238,9 @@
           "currency_formatting": "$"
        },
        "icons":[
-          "exclusive.svg",
-          "new.svg",
-          "free-shiping.svg"
+          "exclusive",
+          "new",
+          "free-delivery"
        ],
        "category": ["Toys & Games", "Toddler Toys", "Beanie Hats"],
        "dominant_color": "#ffffff"
@@ -260,9 +263,9 @@
           "currency_formatting": "$"
        },
        "icons":[
-          "exclusive.svg",
-          "new.svg",
-          "free-shiping.svg"
+          "exclusive",
+          "new",
+          "free-delivery"
        ],
        "category": ["Stafish Jewelry", "Eirings", "Blankets"],
        "dominant_color": "#7f13a6"
@@ -284,9 +287,9 @@
           "currency_formatting": "$"
        },
        "icons":[
-          "exclusive.svg",
-          "new.svg",
-          "free-shiping.svg"
+          "exclusive",
+          "new",
+          "free-delivery"
        ],
        "category": ["Gold Jewelry", "Knitted Hats"],
        "dominant_color": "#808080"

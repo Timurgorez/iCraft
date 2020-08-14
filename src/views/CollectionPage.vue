@@ -30,7 +30,17 @@
     <WrapperCard :productItems="products" :limit="12"/>
     <WhyBuyHere />
     <WrapperCard :productItems="products" :limit="8"/>
-    
+
+    <div class="load-more mb-5">
+      <b-container fluid="xl">
+        <b-row cols="12" align-v="center" align-h="center">
+          <button class="purple-custom-btn">
+            Load More
+          </button>
+        </b-row>
+      </b-container>
+    </div>
+
     <div class="footer-subscribe-block">
       <b-container fluid="xl">
           <b-row align-v="center" class="text-center">
@@ -65,7 +75,6 @@ import Footer from '../components/Footer/Footer.vue';
 import FilterProduct from '../components/FilterProduct/FilterProduct.vue';
 import WrapperCard from '../components/CardArea/WrapperCard.vue';
 import WhyBuyHere from '../components/StaticComponents/WhyBuyHere/WhyBuyHere.vue';
-
 
 const data = require('../data.json')
 
@@ -205,6 +214,27 @@ export default {
 
 }
 
+.purple-custom-btn{
+  border-radius: 6px;
+  border: solid 1.5px $purple_color_btn;
+  font-family: $font_montserrat_regular;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: $purple_color_btn;
+  padding: 12px 80px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  &:focus{
+    outline: none;
+  }
+}
 
 .footer-subscribe-block {
   background: url('~@/assets/desctop/pages/collectionPage/footer-pattern.jpg');
@@ -309,10 +339,6 @@ export default {
 }
 
 @media only screen and (max-width: 998px) {
-  //.header-block__text-wrap {
-  //  padding-top: 310px;
-  //}
-
   .header-block__text-wrap {
     padding-top: 520px;
     width: 100%;

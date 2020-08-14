@@ -1,16 +1,16 @@
 <template>
   <div class="footer">
     <div class="footer-block">
-      <b-col order="1" order-sm="1" order-md="1" order-lg="1" order-xl="1" align-self="center" align-h="start" cols="12" sm="12" md="3" lg="3" class="d-flex flex-row justify-content-center justify-content-lg-start justify-content-lg-start justify-content-sm-center">
+      <b-col order="1" order-sm="1" order-md="1" order-lg="1" order-xl="1" align-self="center" align-h="start" cols="12" sm="12" md="12" lg="3" class="d-flex flex-row justify-content-center justify-content-lg-start justify-content-lg-start justify-content-sm-center">
         <img class="footer-block__image" src="~@/assets/desctop/pages/collectionPage/group.png" alt="">
       </b-col>
-      <b-col order="3" order-sm="3" order-md="2" order-lg="2" order-xl="2" align-self="center" align-h="center" cols="12" sm="12" md="4" lg="4" class="res-margin-top">
+      <b-col order="3" order-sm="3" order-md="3" order-lg="2" order-xl="2" align-self="center" align-h="center" cols="12" sm="12" md="12" lg="4" class="res-margin-top">
         <p class="footer-block__text">© 2007 - 2020, ICraft marketplace is operated by unCommon Thread Inc.</p>
       </b-col>
-      <b-col order="4" order-sm="4" order-md="3" order-lg="3" order-xl="3" align-self="center" align-h="center" cols="12" sm="12" md="3" lg="3" class="res-margin-top res-margin-bottom">
+      <b-col order="4" order-sm="4" order-md="4" order-lg="3" order-xl="3" align-self="center" align-h="center" cols="12" sm="12" md="12" lg="3" class="res-margin-top res-margin-bottom">
         <p class="footer-block__text"><a :href="termUrl"> Term of Use </a> | <a :href="privacyUrl">Privacy</a></p>
       </b-col>
-      <b-col order="2" order-sm="2"  order-md="4" order-lg="4" order-xl="4" align-self="center"  cols="12" sm="12" md="2" lg="2" class="d-flex flex-row justify-content-center justify-content-lg-end justify-content-sm-center justify-content-md-start">
+      <b-col order="2" order-sm="2"  order-md="2" order-lg="4" order-xl="4" align-self="center"  cols="12" sm="12" md="12" lg="2" class="d-flex flex-row justify-content-center justify-content-lg-end justify-content-sm-center justify-content-md-center">
         <a :href="instagram" target="_blank"><div class="footer-block__social insta"></div></a>
         <a :href="twitter" target="_blank"><div class="footer-block__social twit"></div></a>
         <a :href="youtube" target="_blank"><div class="footer-block__social youtube"></div></a>
@@ -118,7 +118,8 @@ export default {
   }
 
 
-  @media only screen and (max-width: 768px) {
+
+  @media only screen and (max-width: 992px) {
 
     .res-margin-top {
       margin-top: 25px;
@@ -127,10 +128,5 @@ export default {
     .res-margin-bottom {
       margin-bottom: 15px;
     }
-  }
-
-  @media only screen and (max-width: 580px) {
-  
-
   }
 </style>
