@@ -2,11 +2,6 @@
     <b-col v-if="limit > index" cols="6" sm="6" md="4" lg="3" class="centered product-card-wrap">
         <router-link :to="{name: 'item', params: { id: item.id }}" class="product-card__link">
             <b-card class="product-card">
-              <!--              <b-img fluid :src="item.images[0]"-->
-              <!--                     :class="imgBorder ? 'hover-border' : ''"-->
-              <!--                     @mouseover="hover = true"-->
-              <!--                     @mouseleave="hover = false"></b-img>-->
-
               <div v-if="item.sale" class="product-card__sale d-flex flex-row justify-content-start align-items-center">
                 <p class="product-card__sale-text">{{ item.sale }}% Off</p>
               </div>
@@ -95,16 +90,6 @@ export default {
 
   }
 
-  //& > img {
-  //  border: 1px solid grey;
-  //  border-radius: 4px;
-  //  max-height: 41vh;
-  //
-  //  &:hover {
-  //    border: solid 3px $purple_light_color;
-  //    cursor: pointer;
-  //  }
-  //}
   .card-body {
     padding: 12px 0 225px 0;
     text-align: left;
@@ -128,10 +113,6 @@ export default {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-
-  .product-card__mobile {
-   // display: none;
   }
 
   .product-card__sale {
@@ -303,7 +284,16 @@ export default {
     .product-card__price-old {
       padding-left: 0;
     }
-  }
 
+    .product-card__sale {
+      max-width: 80px;
+      max-height: 25px;
+      left: 0px;
+    }
+
+    .product-card__sale-text {
+      font-size: 14px;
+    }
+  }
 }
 </style>
