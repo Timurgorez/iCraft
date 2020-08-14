@@ -43,7 +43,9 @@ export default {
     };
   },
   methods: {
-
+    clearFilter(){
+      this.model_sort = "Featured";
+    }
   },
   watch:{
     model_sort(val){

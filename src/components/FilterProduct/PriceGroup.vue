@@ -65,7 +65,15 @@ export default {
     };
   },
   methods: {
-    
+    clearFilter(){
+      this.model_price =  {
+        name: 'ALL',
+        value: 'all',
+        filter: {from: 0, to: 999999999}
+      };
+      this.model_price_min = '';
+      this.model_price_max = '';
+    }
   },
   watch:{
     model_price(val){
