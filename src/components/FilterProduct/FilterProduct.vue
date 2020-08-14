@@ -1,8 +1,8 @@
 <template>
   <div class="filter-product-block">
     <b-container class="default-max-container">
-      <b-row align-h="center" @click="openFilter">
-        <b-col cols="6" md="3" class="centered filter-product-block-wrap">
+      <b-row align-h="center">
+        <b-col cols="6" md="3" class="centered filter-product-block-wrap" @click.stop="openPriceFilter">
           <div class="filter-product-block__one-filter">
             <span class="filter-product-block__text">Price Range</span>
             <span class="filter-product-block__blue-text"
@@ -10,7 +10,7 @@
             ></span>
           </div>
         </b-col>
-        <b-col cols="6" md="2" class="centered filter-product-block-wrap">
+        <b-col cols="6" md="3" class="centered filter-product-block-wrap" @click.stop="openColorFilter">
           <div class="filter-product-block__one-filter" style="margin-top: -5px">
             <span class="filter-product-block__text d-flex align-content-center align-items-center flex-wrap">
               <div class="mr-1"><span>Color</span></div>
@@ -45,7 +45,7 @@
             </span>
           </div>
         </b-col>
-        <b-col cols="6" md="4" class="centered filter-product-block-wrap">
+        <b-col cols="6" md="4" class="centered filter-product-block-wrap" @click.stop="openCategoryFilter">
           <div class="filter-product-block__one-filter">
             <span class="filter-product-block__text">Category:</span>
             <span class="filter-product-block__blue-text"
@@ -54,8 +54,8 @@
             ></span>
           </div>
         </b-col>
-        <b-col cols="6" md="3" class="centered filter-product-block-wrap">
-          <div class="filter-product-block__one-filter justify-content-lg-end justify-content-md-end">
+        <b-col cols="6" md="2" class="centered filter-product-block-wrap" @click.stop="openSortFilter">
+          <div class="filter-product-block__one-filter justify-content-start">
             <span class="filter-product-block__text">Sort By:</span>
             <span class="filter-product-block__blue-text"
               >{{this.model_sort}} <span class="filter-product-block__arrow"></span
@@ -65,14 +65,14 @@
       </b-row>
 
       <div v-show="showFilter" class="filter-block">
-        <div>
+        <div class="filter-block__inner-wrap">
         <b-container class="default-max-container" fluid>
           <b-row
             align-h="center"
             class="filter-block__filter"
             align-v="stretch"
           >
-            <b-col cols="12" md="3" class="filter-block__filter-price">
+            <b-col v-show="showAllFilters.includes('price')" cols="12" md="3" class="filter-block__filter-price">
               <p class="filter-block__mobile">Price range</p>
               <PriceGroup
                 @model_price="model_price_trigger"
@@ -80,20 +80,20 @@
                 @model_price_max="model_price_max_trigger"
               />
             </b-col>
-            <b-col cols="12" md="2" class="filter-block__filter-color">
+            <b-col v-show="showAllFilters.includes('color')" cols="12" md="3" class="filter-block__filter-color" @click="openColorFilter">
               <p class="filter-block__mobile">Color</p>
               <CheckboxColorGroup
                 :colors="colors"
                 @model_color="model_color_trigger"
               />
             </b-col>
-            <b-col cols="12" md="4" class="filter-block__filter-category">
+            <b-col v-show="showAllFilters.includes('category')" cols="12" md="4" class="filter-block__filter-category"  @click="openCategoryFilter">
               <p class="filter-block__mobile">Category</p>
               <CheckboxCategoryGroup
                 @model_category="model_category_trigger"
               />
             </b-col>
-            <b-col cols="12" md="3" class="filter-block__filter-sort">
+            <b-col v-show="showAllFilters.includes('sort')" cols="12" md="2" class="filter-block__filter-sort" @click="openSortFilter">
               <p class="filter-block__mobile">Sort by:</p>
               <SortGroup
                 :model_sort="model_sort"
@@ -102,7 +102,7 @@
             </b-col>
           </b-row>
           <b-row  class="filter-block__filter-btns d-flex justify-content-md-end justify-content-sm-center" >
-            <b-col cols="12" md="6" offset-md="6" class="d-flex justify-content-md-end justify-content-sm-center align-items-center">
+            <b-col cols="12" md="6" offset-md="6" class="d-flex justify-content-md-end justify-content-sm-center justify-content-center align-items-center">
               <PurpleButton
                 text="Clear all"
                 iconClass="clear-icon"
@@ -196,6 +196,7 @@ export default {
       ],
       selected_colors: [],
       countOfColors: [],
+      showAllFilters: ['price', 'color', 'category', 'sort' ],
     };
   },
   methods: {
@@ -219,13 +220,34 @@ export default {
       this.model_sort = model_sort;
     },
 
-    openFilter() {
-      this.showFilter = !this.showFilter;
+    openFilter(filterName, e) {
+      if(window.innerWidth <= 768 && e.target.closest('.filter-product-block-wrap')){
+        if(!this.showFilter || this.showAllFilters.includes(filterName)) this.showFilter = !this.showFilter;
+        this.showAllFilters = [filterName];
+      }else if(e.target.closest('.filter-product-block-wrap')){
+        this.showFilter = !this.showFilter;
+      }
+    },
+    openSortFilter(e) {
+      this.openFilter('sort', e);
+    },
+    openColorFilter(e) {
+      this.openFilter('color', e);
+    },
+    openCategoryFilter(e) {
+      this.openFilter('category', e);
+    },
+    openPriceFilter(e) {
+      this.openFilter('price', e);
     },
     resizeHandler(e) {
       console.log(this.countOfColors);
-      if (e.target.innerWidth > 768)
+      if (e.target.innerWidth > 768){
+        this.showAllFilters = ['price', 'color', 'category', 'sort' ];
         return (this.countOfColors = this.colors.slice(1, 3));
+      }else{
+        this.showFilter = false;
+      }
       if (e.target.innerWidth > 360 && e.target.innerWidth < 768)
         return (this.countOfColors = this.colors.slice(1, 3));
       if (e.target.innerWidth < 360)
@@ -331,7 +353,7 @@ export default {
       return this.model_category.length > 2
           ? this.model_category[0] + '/' + this.model_category[1] + '/' + '+' + (this.model_category.length - 2).toString()
           : this.model_category.join('/')
-    }
+    },
   },
   created() {
     window.addEventListener("resize", this.resizeHandler);
@@ -360,6 +382,7 @@ export default {
 .filter-product-block-wrap {
   padding-top: 15px;
   padding-bottom: 15px;
+  cursor: pointer;
 }
 .filter-product-block__arrow {
   background: url("~@/assets/arrow-white.svg") no-repeat 50% 50%;
@@ -423,11 +446,17 @@ export default {
   top: 100%;
   width: 100%;
   min-height: 300px;
-  background-color: #fff;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  max-height: 85vh;
+  background-color: transparent;
   z-index: 101;
   color: $text_color;
+  overflow-y: auto;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+}
+.filter-block__inner-wrap{
   padding-top: 20px;
+  background: #fff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
 }
 
 .filter-block__filter-price {
@@ -489,6 +518,23 @@ export default {
   border-right: 1px solid #d7d7d7;
 }
 
+
+.filter-block__filter-category,
+.filter-block__filter-price,
+.filter-block__filter-sort,
+.filter-block__filter-color{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.filter-block__filter-price{
+  padding-left: 15px;
+}
+.filter-block__filter-sort{
+  padding-right: 15px;
+}
+
+
+
 .filter-block__filter-btns {
   text-align: right;
   padding: 20px 0;
@@ -496,9 +542,9 @@ export default {
 
 @media only screen and (max-width: 1024px) {
   .filter-block {
-    height: 100%;
-    min-height: 600px;
-    overflow-y: scroll;
+    // height: 100%;
+    // min-height: 600px;
+    // overflow-y: scroll;
   }
 }
 
@@ -516,19 +562,24 @@ export default {
     padding-bottom: 10px;
     border-left: none;
     border-right: none;
-    border-bottom: 1px solid #d7d7d7;
   }
   .filter-block__filter-price {
     margin-top: 20px;
-    border-bottom: 1px solid #d7d7d7;
   }
   .filter-block__filter-category {
     margin-top: 20px;
     border-right: none;
-    border-bottom: 1px solid #d7d7d7;
   }
   .purple-custom-btn {
     padding: 12px 15px;
+  }
+  
+  .filter-block__filter-category,
+  .filter-block__filter-price,
+  .filter-block__filter-sort,
+  .filter-block__filter-color{
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -548,4 +599,12 @@ export default {
     min-height: 30px;
   }
 }
+
+
+@media only screen and (max-width: 580px) {
+  .filter-block {
+    max-height: calc(100vh - 200px);
+  }
+}
+
 </style>

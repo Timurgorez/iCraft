@@ -99,7 +99,7 @@ export default {
 }
 
 .checkbox-category-group__category-wrap{
-  width: 50%;
+  width: 33.3%;
   padding-right: 40px;
 }
 .checkbox-category-group__category-wrap:first-child{
@@ -139,6 +139,12 @@ export default {
   }
 }
 
+
+@media only screen and (max-width: 1200px) {
+  .checkbox-category-group__category-wrap{
+    width: 50%;
+  }
+}
 
 
 </style>

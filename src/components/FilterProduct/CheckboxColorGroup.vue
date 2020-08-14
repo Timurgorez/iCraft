@@ -95,7 +95,7 @@ export default {
   position: relative;
   width: 42px;
   height: 42px;
-  margin: 10px;
+  margin: 20px;
   border-radius: 2px
 }
 .checkbox-color-group__color-wrap:first-child{

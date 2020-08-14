@@ -1,21 +1,21 @@
 <template>
   <div class="radio-group">
-
-    <div class="radio-group__radio-wrap" v-for="(item, index) of price_data_filter" :key="index">
-      <input 
-        class="radio-group__radio-input" 
-        :id="'price'+index" 
-        v-model="model_price" 
-        type="radio" 
-        name="price" 
-        :value="item" />
-      <label class="radio-group__radio-label" :for="'price'+index">{{item.name}}</label>
+    <div class="radio-group__radio">
+      <div class="radio-group__radio-wrap" v-for="(item, index) of price_data_filter" :key="index">
+        <input 
+          class="radio-group__radio-input" 
+          :id="'price'+index" 
+          v-model="model_price" 
+          type="radio" 
+          name="price" 
+          :value="item" />
+        <label class="radio-group__radio-label" :for="'price'+index">{{item.name}}</label>
+      </div>
     </div>
-
-    <input class="radio-group__input-min" type="text" name="price" v-model="model_price_min" placeholder="$ Min">
-
-    <input class="radio-group__input-max" type="text" name="price" v-model="model_price_max" placeholder="$ Max">
-
+    <div class="radio-group__inputs">
+      <input class="radio-group__input-min" type="text" name="price" v-model="model_price_min" placeholder="$ Min">
+      <input class="radio-group__input-max" type="text" name="price" v-model="model_price_max" placeholder="$ Max">
+    </div>
   </div>
 </template>
 
@@ -106,13 +106,16 @@ export default {
 }
 .radio-group__input-max,
 .radio-group__input-min{
-  border: 1px solid $border_grey_color;
+  border: 1px solid $border_hover_grey_color;
   border-radius: 6px;
   font-size: 14px;
-  padding: 5px;
+  padding: 11px;
   margin: 10px 0;
-  width: 100%;
+  width: 48%;
   font-family: $font_montserrat_italic;
+}
+.radio-group__input-min{
+  margin-right: 4%;
 }
 
 .radio-group__radio-input{
@@ -134,6 +137,24 @@ export default {
   
 }
 
-
+@media only screen and (max-width: 768px) {
+  .radio-group{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .radio-group__radio{
+    margin-right: 4%;
+  }
+  .radio-group__radio,
+  .radio-group__inputs{
+    width: 48%;
+    .radio-group__input-min,
+    .radio-group__input-max{
+      width: 100%;
+      margin-right: 0;
+      padding: 11px;
+    }
+  }
+}
 
 </style>
