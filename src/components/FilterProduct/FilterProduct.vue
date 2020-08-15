@@ -1,7 +1,7 @@
 <template>
   <div class="filter-product-block">
     <b-container class="default-max-container">
-      <b-row align-h="center">
+      <b-row align-h="center" class="filter-product-block__wrapper">
         <b-col cols="6" md="3" class="centered filter-product-block-wrap" @click.stop="openPriceFilter">
           <div class="filter-product-block__one-filter">
             <span class="filter-product-block__text">Price Range</span>
@@ -64,7 +64,7 @@
         </b-col>
       </b-row>
 
-      <div v-show="showFilter" class="filter-block">
+      <div :class="['filter-block', showFilter && 'show-filter']">
         <div class="filter-block__inner-wrap">
         <b-container class="default-max-container" fluid>
           <b-row
@@ -225,12 +225,27 @@ export default {
     },
 
     openFilter(filterName, e) {
+      const self = this;
+      const filter = document.querySelector('.filter-block');
+      const filterOpener = document.querySelector('.filter-product-block__wrapper');
+      const filterChild = document.querySelector('.filter-block__inner-wrap');
+
       if(window.innerWidth <= 768 && e.target.closest('.filter-product-block-wrap')){
         if(!this.showFilter || this.showAllFilters.includes(filterName)) this.showFilter = !this.showFilter;
         this.showAllFilters = [filterName];
+        if(!this.showFilter) filter.style.height = '0px';
       }else if(e.target.closest('.filter-product-block-wrap')){
         this.showFilter = !this.showFilter;
+        if(!this.showFilter) filter.style.height = '0px';
       }
+      
+      setTimeout(function(){
+        if(self.showFilter && window.innerHeight < filterChild.offsetHeight + filterOpener.offsetHeight){
+          filter.style.height = window.innerHeight - filterOpener.offsetHeight + 'px';
+        }else if(self.showFilter){
+          filter.style.height = filterChild.offsetHeight + 'px';
+        }
+      }, 0)
     },
     openSortFilter(e) {
       this.openFilter('sortFilter', e);
@@ -249,8 +264,10 @@ export default {
       if (e.target.innerWidth > 768){
         this.showAllFilters = ['priceFilter', 'colorFilter', 'categoryFilter', 'sortFilter' ];
         return (this.countOfColors = this.colors.slice(1, 3));
-      }else{
+      }else if(e.target.innerWidth > 750){
         this.showFilter = false;
+        const filter = document.querySelector('.filter-block');
+        if(!this.showFilter) filter.style.height = '0px';
       }
       if (e.target.innerWidth > 360 && e.target.innerWidth < 768)
         return (this.countOfColors = this.colors.slice(1, 3));
@@ -448,18 +465,25 @@ export default {
   left: 0;
   top: 100%;
   width: 100%;
-  min-height: 300px;
-  max-height: 85vh;
-  background-color: transparent;
+  // min-height: 300px;
+  background-color: #fff;
   z-index: 101;
   color: $text_color;
   overflow-y: auto;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+
+  opacity: 0.5;
+  height: 0;
+}
+.show-filter{
+  height: 300px;
+  opacity: 1;
+  transition: all 0.3s;
 }
 .filter-block__inner-wrap{
   padding-top: 20px;
   background: #fff;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
 }
 
 .filter-block__filter-price {
@@ -606,7 +630,7 @@ export default {
 
 @media only screen and (max-width: 580px) {
   .filter-block {
-    max-height: calc(100vh - 200px);
+    
   }
 }
 

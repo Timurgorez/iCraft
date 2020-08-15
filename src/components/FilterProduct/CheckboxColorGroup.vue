@@ -62,18 +62,20 @@ export default {
     onChangeAllHandler(e){
       if(e.target.checked) {
         this.model_color = [];
-        this.model_color = this.colors.map(el => el.colors);
+        this.model_color = this.colors.map(el => el.color);
       }else{
         this.model_color = [];
       }
     },
     clearFilter(){
       this.all = true;
+      this.model_color = [];
       this.model_color = this.colors.map(el => el.color);
     }
   },
   created() {
      this.model_color = this.colors.map(el => el.color);
+     console.log(this.model_color);
   },
   watch:{
     model_color(val){
