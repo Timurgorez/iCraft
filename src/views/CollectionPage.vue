@@ -34,9 +34,11 @@
     <div class="load-more mb-5">
       <b-container fluid="xl">
         <b-row cols="12" align-v="center" align-h="center">
-          <button class="purple-custom-btn">
-            Load More
-          </button>
+          <PurpleButton
+                text="LOAD MORE"
+                iconClass="d-none"
+                @clickHandler="loadMoreHandler"
+              />
         </b-row>
       </b-container>
     </div>
@@ -75,6 +77,8 @@ import Footer from '../components/Footer/Footer.vue';
 import FilterProduct from '../components/FilterProduct/FilterProduct.vue';
 import WrapperCard from '../components/CardArea/WrapperCard.vue';
 import WhyBuyHere from '../components/StaticComponents/WhyBuyHere/WhyBuyHere.vue';
+import PurpleButton from '../components/Buttons/PurpleButton.vue';
+
 
 const data = require('../data.json')
 
@@ -88,7 +92,7 @@ export default {
       }
   },
   components: {
-    FilterProduct, WrapperCard, Header, WhyBuyHere, Footer
+    FilterProduct, WrapperCard, Header, WhyBuyHere, Footer, PurpleButton
   },
   // mounted(){
   //   $(this.$refs.subscribe_modal).on("hidden.bs.modal", this.hideModal)
@@ -119,6 +123,9 @@ export default {
       // regex.test(String(this.subscribe_email.trim()).toLowerCase()) ? '' : 'has-error';
       return (this.subscribe_email == "")? "" : (regex.test(this.subscribe_email)) ? '' : 'has-error';
     },
+    loadMoreHandler(){
+      console.log('Load More');
+    }
 
   },
   // computed () {
@@ -215,22 +222,9 @@ export default {
 }
 
 .purple-custom-btn{
-  border-radius: 6px;
-  border: solid 1.5px $purple_color_btn;
-  font-family: $font_montserrat_regular;
-  font-size: 18px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: $purple_color_btn;
-  padding: 12px 80px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
+  
+  padding: 16px 80px;
+
   &:focus{
     outline: none;
   }

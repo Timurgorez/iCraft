@@ -234,7 +234,8 @@ export default {
         this.showAllFilters = [filterName];
         if(!this.showFilter) filter.style.height = '0px';
       }else if(e.target.closest('.filter-product-block-wrap')){
-        this.closeFilter();
+        this.showFilter = !this.showFilter;
+        if(!this.showFilter) filter.style.height = '0px';
       }
       setTimeout(() => {
         if(this.showFilter && window.innerHeight < filterChild.offsetHeight + filterOpener.offsetHeight){

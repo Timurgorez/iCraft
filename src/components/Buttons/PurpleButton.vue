@@ -38,14 +38,14 @@ export default {
 .purple-custom-btn{
     border: 1.5px solid $purple_color_btn;
     font-family: $font_montserrat_regular;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: normal;
     line-height: 1.25;
     text-align: center;
     color: $purple_color_btn;
     padding: 12px 28px;
     display: inline-flex;
-    border-radius: 4px;
+    border-radius: 6px;
     align-items: center;
     justify-content: center;
     background: #fff;
