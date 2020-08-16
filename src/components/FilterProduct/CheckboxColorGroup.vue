@@ -94,7 +94,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 -20px;
+  margin: 0 -15px;
 }
 
 .checkbox-color-group__color-wrap{

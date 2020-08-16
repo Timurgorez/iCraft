@@ -225,7 +225,6 @@ export default {
     },
 
     openFilter(filterName, e) {
-      const self = this;
       const filter = document.querySelector('.filter-block');
       const filterOpener = document.querySelector('.filter-product-block__wrapper');
       const filterChild = document.querySelector('.filter-block__inner-wrap');
@@ -235,17 +234,20 @@ export default {
         this.showAllFilters = [filterName];
         if(!this.showFilter) filter.style.height = '0px';
       }else if(e.target.closest('.filter-product-block-wrap')){
-        this.showFilter = !this.showFilter;
-        if(!this.showFilter) filter.style.height = '0px';
+        this.closeFilter();
       }
-      
-      setTimeout(function(){
-        if(self.showFilter && window.innerHeight < filterChild.offsetHeight + filterOpener.offsetHeight){
+      setTimeout(() => {
+        if(this.showFilter && window.innerHeight < filterChild.offsetHeight + filterOpener.offsetHeight){
           filter.style.height = window.innerHeight - filterOpener.offsetHeight + 'px';
-        }else if(self.showFilter){
+        }else if(this.showFilter){
           filter.style.height = filterChild.offsetHeight + 'px';
         }
       }, 0)
+    },
+    closeFilter(){
+        const filter = document.querySelector('.filter-block');
+        if(this.showFilter) filter.style.height = '0px';
+        this.showFilter = false;
     },
     openSortFilter(e) {
       this.openFilter('sortFilter', e);
@@ -265,9 +267,7 @@ export default {
         this.showAllFilters = ['priceFilter', 'colorFilter', 'categoryFilter', 'sortFilter' ];
         return (this.countOfColors = this.colors.slice(1, 3));
       }else if(e.target.innerWidth > 750){
-        this.showFilter = false;
-        const filter = document.querySelector('.filter-block');
-        if(!this.showFilter) filter.style.height = '0px';
+        this.closeFilter();
       }
       if (e.target.innerWidth > 360 && e.target.innerWidth < 768)
         return (this.countOfColors = this.colors.slice(1, 3));
@@ -285,7 +285,6 @@ export default {
     },
     onApplyHandler() {
       console.log("onApplyHandler");
-      this.showFilter = false;
 
       let newProduct = [];
 
@@ -355,6 +354,7 @@ export default {
       }
       
       this.$emit('filterProduct', newProduct);
+      this.closeFilter();
     }
   },
   computed: {
