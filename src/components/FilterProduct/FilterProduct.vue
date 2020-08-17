@@ -25,18 +25,6 @@
                   class="filter-product-block__color"
                 ></div>
               </div>
-<!--              <div v-else class="filter-product-block__colors">-->
-<!--                <div-->
-<!--                  v-for="(color, index) of countOfColors"-->
-<!--                  :key="index"-->
-<!--                  :style="{-->
-<!--                    backgroundColor: color.color,-->
-<!--                    backgroundImage: 'url(' + color.url + ')'-->
-<!--                  }"-->
-<!--                  class="filter-product-block__color"-->
-<!--                ></div>-->
-<!--              </div>-->
-
               <span class="filter-product-block__blue-text"
                 >{{ leftCountColors }}
                 <span class="filter-product-block__arrow"></span
@@ -134,7 +122,6 @@ import CheckboxCategoryGroup from "./CheckboxCategoryGroup";
 import SortGroup from "./SortGroup";
 import PurpleButton from "../Buttons/PurpleButton";
 
-const data = require('../../data.json')
 export default {
   name: "FilterProduct",
   props: {
@@ -283,13 +270,14 @@ export default {
       }else{
         this.$refs[this.showAllFilters[0]].clearFilter();
       }
+       this.productsForFilter = this.$store.dispatch('loadProducts')
     },
     onApplyHandler() {
       console.log("onApplyHandler");
 
       let newProduct = [];
 
-      this.productsForFilter = data;
+      this.productsForFilter = this.$store.getters.products;
 
       if(this.model_price_min && this.model_price_min > 0 || this.model_price_max && this.model_price_max > 0 || this.model_price){
         newProduct = this.productsForFilter.filter(current => {
