@@ -263,7 +263,6 @@ export default {
       this.openFilter('priceFilter', e);
     },
     resizeHandler(e) {
-      console.log(this.countOfColors);
       if (e.target.innerWidth > 768){
         this.showAllFilters = ['priceFilter', 'colorFilter', 'categoryFilter', 'sortFilter' ];
         return (this.countOfColors = this.colors.slice(1, 3));
@@ -305,10 +304,8 @@ export default {
           }else if(this.model_price){
             if(current.price.new >= this.model_price.from && current.price.new <= this.model_price.to){
               check = true;
-              console.log('model_price --> ', this.model_price);
               }
           }
-          console.log('check', check);
           return check;
         });
       }
@@ -317,7 +314,6 @@ export default {
         this.productsForFilter = newProduct;
       }
      
-      console.log('after price  -> ', newProduct);
 
       if(this.model_category.length > 0){
         newProduct = this.productsForFilter.filter(current => {
@@ -325,7 +321,6 @@ export default {
           current.category.forEach(element => {
             this.model_category.forEach(el => {
               if(element == el){
-                console.log('model_category  --> ', this.model_category);
                 check = true;
                 }
             });

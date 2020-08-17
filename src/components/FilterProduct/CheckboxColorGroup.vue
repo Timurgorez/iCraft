@@ -75,7 +75,6 @@ export default {
   },
   created() {
      this.model_color = this.colors.map(el => el.color);
-     console.log(this.model_color);
   },
   watch:{
     model_color(val){
