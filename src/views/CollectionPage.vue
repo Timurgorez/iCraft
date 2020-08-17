@@ -79,14 +79,10 @@ import WrapperCard from '../components/CardArea/WrapperCard.vue';
 import WhyBuyHere from '../components/StaticComponents/WhyBuyHere/WhyBuyHere.vue';
 import PurpleButton from '../components/Buttons/PurpleButton.vue';
 
-
-const data = require('../data.json')
-
 export default {
   name: 'CollectionPage',
   data(){
       return{
-        products: data,
         subscribe_email: '',
         validationError: ''
       }
@@ -99,7 +95,7 @@ export default {
   // },
   methods:{
     filterProduct(newProducts){
-      this.products = newProducts;
+       this.$store.dispatch('filterProducts', newProducts);
     },
     subscribeSubmit(){
       const email = this.subscribe_email.trim();
@@ -128,9 +124,12 @@ export default {
     }
 
   },
-  // computed () {
-  //   data: DATA
-  // },
+
+  computed: {
+    products() {
+      return this.$store.getters.products
+    }
+  },
 }
 </script>
 
