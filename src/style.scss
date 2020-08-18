@@ -55,6 +55,12 @@ body {
   padding-right: 30px;
 }
 
+.product-max-container {
+  max-width: $max_product-container-size;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .custom-popover {
   background: #faeeff !important;
   border: 1px solid $purple_color_btn;

@@ -1,7 +1,7 @@
 <template>
   <div class="product-item">
     <!--    возможно там контейнер больше, надо уточнить-->
-    <b-container fluid="xl">
+    <b-container class="product-max-container">
       <b-row>
         <b-col cols="12" md="6" lg="6" xl="6"></b-col>
         <b-col cols="12" md="6" lg="6" xl="6">
@@ -75,7 +75,84 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col cols="12" md="6" lg="6" xl="6"></b-col>
+        <b-col cols="12" md="6" lg="6" xl="6">
+          <div class="product-info">
+            <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-description>
+              <p class="product-info__toggle-title">Description</p>
+              <div class="product-info__toggle-arrow"></div>
+            </div>
+            <b-collapse visible id="collapse-description" class="mt-2">
+              <div class="product-info__text">
+                <ul class="product-info__main-info">
+                  <li class="product-info__main-info-item">
+                    <div class="d-flex flex-row flex-wrap align-items-center ">
+                      <span>Dominant Color: </span>
+                      <div class="product-info__main-color mr-2" style="background-color: #000000"></div>
+                      <span>Black</span>
+                    </div>
+                  </li>
+                  <li class="product-info__main-info-item">Materials: Japanese Beads, French Sequins, Leather on reverse</li>
+                  <li class="product-info__main-info-item">Size:  S, M, L, XL</li>
+                </ul>
+                <p>Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse.
+                  This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.</p>
+              </div>
+            </b-collapse>
+
+            <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-shipping>
+              <p class="product-info__toggle-title">Shipping Options</p>
+              <div class="product-info__toggle-arrow"></div>
+            </div>
+            <b-collapse id="collapse-shipping" class="mt-2">
+              <div class="product-info__text">
+                <ul class="product-info__main-info">
+                  <li class="product-info__main-info-item">
+                    <div class="d-flex flex-row flex-wrap align-items-center ">
+                      <span>Dominant Color: </span>
+                      <div class="product-info__main-color mr-2" style="background-color: #000000"></div>
+                      <span>Black</span>
+                    </div>
+                  </li>
+                  <li class="product-info__main-info-item">Materials: Japanese Beads, French Sequins, Leather on reverse</li>
+                  <li class="product-info__main-info-item">Size:  S, M, L, XL</li>
+                </ul>
+                <p>Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse.
+                  This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.</p>
+              </div>
+            </b-collapse>
+
+            <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-returns>
+              <p class="product-info__toggle-title">Returns & Refunds</p>
+              <div class="product-info__toggle-arrow"></div>
+            </div>
+            <b-collapse id="collapse-returns" class="mt-2">
+              <div class="product-info__text">
+                <p>Return: Yes, only within 14 Days</p>
+                <p class="mt-3">Refund: Exchange Only I'll exchange your item if it's not damaged. Shipping is not covered.</p>
+              </div>
+            </b-collapse>
+
+            <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-payment>
+              <p class="product-info__toggle-title">Payment Methods</p>
+              <div class="product-info__toggle-arrow"></div>
+            </div>
+            <b-collapse id="collapse-payment" class="mt-2">
+              <div class="product-info__text">
+
+              </div>
+            </b-collapse>
+
+            <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-seller>
+              <p class="product-info__toggle-title">Seller Information</p>
+              <div class="product-info__toggle-arrow"></div>
+            </div>
+            <b-collapse id="collapse-seller" class="mt-2">
+              <div class="product-info__text">
+
+              </div>
+            </b-collapse>
+          </div>
+        </b-col>
         <b-col cols="12" md="6" lg="6" xl="6"></b-col>
       </b-row>
     </b-container>
@@ -249,5 +326,69 @@ export default {
   padding-right: 86px;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.product-info {
+  &:focus {
+    outline: none;
+  }
+
+  &__toggle {
+    width: 100%;
+    margin: 10px 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.not-collapsed{
+      .product-info__toggle-arrow {
+        transform: rotateZ(-180deg);
+      }
+    }
+  }
+
+  &__toggle-title {
+    font-family: $font_montserrat_medium;
+    font-size: 22px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.05;
+    letter-spacing: normal;
+    color: #000000;
+    margin: 0;
+  }
+
+  &__toggle-arrow {
+    background-image: url("~@/assets/arrow-toggle.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+    width: 36px;
+    height: 36px;
+    transition: transform .2s;
+  }
+
+  &__main-info-item {
+      font-family: $font_montserrat_regular;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.44;
+      letter-spacing: normal;
+    span, p {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__main-color {
+    width: 29px;
+    height: 29px;
+    border-radius: 2px;
+    border: solid 2px #545454;
+  }
 }
 </style>
