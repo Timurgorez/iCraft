@@ -1,11 +1,6 @@
 <template>
   <div class="product-item">
-    <!--    возможно там контейнер больше, надо уточнить-->
-<<<<<<< HEAD
     <b-container class="product-max-container">
-=======
-    <b-container class="default-max-container">
->>>>>>> 5e7c8f32a0306bf423fdfec794d41b20d2786ec1
       <b-row>
         <b-col cols="12" md="6" lg="6" xl="6"></b-col>
         <b-col cols="12" md="6" lg="6" xl="6">
@@ -94,7 +89,6 @@
         </b-col>
       </b-row>
       <b-row>
-<<<<<<< HEAD
         <b-col cols="12" md="6" lg="6" xl="6">
           <div class="product-info">
             <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-description>
@@ -173,9 +167,6 @@
             </b-collapse>
           </div>
         </b-col>
-        <b-col cols="12" md="6" lg="6" xl="6"></b-col>
-=======
-        <b-col cols="12" md="6" lg="6" xl="6"></b-col>
         <b-col cols="12" md="6" lg="6" xl="6">
           <div class="buy-set-save">
             <h3 class="buy-set-save__title">Buy a Set & Save!</h3>
@@ -206,7 +197,6 @@
             <p>442 Page Views</p>
           </div>
         </b-col>
->>>>>>> 5e7c8f32a0306bf423fdfec794d41b20d2786ec1
       </b-row>
     </b-container>
   </div>
@@ -427,7 +417,7 @@ export default {
       outline: none;
     }
 
-    &.not-collapsed {
+    &.collapsed {
       .product-info__toggle-arrow {
         transform: rotateZ(-180deg);
       }
