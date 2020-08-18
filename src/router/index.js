@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import CollectionPage from '@/views/CollectionPage.vue'
-import ProductItem from "@/views/ProductItem.vue";
-import CheckoutPage from "@/views/CheckoutPage.vue";
+import CollectionPage from '@/views/CollectionPage'
+import ProductItem from "@/views/ProductItem";
+import CheckoutPage from "@/views/CheckoutPage";
 
 Vue.use(VueRouter)
 
 export default new VueRouter({
-  mode: 'history',
- // base: process.env.BASE_URL,
+  // mode: 'history',
+  base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
