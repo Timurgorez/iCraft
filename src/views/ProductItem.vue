@@ -8,7 +8,7 @@
           <div class="main-actions">
             <h3>Beautiful Festive Earrings (Japanese Bead Embroidery)</h3>
             <div class="rating">
-              <ProductRating  :rating="this.reting" />
+              <ProductRating  :rating="product.rating" />
               <span>Product Reviews (5)</span>
             </div>
             <div class="price">
@@ -53,16 +53,17 @@ import RedButton from '../components/Buttons/RedButton.vue';
 
 export default {
   name: 'ProductItem',
+  props: ['id'],
   data(){
-      return{
-        reting:{
-                    "count":17,
-                    "stars":3
-                }
-      }
+    return{}
   },
   components: {
     ProductRating, PurpleButton, RedButton
+  },
+  computed: {
+    product () {
+      return this.$store.getters.product(this.id)
+    },
   },
   methods:{
     addToBagHandler(){
@@ -71,10 +72,7 @@ export default {
     buyNowHandler(){
 
     }
-  },
-  computed: {
-    
-  },
+  }
 }
 </script>
 <style scoped lang="scss">

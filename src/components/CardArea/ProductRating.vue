@@ -13,7 +13,6 @@ export default {
     name: 'ProductRating',
     data() {
       return {
-          
       }
     },
     props: {
