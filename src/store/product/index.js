@@ -9,7 +9,7 @@ export default {
                     "./tmp/im-13.jpg"
                 ],
                 "sale": "10",
-                "reting":{
+                "rating":{
                     "count":17,
                     "stars":3
                 },
@@ -33,7 +33,7 @@ export default {
                 "images":[
                     "./tmp/im-24.jpg"
                 ],
-                "reting":{
+                "rating":{
                     "count":13,
                     "stars":5
                 },
@@ -58,7 +58,7 @@ export default {
                 "images":[
                     "./tmp/im-13.jpg"
                 ],
-                "reting":{
+                "rating":{
                     "count":10,
                     "stars":2
                 },
@@ -82,7 +82,7 @@ export default {
                 "images":[
                     "./tmp/im-19.jpg"
                 ],
-                "reting":{
+                "rating":{
                     "count":19,
                     "stars":4
                 },
@@ -107,7 +107,7 @@ export default {
                 "images":[
                     "./tmp/im-19.png"
                 ],
-                "reting":{
+                "rating":{
                     "count":19,
                     "stars":4
                 },
@@ -131,7 +131,7 @@ export default {
                 "images":[
                     "./tmp/im-21.jpg"
                 ],
-                "reting":{
+                "rating":{
                     "count":19,
                     "stars":4
                 },
@@ -155,7 +155,7 @@ export default {
                 "images":[
                     "./tmp/im-22.jpg"
                 ],
-                "reting":{
+                "rating":{
                     "count":19,
                     "stars":4
                 },
@@ -181,7 +181,7 @@ export default {
                 "images":[
                     "./tmp/im-13.jpg"
                 ],
-                "reting":{
+                "rating":{
                     "count":19,
                     "stars":4
                 },
@@ -205,7 +205,7 @@ export default {
                 "images":[
                     "./tmp/im-24.jpg"
                 ],
-                "reting":{
+                "rating":{
                     "count":19,
                     "stars":4
                 },
@@ -230,7 +230,7 @@ export default {
                 "images":[
                     "./tmp/im-13.jpg"
                 ],
-                "reting":{
+                "rating":{
                     "count":19,
                     "stars":4
                 },
@@ -255,7 +255,7 @@ export default {
                 "images":[
                     "./tmp/im-19.jpg"
                 ],
-                "reting":{
+                "rating":{
                     "count":19,
                     "stars":4
                 },
@@ -279,7 +279,7 @@ export default {
                 "images":[
                     "./tmp/im-19.png"
                 ],
-                "reting":{
+                "rating":{
                     "count":19,
                     "stars":4
                 },
@@ -314,7 +314,7 @@ export default {
                         "./tmp/im-13.jpg"
                     ],
                     "sale": "10",
-                    "reting":{
+                    "rating":{
                         "count":17,
                         "stars":3
                     },
@@ -338,7 +338,7 @@ export default {
                     "images":[
                         "./tmp/im-24.jpg"
                     ],
-                    "reting":{
+                    "rating":{
                         "count":13,
                         "stars":5
                     },
@@ -363,7 +363,7 @@ export default {
                     "images":[
                         "./tmp/im-13.jpg"
                     ],
-                    "reting":{
+                    "rating":{
                         "count":10,
                         "stars":2
                     },
@@ -387,7 +387,7 @@ export default {
                     "images":[
                         "./tmp/im-19.jpg"
                     ],
-                    "reting":{
+                    "rating":{
                         "count":19,
                         "stars":4
                     },
@@ -412,7 +412,7 @@ export default {
                     "images":[
                         "./tmp/im-19.png"
                     ],
-                    "reting":{
+                    "rating":{
                         "count":19,
                         "stars":4
                     },
@@ -436,7 +436,7 @@ export default {
                     "images":[
                         "./tmp/im-21.jpg"
                     ],
-                    "reting":{
+                    "rating":{
                         "count":19,
                         "stars":4
                     },
@@ -460,7 +460,7 @@ export default {
                     "images":[
                         "./tmp/im-22.jpg"
                     ],
-                    "reting":{
+                    "rating":{
                         "count":19,
                         "stars":4
                     },
@@ -486,7 +486,7 @@ export default {
                     "images":[
                         "./tmp/im-13.jpg"
                     ],
-                    "reting":{
+                    "rating":{
                         "count":19,
                         "stars":4
                     },
@@ -510,7 +510,7 @@ export default {
                     "images":[
                         "./tmp/im-24.jpg"
                     ],
-                    "reting":{
+                    "rating":{
                         "count":19,
                         "stars":4
                     },
@@ -535,7 +535,7 @@ export default {
                     "images":[
                         "./tmp/im-13.jpg"
                     ],
-                    "reting":{
+                    "rating":{
                         "count":19,
                         "stars":4
                     },
@@ -560,7 +560,7 @@ export default {
                     "images":[
                         "./tmp/im-19.jpg"
                     ],
-                    "reting":{
+                    "rating":{
                         "count":19,
                         "stars":4
                     },
@@ -584,7 +584,7 @@ export default {
                     "images":[
                         "./tmp/im-19.png"
                     ],
-                    "reting":{
+                    "rating":{
                         "count":19,
                         "stars":4
                     },
@@ -613,5 +613,12 @@ export default {
         products (state) {
             return state.products;
         },
+        product (state) {
+            return (productId) => {
+                return state.products.find((product) => {
+                    return product.id === productId
+                })
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <b-col v-if="limit > index" cols="6" sm="6" md="4" lg="3" class="centered product-card-wrap">
-        <router-link :to="{name: 'item', params: { id: item.id }}" class="product-card__link">
+        <router-link :to="{name: 'ProductPage', params: { id: item.id }}" class="product-card__link">
             <b-card class="product-card">
               <div v-if="item.sale" class="product-card__sale d-flex flex-row justify-content-start align-items-center">
                 <p class="product-card__sale-text">{{ item.sale }}% Off</p>
@@ -29,7 +29,7 @@
                         <span class="product-card__price-old">{{item.price.currency_formatting}}{{item.price.old}} {{item.price.currency_code}}</span>
                     </div>
 
-                    <ProductRating :rating="item.reting"/>
+                    <ProductRating :rating="item.rating"/>
 
                     <div class="product-icons">
                         <ProductIcon 

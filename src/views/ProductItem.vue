@@ -6,16 +6,16 @@
         <b-col cols="12" md="6" lg="6" xl="6"></b-col>
         <b-col cols="12" md="6" lg="6" xl="6">
           <div class="main-actions">
-            <h3>{{ this.product.name }}</h3>
+            <h3>{{ product.name }}</h3>
             <div class="rating">
-              <ProductRating :rating="this.product.reting" />
+              <ProductRating :rating="product.rating" />
               <span>Product Reviews (5)</span>
             </div>
             <div class="price">
-              <span class="price__new">$ {{ this.product.price.new }}</span>
-              <span class="price__old">$ {{ this.product.price.old }}</span>
+              <span class="price__new">$ {{ product.price.new }}</span>
+              <span class="price__old">$ {{ product.price.old }}</span>
               <span class="price__currency">{{
-                this.product.price.currency_code
+                product.price.currency_code
               }}</span>
             </div>
             <p class="shipping-sale">
@@ -139,9 +139,11 @@ import MoreFromThisStore from "../components/CardArea/MoreFromThisStore.vue";
 
 export default {
   name: "ProductItem",
+  props: ["id"],
   data() {
     return {
       popoverCustomRequest: false,
+
       quantity_min: 1,
       quantity_max: 5,
       quantity_step: 1,
@@ -188,9 +190,7 @@ export default {
   },
   computed: {
     product() {
-      return this.$store.getters.products.find(
-        obj => obj.id == this.$route.params.id
-      );
+      return this.$store.getters.product(this.id);
     }
   }
 };
