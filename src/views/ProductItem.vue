@@ -1,7 +1,7 @@
 <template>
   <div class="product-item">
     <!--    возможно там контейнер больше, надо уточнить-->
-    <b-container fluid="xl">
+    <b-container class="default-max-container">
       <b-row>
         <b-col cols="12" md="6" lg="6" xl="6"></b-col>
         <b-col cols="12" md="6" lg="6" xl="6">
@@ -28,7 +28,22 @@
               <SizeChoose @model_size="model_size_trigger" />
               <span>Sizing Chart</span>
             </div>
-            <div class="quantity">quantity</div>
+
+            <div class="quantity">
+              <integer-plusminus
+                :min="quantity_min"
+                :max="quantity_max"
+                :step="quantity_step"
+                v-model="model_quantity"
+              >
+                {{ model_quantity }}
+                <template slot="decrement">-</template>
+
+                <template slot="increment">+</template>
+              </integer-plusminus>
+              <span>Only 1 Avaliable</span>
+            </div>
+
             <div class="custom-request">
               <Checkbox
                 labelText="This is a Custom Order"
@@ -76,47 +91,90 @@
       </b-row>
       <b-row>
         <b-col cols="12" md="6" lg="6" xl="6"></b-col>
-        <b-col cols="12" md="6" lg="6" xl="6"></b-col>
+        <b-col cols="12" md="6" lg="6" xl="6">
+          <div class="buy-set-save">
+            <h3 class="buy-set-save__title">Buy a Set & Save!</h3>
+            <div class="buy-set-save__offer">
+              <BestOffer />
+            </div>
+            <div class="buy-set-save__btns">
+              <PurpleButton
+                text="Buy Now"
+                iconClass="check-purple-icon"
+                :animate="true"
+                customClass="add-to-bag-best-offer__btn"
+                @clickHandler="buyNowBestOfferHandler"
+              />
+              <PurpleButton
+                text="Add to Bag"
+                iconClass="bag-icon"
+                :animate="true"
+                customClass="add-to-bag-best-offer__btn"
+                @clickHandler="addToBagBestOfferHandler"
+              />
+            </div>
+          </div>
+
+          <div class="more-from-stor-wrap">
+            <h3 class="more-from-stor-wrap__title">More from this Store: 12</h3>
+            <MoreFromThisStore />
+            <p>442 Page Views</p>
+          </div>
+        </b-col>
       </b-row>
     </b-container>
   </div>
 </template>
 <script>
+import { IntegerPlusminus } from "vue-integer-plusminus";
+
 import ProductRating from "../components/CardArea/ProductRating.vue";
 import PurpleButton from "../components/Buttons/PurpleButton.vue";
 import RedButton from "../components/Buttons/RedButton.vue";
 import Checkbox from "../components/FormElements/Checkbox.vue";
 import SizeChoose from "../components/FormElements/SizeChoose.vue";
 import ColorChoose from "../components/FormElements/ColorChoose.vue";
+import BestOffer from "../components/CardArea/BestOffer.vue";
+import MoreFromThisStore from "../components/CardArea/MoreFromThisStore.vue";
 
 export default {
   name: "ProductItem",
   data() {
     return {
       popoverCustomRequest: false,
-      reting: {
-        count: 17,
-        stars: 3
-      },
+      quantity_min: 1,
+      quantity_max: 5,
+      quantity_step: 1,
+      model_quantity: 1,
 
       model_size: "",
       model_color: ""
     };
   },
   components: {
+    IntegerPlusminus,
+
     ProductRating,
     PurpleButton,
     RedButton,
     Checkbox,
     SizeChoose,
-    ColorChoose
+    ColorChoose,
+    BestOffer,
+    MoreFromThisStore
   },
   methods: {
     addToBagHandler() {
-      console.log("addToBagHandler", this.product);
+      console.log("addToBagHandler");
     },
     buyNowHandler() {
       console.log("buyNowHandler");
+    },
+    addToBagBestOfferHandler() {
+      console.log("addToBagBestOfferHandler");
+    },
+    buyNowBestOfferHandler() {
+      console.log("buyNowBestOfferHandler");
     },
     customRequstHandler(e) {
       console.log("customRequstHandler", e);
@@ -147,8 +205,10 @@ export default {
   line-height: 1.35;
   letter-spacing: normal;
   color: $text_color;
+  margin-bottom: 0;
 }
 .rating {
+  margin-bottom: 20px;
   span {
     font-family: $font_montserrat_regular;
     font-size: 16px;
@@ -190,6 +250,7 @@ export default {
   letter-spacing: normal;
   color: $text_color;
   padding-right: 10px;
+  text-decoration: line-through;
 }
 .price__currency {
   font-family: $font_montserrat_regular;
@@ -211,6 +272,7 @@ export default {
   line-height: normal;
   letter-spacing: normal;
   color: $text_color_red;
+  margin-bottom: 30px;
 }
 
 .color,
@@ -219,9 +281,18 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  span {
+  & > span {
     margin-bottom: 10px;
     color: $purple_color_btn;
+    font-family: $font_montserrat_regular;
+  }
+}
+
+.quantity {
+  margin-bottom: 30px;
+  & > span {
+    font-family: $font_montserrat_regular;
+    font-size: 16px;
   }
 }
 
@@ -255,5 +326,36 @@ export default {
   padding-right: 86px;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.more-from-stor-wrap__title,
+.buy-set-save__title {
+  font-family: $font_montserrat_medium;
+  font-size: 22px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: normal;
+  color: #000000;
+  margin-top: 80px;
+}
+
+.buy-set-save__btns {
+  margin-bottom: 60px;
+  button {
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.more-from-stor-wrap {
+  p {
+    font-family: $font_montserrat_regular;
+    font-size: 16px;
+    color: $text_color;
+  }
 }
 </style>

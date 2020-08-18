@@ -81,6 +81,7 @@ export default {
   background-color: #f9e6ff;
   color: $purple_color_btn;
   border-color: $purple_color_btn;
+  border-width: 2px;
 }
 
 @media only screen and (max-width: 480px) {

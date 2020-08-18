@@ -5,23 +5,24 @@
       class="color-choose__wrap-input"
       v-for="(color, index) in this.product_color"
       :key="index"
+      :ref="'color-choose' + index"
     >
       <input
         class="color-choose__radio-input"
         :id="'color-choose' + index"
-        v-model="model_size"
+        v-model="model_color"
         type="radio"
         name="color-choose"
-        :value="color"
+        :value="color.color"
       />
       <label
+        :style="{ backgroundImage: 'url(' + color.url + ')' }"
         class="color-choose__radio-label"
-        :ref="'color-choose' + index"
         :for="'color-choose' + index"
       ></label>
       <b-tooltip
         :target="() => $refs['color-choose' + index]"
-        :title="color"
+        :title="color.color"
       ></b-tooltip>
     </div>
   </div>
@@ -32,7 +33,24 @@ export default {
   name: "ColorChoose",
   data() {
     return {
-      product_color: ["red", "yellow", "green", "blue"],
+      product_color: [
+        {
+          color: "red",
+          url: "./tmp/colors_of_product/img-1@2x.png"
+        },
+        {
+          color: "yellow",
+          url: "./tmp/colors_of_product/img-2@2x.png"
+        },
+        {
+          color: "green",
+          url: "./tmp/colors_of_product/img-3@2x.png"
+        },
+        {
+          color: "blue",
+          url: "./tmp/colors_of_product/img-4@2x.png"
+        }
+      ],
       model_color: "red"
     };
   },
@@ -81,11 +99,14 @@ export default {
   color: #000000;
   background: #f3f3f3;
   border: 1px solid #d8d8d8;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 .color-choose__radio-input:checked ~ .color-choose__radio-label {
   color: $purple_color_btn;
   border-color: $purple_color_btn;
+  border-width: 2px;
 }
 
 @media only screen and (max-width: 480px) {

@@ -64,6 +64,30 @@ body {
   }
 }
 
+.int-pm {
+  align-items: center !important;
+  border-radius: 2px !important;
+  border: solid 1px $border_hover_grey_color !important;
+  background-color: #ffffff !important;
+  display: inline-block;
+  margin-right: 20px;
+}
+.int-pm-decrement,
+.int-pm-increment {
+  height: 47px !important;
+  width: 50px !important;
+  background: #fff !important;
+  border: none !important;
+  display: inline-block;
+  color: $border_hover_grey_color;
+  font-size: 26px;
+}
+.int-pm-value {
+  border: none !important;
+  display: inline-block;
+  min-width: 40px;
+}
+
 @media only screen and (max-width: 480px) {
   body {
     font-size: 14px;
