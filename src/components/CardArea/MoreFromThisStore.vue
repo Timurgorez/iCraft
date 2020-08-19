@@ -6,10 +6,15 @@
       :key="index"
       :data-id="index"
     >
-      <div
-        class="best-offer__img"
-        :style="{ backgroundImage: 'url(' + product.images[0] + ')' }"
-      ></div>
+      <router-link
+        :to="{ name: 'ProductPage', params: { id: product.id } }"
+        class="product-card__link"
+      >
+        <div
+          class="best-offer__img"
+          :style="{ backgroundImage: 'url(' + product.images[0] + ')' }"
+        ></div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -49,9 +54,14 @@ export default {
   width: 170px;
   height: 142px;
   border-radius: 6px;
-  border: 1px solid $border_hover_grey_color;
+  border: 1px solid $border_grey_color;
   background-size: cover;
   background-position: 50% 50%;
+  cursor: pointer;
+}
+
+.best-offer__img:hover {
+  border: 1px solid $border_hover_grey_color;
 }
 
 .best-offer__plus {

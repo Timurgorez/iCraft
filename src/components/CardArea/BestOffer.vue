@@ -67,13 +67,12 @@ export default {
 .best-offer {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 20px;
 }
 
 .best-offer__product {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   margin-top: 10px;
 }
 
@@ -81,7 +80,7 @@ export default {
   width: 170px;
   height: 142px;
   border-radius: 6px;
-  border: 1px solid $border_hover_grey_color;
+  border: 1px solid $border_grey_color;
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -158,7 +157,7 @@ span.best-offer__final-price__discount {
   font-family: $font_montserrat_regular;
   font-size: 18px;
   color: $text_color_red;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 768px) {

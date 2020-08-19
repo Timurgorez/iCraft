@@ -1,81 +1,123 @@
 <template>
-    <b-col v-if="limit > index" cols="6" sm="6" md="4" lg="3" class="centered product-card-wrap">
-        <router-link :to="{name: 'ProductPage', params: { id: item.id }}" class="product-card__link">
-            <b-card class="product-card">
-              <div v-if="item.sale" class="product-card__sale d-flex flex-row justify-content-start align-items-center">
-                <p class="product-card__sale-text">{{ item.sale }}% Off</p>
-              </div>
-              <div class="product-card__image d-flex flex-column justify-content-end align-items-end"
-                   :style="{backgroundImage: 'url(' + item.images[0] + ')'}"
-                   @mouseover="hover = true"
-                   @mouseleave="hover = false">
-
-                <div v-if="hover"  class="product-card__add-to-cart d-flex justify-content-center align-items-center">
-                  <div class="product-card__add-to-card-icon"></div>
-                </div>
-              </div>
-              <b-card-text>
-                <div class="product-card__mobile d-flex d-sm-flex d-md-none d-lg-none d-xl-none flex-row justify-content-center align-items-center">
-                  <div class="product-card__add-to-cart d-flex justify-content-center align-items-center">
-                    <div class="product-card__add-to-card-icon"></div>
-                  </div>
-                </div>
-                {{item.name}}
-              </b-card-text>
-
-                <div class="product-card__bottom-wrap">
-                    <div class="product-card__price-wrap d-flex  flex-sm-row flex-md-row flex-column flex-wrap justify-content-start align-items-start">
-                        <span class="product-card__price">{{item.price.currency_formatting}}{{item.price.new}} {{item.price.currency_code}}</span>
-                        <span class="product-card__price-old">{{item.price.currency_formatting}}{{item.price.old}} {{item.price.currency_code}}</span>
-                    </div>
-
-                    <ProductRating :rating="item.rating"/>
-
-                    <div class="product-icons">
-                        <ProductIcon 
-                            v-for="(icon, index) in item.icons" 
-                            :key="index"  
-                            :icon="icon" />
-                    </div>
-                </div>
-            </b-card>
+  <b-col
+    v-if="limit > index"
+    cols="6"
+    sm="6"
+    md="4"
+    lg="3"
+    class="centered product-card-wrap"
+  >
+    <b-card class="product-card">
+      <div
+        v-if="item.sale"
+        class="product-card__sale d-flex flex-row justify-content-start align-items-center"
+      >
+        <p class="product-card__sale-text">{{ item.sale }}% Off</p>
+      </div>
+      <router-link
+        :to="{ name: 'ProductPage', params: { id: item.id } }"
+        class="product-card__link"
+      >
+        <div
+          class="product-card__image d-flex flex-column justify-content-end align-items-end"
+          :style="{ backgroundImage: 'url(' + item.images[0] + ')' }"
+          @mouseover="hover = true"
+          @mouseleave="hover = false"
+        >
+          <div
+            v-if="hover"
+            class="product-card__add-to-cart d-flex justify-content-center align-items-center"
+          >
+            <div class="product-card__add-to-card-icon"></div>
+          </div>
+        </div>
+      </router-link>
+      <b-card-text>
+        <div
+          class="product-card__mobile d-flex d-sm-flex d-md-none d-lg-none d-xl-none flex-row justify-content-center align-items-center"
+        >
+          <div
+            class="product-card__add-to-cart d-flex justify-content-center align-items-center"
+          >
+            <div class="product-card__add-to-card-icon"></div>
+          </div>
+        </div>
+        <router-link
+          :to="{ name: 'ProductPage', params: { id: item.id } }"
+          class="product-card__link"
+        >
+          {{ item.name }}
         </router-link>
-    </b-col>
+      </b-card-text>
+
+      <div class="product-card__bottom-wrap">
+        <div
+          class="product-card__price-wrap d-flex  flex-sm-row flex-md-row flex-column flex-wrap justify-content-start align-items-start"
+        >
+          <span class="product-card__price"
+            >{{ item.price.currency_formatting }}{{ item.price.new }}
+            {{ item.price.currency_code }}</span
+          >
+          <span class="product-card__price-old"
+            >{{ item.price.currency_formatting }}{{ item.price.old }}
+            {{ item.price.currency_code }}</span
+          >
+        </div>
+
+        <ProductRating :rating="item.rating" />
+
+        <div class="product-icons">
+          <ProductIcon
+            v-for="(icon, index) in item.icons"
+            :key="index"
+            :icon="icon"
+          />
+        </div>
+      </div>
+    </b-card>
+  </b-col>
 </template>
 
 <script>
-import ProductIcon from './ProductIcon.vue';
-import ProductRating from './ProductRating.vue';
+import ProductIcon from "./ProductIcon.vue";
+import ProductRating from "./ProductRating.vue";
 
 export default {
-    name: 'ProductCard',
-    data() {
-      return {
-        hover: false
-      }
-    },
-    props: {
-        item: Object,
-        limit: Number,
-        index: Number
-    },
-    components:{
-        ProductIcon, ProductRating
-    },
-    methods:{
-        urlIcon(icon){
-            return '~@/assets/product_icons/' + icon;
-        }
+  name: "ProductCard",
+  data() {
+    return {
+      hover: false
+    };
+  },
+  props: {
+    item: Object,
+    limit: Number,
+    index: Number
+  },
+  components: {
+    ProductIcon,
+    ProductRating
+  },
+  methods: {
+    urlIcon(icon) {
+      return "~@/assets/product_icons/" + icon;
     }
-}
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
 .product-card__link {
+  text-decoration: none;
+  font-family: $font_montserrat_medium;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.28;
+  color: $text_color;
   &:hover {
     text-decoration: none;
+    color: $text_color;
   }
 }
 
@@ -87,7 +129,6 @@ export default {
 
   &:hover {
     text-decoration: none;
-
   }
 
   .card-body {
@@ -212,7 +253,7 @@ export default {
   }
 }
 
-.hover-border.product-card > img{
+.hover-border.product-card > img {
   border: solid 3px $purple_light_color;
   cursor: pointer;
 }
@@ -221,12 +262,11 @@ export default {
   margin-bottom: 10px;
 }
 
-
 .product-icons {
   display: flex;
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
   .product-card__mobile {
     position: relative;
     top: 3px;
@@ -241,11 +281,11 @@ export default {
 
 @media only screen and (max-width: 580px) {
   h1 {
-    font-size: 14px
+    font-size: 14px;
   }
 
   p {
-    font-size: 12px
+    font-size: 12px;
   }
 
   .product-card-wrap {
@@ -269,7 +309,6 @@ export default {
 
     .product-card__price-wrap {
       margin-bottom: 0;
-
     }
 
     .product-card__bottom-wrap {

@@ -145,7 +145,7 @@ export default {
       popoverCustomRequest: false,
 
       quantity_min: 1,
-      quantity_max: 5,
+      quantity_max: 15,
       quantity_step: 1,
       model_quantity: 1,
 
@@ -338,7 +338,10 @@ export default {
   line-height: 1.05;
   letter-spacing: normal;
   color: #000000;
-  margin-top: 80px;
+}
+
+.buy-set-save__title {
+  margin-top: 60px;
 }
 
 .buy-set-save__btns {
