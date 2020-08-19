@@ -91,80 +91,87 @@
       <b-row>
         <b-col cols="12" md="6" lg="6" xl="6">
           <div class="product-info">
-            <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-description>
+            <div class="collapse-border-bottom">
+              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-description>
               <p class="product-info__toggle-title">Description</p>
               <div class="product-info__toggle-arrow"></div>
             </div>
-            <b-collapse visible id="collapse-description" class="mt-2">
+              <b-collapse visible id="collapse-description" class="mt-2">
               <div class="product-info__text">
-                <ul class="product-info__main-info">
-                  <li class="product-info__main-info-item">
-                    <div class="d-flex flex-row flex-wrap align-items-center ">
-                      <span>Dominant Color: </span>
+                <div class="d-flex flex-row">
+                  <ul class="product-info__main-info">
+                    <li class="product-info__main-info-item list-mb">Dominant Color:</li>
+                    <li class="product-info__main-info-item list-mb">Materials:</li>
+                    <li class="product-info__main-info-item list-mb">Size:</li>
+                  </ul>
+                  <div class="product-info__list-data">
+                    <div class="product-info__color d-flex flex-row flex-wrap align-items-center list-mb">
                       <div class="product-info__main-color mr-2" style="background-color: #000000"></div>
                       <span>Black</span>
                     </div>
-                  </li>
-                  <li class="product-info__main-info-item">Materials: Japanese Beads, French Sequins, Leather on reverse</li>
-                  <li class="product-info__main-info-item">Size:  S, M, L, XL</li>
-                </ul>
-                <p>Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse.
-                  This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.</p>
+                    <div class="product-info__category list-mb">
+                      <p>Japanese Beads, French Sequins, Leather on reverse</p>
+                    </div>
+                    <div class="product-info__size list-mb">
+                      <p> S, M, L, XL</p>
+                    </div>
+                  </div>
+                </div>
+                <p>Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.</p>
+                <div class="product-info__remainder mt-4 mb-4">
+                  <p>Please note that if this item is sold out, it will be recreated or custom made for your order and may differ slightly from the photo. Also, please allow additional time for the product to be created.</p>
+                </div>
               </div>
             </b-collapse>
+            </div>
 
-            <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-shipping>
+            <div class="collapse-border-bottom">
+              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-shipping>
               <p class="product-info__toggle-title">Shipping Options</p>
               <div class="product-info__toggle-arrow"></div>
             </div>
-            <b-collapse id="collapse-shipping" class="mt-2">
+              <b-collapse id="collapse-shipping" class="mt-2">
               <div class="product-info__text">
-                <ul class="product-info__main-info">
-                  <li class="product-info__main-info-item">
-                    <div class="d-flex flex-row flex-wrap align-items-center ">
-                      <span>Dominant Color: </span>
-                      <div class="product-info__main-color mr-2" style="background-color: #000000"></div>
-                      <span>Black</span>
-                    </div>
-                  </li>
-                  <li class="product-info__main-info-item">Materials: Japanese Beads, French Sequins, Leather on reverse</li>
-                  <li class="product-info__main-info-item">Size:  S, M, L, XL</li>
-                </ul>
-                <p>Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse.
-                  This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.</p>
               </div>
             </b-collapse>
+            </div>
 
-            <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-returns>
+            <div class="collapse-border-bottom">
+              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-returns>
               <p class="product-info__toggle-title">Returns & Refunds</p>
               <div class="product-info__toggle-arrow"></div>
             </div>
-            <b-collapse id="collapse-returns" class="mt-2">
+              <b-collapse id="collapse-returns" class="mt-3">
               <div class="product-info__text">
                 <p>Return: Yes, only within 14 Days</p>
-                <p class="mt-3">Refund: Exchange Only I'll exchange your item if it's not damaged. Shipping is not covered.</p>
+                <p class="mt-4 mb-5">Refund: Exchange Only I'll exchange your item if it's not damaged. Shipping is not covered.</p>
               </div>
             </b-collapse>
+            </div>
 
-            <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-payment>
+            <div class="collapse-border-bottom">
+              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-payment>
               <p class="product-info__toggle-title">Payment Methods</p>
               <div class="product-info__toggle-arrow"></div>
             </div>
-            <b-collapse id="collapse-payment" class="mt-2">
+              <b-collapse id="collapse-payment" class="mt-2">
               <div class="product-info__text">
 
               </div>
             </b-collapse>
+            </div>
 
-            <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-seller>
+            <div class="collapse-border-bottom">
+              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-seller>
               <p class="product-info__toggle-title">Seller Information</p>
               <div class="product-info__toggle-arrow"></div>
             </div>
-            <b-collapse id="collapse-seller" class="mt-2">
+              <b-collapse id="collapse-seller" class="mt-2">
               <div class="product-info__text">
 
               </div>
             </b-collapse>
+            </div>
           </div>
         </b-col>
         <b-col cols="12" md="6" lg="6" xl="6">
@@ -409,9 +416,18 @@ export default {
     outline: none;
   }
 
+  .list-mb {
+    margin-bottom: 20px;
+  }
+
+  .collapse-border-bottom {
+    border-bottom: 1px solid $border_grey_color;
+  }
+
   &__toggle {
     width: 100%;
     margin: 10px 0;
+    padding: 10px 0;
 
     &:focus {
       outline: none;
@@ -446,7 +462,7 @@ export default {
     transition: transform .2s;
   }
 
-  &__main-info-item {
+  &__text {
     font-family: $font_montserrat_regular;
     font-size: 16px;
     font-weight: normal;
@@ -466,6 +482,25 @@ export default {
     height: 29px;
     border-radius: 2px;
     border: solid 2px #545454;
+  }
+
+  &__main-info {
+    padding-left: 18px;
+    margin-right: 40px;
+  }
+
+  &__color {
+    margin-top: -5px;
+  }
+
+  &__remainder {
+    border-radius: 6px;
+    border: solid 1px $purple_color_btn;
+    background-color: $purple_background_color;
+
+    p {
+      margin: 10px 10px;
+    }
   }
 }
 
