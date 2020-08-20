@@ -163,11 +163,11 @@
             <div class="collapse-border-bottom">
               <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-shipping>
               <p class="product-info__toggle-title">Shipping Options</p>
-              <div class="product-info__toggle-arrow"></div>\
+              <div class="product-info__toggle-arrow"></div>
               </div>
-              <b-collapse id="collapse-shipping" class="mt-2">
+              <b-collapse id="collapse-shipping">
               <div class="product-info__text">
-                <p class="mt-4">Local Pickup is Not Available.</p>
+                <p>Local Pickup is Not Available.</p>
                 <p>Item ships from: Yaroslavl', Yaroslavl Oblast’, Russia.</p>
                 <ul class="product-info__main-info mt-3">
                   <li class="mt-3">
@@ -202,18 +202,18 @@
               <p class="product-info__toggle-title">Payment Methods</p>
               <div class="product-info__toggle-arrow"></div>
             </div>
-              <b-collapse id="collapse-payment" class="mt-2">
+              <b-collapse id="collapse-payment">
               <div class="product-info__text">
-                <div class="product-info__payment d-flex flex-row align-items-center mt-3 mb-3">
+                <div class="product-info__payment d-flex flex-row align-items-center mb-3">
                   <div class="secure-icon mr-2"></div>
                   <p>Secure options</p>
                 </div>
-                <div class="product-info__payment-options">
-                  <div class="product-info__payment-option"></div>
-                  <div class="product-info__payment-option"></div>
-                  <div class="product-info__payment-option"></div>
-                  <div class="product-info__payment-option"></div>
-                  <div class="product-info__payment-option"></div>
+                <div class="product-info__payment-options d-flex flex-row flex-wrap align-items-center mt-4 mb-4">
+                  <div class="product-info__payment-option paypal"></div>
+                  <div class="product-info__payment-option visa"></div>
+                  <div class="product-info__payment-option master"></div>
+                  <div class="product-info__payment-option discover"></div>
+                  <div class="product-info__payment-option amer-exp"></div>
                 </div>
               </div>
               </b-collapse>
@@ -225,7 +225,9 @@
                 <div class="product-info__toggle-arrow"></div>
               </div>
               <b-collapse id="collapse-seller" class="mt-2">
-                <div class="product-info__text"></div>
+                <div class="product-info__text">
+                  <SellerInfo></SellerInfo>
+                </div>
               </b-collapse>
             </div>
           </div>
@@ -266,8 +268,8 @@
 </template>
 <script>
 import { IntegerPlusminus } from "vue-integer-plusminus";
-
-import ProductRating from "../components/CardArea/ProductRating.vue";
+import SellerInfo from "@/components/Seller/SellerInfo";
+import ProductRating from "../components/CardArea/Rating.vue";
 import PurpleButton from "../components/Buttons/PurpleButton.vue";
 import RedButton from "../components/Buttons/RedButton.vue";
 import Checkbox from "../components/FormElements/Checkbox.vue";
@@ -294,6 +296,7 @@ export default {
     };
   },
   components: {
+    SellerInfo,
     IntegerPlusminus,
 
     ProductRating,
@@ -600,7 +603,41 @@ export default {
     background-repeat: no-repeat;
     background-image: url("~@/assets/lock.svg");
   }
+
+  &__payment-option {
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    margin-right: 15px;
+  }
+
+  .paypal {
+    width: 55px;
+    height: 50px;
+    background-image: url("~@/assets/paypal.svg");
+  }
+  .visa {
+    width: 85px;
+    height: 30px;
+    background-image: url("~@/assets/visa.svg");
+  }
+  .master {
+    width: 75px;
+    height: 30px;
+    background-image: url("~@/assets/mastercard.svg");
+  }
+  .discover {
+    width: 110px;
+    height: 30px;
+    background-image: url("~@/assets/discover.svg");
+  }
+  .amer-exp {
+    width: 105px;
+    height: 30px;
+    background-image: url("~@/assets/american-express.svg");
+  }
 }
+//---
 
 .more-from-stor-wrap__title,
 .buy-set-save__title {

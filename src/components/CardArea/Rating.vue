@@ -1,9 +1,10 @@
 <template>
     <div class="product-rating" >
-        <div v-for="(star, index) in rating.stars" :key="index" class="product-rating__star-wrap">
-            <img src="~@/assets/star.svg" alt="">
-        </div>
-        <span class="product-rating__count">({{rating.count}})</span>
+      <span v-if="before" class="product-rating__count mr-2">({{rating.count}})</span>
+      <div v-for="(star, index) in rating.stars" :key="index" class="product-rating__star-wrap">
+        <img src="~@/assets/star.svg" alt="">
+      </div>
+      <span v-if="!before" class="product-rating__count">({{rating.count}})</span>
     </div>
 </template>
 
@@ -16,7 +17,8 @@ export default {
       }
     },
     props: {
-        rating: Object,
+      rating: Object,
+      before: Boolean
     },
     components:{
         

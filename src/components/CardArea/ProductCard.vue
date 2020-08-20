@@ -80,7 +80,7 @@
 
 <script>
 import ProductIcon from "./ProductIcon.vue";
-import ProductRating from "./ProductRating.vue";
+import ProductRating from "./Rating.vue";
 
 export default {
   name: "ProductCard",
