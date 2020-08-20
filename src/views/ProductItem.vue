@@ -132,19 +132,19 @@
             </div>
               <b-collapse id="collapse-shipping" class="mt-2">
               <div class="product-info__text">
-                <p>Local Pickup is Not Available.</p>
+                <p class="mt-4">Local Pickup is Not Available.</p>
                 <p>Item ships from: Yaroslavl', Yaroslavl Oblast’, Russia.</p>
-                <ul>
-                  <li>
-                    Shipping to Russia:
+                <ul class="product-info__main-info mt-3">
+                  <li class="mt-3">
+                    Shipping to Russia: <br>
                     $3.00 USD by Russian Post.
                   </li>
-                  <li>
-                    Shipping worldwide:
+                  <li class="mt-3">
+                    Shipping worldwide: <br>
                     $15.00 USD by Russian Post.
                   </li>
                 </ul>
-                <p>All items will be shipped from: Yaroslavl, Russia</p>
+                <p class="mt-3 mb-4">All items will be shipped from: Yaroslavl, Russia</p>
               </div>
             </b-collapse>
             </div>
@@ -157,7 +157,7 @@
               <b-collapse id="collapse-returns" class="mt-3">
               <div class="product-info__text">
                 <p>Return: Yes, only within 14 Days</p>
-                <p class="mt-4 mb-5">Refund: Exchange Only I'll exchange your item if it's not damaged. Shipping is not covered.</p>
+                <p class="mt-4 mb-4">Refund: Exchange Only I'll exchange your item if it's not damaged. Shipping is not covered.</p>
               </div>
             </b-collapse>
             </div>
@@ -169,7 +169,17 @@
             </div>
               <b-collapse id="collapse-payment" class="mt-2">
               <div class="product-info__text">
-
+                <div class="product-info__payment d-flex flex-row align-items-center mt-3 mb-3">
+                  <div class="secure-icon mr-2"></div>
+                  <p>Secure options</p>
+                </div>
+                <div class="product-info__payment-options">
+                  <div class="product-info__payment-option"></div>
+                  <div class="product-info__payment-option"></div>
+                  <div class="product-info__payment-option"></div>
+                  <div class="product-info__payment-option"></div>
+                  <div class="product-info__payment-option"></div>
+                </div>
               </div>
             </b-collapse>
             </div>
@@ -514,6 +524,15 @@ export default {
     p {
       margin: 10px 10px;
     }
+  }
+
+  .secure-icon {
+    width: 26px;
+    height: 26px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("~@/assets/lock.svg");
   }
 }
 

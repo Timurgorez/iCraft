@@ -101,6 +101,10 @@ export default {
   border: 1px solid #d8d8d8;
   background-size: cover;
   background-position: 50% 50%;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .color-choose__radio-input:checked ~ .color-choose__radio-label {

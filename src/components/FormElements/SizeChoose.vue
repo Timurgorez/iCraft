@@ -75,6 +75,10 @@ export default {
   color: #000000;
   background: #f3f3f3;
   border: 1px solid #d8d8d8;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .size-choose__radio-input:checked ~ .size-choose__radio-label {
