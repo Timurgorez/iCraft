@@ -48,7 +48,7 @@ export default {
 .shoping-card-lang-block {
   display: flex;
   align-items: center;
-  min-height: 70px;
+  min-height: 50px;
   margin-right: 40px;
 }
 

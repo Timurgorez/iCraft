@@ -99,6 +99,9 @@ export default {
   display: none;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
+  .checkbox-wrap__label {
+    font-size: 14px;
+  }
 }
 </style>

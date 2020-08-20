@@ -481,11 +481,11 @@ export default {
   &__link {
     font-family: $font_montserrat_regular;
     font-size: 20px;
-    color: $purple_color;
+    color: $purple_color_btn;
     display: flex;
     align-items: center;
     &:hover {
-      color: $purple_color;
+      color: $purple_color_btn;
       text-decoration: none;
     }
   }
@@ -498,6 +498,49 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .back-to-products__link {
+    font-size: 16px;
+  }
+  .main-actions h3 {
+    font-size: 20px;
+  }
+  .price__new {
+    font-size: 30px;
+  }
+  .price__currency,
+  .price__old {
+    font-size: 22px;
+  }
+  .shipping-sale {
+    font-size: 16px;
+  }
+  .size {
+    flex-wrap: nowrap;
+    & > span {
+      font-size: 14px;
+    }
+  }
+  .main-actions > p {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .buy-now__btn {
+    width: 100%;
+    margin-right: 0;
+  }
+  .add-to-bag__btn {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .buy-set-save__btns button {
+    width: 100%;
+    margin-right: 0;
   }
 }
 

@@ -164,5 +164,12 @@ span.best-offer__final-price__discount {
 }
 
 @media only screen and (max-width: 580px) {
+  .best-offer__img {
+    width: 90px;
+    height: 75px;
+  }
+  .best-offer__final-price span {
+    font-size: 16px;
+  }
 }
 </style>
