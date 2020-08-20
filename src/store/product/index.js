@@ -616,7 +616,7 @@ export default {
         product (state) {
             return (productId) => {
                 return state.products.find((product) => {
-                    return product.id === productId
+                    return product.id == productId
                 })
             }
         }
