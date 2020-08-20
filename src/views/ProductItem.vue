@@ -132,6 +132,19 @@
             </div>
               <b-collapse id="collapse-shipping" class="mt-2">
               <div class="product-info__text">
+                <p>Local Pickup is Not Available.</p>
+                <p>Item ships from: Yaroslavl', Yaroslavl Oblast’, Russia.</p>
+                <ul>
+                  <li>
+                    Shipping to Russia:
+                    $3.00 USD by Russian Post.
+                  </li>
+                  <li>
+                    Shipping worldwide:
+                    $15.00 USD by Russian Post.
+                  </li>
+                </ul>
+                <p>All items will be shipped from: Yaroslavl, Russia</p>
               </div>
             </b-collapse>
             </div>
