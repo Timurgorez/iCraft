@@ -1,46 +1,45 @@
 <template>
-  <div class="checkbox-color-group" >
-    <div 
-      class="checkbox-color-group__color-wrap" 
-      >
-      <input class="checkbox-color-group__input" 
+  <div class="checkbox-color-group">
+    <div class="checkbox-color-group__color-wrap">
+      <input
+        class="checkbox-color-group__input"
         @change="onChangeAllHandler"
         id="color-all"
-        type="checkbox" 
-        name="color" 
-        value="all"
+        type="checkbox"
+        name="color"
+        :value="true"
         v-model="all"
-        />
-      <label 
+      />
+      <label
         class="checkbox-color-group__label align-items-start"
         for="color-all"
-        >
+      >
         <span>ALL</span>
       </label>
     </div>
 
     <div
       class="checkbox-color-group__color-wrap"
-      v-for="(item, index) of colors" 
-      :key="index" 
-      :style="[{
-        backgroundColor: item.color,
-        backgroundImage: 'url('+item.url+')',
-        border: item.border && '1px solid #000000'
-      }]"
+      v-for="(item, index) of colors"
+      :key="index"
+      :style="[
+        {
+          backgroundColor: item.color,
+          backgroundImage: 'url(' + item.url + ')',
+          border: item.border && '1px solid #000000'
+        }
+      ]"
     >
-      <input class="checkbox-color-group__input" 
-        :id="'color'+index" 
-        v-model="model_color" 
-        type="checkbox" 
-        name="color" 
+      <input
+        class="checkbox-color-group__input"
+        :id="'color' + index"
+        v-model="model_color"
+        type="checkbox"
+        name="color"
         :value="item.color"
-        />
-      <label 
-        class="checkbox-color-group__label" 
-        :for="'color'+index"
-        >
-        <span>{{item.name}}</span>
+      />
+      <label class="checkbox-color-group__label" :for="'color' + index">
+        <span>{{ item.name }}</span>
       </label>
     </div>
   </div>
@@ -55,69 +54,80 @@ export default {
   data() {
     return {
       all: true,
-      model_color: [],
+      model_color: []
     };
   },
   methods: {
-    onChangeAllHandler(e){
-      if(e.target.checked) {
+    onChangeAllHandler(e) {
+      if (e.target.checked) {
         this.model_color = [];
-        this.model_color = this.colors.map(el => el.color);
-      }else{
+        this.all = true;
+        const allData = this.colors.map(el => el.color);
+        // this.model_color = this.colors.map(el => el.color);
+        this.$emit("model_color", allData);
+        this.$emit("all_color", e.target.checked);
+      } else {
         this.model_color = [];
+        this.$emit("all_color", e.target.checked);
       }
-    },
-    clearFilter(){
-      this.all = true;
-      this.model_color = [];
-      this.model_color = this.colors.map(el => el.color);
     }
   },
   created() {
-     this.model_color = this.colors.map(el => el.color);
+    // this.model_color = this.colors.map(el => el.color);
   },
-  watch:{
-    model_color(val){
-      this.$emit('model_color', val);
-      this.all = this.model_color.length === this.colors.length;
+  watch: {
+    model_color(val) {
+      this.all =
+        this.model_color.length === this.colors.length ||
+        this.model_color.length == 0;
+      this.$emit("all_color", this.all);
+      if (
+        this.model_color.length === this.colors.length ||
+        this.model_color.length == 0
+      ) {
+        this.$emit(
+          "model_color",
+          this.colors.map(el => el.color)
+        );
+      } else {
+        this.$emit("model_color", val);
+      }
       return val;
-    },
+    }
   }
 };
 </script>
 
 <style scoped lang="scss">
-
-
-.checkbox-color-group{
+.checkbox-color-group {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 -15px;
 }
 
-.checkbox-color-group__color-wrap{
+.checkbox-color-group__color-wrap {
   position: relative;
   width: 42px;
   height: 42px;
   margin: 20px;
-  border-radius: 2px
+  border-radius: 2px;
 }
-.checkbox-color-group__color-wrap:first-child{
+.checkbox-color-group__color-wrap:first-child {
   width: 100%;
   height: 34px;
   padding: 7px 18px 10px;
   margin: 0;
-  .checkbox-color-group__label{
+  .checkbox-color-group__label {
     height: 20px;
   }
-  .checkbox-color-group__label span{
+  .checkbox-color-group__label span {
     position: static;
     font-size: 14px;
   }
 }
 
-.checkbox-color-group__label{
+.checkbox-color-group__label {
   font-family: $font_montserrat_regular;
   font-size: 12px;
   width: 100%;
@@ -127,24 +137,23 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  span{
+  span {
     position: relative;
     bottom: -30px;
     left: 0;
   }
 }
 
-
-.checkbox-color-group__input{
+.checkbox-color-group__input {
   display: none;
-  &:checked + .checkbox-color-group__label{
+  &:checked + .checkbox-color-group__label {
     color: $purple_color;
   }
-  &:checked + .checkbox-color-group__label:after{
+  &:checked + .checkbox-color-group__label:after {
     content: "";
     display: block;
     position: absolute;
-    top: -5px;
+    top: 0;
     right: -5px;
     width: 16px;
     height: 16px;
@@ -156,12 +165,11 @@ export default {
   }
 }
 
-
-.checkbox-color-group__color-wrap:first-child .checkbox-color-group__input:checked + .checkbox-color-group__label:after{
+.checkbox-color-group__color-wrap:first-child
+  .checkbox-color-group__input:checked
+  + .checkbox-color-group__label:after {
   border-radius: none;
   background-color: transparent;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Cpath fill='%23BC00FF' fill-rule='evenodd' d='M17.797 2.306c-.27-.27-.708-.27-.979 0L5.596 13.528 1.182 9.114c-.27-.27-.709-.27-.98 0-.27.27-.27.709 0 .979l4.904 4.904c.27.27.71.27.98 0L17.796 3.285c.27-.27.27-.709 0-.98z'/%3E%3C/svg%3E");
 }
-
-
 </style>
