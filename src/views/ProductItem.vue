@@ -1,6 +1,17 @@
 <template>
   <div class="product-item">
+    <HeaderWhite />
     <b-container class="product-max-container">
+      <b-row>
+        <b-col cols="12">
+          <div class="back-to-products">
+            <a href="/" class="back-to-products__link"
+              ><span class="back-to-products__icon"></span>Back To All
+              Products</a
+            >
+          </div>
+        </b-col>
+      </b-row>
       <b-row>
         <b-col cols="12" md="6" lg="6" xl="6"></b-col>
         <b-col cols="12" md="6" lg="6" xl="6">
@@ -93,43 +104,67 @@
           <div class="product-info">
             <div class="collapse-border-bottom">
               <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-description>
-              <p class="product-info__toggle-title">Description</p>
-              <div class="product-info__toggle-arrow"></div>
-            </div>
+                <p class="product-info__toggle-title">Description</p>
+                <div class="product-info__toggle-arrow"></div>
+              </div>
               <b-collapse visible id="collapse-description" class="mt-2">
-              <div class="product-info__text">
-                <div class="d-flex flex-row">
-                  <ul class="product-info__main-info">
-                    <li class="product-info__main-info-item list-mb">Dominant Color:</li>
-                    <li class="product-info__main-info-item list-mb">Materials:</li>
-                    <li class="product-info__main-info-item list-mb">Size:</li>
-                  </ul>
-                  <div class="product-info__list-data">
-                    <div class="product-info__color d-flex flex-row flex-wrap align-items-center list-mb">
-                      <div class="product-info__main-color mr-2" style="background-color: #000000"></div>
-                      <span>Black</span>
-                    </div>
-                    <div class="product-info__category list-mb">
-                      <p>Japanese Beads, French Sequins, Leather on reverse</p>
-                    </div>
-                    <div class="product-info__size list-mb">
-                      <p> S, M, L, XL</p>
+                <div class="product-info__text">
+                  <div class="d-flex flex-row">
+                    <ul class="product-info__main-info">
+                      <li class="product-info__main-info-item list-mb">
+                        Dominant Color:
+                      </li>
+                      <li class="product-info__main-info-item list-mb">
+                        Materials:
+                      </li>
+                      <li class="product-info__main-info-item list-mb">
+                        Size:
+                      </li>
+                    </ul>
+                    <div class="product-info__list-data">
+                      <div
+                        class="product-info__color d-flex flex-row flex-wrap align-items-center list-mb"
+                      >
+                        <div
+                          class="product-info__main-color mr-2"
+                          style="background-color: #000000"
+                        ></div>
+                        <span>Black</span>
+                      </div>
+                      <div class="product-info__category list-mb">
+                        <p>
+                          Japanese Beads, French Sequins, Leather on reverse
+                        </p>
+                      </div>
+                      <div class="product-info__size list-mb">
+                        <p>S, M, L, XL</p>
+                      </div>
                     </div>
                   </div>
+                  <p>
+                    Hair Clips with Japanese and Czech beads embroidery, genuine
+                    leather on reverse. This little piece of jewelry can dress
+                    up a casual outfit, or complete a formal outfit. Whether you
+                    have an ordinary or special day - there will be room for
+                    your little new friend.
+                  </p>
+                  <div class="product-info__remainder mt-4 mb-4">
+                    <p>
+                      Please note that if this item is sold out, it will be
+                      recreated or custom made for your order and may differ
+                      slightly from the photo. Also, please allow additional
+                      time for the product to be created.
+                    </p>
+                  </div>
                 </div>
-                <p>Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.</p>
-                <div class="product-info__remainder mt-4 mb-4">
-                  <p>Please note that if this item is sold out, it will be recreated or custom made for your order and may differ slightly from the photo. Also, please allow additional time for the product to be created.</p>
-                </div>
-              </div>
-            </b-collapse>
+              </b-collapse>
             </div>
 
             <div class="collapse-border-bottom">
               <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-shipping>
               <p class="product-info__toggle-title">Shipping Options</p>
-              <div class="product-info__toggle-arrow"></div>
-            </div>
+              <div class="product-info__toggle-arrow"></div>\
+              </div>
               <b-collapse id="collapse-shipping" class="mt-2">
               <div class="product-info__text">
                 <p class="mt-4">Local Pickup is Not Available.</p>
@@ -145,21 +180,21 @@
                   </li>
                 </ul>
                 <p class="mt-3 mb-4">All items will be shipped from: Yaroslavl, Russia</p>
-              </div>
-            </b-collapse>
+                </div>
+              </b-collapse>
             </div>
 
             <div class="collapse-border-bottom">
               <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-returns>
               <p class="product-info__toggle-title">Returns & Refunds</p>
               <div class="product-info__toggle-arrow"></div>
-            </div>
+              </div>
               <b-collapse id="collapse-returns" class="mt-3">
               <div class="product-info__text">
                 <p>Return: Yes, only within 14 Days</p>
                 <p class="mt-4 mb-4">Refund: Exchange Only I'll exchange your item if it's not damaged. Shipping is not covered.</p>
               </div>
-            </b-collapse>
+              </b-collapse>
             </div>
 
             <div class="collapse-border-bottom">
@@ -181,19 +216,17 @@
                   <div class="product-info__payment-option"></div>
                 </div>
               </div>
-            </b-collapse>
+              </b-collapse>
             </div>
 
             <div class="collapse-border-bottom">
               <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-seller>
-              <p class="product-info__toggle-title">Seller Information</p>
-              <div class="product-info__toggle-arrow"></div>
-            </div>
-              <b-collapse id="collapse-seller" class="mt-2">
-              <div class="product-info__text">
-
+                <p class="product-info__toggle-title">Seller Information</p>
+                <div class="product-info__toggle-arrow"></div>
               </div>
-            </b-collapse>
+              <b-collapse id="collapse-seller" class="mt-2">
+                <div class="product-info__text"></div>
+              </b-collapse>
             </div>
           </div>
         </b-col>
@@ -242,6 +275,7 @@ import SizeChoose from "../components/FormElements/SizeChoose.vue";
 import ColorChoose from "../components/FormElements/ColorChoose.vue";
 import BestOffer from "../components/CardArea/BestOffer.vue";
 import MoreFromThisStore from "../components/CardArea/MoreFromThisStore.vue";
+import HeaderWhite from "../components/Header/HeaderWhite.vue";
 
 export default {
   name: "ProductItem",
@@ -269,7 +303,8 @@ export default {
     SizeChoose,
     ColorChoose,
     BestOffer,
-    MoreFromThisStore
+    MoreFromThisStore,
+    HeaderWhite
   },
   methods: {
     addToBagHandler() {
@@ -422,17 +457,47 @@ export default {
 }
 
 .buy-now__btn {
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 80px;
+  padding-right: 80px;
   margin-top: 30px;
   margin-right: 20px;
 }
 .add-to-bag__btn {
-  padding-left: 86px;
-  padding-right: 86px;
+  padding-left: 66px;
+  padding-right: 66px;
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+.back-to-products {
+  min-height: 84px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  &__link {
+    font-family: $font_montserrat_regular;
+    font-size: 20px;
+    color: $purple_color;
+    display: flex;
+    align-items: center;
+    &:hover {
+      color: $purple_color;
+      text-decoration: none;
+    }
+  }
+  &__icon {
+    display: inline-block;
+    margin-right: 11px;
+    height: 18px;
+    width: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Cpath fill='%237F13A6' fill-rule='evenodd' d='M5.024 9.891l7.685 7.74c.49.492 1.282.492 1.77 0 .49-.493.49-1.29 0-1.783L7.68 9l6.8-6.848c.49-.492.49-1.29 0-1.783-.488-.492-1.28-.492-1.77 0L5.024 8.11c-.244.246-.367.568-.367.89 0 .323.123.646.367.892z'/%3E%3C/svg%3E%0A");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+}
+
+// ---------------------
 
 .product-info {
   &:focus {
@@ -482,7 +547,7 @@ export default {
     background-position: 50% 50%;
     width: 36px;
     height: 36px;
-    transition: transform .2s;
+    transition: transform 0.2s;
   }
 
   &__text {
@@ -494,7 +559,8 @@ export default {
     line-height: 1.44;
     letter-spacing: normal;
 
-    span, p {
+    span,
+    p {
       font-size: 16px;
       margin-bottom: 0;
     }
@@ -569,5 +635,4 @@ export default {
     color: $text_color;
   }
 }
-
 </style>

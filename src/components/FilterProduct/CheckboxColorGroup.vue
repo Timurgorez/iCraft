@@ -70,6 +70,10 @@ export default {
         this.model_color = [];
         this.$emit("all_color", e.target.checked);
       }
+    },
+    clearFilter() {
+      this.all = true;
+      this.model_color = [];
     }
   },
   created() {

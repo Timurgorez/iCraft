@@ -75,6 +75,10 @@ export default {
         this.model_category = [];
         console.log(this.model_category);
       }
+    },
+    clearFilter() {
+      this.model_category = ["ALL"];
+      this.all = true;
     }
   },
   watch: {
