@@ -1,5 +1,13 @@
 <template>
-  <div class="header-block">
+  <div class="header-white">
+    <div class="header-logo">
+      <a href="/">
+        <img
+          src="~@/assets/desctop/pages/collectionPage/group.png"
+          alt="iCraft Logo"
+        />
+      </a>
+    </div>
     <div class="shoping-card-lang-block">
       <ShoppingBag />
       <CurrencyLang />
@@ -12,7 +20,7 @@ import ShoppingBag from "../ShoppingBag/ShoppingBag.vue";
 import CurrencyLang from "../CurrencyLang/CurrencyLang.vue";
 
 export default {
-  name: "Header",
+  name: "HeaderWhite",
   data() {
     return {};
   },
@@ -26,7 +34,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.header-block {
+.header-white {
   min-height: 100px;
   width: 100%;
   background-size: 120%;
@@ -35,14 +43,10 @@ export default {
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
   align-items: center;
-
-  .header-block__image {
-    width: 280px;
-    height: 74px;
-    margin: 13px 30px;
-  }
+  background: #fff;
+  box-shadow: 0 11px 16px 0 rgba(38, 38, 38, 0.15);
+  justify-content: space-between;
 }
 
 .shoping-card-lang-block {
@@ -50,6 +54,11 @@ export default {
   align-items: center;
   min-height: 70px;
   margin-right: 40px;
+}
+
+.header-logo img {
+  height: 74px;
+  padding-left: 30px;
 }
 
 @media only screen and (max-width: 768px) {
