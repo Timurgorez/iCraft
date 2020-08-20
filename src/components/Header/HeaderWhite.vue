@@ -52,7 +52,7 @@ export default {
 .shoping-card-lang-block {
   display: flex;
   align-items: center;
-  min-height: 70px;
+  min-height: 50px;
   margin-right: 40px;
 }
 
@@ -62,17 +62,20 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
-  .header-block {
-    background-size: 170%;
-    background-position: -6% 50%;
-    // min-height: 162px;
+  .header-white {
   }
 }
 
 @media only screen and (max-width: 580px) {
-  .shoping-card-lang-block {
-    width: 100%;
+  .header-white {
     justify-content: flex-end;
+    min-height: 50px;
+  }
+  .header-logo {
+    display: none;
+  }
+  .shoping-card-lang-block {
+    margin-right: 20px;
   }
 }
 </style>

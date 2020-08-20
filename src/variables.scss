@@ -14,7 +14,7 @@ $red_color_btn: #c90000;
 $purple_light_color: #9b87e1;
 $purple_background_color: #faeeff;
 $max-default-container-size: 1820px;
-$max-product-container-size: 1420px;
+$max-product-container-size: 1620px;
 
 $green_color: #219d00;
 
@@ -40,8 +40,8 @@ $green_color: #219d00;
 //        max: 1820px
 //);
 
-@import '../node_modules/bootstrap/scss/bootstrap';
+@import "../node_modules/bootstrap/scss/bootstrap";
 // BootstrapVue and its default variables
-@import '../node_modules/bootstrap-vue/src/index.scss';
+@import "../node_modules/bootstrap-vue/src/index.scss";
 
 // ----  CUSTOMIZE GRID SIZE ----

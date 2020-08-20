@@ -113,6 +113,13 @@ export default {
   border-width: 2px;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
+  .color-choose__radio-label {
+    width: 40px;
+    height: 40px;
+  }
+  .color-choose span {
+    min-width: 70px;
+  }
 }
 </style>
