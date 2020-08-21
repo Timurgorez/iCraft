@@ -64,7 +64,7 @@
           >
         </div>
 
-        <ProductRating :rating="item.rating" />
+        <ProductRating :rating="item.rating" size="22px" />
 
         <div class="product-icons">
           <ProductIcon
@@ -148,7 +148,7 @@ export default {
     color: $text_color;
     text-align: left;
     display: inline-block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     max-height: 90px;
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -264,6 +264,11 @@ export default {
 
 .product-icons {
   display: flex;
+}
+
+.product-rating {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 768px) {

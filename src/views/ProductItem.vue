@@ -103,7 +103,10 @@
         <b-col cols="12" md="6" lg="6" xl="6">
           <div class="product-info">
             <div class="collapse-border-bottom">
-              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-description>
+              <div
+                class="product-info__toggle d-flex flex-row justify-content-between align-items-center"
+                v-b-toggle.collapse-description
+              >
                 <p class="product-info__toggle-title">Description</p>
                 <div class="product-info__toggle-arrow"></div>
               </div>
@@ -161,66 +164,87 @@
             </div>
 
             <div class="collapse-border-bottom">
-              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-shipping>
-              <p class="product-info__toggle-title">Shipping Options</p>
-              <div class="product-info__toggle-arrow"></div>
+              <div
+                class="product-info__toggle d-flex flex-row justify-content-between align-items-center"
+                v-b-toggle.collapse-shipping
+              >
+                <p class="product-info__toggle-title">Shipping Options</p>
+                <div class="product-info__toggle-arrow"></div>
               </div>
               <b-collapse id="collapse-shipping">
-              <div class="product-info__text">
-                <p>Local Pickup is Not Available.</p>
-                <p>Item ships from: Yaroslavl', Yaroslavl Oblast’, Russia.</p>
-                <ul class="product-info__main-info mt-3">
-                  <li class="mt-3">
-                    Shipping to Russia: <br>
-                    $3.00 USD by Russian Post.
-                  </li>
-                  <li class="mt-3">
-                    Shipping worldwide: <br>
-                    $15.00 USD by Russian Post.
-                  </li>
-                </ul>
-                <p class="mt-3 mb-4">All items will be shipped from: Yaroslavl, Russia</p>
+                <div class="product-info__text">
+                  <p>Local Pickup is Not Available.</p>
+                  <p>Item ships from: Yaroslavl', Yaroslavl Oblast’, Russia.</p>
+                  <ul class="product-info__main-info mt-3">
+                    <li class="mt-3">
+                      Shipping to Russia: <br />
+                      $3.00 USD by Russian Post.
+                    </li>
+                    <li class="mt-3">
+                      Shipping worldwide: <br />
+                      $15.00 USD by Russian Post.
+                    </li>
+                  </ul>
+                  <p class="mt-3 mb-4">
+                    All items will be shipped from: Yaroslavl, Russia
+                  </p>
                 </div>
               </b-collapse>
             </div>
 
             <div class="collapse-border-bottom">
-              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-returns>
-              <p class="product-info__toggle-title">Returns & Refunds</p>
-              <div class="product-info__toggle-arrow"></div>
+              <div
+                class="product-info__toggle d-flex flex-row justify-content-between align-items-center"
+                v-b-toggle.collapse-returns
+              >
+                <p class="product-info__toggle-title">Returns & Refunds</p>
+                <div class="product-info__toggle-arrow"></div>
               </div>
               <b-collapse id="collapse-returns" class="mt-3">
-              <div class="product-info__text">
-                <p>Return: Yes, only within 14 Days</p>
-                <p class="mt-4 mb-4">Refund: Exchange Only I'll exchange your item if it's not damaged. Shipping is not covered.</p>
-              </div>
+                <div class="product-info__text">
+                  <p>Return: Yes, only within 14 Days</p>
+                  <p class="mt-4 mb-4">
+                    Refund: Exchange Only I'll exchange your item if it's not
+                    damaged. Shipping is not covered.
+                  </p>
+                </div>
               </b-collapse>
             </div>
 
             <div class="collapse-border-bottom">
-              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-payment>
-              <p class="product-info__toggle-title">Payment Methods</p>
-              <div class="product-info__toggle-arrow"></div>
-            </div>
+              <div
+                class="product-info__toggle d-flex flex-row justify-content-between align-items-center"
+                v-b-toggle.collapse-payment
+              >
+                <p class="product-info__toggle-title">Payment Methods</p>
+                <div class="product-info__toggle-arrow"></div>
+              </div>
               <b-collapse id="collapse-payment">
-              <div class="product-info__text">
-                <div class="product-info__payment d-flex flex-row align-items-center mb-3">
-                  <div class="secure-icon mr-2"></div>
-                  <p>Secure options</p>
+                <div class="product-info__text">
+                  <div
+                    class="product-info__payment d-flex flex-row align-items-center mb-3"
+                  >
+                    <div class="secure-icon mr-2"></div>
+                    <p>Secure options</p>
+                  </div>
+                  <div
+                    class="product-info__payment-options d-flex flex-row flex-wrap align-items-center mt-4 mb-4"
+                  >
+                    <div class="product-info__payment-option paypal"></div>
+                    <div class="product-info__payment-option visa"></div>
+                    <div class="product-info__payment-option master"></div>
+                    <div class="product-info__payment-option discover"></div>
+                    <div class="product-info__payment-option amer-exp"></div>
+                  </div>
                 </div>
-                <div class="product-info__payment-options d-flex flex-row flex-wrap align-items-center mt-4 mb-4">
-                  <div class="product-info__payment-option paypal"></div>
-                  <div class="product-info__payment-option visa"></div>
-                  <div class="product-info__payment-option master"></div>
-                  <div class="product-info__payment-option discover"></div>
-                  <div class="product-info__payment-option amer-exp"></div>
-                </div>
-              </div>
               </b-collapse>
             </div>
 
             <div class="collapse-border-bottom">
-              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-seller>
+              <div
+                class="product-info__toggle d-flex flex-row justify-content-between align-items-center"
+                v-b-toggle.collapse-seller
+              >
                 <p class="product-info__toggle-title">Seller Information</p>
                 <div class="product-info__toggle-arrow"></div>
               </div>
@@ -352,7 +376,10 @@ export default {
   margin-bottom: 0;
 }
 .rating {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
   span {
     font-family: $font_montserrat_regular;
     font-size: 16px;

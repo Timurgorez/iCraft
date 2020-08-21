@@ -11,7 +11,7 @@ export default {
                 "sale": "10",
                 "rating":{
                     "count":17,
-                    "stars":3
+                    "stars":3.56
                 },
                 "price":{
                     "new":"90",
@@ -60,7 +60,7 @@ export default {
                 ],
                 "rating":{
                     "count":10,
-                    "stars":2
+                    "stars":2.67
                 },
                 "price":{
                     "new":"300",
@@ -84,7 +84,7 @@ export default {
                 ],
                 "rating":{
                     "count":19,
-                    "stars":4
+                    "stars":1.32
                 },
                 "price":{
                     "new":"429",
@@ -109,7 +109,7 @@ export default {
                 ],
                 "rating":{
                     "count":19,
-                    "stars":4
+                    "stars":4.2
                 },
                 "price":{
                     "new":"25",
@@ -133,7 +133,7 @@ export default {
                 ],
                 "rating":{
                     "count":19,
-                    "stars":4
+                    "stars":2.7
                 },
                 "price":{
                     "new":"5",
@@ -157,7 +157,7 @@ export default {
                 ],
                 "rating":{
                     "count":19,
-                    "stars":4
+                    "stars":3.2
                 },
                 "price":{
                     "new":"99",
@@ -183,7 +183,7 @@ export default {
                 ],
                 "rating":{
                     "count":19,
-                    "stars":4
+                    "stars":4.5
                 },
                 "price":{
                     "new":"150",
@@ -207,7 +207,7 @@ export default {
                 ],
                 "rating":{
                     "count":19,
-                    "stars":4
+                    "stars":4.5
                 },
                 "price":{
                     "new":"14",
@@ -232,7 +232,7 @@ export default {
                 ],
                 "rating":{
                     "count":19,
-                    "stars":4
+                    "stars":4.12
                 },
                 "price":{
                     "new":"30",
@@ -257,7 +257,7 @@ export default {
                 ],
                 "rating":{
                     "count":19,
-                    "stars":4
+                    "stars":1.784
                 },
                 "price":{
                     "new":"44",
@@ -281,7 +281,7 @@ export default {
                 ],
                 "rating":{
                     "count":19,
-                    "stars":4
+                    "stars":0.54
                 },
                 "price":{
                     "new":"250",
@@ -316,7 +316,7 @@ export default {
                     "sale": "10",
                     "rating":{
                         "count":17,
-                        "stars":3
+                        "stars":3.56
                     },
                     "price":{
                         "new":"90",
@@ -348,7 +348,7 @@ export default {
                         "currency_code": "USD",
                         "currency_formatting": "$"
                     },
-
+    
                     "icons":[
                         "exclusive",
                         "new",
@@ -365,7 +365,7 @@ export default {
                     ],
                     "rating":{
                         "count":10,
-                        "stars":2
+                        "stars":2.67
                     },
                     "price":{
                         "new":"300",
@@ -389,7 +389,7 @@ export default {
                     ],
                     "rating":{
                         "count":19,
-                        "stars":4
+                        "stars":1.32
                     },
                     "price":{
                         "new":"429",
@@ -414,7 +414,7 @@ export default {
                     ],
                     "rating":{
                         "count":19,
-                        "stars":4
+                        "stars":4.2
                     },
                     "price":{
                         "new":"25",
@@ -438,7 +438,7 @@ export default {
                     ],
                     "rating":{
                         "count":19,
-                        "stars":4
+                        "stars":2.7
                     },
                     "price":{
                         "new":"5",
@@ -462,7 +462,7 @@ export default {
                     ],
                     "rating":{
                         "count":19,
-                        "stars":4
+                        "stars":3.2
                     },
                     "price":{
                         "new":"99",
@@ -488,7 +488,7 @@ export default {
                     ],
                     "rating":{
                         "count":19,
-                        "stars":4
+                        "stars":4.5
                     },
                     "price":{
                         "new":"150",
@@ -512,7 +512,7 @@ export default {
                     ],
                     "rating":{
                         "count":19,
-                        "stars":4
+                        "stars":4.5
                     },
                     "price":{
                         "new":"14",
@@ -537,7 +537,7 @@ export default {
                     ],
                     "rating":{
                         "count":19,
-                        "stars":4
+                        "stars":4.12
                     },
                     "price":{
                         "new":"30",
@@ -562,7 +562,7 @@ export default {
                     ],
                     "rating":{
                         "count":19,
-                        "stars":4
+                        "stars":1.784
                     },
                     "price":{
                         "new":"44",
@@ -586,7 +586,7 @@ export default {
                     ],
                     "rating":{
                         "count":19,
-                        "stars":4
+                        "stars":0.54
                     },
                     "price":{
                         "new":"250",
