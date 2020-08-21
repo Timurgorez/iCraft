@@ -16,8 +16,8 @@
     <div class="seller-info__description">
       <p class="mb-0">| am a crochet and jewelry designer. | share my inner self with the world by creating things for people with love, care and attention to detail. My hope is for everyone to have at least one piece of unique handmade apparel that they can treasure, knowing it was made by someone who put their heart into it.</p>
       <b-link class="seller-info__more-info">Read More</b-link>
-      <div class="d-flex flex-row align-items-center mt-3">
-        <p>Seller Feedback</p>
+      <div class="d-flex flex-row align-items-center mt-3loppp">
+        <p class="mb-0">Seller Feedback</p>
         <ProductRating :rating="rating" :before="true"></ProductRating>
       </div>
     </div>
