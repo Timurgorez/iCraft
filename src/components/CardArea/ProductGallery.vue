@@ -1,4 +1,8 @@
 <template>
+  <div class="product-slider">
+    <div class="sale d-flex flex-row justify-content-start align-items-center">
+      <p class="sale-text">10% Off</p>
+    </div>
   <div class="thumb-example d-flex flex-row">
     <!-- swiper1 -->
 
@@ -20,6 +24,7 @@
       <swiper-slide class="slide-4"></swiper-slide>
       <swiper-slide class="slide-5"></swiper-slide>
     </swiper>
+  </div>
   </div>
 </template>
 
@@ -71,11 +76,11 @@ export default {
     }
   },
   mounted() {
-   // this.$nextTick(() => {
+    this.$nextTick(() => {
       console.log(this.swiperTop, this.swiperThumbs)
      this.swiperTop.params.controller.control = this.swiperThumbs
      this.swiperThumbs.params.controller.control = this.swiperTop
-  //  })
+    })
   }
 }
 </script>
@@ -84,6 +89,34 @@ export default {
 .thumb-example {
   height: 520px;
   background-color: transparent;
+}
+
+.product-slider {
+  .sale {
+    background-image: url("~@/assets/red-rectangle.svg");
+    background-size: cover;
+    max-width: 120px;
+    max-height: 38px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 20px;
+    z-index: 12;
+    left: 5px;
+  }
+
+  .sale-text {
+    font-family: $font_montserrat_regular;
+    font-size: 20px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    margin-bottom: 0;
+    padding-left: 10px;
+  }
 }
 
 .swiper {
