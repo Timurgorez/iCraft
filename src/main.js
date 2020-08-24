@@ -4,22 +4,19 @@ import router from './router'
 import store from './store'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 
-// Install BootstrapVue
-Vue.use(BootstrapVue, {
-  breakpoints: [`xs`, 'sm', 'md', 'lg', 'xl', 'el', 'max']
-})
-// Optionally install the BootstrapVue icon components plugin
-// Only needed if you want to use the bootstrap icons. Be aware these are currently in alpha
+Vue.use(BootstrapVue)
+Vue.use(VueAwesomeSwiper)
 Vue.use(IconsPlugin);
 
 
 // Import Bootstrap and Bootstrap-Vue css
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-
-
+// import 'swiper/css/swiper.css'
+import 'swiper/swiper-bundle.css'
 
 Vue.config.productionTip = false
 

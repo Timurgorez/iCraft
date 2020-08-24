@@ -7,13 +7,16 @@
           <div class="back-to-products">
             <a href="/" class="back-to-products__link"
               ><span class="back-to-products__icon"></span>Back To All
-              Products</a
-            >
+              Products</a>
           </div>
         </b-col>
       </b-row>
       <b-row>
-        <b-col cols="12" md="6" lg="6" xl="6"></b-col>
+        <b-col cols="12" md="6" lg="6" xl="6">
+<!--          <img src="/tmp/group-5-copy.jpg" style="max-width: 100%">-->
+          <ProductGallery></ProductGallery>
+          <ProductLabels  :labels="product.labels"></ProductLabels>
+        </b-col>
         <b-col cols="12" md="6" lg="6" xl="6">
           <div class="main-actions">
             <h3>{{ product.name }}</h3>
@@ -302,6 +305,8 @@ import ColorChoose from "../components/FormElements/ColorChoose.vue";
 import BestOffer from "../components/CardArea/BestOffer.vue";
 import MoreFromThisStore from "../components/CardArea/MoreFromThisStore.vue";
 import HeaderWhite from "../components/Header/HeaderWhite.vue";
+import ProductLabels from "@/components/CardArea/ProductLabels";
+import ProductGallery from "@/components/CardArea/ProductGallery";
 
 export default {
   name: "ProductItem",
@@ -320,6 +325,8 @@ export default {
     };
   },
   components: {
+    ProductGallery,
+    ProductLabels,
     SellerInfo,
     IntegerPlusminus,
 

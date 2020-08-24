@@ -24,6 +24,17 @@ export default {
                     "best",
                     "free-delivery"
                 ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
+                ],
                 "category": ["Knitted Hats", "Toddler Toys", "Home Decor"],
                 "dominant_color": "#7f13a6"
             },
@@ -328,6 +339,17 @@ export default {
                         "exclusive",
                         "best",
                         "free-delivery"
+                    ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
                     ],
                     "category": ["Knitted Hats", "Toddler Toys", "Home Decor"],
                     "dominant_color": "#7f13a6"
