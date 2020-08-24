@@ -291,6 +291,8 @@
         </b-col>
       </b-row>
     </b-container>
+    <ProductSlider />
+    <Footer />
   </div>
 </template>
 <script>
@@ -307,6 +309,8 @@ import MoreFromThisStore from "../components/CardArea/MoreFromThisStore.vue";
 import HeaderWhite from "../components/Header/HeaderWhite.vue";
 import ProductLabels from "@/components/CardArea/ProductLabels";
 import ProductGallery from "@/components/CardArea/ProductGallery";
+import Footer from "../components/Footer/Footer.vue";
+import ProductSlider from "../components/StaticComponents/ProductSlider/ProductSlider.vue";
 
 export default {
   name: "ProductItem",
@@ -338,7 +342,9 @@ export default {
     ColorChoose,
     BestOffer,
     MoreFromThisStore,
-    HeaderWhite
+    HeaderWhite,
+    Footer,
+    ProductSlider
   },
   methods: {
     addToBagHandler() {

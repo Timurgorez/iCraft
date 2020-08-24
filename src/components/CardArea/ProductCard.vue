@@ -1,10 +1,10 @@
 <template>
   <b-col
     v-if="limit > index"
-    cols="6"
-    sm="6"
-    md="4"
-    lg="3"
+    :cols="size.cols"
+    :sm="size.sm"
+    :md="size.md"
+    :lg="size.lg"
     class="centered product-card-wrap"
   >
     <b-card class="product-card">
@@ -91,18 +91,28 @@ export default {
   },
   props: {
     item: Object,
-    limit: Number,
-    index: Number
+    limit: {
+      type: Number,
+      default: () => 999999
+    },
+    index: Number,
+    size: {
+      type: Object,
+      default: () => {
+        return {
+          cols: "6",
+          sm: "6",
+          md: "4",
+          lg: "3"
+        };
+      }
+    }
   },
   components: {
     ProductIcon,
     ProductRating
   },
-  methods: {
-    urlIcon(icon) {
-      return "~@/assets/product_icons/" + icon;
-    }
-  }
+  methods: {}
 };
 </script>
 
@@ -125,14 +135,16 @@ export default {
   width: 100%;
   border: none;
   height: 100%;
-  padding-bottom: 30px;
+  padding-bottom: 70px;
+  display: block;
 
   &:hover {
     text-decoration: none;
   }
 
   .card-body {
-    padding: 12px 0 225px 0;
+    // padding: 12px 0 225px 0;
+    padding: 0;
     text-align: left;
     position: relative;
   }
@@ -215,11 +227,12 @@ export default {
   .product-card__image {
     max-width: 400px;
     max-height: 375px;
-    min-height: 140px;
+    min-height: 240px;
     min-width: 130px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
+    background-color: #fff;
     width: 100%;
     height: 100%;
     margin-bottom: 10px;
