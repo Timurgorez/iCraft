@@ -734,9 +734,4 @@ export default {
     min-height: 30px;
   }
 }
-
-@media only screen and (max-width: 580px) {
-  .filter-block {
-  }
-}
 </style>

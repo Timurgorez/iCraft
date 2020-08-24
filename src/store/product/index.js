@@ -619,6 +619,9 @@ export default {
                     return product.id == productId
                 })
             }
+        },
+        productSlider (state) {
+            return state.products;
         }
     }
 }
