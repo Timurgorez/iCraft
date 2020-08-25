@@ -710,11 +710,8 @@ export default {
   .filter-block__filter-price,
   .filter-block__filter-sort,
   .filter-block__filter-color {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .filter-product-block-wrap {
-    padding: 15px 0;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 
