@@ -19,11 +19,12 @@
         class="product-card__link"
       >
         <div
-          class="product-card__image d-flex flex-column justify-content-end align-items-end"
-          :style="{ backgroundImage: 'url(' + item.images[0] + ')' }"
+          class="product-card__image d-flex flex-column justify-content-center align-items-center"
+          
           @mouseover="hover = true"
           @mouseleave="hover = false"
         >
+        <img class="product-card__image-pic" :src="item.images[0]" :alt="item.name">
           <div
             v-if="hover"
             class="product-card__add-to-cart d-flex justify-content-center align-items-center"
@@ -112,7 +113,9 @@ export default {
     ProductIcon,
     ProductRating
   },
-  methods: {}
+  methods: {
+
+  }
 };
 </script>
 
@@ -178,6 +181,7 @@ export default {
     position: absolute;
     top: 20px;
     left: -10px;
+    z-index: 1;
   }
 
   .product-card__sale-text {
@@ -225,10 +229,10 @@ export default {
   }
 
   .product-card__image {
-    max-width: 400px;
-    max-height: 375px;
-    min-height: 240px;
+    max-width: 399px;
     min-width: 130px;
+    max-height: 376px;
+    min-height: 140px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -238,17 +242,22 @@ export default {
     margin-bottom: 10px;
     border: 2px solid $border_grey_color;
     border-radius: 4px;
-
+    position: relative;
+    overflow: hidden;
     &:hover {
       border: solid 2px $border_hover_grey_color;
       cursor: pointer;
     }
+    img{
+      max-height: 376px;
+      max-width: 100%;
+    }
   }
 
   .product-card__add-to-cart {
-    position: relative;
+    position: absolute;
     right: 20px;
-    top: -15px;
+    bottom: 15px;
     width: 50px;
     height: 50px;
     box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.5);
@@ -290,6 +299,7 @@ export default {
     top: 3px;
     margin-bottom: 7px;
     .product-card__add-to-cart {
+      position: relative;
       right: 0;
       top: 0;
       box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
@@ -306,9 +316,9 @@ export default {
     font-size: 12px;
   }
 
-  .product-card-wrap {
-    padding-right: 10px;
-    padding-left: 10px;
+  div.product-card-wrap {
+    padding-right: 8px;
+    padding-left: 8px;
   }
 
   .product-card {

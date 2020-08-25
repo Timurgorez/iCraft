@@ -755,4 +755,15 @@ export default {
     color: $text_color;
   }
 }
+
+
+@media only screen and (max-width: 480px) {
+  .buy-set-save__btns {
+    button {
+      margin-right: 0;
+    }
+  }
+}
+
+
 </style>

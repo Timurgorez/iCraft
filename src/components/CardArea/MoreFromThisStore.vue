@@ -140,7 +140,7 @@ span.best-offer__final-price__discount {
 
 @media only screen and (max-width: 768px) {
   .best-offer__img {
-    width: 160px;
+    width: 146px;
     height: 133px;
   }
 }
