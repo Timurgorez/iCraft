@@ -322,7 +322,7 @@ export default {
     }
 
     .card-body {
-      padding: 6px 6px 50px 6px;
+      // padding: 6px 6px 50px 6px;
     }
 
     .product-card__price-wrap {
@@ -335,7 +335,7 @@ export default {
     }
 
     .product-card__image {
-      height: 50%;
+      min-height: 152px;
     }
 
     .product-card__price-old {
