@@ -13,7 +13,11 @@
       </b-row>
       <b-row class="position-relative">
         <swiper class="swiper" ref="mySwiper" :options="swiperOptions">
-          <swiper-slide v-for="(item, index) in products" :key="item.id">
+          <swiper-slide
+            class="custom-slide"
+            v-for="(item, index) in products"
+            :key="item.id"
+          >
             <ProductCard
               :item="item"
               :index="index"
@@ -47,8 +51,15 @@ export default {
         slidesPerView: 6,
         spaceBetween: 0,
         breakpoints: {
+          240: {
+            slidesPerView: 1,
+            centeredSlides: true,
+            initialSlide: 1
+          },
           480: {
-            slidesPerView: 1
+            slidesPerView: 1,
+            centeredSlides: true,
+            initialSlide: 1
           },
           560: {
             slidesPerView: 2
@@ -178,5 +189,19 @@ export default {
   .slider-btn__prev {
     left: 10px;
   }
+}
+
+@media only screen and (max-width: 480px) {
+  .swiper {
+    margin: 0;
+    padding: 0 90px;
+  }
+  .slider-btn__next,
+  .slider-btn__prev {
+    display: none;
+  }
+  // .custom-slide {
+  //   max-width: 300px;
+  // }
 }
 </style>

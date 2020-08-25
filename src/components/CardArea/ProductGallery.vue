@@ -34,8 +34,7 @@ export default {
   data() {
     return {
       swiperOptionTop: {
-        loop: true,
-        loopedSlides: 5, // looped slides should be the same
+        initialSlide: 1,
         spaceBetween: 10,
 
         navigation: {
@@ -45,8 +44,7 @@ export default {
       },
       swiperOptionThumbs: {
         direction: "vertical",
-        loop: true,
-        loopedSlides: 5, // looped slides should be the same
+        initialSlide: 1,
         spaceBetween: 10,
         centeredSlides: true,
         slidesPerView: "auto",
