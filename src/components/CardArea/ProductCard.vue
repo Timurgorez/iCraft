@@ -231,7 +231,7 @@ export default {
     min-width: 130px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     background-color: #fff;
     width: 100%;
     height: 100%;
