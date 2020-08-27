@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{name: 'ShoppingBag' }" class="product-card__link">
     <div class="shoping-card-block">
-      <span class="shoping-card-block__count">{{countProduct}}</span>
+      <span v-show="countProduct > 0" class="shoping-card-block__count">{{countProduct}}</span>
     </div>
   </router-link>
 </template>
@@ -14,11 +14,16 @@ export default {
   },
   data (){
       return {
-        countProduct: 2,
+        
       }
   },
   methods:{
     
+  },
+  computed:{
+    countProduct (){
+      return this.$store.getters.countProductsInBag;
+    }
   }
 }
 </script>

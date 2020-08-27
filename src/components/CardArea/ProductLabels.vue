@@ -1,5 +1,5 @@
 <template>
-  <section class="d-flex flex-row flex-wrap justify-content-center">
+  <section class="d-flex flex-row flex-wrap justify-content-center mb-4">
     <div v-for="(label, index) in labels"
          :key="index"
          :icon="label" :class="'product-label product-label__'+ label" >

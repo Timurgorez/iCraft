@@ -21,6 +21,7 @@
             <ProductCard
               :item="item"
               :index="index"
+              class="product-card__slider"
               :size="{
                 cols: '12',
                 sm: '12',
@@ -117,13 +118,14 @@ export default {
 
 <style scoped lang="scss">
 .product-slider {
+  margin-top: 110px;
   background-color: $bg_grey;
   padding-bottom: 100px;
-  .product-slider__title-img {
-    width: 200px;
-    height: 40px;
-    margin-bottom: 50px;
-  }
+}
+.product-slider__title-img {
+  width: 200px;
+  height: 40px;
+  margin-bottom: 50px;
 }
 
 .product-slider__title {
@@ -179,6 +181,7 @@ export default {
   padding: 0;
 }
 
+
 @media only screen and (max-width: 768px) {
   .swiper {
     margin: 0 50px;
@@ -188,6 +191,12 @@ export default {
   }
   .slider-btn__prev {
     left: 10px;
+  }
+  .product-slider {
+    margin-top: 30px;
+  }
+  ::v-deep .product-card__slider .product-card{
+    padding-bottom: 10px;
   }
 }
 
@@ -200,8 +209,17 @@ export default {
   .slider-btn__prev {
     display: none;
   }
-  // .custom-slide {
-  //   max-width: 300px;
-  // }
+  .product-slider__title{
+    font-size: 22px;
+    padding: 30px 20px 10px;
+  }
+  .product-slider__title-img{
+    width: 91px;
+    height: 17px;
+    margin-bottom: 35px;
+  }
+  .product-slider{
+    padding-bottom: 56px;
+  }
 }
 </style>

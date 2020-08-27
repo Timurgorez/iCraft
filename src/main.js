@@ -6,10 +6,17 @@ import store from './store'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
+import Notifications from 'vue-notification'
+ 
+ 
+
+
 
 Vue.use(BootstrapVue)
 Vue.use(VueAwesomeSwiper)
 Vue.use(IconsPlugin);
+
+Vue.use(Notifications);
 
 
 // Import Bootstrap and Bootstrap-Vue css
@@ -23,6 +30,7 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
+  beforeCreate() { this.$store.commit('initialiseUserBag');},
   render: h => h(App),
   created(){
     this.$store.dispatch('loadProducts')

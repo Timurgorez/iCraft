@@ -96,6 +96,42 @@ body {
   padding: 0 5px;
 }
 
+
+.vue-notification-group .custom-notification{
+  padding: 20px;
+  border-radius: 6px;
+  &.success {
+    background-color: green;
+    border: 1px solid green;
+  }
+  &.warn {
+    
+  }
+  &.error {
+    
+  }
+  &.info {
+    
+  }
+  .notification-title {
+    font-family: $font_montserrat_regular;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.85);
+  }
+
+  .notification-content {
+    font-family: $font_montserrat_regular;
+    font-size: 14px;
+    line-height: 1.43;
+    color: rgba(0, 0, 0, 0.85);
+  }
+}
+
+
+
+
 @media only screen and (max-width: 480px) {
   body {
     font-size: 14px;

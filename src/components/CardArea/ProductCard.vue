@@ -53,7 +53,7 @@
 
       <div class="product-card__bottom-wrap">
         <div
-          class="product-card__price-wrap d-flex  flex-sm-row flex-md-row flex-column flex-wrap justify-content-start align-items-start"
+          class="product-card__price-wrap d-flex  flex-sm-row flex-md-row flex-wrap justify-content-start align-items-start"
         >
           <span class="product-card__price"
             >{{ item.price.currency_formatting }}{{ item.price.new }}
@@ -206,6 +206,7 @@ export default {
     line-height: normal;
     letter-spacing: normal;
     color: #c90000;
+    padding-right: 27px;
   }
 
   .product-card__price-old {
@@ -218,7 +219,6 @@ export default {
     letter-spacing: normal;
     color: $text_color;
     text-decoration: line-through;
-    padding-left: 27px;
   }
 
   .product-card__bottom-wrap {
@@ -348,8 +348,8 @@ export default {
       min-height: 152px;
     }
 
-    .product-card__price-old {
-      padding-left: 0;
+    .product-card__price {
+      padding-right: 12px;
     }
 
     .product-card__sale {

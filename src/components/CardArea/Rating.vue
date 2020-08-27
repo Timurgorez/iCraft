@@ -124,5 +124,9 @@ export default {
   .product-rating__count {
     font-size: 14px;
   }
+  .star{
+    width: 22px;
+    height: 22px;
+  }
 }
 </style>

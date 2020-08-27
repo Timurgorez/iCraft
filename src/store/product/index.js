@@ -36,7 +36,8 @@ export default {
                     "new-updated"
                 ],
                 "category": ["Knitted Hats", "Toddler Toys", "Home Decor"],
-                "dominant_color": "#7f13a6"
+                "dominant_color": "#7f13a6",
+                "available": 2
             },
             {
                 "id":2,
@@ -61,7 +62,8 @@ export default {
                     "free-delivery"
                 ],
                 "category": ["Gold Jewelry", "Home Decor"],
-                "dominant_color": "#7f13a6"
+                "dominant_color": "#7f13a6",
+                "available": 3
             },
             {
                 "id":3,
@@ -84,7 +86,8 @@ export default {
                     "new"
                 ],
                 "category": ["Wedding Jewelry", "Home Decor"],
-                "dominant_color": "#ff36a5"
+                "dominant_color": "#ff36a5",
+                "available": 1
             },
             {
                 "id":4,
@@ -110,7 +113,8 @@ export default {
                     "best"
                 ],
                 "category": ["iPod/ Phone Accessories", "Home Decor"],
-                "dominant_color": "Multi-Colored"
+                "dominant_color": "Multi-Colored",
+                "available": 6
             },
             {
                 "id":5,
@@ -134,7 +138,8 @@ export default {
                     "free-delivery"
                 ],
                 "category": ["Toys & Games", "Home Decor"],
-                "dominant_color": "#ff36a5"
+                "dominant_color": "#ff36a5",
+                "available": 2
             },
             {
                 "id":6,
@@ -158,7 +163,8 @@ export default {
                     "free-delivery"
                 ],
                 "category": ["Swarovski Cristal Jewelry", "Home Decor"],
-                "dominant_color": "#f36b26"
+                "dominant_color": "#f36b26",
+                "available": 2
             },
             {
                 "id":7,
@@ -183,7 +189,8 @@ export default {
                     "best"
                 ],
                 "category": ["Toys & Games", "Chain Charms"],
-                "dominant_color": "Multi-Colored"
+                "dominant_color": "Multi-Colored",
+                "available": 3
             },
             {
                 "id":8,
@@ -208,7 +215,8 @@ export default {
                     "free-delivery"
                 ],
                 "category": ["Silver Earrings", "Home Decor", "Blankets"],
-                "dominant_color": "#c90000"
+                "dominant_color": "#c90000",
+                "available": 21
             },
             {
                 "id":9,
@@ -233,7 +241,8 @@ export default {
                     "best"
                 ],
                 "category": ["Chain Charms", "Home Decor"],
-                "dominant_color": "Multi-Colored"
+                "dominant_color": "Multi-Colored",
+                "available": 8
             },
             {
                 "id":10,
@@ -257,7 +266,8 @@ export default {
                     "free-delivery"
                 ],
                 "category": ["Toys & Games", "Toddler Toys", "Beanie Hats"],
-                "dominant_color": "#ffffff"
+                "dominant_color": "#ffffff",
+                "available": 2
             },
             {
                 "id":11,
@@ -282,7 +292,8 @@ export default {
                     "free-delivery"
                 ],
                 "category": ["Stafish Jewelry", "Eirings", "Blankets"],
-                "dominant_color": "#7f13a6"
+                "dominant_color": "#7f13a6",
+                "available": 2
             },
             {
                 "id":12,
@@ -306,14 +317,33 @@ export default {
                     "free-delivery"
                 ],
                 "category": ["Gold Jewelry", "Knitted Hats"],
-                "dominant_color": "#808080"
+                "dominant_color": "#808080",
+                "available": 2
             }
-        ]
+        ],
+        productInBag: []
     },
     mutations: {
         setProducts (state, payload) {
             state.products = payload
         },
+        addToBag (state, payload) {
+            state.productInBag.push(payload);
+        },
+        increaseCountInBag (state, payload) {
+            state.productInBag = state.productInBag.map(el => {
+                if (el.id === payload.id && el.color === payload.color && el.size === payload.size ) {
+                    el.count = el.count + payload.count
+                    return el;
+                }
+                return el;
+              })
+        },
+        initialiseUserBag (state) {
+            if (localStorage.getItem('userBag')) {
+                state.productInBag = JSON.parse(localStorage.getItem('userBag'));
+              }
+        }
     },
     actions: {
         loadProducts ({ commit }) {
@@ -352,7 +382,8 @@ export default {
                         "new-updated"
                     ],
                     "category": ["Knitted Hats", "Toddler Toys", "Home Decor"],
-                    "dominant_color": "#7f13a6"
+                    "dominant_color": "#7f13a6",
+                    "available": 2
                 },
                 {
                     "id":2,
@@ -377,7 +408,8 @@ export default {
                         "free-delivery"
                     ],
                     "category": ["Gold Jewelry", "Home Decor"],
-                    "dominant_color": "#7f13a6"
+                    "dominant_color": "#7f13a6",
+                    "available": 3
                 },
                 {
                     "id":3,
@@ -400,7 +432,8 @@ export default {
                         "new"
                     ],
                     "category": ["Wedding Jewelry", "Home Decor"],
-                    "dominant_color": "#ff36a5"
+                    "dominant_color": "#ff36a5",
+                    "available": 1
                 },
                 {
                     "id":4,
@@ -426,7 +459,8 @@ export default {
                         "best"
                     ],
                     "category": ["iPod/ Phone Accessories", "Home Decor"],
-                    "dominant_color": "Multi-Colored"
+                    "dominant_color": "Multi-Colored",
+                    "available": 6
                 },
                 {
                     "id":5,
@@ -450,7 +484,8 @@ export default {
                         "free-delivery"
                     ],
                     "category": ["Toys & Games", "Home Decor"],
-                    "dominant_color": "#ff36a5"
+                    "dominant_color": "#ff36a5",
+                    "available": 2
                 },
                 {
                     "id":6,
@@ -474,7 +509,8 @@ export default {
                         "free-delivery"
                     ],
                     "category": ["Swarovski Cristal Jewelry", "Home Decor"],
-                    "dominant_color": "#f36b26"
+                    "dominant_color": "#f36b26",
+                    "available": 2
                 },
                 {
                     "id":7,
@@ -499,7 +535,8 @@ export default {
                         "best"
                     ],
                     "category": ["Toys & Games", "Chain Charms"],
-                    "dominant_color": "Multi-Colored"
+                    "dominant_color": "Multi-Colored",
+                    "available": 3
                 },
                 {
                     "id":8,
@@ -524,7 +561,8 @@ export default {
                         "free-delivery"
                     ],
                     "category": ["Silver Earrings", "Home Decor", "Blankets"],
-                    "dominant_color": "#c90000"
+                    "dominant_color": "#c90000",
+                    "available": 21
                 },
                 {
                     "id":9,
@@ -549,7 +587,8 @@ export default {
                         "best"
                     ],
                     "category": ["Chain Charms", "Home Decor"],
-                    "dominant_color": "Multi-Colored"
+                    "dominant_color": "Multi-Colored",
+                    "available": 8
                 },
                 {
                     "id":10,
@@ -573,7 +612,8 @@ export default {
                         "free-delivery"
                     ],
                     "category": ["Toys & Games", "Toddler Toys", "Beanie Hats"],
-                    "dominant_color": "#ffffff"
+                    "dominant_color": "#ffffff",
+                    "available": 2
                 },
                 {
                     "id":11,
@@ -598,7 +638,8 @@ export default {
                         "free-delivery"
                     ],
                     "category": ["Stafish Jewelry", "Eirings", "Blankets"],
-                    "dominant_color": "#7f13a6"
+                    "dominant_color": "#7f13a6",
+                    "available": 2
                 },
                 {
                     "id":12,
@@ -622,13 +663,18 @@ export default {
                         "free-delivery"
                     ],
                     "category": ["Gold Jewelry", "Knitted Hats"],
-                    "dominant_color": "#808080"
+                    "dominant_color": "#808080",
+                    "available": 2
                 }
-            ]
+            ];
             commit('setProducts', products)
         },
         filterProducts({ commit }, newProducts) {
             commit('setProducts', newProducts)
+        },
+        addProductToBag({ commit, state }, product){
+            commit('addToBag', product)
+            localStorage.setItem('userBag', JSON.stringify(state.productInBag));
         }
     },
     getters: {
@@ -644,6 +690,24 @@ export default {
         },
         productSlider (state) {
             return state.products;
+        },
+        getProductsInBag(state){
+            return state.productInBag;
+        },
+        countProductsInBag (state) {
+            return state.productInBag.length;
+        },
+        getProductsForBag (state) {
+            const products = state.products.slice();
+            return state.productInBag.map((productInBag) => {
+                return products.find((product) => {
+                    product.count = productInBag.count;
+                    product.color = productInBag.color;
+                    product.size = productInBag.size;
+                    console.log(productInBag.count);
+                    return product.id == productInBag.id;
+                })
+            })
         }
     }
 }
