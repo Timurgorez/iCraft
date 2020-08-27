@@ -961,17 +961,17 @@ export default {
         countProductsInBag (state) {
             return state.productInBag.length;
         },
-        getProductsForBag (state) {
-            const products = state.products.slice();
-            return state.productInBag.map((productInBag) => {
-                return products.find((product) => {
-                    product.count = productInBag.count;
-                    product.color = productInBag.color;
-                    product.size = productInBag.size;
-                    console.log(productInBag.count);
-                    return product.id == productInBag.id;
-                })
-            })
-        }
+        // getProductsForBag (state) {
+        //     const products = state.products.slice();
+        //     return state.productInBag.map((productInBag) => {
+        //         return products.find((product) => {
+        //             product.count = productInBag.count;
+        //             product.color = productInBag.color;
+        //             product.size = productInBag.size;
+        //             console.log(productInBag.count);
+        //             return product.id == productInBag.id;
+        //         })
+        //     })
+        // }
     }
 }

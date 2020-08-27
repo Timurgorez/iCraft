@@ -1,21 +1,28 @@
 <template>
   <div class="product-item">
     <HeaderWhite />
-    <notifications group="app" position="top center"/>
+    <notifications
+      class="custom-notification-wrap"
+      classes="custom-notification"
+      group="app"
+      position="top center"
+      width="600px"
+    />
     <b-container class="product-max-container">
       <b-row>
         <b-col cols="12">
           <div class="back-to-products">
             <a href="/" class="back-to-products__link"
               ><span class="back-to-products__icon"></span>Back To All
-              Products</a>
+              Products</a
+            >
           </div>
         </b-col>
       </b-row>
       <b-row>
         <b-col cols="12" md="6" lg="6" xl="6">
           <ProductGallery></ProductGallery>
-          <ProductLabels  :labels="product.labels"></ProductLabels>
+          <ProductLabels :labels="product.labels"></ProductLabels>
         </b-col>
         <b-col cols="12" md="6" lg="6" xl="6">
           <div class="main-actions">
@@ -54,7 +61,7 @@
 
                 <template slot="increment">+</template>
               </integer-plusminus>
-              <span>Only {{product.available}} Avaliable</span>
+              <span>Only {{ product.available }} Avaliable</span>
             </div>
 
             <div class="custom-request">
@@ -133,9 +140,14 @@
                       >
                         <div
                           class="product-info__main-color mr-2"
-                          :style="{backgroundColor: product.product_detail.dominant_color.hex}"
+                          :style="{
+                            backgroundColor:
+                              product.product_detail.dominant_color.hex
+                          }"
                         ></div>
-                        <span>{{ product.product_detail.dominant_color.name }}</span>
+                        <span>{{
+                          product.product_detail.dominant_color.name
+                        }}</span>
                       </div>
                       <div class="product-info__category list-mb">
                         <p>
@@ -147,7 +159,7 @@
                       </div>
                     </div>
                   </div>
-                  <p>{{product.product_detail.description }}</p>
+                  <p>{{ product.product_detail.description }}</p>
                   <div class="product-info__remainder mt-4 mb-4">
                     <p>
                       Please note that if this item is sold out, it will be
@@ -224,7 +236,9 @@
                     <div class="secure-icon mr-2"></div>
                     <p>Secure options</p>
                   </div>
-                  <div class="product-info__payment-options d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-sm-center justify-content-xl-start justify-content-md-start justify-content-lg-start mt-4 mb-4">
+                  <div
+                    class="product-info__payment-options d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-sm-center justify-content-xl-start justify-content-md-start justify-content-lg-start mt-4 mb-4"
+                  >
                     <div class="product-info__payment-option paypal"></div>
                     <div class="product-info__payment-option visa"></div>
                     <div class="product-info__payment-option master"></div>
@@ -236,7 +250,10 @@
             </div>
 
             <div>
-              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-seller>
+              <div
+                class="product-info__toggle d-flex flex-row justify-content-between align-items-center"
+                v-b-toggle.collapse-seller
+              >
                 <p class="product-info__toggle-title">Seller Information</p>
                 <div class="product-info__toggle-arrow"></div>
               </div>
@@ -309,12 +326,12 @@ export default {
       popoverCustomRequest: false,
 
       quantity_min: 1,
-      
+
       quantity_step: 1,
       model_quantity: 1,
 
       model_size: "M",
-      model_color: "red",
+      model_color: "red"
     };
   },
   components: {
@@ -342,33 +359,36 @@ export default {
         count: this.model_quantity,
         size: this.model_size,
         color: this.model_color
-      }
+      };
       console.log(this.checkProductInBag(this.id));
-      if(this.checkProductInBag(product)){
+      if (this.checkProductInBag(product)) {
         this.$notify({
-          group: 'app',
-          type: 'warn',
-          title: 'WARNING',
-          text: 'This item you already have in your bag!',
-          duration: 50000,
+          group: "app",
+          type: "warn",
+          title: "WARNING",
+          text: "This item you already have in your bag!"
         });
-      }else{
+      } else {
         this.$notify({
-          group: 'app',
-          type: 'success',
-          title: 'SUCCESS',
-          text: 'Item was added to your bag!',
-          duration: 50000,
+          group: "app",
+          type: "success",
+          title: "SUCCESS",
+          text: "Item was added to your bag!"
         });
-        this.$store.dispatch('addProductToBag', product);
+        this.$store.dispatch("addProductToBag", product);
       }
       this.model_quantity = 1;
     },
-    checkProductInBag(product){
+    checkProductInBag(product) {
       let check = false;
-      this.$store.state.product.productInBag.map((el) => {
-          if(el.id === product.id && el.size === product.size && el.color === product.color) check = true;
-      })
+      this.$store.state.product.productInBag.map(el => {
+        if (
+          el.id === product.id &&
+          el.size === product.size &&
+          el.color === product.color
+        )
+          check = true;
+      });
       return check;
     },
     buyNowHandler() {
@@ -378,11 +398,11 @@ export default {
         count: this.model_quantity,
         size: this.model_size,
         color: this.model_color
-      }
-      
-      this.$store.dispatch('addProductToBag', productToAdd);
+      };
+
+      this.$store.dispatch("addProductToBag", productToAdd);
       this.model_quantity = 1;
-      this.$router.push('/shopping-bag');
+      this.$router.push("/shopping-bag");
     },
     addToBagBestOfferHandler() {
       console.log("addToBagBestOfferHandler");
@@ -400,8 +420,8 @@ export default {
       this.model_color = model_color;
     }
   },
-  watch:{
-    id(){
+  watch: {
+    id() {
       this.model_quantity = 1;
       this.model_size = "M";
       this.model_color = "red";
@@ -411,7 +431,7 @@ export default {
     product() {
       return this.$store.getters.product(this.id);
     },
-    quantity_max(){
+    quantity_max() {
       return this.product.available;
     }
   }
@@ -798,9 +818,6 @@ export default {
   }
 }
 
-
-
-
 @media only screen and (max-width: 480px) {
   .buy-set-save__btns {
     button {
@@ -808,6 +825,4 @@ export default {
     }
   }
 }
-
-
 </style>
