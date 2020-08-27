@@ -1,16 +1,16 @@
 <template>
   <div class="seller-info">
-    <div class="seller-info__main d-flex flex-wrap flex-row mb-4">
+    <div class="seller-info__main d-flex flex-wrap flex-row mb-4 justify-content-sm-center justify-content-center justify-content-xl-start justify-content-md-start justify-content-lg-start">
       <div class="seller-info__photo mr-3 d-flex flex-row align-items-end"  :style="{ backgroundImage: 'url(/tmp/group-10.jpg)' }">
        <div class="seller-info__info">
         <div class="seller-info__verify-seller"></div>
         <div class="custom-request__hint"></div>
        </div>
       </div>
-      <div class="seller-info__data">
+      <div class="seller-info__data mt-sm-4 mt-4 mt-md-0 mt-lg-0 mt-xl-0 text-center text-sm-center text-md-left text-lg-left text-xl-left">
         <p class="seller-info__name">Natalie Designs</p>
         <p class="seller-info__city mb-4">Moscow, Russia</p>
-        <PurpleButton text="CONTACT SELLER" icon-class="message"></PurpleButton>
+        <PurpleButton text="CONTACT SELLER" icon-class="message" :animate="true"></PurpleButton>
       </div>
     </div>
     <div class="seller-info__description">
@@ -26,7 +26,7 @@
 
 <script>
 import PurpleButton from "@/components/Buttons/PurpleButton";
-import ProductRating from "@/components/CardArea/Rating";
+import ProductRating from "@/components/ProductInfo/Rating";
 
 export default {
   name: "SellerInfo",

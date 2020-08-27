@@ -75,7 +75,7 @@
 import Header from '../components/Header/Header.vue';
 import Footer from '../components/Footer/Footer.vue';
 import FilterProduct from '../components/FilterProduct/FilterProduct.vue';
-import WrapperCard from '../components/CardArea/WrapperCard.vue';
+import WrapperCard from '../components/ProductInfo/WrapperCard.vue';
 import WhyBuyHere from '../components/StaticComponents/WhyBuyHere/WhyBuyHere.vue';
 import PurpleButton from '../components/Buttons/PurpleButton.vue';
 

@@ -13,7 +13,6 @@
       </b-row>
       <b-row>
         <b-col cols="12" md="6" lg="6" xl="6">
-<!--          <img src="/tmp/group-5-copy.jpg" style="max-width: 100%">-->
           <ProductGallery></ProductGallery>
           <ProductLabels  :labels="product.labels"></ProductLabels>
         </b-col>
@@ -224,9 +223,7 @@
                     <div class="secure-icon mr-2"></div>
                     <p>Secure options</p>
                   </div>
-                  <div
-                    class="product-info__payment-options d-flex flex-row flex-wrap align-items-center mt-4 mb-4"
-                  >
+                  <div class="product-info__payment-options d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-sm-center justify-content-xl-start justify-content-md-start justify-content-lg-start mt-4 mb-4">
                     <div class="product-info__payment-option paypal"></div>
                     <div class="product-info__payment-option visa"></div>
                     <div class="product-info__payment-option master"></div>
@@ -237,11 +234,8 @@
               </b-collapse>
             </div>
 
-            <div class="collapse-border-bottom">
-              <div
-                class="product-info__toggle d-flex flex-row justify-content-between align-items-center"
-                v-b-toggle.collapse-seller
-              >
+            <div>
+              <div class="product-info__toggle d-flex flex-row justify-content-between align-items-center" v-b-toggle.collapse-seller>
                 <p class="product-info__toggle-title">Seller Information</p>
                 <div class="product-info__toggle-arrow"></div>
               </div>
@@ -292,17 +286,17 @@
 <script>
 import { IntegerPlusminus } from "vue-integer-plusminus";
 import SellerInfo from "@/components/Seller/SellerInfo";
-import ProductRating from "../components/CardArea/Rating.vue";
+import ProductRating from "../components/ProductInfo/Rating.vue";
 import PurpleButton from "../components/Buttons/PurpleButton.vue";
 import RedButton from "../components/Buttons/RedButton.vue";
 import Checkbox from "../components/FormElements/Checkbox.vue";
 import SizeChoose from "../components/FormElements/SizeChoose.vue";
 import ColorChoose from "../components/FormElements/ColorChoose.vue";
-import BestOffer from "../components/CardArea/BestOffer.vue";
-import MoreFromThisStore from "../components/CardArea/MoreFromThisStore.vue";
+import BestOffer from "../components/ProductInfo/BestOffer.vue";
+import MoreFromThisStore from "../components/ProductInfo/MoreFromThisStore.vue";
 import HeaderWhite from "../components/Header/HeaderWhite.vue";
-import ProductLabels from "@/components/CardArea/ProductLabels";
-import ProductGallery from "@/components/CardArea/ProductGallery";
+import ProductLabels from "@/components/ProductInfo/ProductLabels";
+import ProductGallery from "@/components/ProductInfo/ProductGallery";
 import Footer from "../components/Footer/Footer.vue";
 import ProductSlider from "../components/StaticComponents/ProductSlider/ProductSlider.vue";
 
@@ -685,7 +679,7 @@ export default {
     background-size: contain;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    margin-right: 15px;
+    margin: 15px;
   }
 
   .paypal {

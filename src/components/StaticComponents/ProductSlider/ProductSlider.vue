@@ -41,7 +41,7 @@
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import "swiper/swiper-bundle.css";
 
-import ProductCard from "../../CardArea/ProductCard";
+import ProductCard from "../../ProductInfo/ProductCard";
 
 export default {
   name: "ProductSlider",
