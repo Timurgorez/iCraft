@@ -72,6 +72,17 @@ export default {
                     "new",
                     "free-delivery"
                 ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
+                ],
                 "category": ["Gold Jewelry", "Home Decor"],
                 "dominant_color": "#7f13a6",
                 "product_detail": {
@@ -106,6 +117,17 @@ export default {
                 "icons":[
                     "exclusive",
                     "new"
+                ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
                 ],
                 "category": ["Wedding Jewelry", "Home Decor"],
                 "dominant_color": "#ff36a5",
@@ -145,6 +167,17 @@ export default {
                     "free-delivery",
                     "best"
                 ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
+                ],
                 "category": ["iPod/ Phone Accessories", "Home Decor"],
                 "dominant_color": "Multi-Colored",
                 "product_detail": {
@@ -181,6 +214,17 @@ export default {
                     "new",
                     "free-delivery"
                 ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
+                ],
                 "category": ["Toys & Games", "Home Decor"],
                 "dominant_color": "#ff36a5",
                 "product_detail": {
@@ -216,6 +260,17 @@ export default {
                     "exclusive",
                     "new",
                     "free-delivery"
+                ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
                 ],
                 "category": ["Swarovski Cristal Jewelry", "Home Decor"],
                 "dominant_color": "#f36b26",
@@ -254,6 +309,17 @@ export default {
                     "free-delivery",
                     "best"
                 ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
+                ],
                 "category": ["Toys & Games", "Chain Charms"],
                 "dominant_color": "Multi-Colored",
                 "product_detail": {
@@ -290,6 +356,17 @@ export default {
                     "exclusive",
                     "new",
                     "free-delivery"
+                ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
                 ],
                 "category": ["Silver Earrings", "Home Decor", "Blankets"],
                 "dominant_color": "#c90000",
@@ -328,6 +405,17 @@ export default {
                     "free-delivery",
                     "best"
                 ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
+                ],
                 "category": ["Chain Charms", "Home Decor"],
                 "dominant_color": "Multi-Colored",
                 "product_detail": {
@@ -363,6 +451,17 @@ export default {
                     "exclusive",
                     "new",
                     "free-delivery"
+                ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
                 ],
                 "category": ["Toys & Games", "Toddler Toys", "Beanie Hats"],
                 "dominant_color": "#ffffff",
@@ -401,6 +500,17 @@ export default {
                     "new",
                     "free-delivery"
                 ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
+                ],
                 "category": ["Stafish Jewelry", "Eirings", "Blankets"],
                 "dominant_color": "#7f13a6",
                 "product_detail": {
@@ -436,6 +546,17 @@ export default {
                     "exclusive",
                     "new",
                     "free-delivery"
+                ],
+                "labels": [
+                    "handmade",
+                    "exclusive",
+                    "trusted",
+                    "bestseller",
+                    "made-in-usa",
+                    "new",
+                    "authentic-indigenous",
+                    "made-in-canada",
+                    "new-updated"
                 ],
                 "category": ["Gold Jewelry", "Knitted Hats"],
                 "dominant_color": "#808080",
@@ -526,7 +647,7 @@ export default {
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                     },
-                    "available": 1
+                    "available": 2
                 },
                 {
                     "id":2,
@@ -550,6 +671,17 @@ export default {
                         "new",
                         "free-delivery"
                     ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
+                    ],
                     "category": ["Gold Jewelry", "Home Decor"],
                     "dominant_color": "#7f13a6",
                     "product_detail": {
@@ -563,7 +695,7 @@ export default {
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                     },
-                    "available": 1
+                    "available": 5
                 },
                 {
                     "id":3,
@@ -584,6 +716,17 @@ export default {
                     "icons":[
                         "exclusive",
                         "new"
+                    ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
                     ],
                     "category": ["Wedding Jewelry", "Home Decor"],
                     "dominant_color": "#ff36a5",
@@ -623,6 +766,17 @@ export default {
                         "free-delivery",
                         "best"
                     ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
+                    ],
                     "category": ["iPod/ Phone Accessories", "Home Decor"],
                     "dominant_color": "Multi-Colored",
                     "product_detail": {
@@ -636,7 +790,7 @@ export default {
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                     },
-                    "available": 4
+                    "available": 1
                 },
                 {
                     "id":5,
@@ -659,6 +813,17 @@ export default {
                         "new",
                         "free-delivery"
                     ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
+                    ],
                     "category": ["Toys & Games", "Home Decor"],
                     "dominant_color": "#ff36a5",
                     "product_detail": {
@@ -672,7 +837,7 @@ export default {
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                     },
-                    "available": 6
+                    "available": 7
                 },
                 {
                     "id":6,
@@ -695,6 +860,17 @@ export default {
                         "new",
                         "free-delivery"
                     ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
+                    ],
                     "category": ["Swarovski Cristal Jewelry", "Home Decor"],
                     "dominant_color": "#f36b26",
                     "product_detail": {
@@ -708,7 +884,7 @@ export default {
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                     },
-                    "available": 10
+                    "available": 3
                 },
                 {
                     "id":7,
@@ -732,6 +908,17 @@ export default {
                         "free-delivery",
                         "best"
                     ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
+                    ],
                     "category": ["Toys & Games", "Chain Charms"],
                     "dominant_color": "Multi-Colored",
                     "product_detail": {
@@ -745,7 +932,7 @@ export default {
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                     },
-                    "available": 3
+                    "available": 4
                 },
                 {
                     "id":8,
@@ -769,6 +956,17 @@ export default {
                         "new",
                         "free-delivery"
                     ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
+                    ],
                     "category": ["Silver Earrings", "Home Decor", "Blankets"],
                     "dominant_color": "#c90000",
                     "product_detail": {
@@ -782,7 +980,7 @@ export default {
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                     },
-                    "available": 2
+                    "available": 1
                 },
                 {
                     "id":9,
@@ -806,6 +1004,17 @@ export default {
                         "free-delivery",
                         "best"
                     ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
+                    ],
                     "category": ["Chain Charms", "Home Decor"],
                     "dominant_color": "Multi-Colored",
                     "product_detail": {
@@ -819,7 +1028,7 @@ export default {
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                     },
-                    "available": 8
+                    "available": 7
                 },
                 {
                     "id":10,
@@ -841,6 +1050,17 @@ export default {
                         "exclusive",
                         "new",
                         "free-delivery"
+                    ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
                     ],
                     "category": ["Toys & Games", "Toddler Toys", "Beanie Hats"],
                     "dominant_color": "#ffffff",
@@ -879,6 +1099,17 @@ export default {
                         "new",
                         "free-delivery"
                     ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
+                    ],
                     "category": ["Stafish Jewelry", "Eirings", "Blankets"],
                     "dominant_color": "#7f13a6",
                     "product_detail": {
@@ -892,7 +1123,7 @@ export default {
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                     },
-                    "available": 4
+                    "available": 5
                 },
                 {
                     "id":12,
@@ -915,6 +1146,17 @@ export default {
                         "new",
                         "free-delivery"
                     ],
+                    "labels": [
+                        "handmade",
+                        "exclusive",
+                        "trusted",
+                        "bestseller",
+                        "made-in-usa",
+                        "new",
+                        "authentic-indigenous",
+                        "made-in-canada",
+                        "new-updated"
+                    ],
                     "category": ["Gold Jewelry", "Knitted Hats"],
                     "dominant_color": "#808080",
                     "product_detail": {
@@ -928,7 +1170,7 @@ export default {
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                     },
-                    "available": 2
+                    "available": 10
                 }
             ];
             commit('setProducts', products)

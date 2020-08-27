@@ -16,7 +16,7 @@
       </div>
       <!-- swiper2 Thumbs -->
       <div class="gallery-thumbs" v-swiper:swiperThumbs="swiperOptionThumbs">
-        <div class="swiper-wrapper" style="top: -60px;">
+        <div class="swiper-wrapper" style="left: -63px">
           <div class="swiper-slide slide-1"></div>
           <div class="swiper-slide slide-2"></div>
           <div class="swiper-slide slide-3"></div>
@@ -24,6 +24,8 @@
           <div class="swiper-slide slide-5"></div>
         </div>
       </div>
+      <div class="slider-btn swiper-button__next" @click="prevSlide"></div>
+      <div class="slider-btn swiper-button__prev" @click="nextSlide"></div>
     </div>
   </div>
 </template>
@@ -37,8 +39,8 @@ export default {
         spaceBetween: 10,
 
         navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
+          nextEl: ".swiper-button__next",
+          prevEl: ".swiper-button__prev"
         }
       },
       swiperOptionThumbs: {
@@ -50,6 +52,14 @@ export default {
         slideToClickedSlide: true
       }
     };
+  },
+  methods: {
+    prevSlide() {
+      this.swiperTop.slidePrev();
+    },
+    nextSlide() {
+      this.swiperTop.slideNext();
+    }
   },
   mounted() {
     const self = this;
@@ -65,7 +75,7 @@ export default {
 
 <style scoped lang="scss">
 .thumb-example {
-  height: 520px;
+  height: 380px;
   background-color: transparent;
 }
 
@@ -119,28 +129,57 @@ export default {
 }
 
 .gallery-top {
+  height: 70%;
   width: 100%;
-  height: 80%;
 }
 .gallery-thumbs {
   box-sizing: border-box;
-  top: 13px;
- // position: absolute;
-  width: 140px;
+  width: 70%;
   z-index: 1;
- // vertical-align: baseline;
-  height: 20%;
-  right: 40px;
+  height: 30%;
+  padding: 10px 0;
 }
 
 .gallery-thumbs .swiper-slide {
-  height: 23%;
-  width: 100%;
+  width: 46%;
+  height: 100%;
   opacity: 1;
   border-radius: 6px;
-  border: solid 2px #ffffff;
 }
 .gallery-thumbs .swiper-slide-active {
   border: solid 2px $purple_color_btn;
+}
+
+.swiper-button__next {
+  margin-left: 10px;
+  margin-top: -75px;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("~@/assets/arrow-prev.svg");
+  position: absolute;
+  &:hover {
+    transform: rotateY(-180deg);
+    background-image: url("~@/assets/arrow-next.svg");
+  }
+
+}
+.swiper-button__prev {
+  right: 20px;
+  margin-top: -75px;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("~@/assets/arrow-prev.svg");
+  position: absolute;
+  transform: rotateY(180deg);
+  &:hover {
+    transform: rotateY(0);
+    background-image: url("~@/assets/arrow-next.svg");
+  }
+
 }
 </style>
