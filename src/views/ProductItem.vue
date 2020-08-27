@@ -134,27 +134,21 @@
                       >
                         <div
                           class="product-info__main-color mr-2"
-                          style="background-color: #000000"
+                          :style="{backgroundColor: product.product_detail.dominant_color.hex}"
                         ></div>
-                        <span>Black</span>
+                        <span>{{ product.product_detail.dominant_color.name }}</span>
                       </div>
                       <div class="product-info__category list-mb">
                         <p>
-                          Japanese Beads, French Sequins, Leather on reverse
+                          {{ product.product_detail.materials }}
                         </p>
                       </div>
                       <div class="product-info__size list-mb">
-                        <p>S, M, L, XL</p>
+                        <p>{{ product.product_detail.size }}</p>
                       </div>
                     </div>
                   </div>
-                  <p>
-                    Hair Clips with Japanese and Czech beads embroidery, genuine
-                    leather on reverse. This little piece of jewelry can dress
-                    up a casual outfit, or complete a formal outfit. Whether you
-                    have an ordinary or special day - there will be room for
-                    your little new friend.
-                  </p>
+                  <p>{{product.product_detail.description }}</p>
                   <div class="product-info__remainder mt-4 mb-4">
                     <p>
                       Please note that if this item is sold out, it will be
@@ -178,7 +172,7 @@
               <b-collapse id="collapse-shipping">
                 <div class="product-info__text">
                   <p>Local Pickup is Not Available.</p>
-                  <p>Item ships from: Yaroslavl', Yaroslavl Oblast’, Russia.</p>
+                  <p>Item ships from: {{ product.product_detail.ships }}.</p>
                   <ul class="product-info__main-info mt-3">
                     <li class="mt-3">
                       Shipping to Russia: <br />

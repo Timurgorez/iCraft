@@ -37,6 +37,17 @@ export default {
                 ],
                 "category": ["Knitted Hats", "Toddler Toys", "Home Decor"],
                 "dominant_color": "#7f13a6",
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
                 "available": 2
             },
             {
@@ -63,7 +74,18 @@ export default {
                 ],
                 "category": ["Gold Jewelry", "Home Decor"],
                 "dominant_color": "#7f13a6",
-                "available": 3
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
+                "available": 5
             },
             {
                 "id":3,
@@ -87,6 +109,17 @@ export default {
                 ],
                 "category": ["Wedding Jewelry", "Home Decor"],
                 "dominant_color": "#ff36a5",
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
                 "available": 1
             },
             {
@@ -114,7 +147,18 @@ export default {
                 ],
                 "category": ["iPod/ Phone Accessories", "Home Decor"],
                 "dominant_color": "Multi-Colored",
-                "available": 6
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
+                "available": 1
             },
             {
                 "id":5,
@@ -139,7 +183,18 @@ export default {
                 ],
                 "category": ["Toys & Games", "Home Decor"],
                 "dominant_color": "#ff36a5",
-                "available": 2
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
+                "available": 7
             },
             {
                 "id":6,
@@ -164,7 +219,18 @@ export default {
                 ],
                 "category": ["Swarovski Cristal Jewelry", "Home Decor"],
                 "dominant_color": "#f36b26",
-                "available": 2
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
+                "available": 3
             },
             {
                 "id":7,
@@ -190,7 +256,18 @@ export default {
                 ],
                 "category": ["Toys & Games", "Chain Charms"],
                 "dominant_color": "Multi-Colored",
-                "available": 3
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
+                "available": 4
             },
             {
                 "id":8,
@@ -216,7 +293,18 @@ export default {
                 ],
                 "category": ["Silver Earrings", "Home Decor", "Blankets"],
                 "dominant_color": "#c90000",
-                "available": 21
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
+                "available": 1
             },
             {
                 "id":9,
@@ -242,7 +330,18 @@ export default {
                 ],
                 "category": ["Chain Charms", "Home Decor"],
                 "dominant_color": "Multi-Colored",
-                "available": 8
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
+                "available": 7
             },
             {
                 "id":10,
@@ -267,7 +366,18 @@ export default {
                 ],
                 "category": ["Toys & Games", "Toddler Toys", "Beanie Hats"],
                 "dominant_color": "#ffffff",
-                "available": 2
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
+                "available": 3
             },
             {
                 "id":11,
@@ -293,7 +403,18 @@ export default {
                 ],
                 "category": ["Stafish Jewelry", "Eirings", "Blankets"],
                 "dominant_color": "#7f13a6",
-                "available": 2
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
+                "available": 5
             },
             {
                 "id":12,
@@ -318,7 +439,18 @@ export default {
                 ],
                 "category": ["Gold Jewelry", "Knitted Hats"],
                 "dominant_color": "#808080",
-                "available": 2
+                "product_detail": {
+                    "dominant_color": {
+                        "name": "Purple",
+                        "hex": "#7f13a6"
+                    },
+                    "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                    "size": "S, M, L, XL",
+                    "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                    "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                },
+                "available": 10
             }
         ],
         productInBag: []
@@ -383,7 +515,18 @@ export default {
                     ],
                     "category": ["Knitted Hats", "Toddler Toys", "Home Decor"],
                     "dominant_color": "#7f13a6",
-                    "available": 2
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
+                    "available": 1
                 },
                 {
                     "id":2,
@@ -401,7 +544,7 @@ export default {
                         "currency_code": "USD",
                         "currency_formatting": "$"
                     },
-    
+
                     "icons":[
                         "exclusive",
                         "new",
@@ -409,7 +552,18 @@ export default {
                     ],
                     "category": ["Gold Jewelry", "Home Decor"],
                     "dominant_color": "#7f13a6",
-                    "available": 3
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
+                    "available": 1
                 },
                 {
                     "id":3,
@@ -433,6 +587,17 @@ export default {
                     ],
                     "category": ["Wedding Jewelry", "Home Decor"],
                     "dominant_color": "#ff36a5",
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
                     "available": 1
                 },
                 {
@@ -460,7 +625,18 @@ export default {
                     ],
                     "category": ["iPod/ Phone Accessories", "Home Decor"],
                     "dominant_color": "Multi-Colored",
-                    "available": 6
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
+                    "available": 4
                 },
                 {
                     "id":5,
@@ -485,7 +661,18 @@ export default {
                     ],
                     "category": ["Toys & Games", "Home Decor"],
                     "dominant_color": "#ff36a5",
-                    "available": 2
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
+                    "available": 6
                 },
                 {
                     "id":6,
@@ -510,7 +697,18 @@ export default {
                     ],
                     "category": ["Swarovski Cristal Jewelry", "Home Decor"],
                     "dominant_color": "#f36b26",
-                    "available": 2
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
+                    "available": 10
                 },
                 {
                     "id":7,
@@ -536,6 +734,17 @@ export default {
                     ],
                     "category": ["Toys & Games", "Chain Charms"],
                     "dominant_color": "Multi-Colored",
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
                     "available": 3
                 },
                 {
@@ -562,7 +771,18 @@ export default {
                     ],
                     "category": ["Silver Earrings", "Home Decor", "Blankets"],
                     "dominant_color": "#c90000",
-                    "available": 21
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
+                    "available": 2
                 },
                 {
                     "id":9,
@@ -588,6 +808,17 @@ export default {
                     ],
                     "category": ["Chain Charms", "Home Decor"],
                     "dominant_color": "Multi-Colored",
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
                     "available": 8
                 },
                 {
@@ -613,7 +844,18 @@ export default {
                     ],
                     "category": ["Toys & Games", "Toddler Toys", "Beanie Hats"],
                     "dominant_color": "#ffffff",
-                    "available": 2
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
+                    "available": 3
                 },
                 {
                     "id":11,
@@ -639,7 +881,18 @@ export default {
                     ],
                     "category": ["Stafish Jewelry", "Eirings", "Blankets"],
                     "dominant_color": "#7f13a6",
-                    "available": 2
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
+                    "available": 4
                 },
                 {
                     "id":12,
@@ -664,6 +917,17 @@ export default {
                     ],
                     "category": ["Gold Jewelry", "Knitted Hats"],
                     "dominant_color": "#808080",
+                    "product_detail": {
+                        "dominant_color": {
+                            "name": "Purple",
+                            "hex": "#7f13a6"
+                        },
+                        "materials": "Japanese Beads, French Sequins, Leather on reverse",
+                        "size": "S, M, L, XL",
+                        "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
+                        "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
+
+                    },
                     "available": 2
                 }
             ];
