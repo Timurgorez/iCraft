@@ -1,6 +1,7 @@
 <template>
-  <section class="d-flex flex-row flex-wrap justify-content-center mb-4">
-    <div v-for="(label, index) in labels"
+  <section class="d-flex flex-row flex-wrap justify-content-center mt-3">
+    <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block"
+         v-for="(label, index) in labels"
          :key="index"
          :icon="label" :class="'product-label product-label__'+ label" >
     </div>

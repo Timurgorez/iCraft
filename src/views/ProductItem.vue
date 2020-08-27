@@ -21,7 +21,12 @@
       </b-row>
       <b-row>
         <b-col cols="12" md="6" lg="6" xl="6">
-          <ProductGallery></ProductGallery>
+          <ProductGallery
+            class="d-none d-sm-none d-md-block d-lg-block d-xl-block"
+          ></ProductGallery>
+          <ProductGalleryMobile
+            class="d-xl-none d-lg-none d-md-none d-sm-block d-block"
+          ></ProductGalleryMobile>
           <ProductLabels :labels="product.labels"></ProductLabels>
         </b-col>
         <b-col cols="12" md="6" lg="6" xl="6">
@@ -317,6 +322,7 @@ import ProductLabels from "@/components/ProductInfo/ProductLabels";
 import ProductGallery from "@/components/ProductInfo/ProductGallery";
 import Footer from "../components/Footer/Footer.vue";
 import ProductSlider from "../components/StaticComponents/ProductSlider/ProductSlider.vue";
+import ProductGalleryMobile from "@/components/ProductInfo/ProductGalleryMobile";
 
 export default {
   name: "ProductItem",
@@ -335,6 +341,7 @@ export default {
     };
   },
   components: {
+    ProductGalleryMobile,
     ProductGallery,
     ProductLabels,
     SellerInfo,
