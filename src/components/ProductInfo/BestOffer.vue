@@ -172,4 +172,5 @@ span.best-offer__final-price__discount {
     font-size: 16px;
   }
 }
+
 </style>

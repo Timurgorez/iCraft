@@ -1,6 +1,7 @@
 <template>
   <div class="product-item">
     <HeaderWhite />
+    <notifications group="app" position="top center"/>
     <b-container class="product-max-container">
       <b-row>
         <b-col cols="12">
@@ -53,7 +54,7 @@
 
                 <template slot="increment">+</template>
               </integer-plusminus>
-              <span>Only 1 Avaliable</span>
+              <span>Only {{product.available}} Avaliable</span>
             </div>
 
             <div class="custom-request">
@@ -308,12 +309,12 @@ export default {
       popoverCustomRequest: false,
 
       quantity_min: 1,
-      quantity_max: 15,
+      
       quantity_step: 1,
       model_quantity: 1,
 
-      model_size: "",
-      model_color: ""
+      model_size: "M",
+      model_color: "red",
     };
   },
   components: {
@@ -336,10 +337,52 @@ export default {
   },
   methods: {
     addToBagHandler() {
-      console.log("addToBagHandler");
+      const product = {
+        id: this.id,
+        count: this.model_quantity,
+        size: this.model_size,
+        color: this.model_color
+      }
+      console.log(this.checkProductInBag(this.id));
+      if(this.checkProductInBag(product)){
+        this.$notify({
+          group: 'app',
+          type: 'warn',
+          title: 'WARNING',
+          text: 'This item you already have in your bag!',
+          duration: 50000,
+        });
+      }else{
+        this.$notify({
+          group: 'app',
+          type: 'success',
+          title: 'SUCCESS',
+          text: 'Item was added to your bag!',
+          duration: 50000,
+        });
+        this.$store.dispatch('addProductToBag', product);
+      }
+      this.model_quantity = 1;
+    },
+    checkProductInBag(product){
+      let check = false;
+      this.$store.state.product.productInBag.map((el) => {
+          if(el.id === product.id && el.size === product.size && el.color === product.color) check = true;
+      })
+      return check;
     },
     buyNowHandler() {
       console.log("buyNowHandler");
+      const productToAdd = {
+        id: this.id,
+        count: this.model_quantity,
+        size: this.model_size,
+        color: this.model_color
+      }
+      
+      this.$store.dispatch('addProductToBag', productToAdd);
+      this.model_quantity = 1;
+      this.$router.push('/shopping-bag');
     },
     addToBagBestOfferHandler() {
       console.log("addToBagBestOfferHandler");
@@ -357,9 +400,19 @@ export default {
       this.model_color = model_color;
     }
   },
+  watch:{
+    id(){
+      this.model_quantity = 1;
+      this.model_size = "M";
+      this.model_color = "red";
+    }
+  },
   computed: {
     product() {
       return this.$store.getters.product(this.id);
+    },
+    quantity_max(){
+      return this.product.available;
     }
   }
 };
@@ -380,6 +433,7 @@ export default {
   margin-bottom: 40px;
   margin-top: 10px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   span {
     font-family: $font_montserrat_regular;
@@ -743,6 +797,8 @@ export default {
     color: $text_color;
   }
 }
+
+
 
 
 @media only screen and (max-width: 480px) {

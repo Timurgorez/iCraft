@@ -38,7 +38,6 @@
 
 <script>
 
-
 export default {
     name: 'WhyBuyHere',
     data() {
@@ -53,6 +52,9 @@ export default {
          
     },
     methods:{
+        
+    },
+    computed: {
         
     }
 }
