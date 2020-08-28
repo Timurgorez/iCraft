@@ -1,40 +1,60 @@
 <template>
-  <b-row class="table-product">
-    <b-col cols="6">
-      <p>title 1</p>
-    </b-col>
-    <b-col cols="2">
-      <p>title 2</p>
-    </b-col>
-    <b-col cols="2">
-      <p>title 3</p>
-    </b-col>
-    <b-col cols="2">
-      <p>title 4</p>
-    </b-col>
-  </b-row>
+  <b-container class="order-summary">
+    <b-row class="checkout-table__head d-flex" align-v="center">
+      <b-col cols="12">
+        <span>Order Summary</span>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col cols="12" class="text-right">
+        <p>Sub-total: <span>$145.00</span></p>
+        <p>Discounts: <span>-$45.00</span></p>
+        <p>DExpedited Shipping (by UPS): <span>$15.00</span></p>
+        <p>Expedited Shipping (by Canada Post): <span>$25.00</span></p>
+        <p>Insurance: <span>$25.00</span></p>
+        <p>Total (CAD): <span>$115.00</span></p>
+        <p>(You Save $45)</p>
+        <RedButton
+          text="PROCEED TO CHECKOUT"
+          iconClass="accepted-icon"
+          :animate="true"
+          customClass="buy-now__btn"
+          @clickHandler="proceedToCheckoutHandler"
+        />
+        <p>Additional duties & taxes may apply</p>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
+import RedButton from "../Buttons/RedButton.vue";
+
 export default {
-  name: "TableProduct",
+  name: "OrderSummary",
   data() {
     return {};
   },
   props: {},
-  components: {},
-  methods: {},
-  created() {
-    window.addEventListener("scroll", this.onScroll);
+  components: {
+    RedButton
   },
-  destroyed() {
-    window.removeEventListener("scroll", this.onScroll);
-  }
+  methods: {
+    proceedToCheckoutHandler() {
+      console.log("proceedToCheckoutHandler");
+    }
+  },
+  created() {},
+  destroyed() {}
 };
 </script>
 
 <style scoped lang="scss">
-.table-product {
+.order-summary {
+}
+.text-right {
+  border: 1px solid #d7d7d7;
+  border-top: none;
 }
 
 @media only screen and (max-width: 480px) {
