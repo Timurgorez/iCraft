@@ -161,13 +161,13 @@ export default {
   }
 
   h1 {
-    font-family: $font_didot;
-    font-size: 36px;
-    font-weight: bold;
+    font-family: $font_neue_kabel;
+    font-size: 40px;
+    font-weight: 500;
     font-stretch: normal;
     font-style: normal;
-    line-height: 1.11;
-    letter-spacing: 2.4px;
+    line-height: 0.75;
+    letter-spacing: normal;
     text-align: center;
     color: $text_color;
     text-transform: uppercase;
@@ -192,10 +192,13 @@ export default {
   text-align: center;
 
   h3 {
-    font-family: $font_didot;
-    font-size: 1.875rem;
-    line-height: 1;
-    letter-spacing: 2px;
+    font-family: $font_neue_kabel;
+    font-size: 32px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.94;
+    letter-spacing: normal;
     text-align: center;
     color: $text_color;
     margin-bottom: 20px;
@@ -239,7 +242,7 @@ export default {
 }
 
 .footer-subscribe-block__title {
-  font-family: $font_didot;
+  font-family: $font_neue_kabel;
   font-size: 32px;
   font-weight: normal;
   font-stretch: normal;

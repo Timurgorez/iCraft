@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import CollectionPage from "@/views/CollectionPage";
 import ProductItem from "@/views/ProductItem";
+import BagPage from "@/views/BagPage";
 import CheckoutPage from "@/views/CheckoutPage";
 
 Vue.use(VueRouter);
@@ -24,6 +25,11 @@ export default new VueRouter({
     {
       path: "/shopping-bag",
       name: "ShoppingBag",
+      component: BagPage
+    },
+    {
+      path: '/checkout',
+      name: "CheckoutPage",
       component: CheckoutPage
     }
   ],
