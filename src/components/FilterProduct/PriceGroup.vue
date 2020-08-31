@@ -117,7 +117,8 @@ export default {
 
 <style scoped lang="scss">
 .radio-group {
-  margin-top: 10px;
+  margin-top: 5px;
+  padding-left: 25px;
 }
 
 .radio-group__radio-wrap {
@@ -129,7 +130,6 @@ export default {
   width: 100%;
   margin-bottom: 1rem;
   font-family: $font_montserrat_regular;
-  padding-right: 40px;
 }
 .radio-group__input-max,
 .radio-group__input-min {
@@ -138,11 +138,8 @@ export default {
   font-size: 14px;
   padding: 11px;
   margin: 10px 0;
-  width: 48%;
+  width: 100%;
   font-family: $font_montserrat_italic;
-}
-.radio-group__input-min {
-  margin-right: 4%;
 }
 
 .radio-group__radio-input {
@@ -155,8 +152,8 @@ export default {
     content: "";
     display: block;
     position: absolute;
-    top: 0;
-    right: 15px;
+    top: 3px;
+    left: -25px;
     width: 18px;
     height: 18px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Cpath fill='%23BC00FF' fill-rule='evenodd' d='M17.797 2.306c-.27-.27-.708-.27-.979 0L5.596 13.528 1.182 9.114c-.27-.27-.709-.27-.98 0-.27.27-.27.709 0 .979l4.904 4.904c.27.27.71.27.98 0L17.796 3.285c.27-.27.27-.709 0-.98z'/%3E%3C/svg%3E");
@@ -169,11 +166,10 @@ export default {
     flex-wrap: wrap;
   }
   .radio-group__radio {
-    margin-right: 4%;
   }
   .radio-group__radio,
   .radio-group__inputs {
-    width: 48%;
+    width: 100%;
     .radio-group__input-min,
     .radio-group__input-max {
       width: 100%;

@@ -4,8 +4,14 @@
       <b-row align-h="center" class="filter-product-block__wrapper">
         <b-col
           cols="6"
-          md="3"
+          md="2"
           class="centered filter-product-block-wrap"
+          :style="{
+            backgroundColor:
+              showAllFilters.includes('priceFilter') && showFilter && isMobile
+                ? '#7f13a6'
+                : 'transparent'
+          }"
           @click.stop="openPriceFilter"
         >
           <div class="filter-product-block__one-filter">
@@ -18,14 +24,17 @@
         </b-col>
         <b-col
           cols="6"
-          md="3"
+          md="4"
           class="centered filter-product-block-wrap"
+          :style="{
+            backgroundColor:
+              showAllFilters.includes('colorFilter') && showFilter && isMobile
+                ? '#7f13a6'
+                : 'transparent'
+          }"
           @click.stop="openColorFilter"
         >
-          <div
-            class="filter-product-block__one-filter"
-            style="margin-top: -5px"
-          >
+          <div class="filter-product-block__one-filter">
             <span
               class="filter-product-block__text d-flex align-content-center align-items-center"
             >
@@ -63,6 +72,14 @@
           cols="6"
           md="4"
           class="centered filter-product-block-wrap"
+          :style="{
+            backgroundColor:
+              showAllFilters.includes('categoryFilter') &&
+              showFilter &&
+              isMobile
+                ? '#7f13a6'
+                : 'transparent'
+          }"
           @click.stop="openCategoryFilter"
         >
           <div class="filter-product-block__one-filter">
@@ -77,6 +94,12 @@
           cols="6"
           md="2"
           class="centered filter-product-block-wrap"
+          :style="{
+            backgroundColor:
+              showAllFilters.includes('sortFilter') && showFilter && isMobile
+                ? '#7f13a6'
+                : 'transparent'
+          }"
           @click.stop="openSortFilter"
         >
           <div class="filter-product-block__one-filter justify-content-start">
@@ -100,7 +123,7 @@
               <b-col
                 v-show="showAllFilters.includes('priceFilter')"
                 cols="12"
-                md="3"
+                md="2"
                 class="filter-block__filter-price"
               >
                 <p class="filter-block__mobile">Price range</p>
@@ -114,7 +137,7 @@
               <b-col
                 v-show="showAllFilters.includes('colorFilter')"
                 cols="12"
-                md="3"
+                md="4"
                 class="filter-block__filter-color"
                 @click="openColorFilter"
               >
@@ -257,11 +280,12 @@ export default {
       selected_colors: [],
       countOfColors: [],
       showAllFilters: [
-        "priceFilter",
         "colorFilter",
-        "categoryFilter",
-        "sortFilter"
-      ]
+        "sortFilter",
+        "priceFilter",
+        "categoryFilter"
+      ],
+      isMobile: false
     };
   },
   methods: {
@@ -296,6 +320,7 @@ export default {
         ".filter-product-block__wrapper"
       );
       const filterChild = document.querySelector(".filter-block__inner-wrap");
+      const filterTop = document.querySelector(".filter-product-block");
 
       if (
         window.innerWidth <= 768 &&
@@ -304,10 +329,17 @@ export default {
         if (!this.showFilter || this.showAllFilters.includes(filterName))
           this.showFilter = !this.showFilter;
         this.showAllFilters = [filterName];
-        if (!this.showFilter) filter.style.height = "0px";
+        if (!this.showFilter) {
+          filter.style.height = "0px";
+          // this.showAllFilters = [];
+        }
       } else if (e.target.closest(".filter-product-block-wrap")) {
         this.showFilter = !this.showFilter;
-        if (!this.showFilter) filter.style.height = "0px";
+
+        if (!this.showFilter) {
+          // this.showAllFilters = [];
+          filter.style.height = "0px";
+        }
       }
       setTimeout(() => {
         if (
@@ -317,8 +349,16 @@ export default {
         ) {
           filter.style.height =
             window.innerHeight - filterOpener.offsetHeight + "px";
+          window.scrollTo({
+            top: filterTop.offsetTop,
+            behavior: "smooth"
+          });
         } else if (this.showFilter) {
           filter.style.height = filterChild.offsetHeight + "px";
+          window.scrollTo({
+            top: filterTop.offsetTop,
+            behavior: "smooth"
+          });
         }
       }, 0);
     },
@@ -340,6 +380,11 @@ export default {
       this.openFilter("priceFilter", e);
     },
     resizeHandler(e) {
+      if (e.target.innerWidth <= 768) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
       if (e.target.innerWidth > 768) {
         this.showAllFilters = [
           "priceFilter",
@@ -476,6 +521,7 @@ export default {
   },
   created() {
     window.addEventListener("resize", this.resizeHandler);
+    if (window.innerWidth <= 768) this.isMobile = true;
   },
   destroyed() {
     window.removeEventListener("resize", this.resizeHandler);
@@ -511,7 +557,7 @@ export default {
   width: 15px;
   height: 8px;
   position: absolute;
-  top: calc(50% - 6px);
+  top: calc(50% - 4px);
   right: 8px;
 }
 .filter-product-block__one-filter {
@@ -657,8 +703,8 @@ export default {
 .filter-block__filter-price,
 .filter-block__filter-sort,
 .filter-block__filter-color {
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 .filter-block__filter-price {
   padding-left: 15px;
@@ -712,6 +758,12 @@ export default {
   .filter-block__filter-color {
     padding-left: 15px;
     padding-right: 15px;
+  }
+  .filter-block__inner-wrap {
+    padding-top: 0;
+  }
+  .filter-product-block-wrap {
+    max-height: 50px;
   }
 }
 

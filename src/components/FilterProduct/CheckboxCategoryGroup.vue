@@ -114,7 +114,7 @@ export default {
 
 .checkbox-category-group__category-wrap {
   width: 33.3%;
-  padding-right: 40px;
+  padding-left: 30px;
 }
 .checkbox-category-group__category-wrap:first-child {
   width: 100%;
@@ -143,7 +143,7 @@ export default {
     display: block;
     position: absolute;
     top: 0;
-    right: -20px;
+    left: -25px;
     width: 18px;
     height: 18px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Cpath fill='%23BC00FF' fill-rule='evenodd' d='M17.797 2.306c-.27-.27-.708-.27-.979 0L5.596 13.528 1.182 9.114c-.27-.27-.709-.27-.98 0-.27.27-.27.709 0 .979l4.904 4.904c.27.27.71.27.98 0L17.796 3.285c.27-.27.27-.709 0-.98z'/%3E%3C/svg%3E");

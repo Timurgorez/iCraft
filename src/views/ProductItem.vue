@@ -446,12 +446,12 @@ export default {
 </script>
 <style scoped lang="scss">
 .main-actions h3 {
-  font-family: $font_montserrat_regular;
-  font-size: 26px;
-  font-weight: normal;
+  font-family: $font_neue_kabel;
+  font-size: 30px;
+  font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.35;
+  line-height: 1;
   letter-spacing: normal;
   color: $text_color;
   margin-bottom: 0;
