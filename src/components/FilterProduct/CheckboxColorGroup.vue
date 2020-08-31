@@ -114,7 +114,7 @@ export default {
   position: relative;
   width: 42px;
   height: 42px;
-  margin: 20px;
+  margin: 15px;
   border-radius: 2px;
 }
 .checkbox-color-group__color-wrap:first-child {
@@ -148,6 +148,10 @@ export default {
   }
 }
 
+.checkbox-color-group__label[for="color-all"] {
+  padding-left: 20px;
+}
+
 .checkbox-color-group__input {
   display: none;
   &:checked + .checkbox-color-group__label {
@@ -158,7 +162,7 @@ export default {
     display: block;
     position: absolute;
     top: 0;
-    right: -5px;
+    left: -5px;
     width: 16px;
     height: 16px;
     border-radius: 50%;
