@@ -232,6 +232,7 @@ export default {
 .price__new,
 .price__old {
   display: inline-block;
+  width: 100%;
 }
 .price__old {
   font-family: $font_montserrat_medium;
