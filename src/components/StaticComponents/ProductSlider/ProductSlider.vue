@@ -129,13 +129,13 @@ export default {
 }
 
 .product-slider__title {
-  font-family: $font_didot;
+  font-family: $font_neue_kabel;
   font-size: 32px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1;
-  letter-spacing: 2px;
+  line-height: 0.94;
+  letter-spacing: normal;
   text-align: center;
   color: $text_color;
   padding: 50px 50px 20px;
