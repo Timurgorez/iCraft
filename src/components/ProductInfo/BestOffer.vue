@@ -13,8 +13,8 @@
       <div
         v-if="index < getBestOffer.length - 1"
         class="best-offer__plus"
-      ></div>
-      <div v-else class="best-offer__equal"></div>
+      >+</div>
+      <div v-else class="best-offer__equal">=</div>
     </div>
     <div class="best-offer__final-price">
       <div>
@@ -77,8 +77,8 @@ export default {
 }
 
 .best-offer__img {
-  width: 170px;
-  height: 142px;
+  width: 150px;
+  height: 144px;
   border-radius: 6px;
   border: 1px solid $border_grey_color;
   background-size: cover;
@@ -89,54 +89,60 @@ export default {
   width: 40px;
   height: 100%;
   position: relative;
-  text-align: center;
-  &:after {
-    content: "";
-    background-color: #000;
-    width: 3px;
-    height: 26px;
-    display: block;
-    position: absolute;
-    top: calc(50% - 13px);
-    left: calc(50% - 1.5px);
-  }
-  &:before {
-    content: "";
-    background-color: #000;
-    width: 26px;
-    height: 3px;
-    display: block;
-    position: absolute;
-    top: calc(50% - 1.5px);
-    left: 7px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  // &:after {
+  //   content: "";
+  //   background-color: #000;
+  //   width: 3px;
+  //   height: 26px;
+  //   display: block;
+  //   position: absolute;
+  //   top: calc(50% - 13px);
+  //   left: calc(50% - 1.5px);
+  // }
+  // &:before {
+  //   content: "";
+  //   background-color: #000;
+  //   width: 26px;
+  //   height: 3px;
+  //   display: block;
+  //   position: absolute;
+  //   top: calc(50% - 1.5px);
+  //   left: 7px;
+  // }
 }
 
 .best-offer__equal {
   width: 40px;
   height: 100%;
   position: relative;
-  text-align: center;
-  &:after {
-    content: "";
-    background-color: #000;
-    width: 20px;
-    height: 4px;
-    display: block;
-    position: absolute;
-    top: calc(50% - 8px);
-    left: 10px;
-  }
-  &:before {
-    content: "";
-    background-color: #000;
-    width: 20px;
-    height: 4px;
-    display: block;
-    position: absolute;
-    top: calc(50% + 8px);
-    left: 10px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  // &:after {
+  //   content: "";
+  //   background-color: #000;
+  //   width: 20px;
+  //   height: 4px;
+  //   display: block;
+  //   position: absolute;
+  //   top: calc(50% - 8px);
+  //   left: 10px;
+  // }
+  // &:before {
+  //   content: "";
+  //   background-color: #000;
+  //   width: 20px;
+  //   height: 4px;
+  //   display: block;
+  //   position: absolute;
+  //   top: calc(50% + 8px);
+  //   left: 10px;
+  // }
 }
 
 .best-offer__final-price {

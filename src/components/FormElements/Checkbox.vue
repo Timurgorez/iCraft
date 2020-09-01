@@ -1,14 +1,14 @@
 <template>
   <div :class="['checkbox-wrap', this.wrapClass]">
     <input
-      :id="this.id"
+      :id="id"
       type="checkbox"
       :name="this.inputName"
       :value="this.value"
       @change="onChange"
       :checked="this.checked"
     />
-    <label :for="this.id" class="checkbox-wrap__label">
+    <label :for="id" class="checkbox-wrap__label">
       {{ this.labelText }}
     </label>
     <div class="error-msg">{{ this.errorMsg }}</div>

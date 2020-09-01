@@ -3,18 +3,18 @@
     <span>Size:</span>
     <div
       class="size-choose__wrap-input"
-      v-for="(size, index) in this.product_size"
+      v-for="(size, index) in  product_size"
       :key="index"
     >
       <input
         class="size-choose__radio-input"
-        :id="'size-choose' + index"
+        :id="'size-choose-' + product.id + '_' + index"
         v-model="model_size"
         type="radio"
-        name="size-choose"
+        :name="'size-choose-' + product.id"
         :value="size"
       />
-      <label class="size-choose__radio-label" :for="'size-choose' + index">{{
+      <label class="size-choose__radio-label" :for="'size-choose-' + product.id + '_' + index">{{
         size
       }}</label>
     </div>
@@ -27,10 +27,12 @@ export default {
   data() {
     return {
       product_size: ["S", "M", "L", "XL"],
-      model_size: "M"
+      model_size: "S"
     };
   },
-  props: {},
+  props: {
+    product: Object
+  },
   components: {},
   methods: {},
   watch: {

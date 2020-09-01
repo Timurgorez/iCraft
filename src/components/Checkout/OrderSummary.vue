@@ -7,8 +7,8 @@
     </b-row>
     <b-row>
       <b-col cols="12" class="text-right">
-        <p>Sub-total: <span>$145.00</span></p>
-        <p>Discounts: <span>-$45.00</span></p>
+        <p>Sub-total: <span>$ {{sumPriceWithoutDiscount}}</span></p>
+        <p>Discounts: <span>-$ {{sumPriceWithDiscount}}</span></p>
         <p>DExpedited Shipping (by UPS): <span>$15.00</span></p>
         <p>Expedited Shipping (by Canada Post): <span>$25.00</span></p>
         <p>Insurance: <span>$25.00</span></p>
@@ -42,6 +42,23 @@ export default {
   methods: {
     proceedToCheckoutHandler() {
       console.log("proceedToCheckoutHandler");
+      this.$router.push('/checkout')
+    }
+  },
+  computed:{
+    sumPriceWithoutDiscount(){
+      let sum = 0;
+      this.$store.getters.getProductsInBag.forEach(el => {
+        sum += this.$store.getters.product(el.id).price.old * el.count;
+      });
+      return sum;
+    },
+    sumPriceWithDiscount(){
+      let sum = 0;
+      this.$store.getters.getProductsInBag.forEach(el => {
+        sum += this.$store.getters.product(el.id).price.new * el.count;
+      });
+      return sum;
     }
   },
   created() {},

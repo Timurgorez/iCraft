@@ -13,10 +13,10 @@
         <div class="desc-block">
           <h3 class="desc-block__title">{{ product.name }}</h3>
           <div class="color">
-            <ColorChoose @model_color="model_color_trigger" />
+            <ColorChoose @model_color="model_color_trigger" :product="product"/>
           </div>
           <div class="size">
-            <SizeChoose @model_size="model_size_trigger" />
+            <SizeChoose @model_size="model_size_trigger" :product="product"/>
             <span>Sizing Chart</span>
           </div>
 
@@ -24,16 +24,15 @@
             <Checkbox
               labelText="This will be a gift"
               inputName="gift-order"
-              id="gift-order"
+              :id="'gift-order-' + product.id"
               value="gift-order"
               @changeHandler="customGiftHandler"
             />
-            <div class="custom-request__hint" id="popover-gift__hint"></div>
+            <div class="custom-request__hint" :id="'popover-gift__hint' + product.id"></div>
 
             <b-popover
               custom-class="custom-popover"
-              target="popover-gift__hint"
-              :show.sync="popoverGift"
+              :target="'popover-gift__hint' + product.id"
               triggers="hover"
             >
               <h4>Placing Custom Orders</h4>
@@ -46,19 +45,18 @@
             <Checkbox
               labelText="This is a Custom Order"
               inputName="custom-order"
-              id="custom-order"
+              :id="'custom-order-' + product.id"
               value="custom-order"
               @changeHandler="customRequstHandler"
             />
             <div
               class="custom-request__hint"
-              id="popover-custom-request__hint"
+              :id="'popover-custom-request__hint' + product.id"
             ></div>
 
             <b-popover
               custom-class="custom-popover"
-              target="popover-custom-request__hint"
-              :show.sync="popoverCustomRequest"
+              :target="'popover-custom-request__hint' + product.id"
               triggers="hover"
             >
               <h4>Placing Custom Orders</h4>
@@ -131,11 +129,13 @@ export default {
       quantity_step: 1,
       model_quantity: this.product.count,
 
-      model_size: "M",
-      model_color: "red",
 
-      popoverCustomRequest: false,
-      popoverGift: false
+      // model_size: this.product.size,
+      // model_color: this.product.color,
+
+
+      countSumPrice: this.product.price.new * this.product.count
+
     };
   },
   props: {
@@ -159,26 +159,25 @@ export default {
       console.log("noteHandler");
     },
     model_size_trigger(model_size) {
-      this.model_size = model_size;
+      this.product.size = model_size;
     },
     model_color_trigger(model_color) {
-      this.model_color = model_color;
+      this.product.color = model_color;
     }
   },
   computed: {
     quantity_max() {
       return this.product.available;
     },
-    countSumPrice() {
-      return this.product.price.new * this.product.count;
-    }
   },
   watch: {
-    countSumPrice() {
-      return this.product.price.new * this.product.count;
+    model_quantity(value){
+      // this.$state.productInBag
+      this.countSumPrice = this.product.price.new * value;
     }
   },
   created() {
+    console.log('Bag product ->', this.product);
     window.addEventListener("scroll", this.onScroll);
   },
   destroyed() {

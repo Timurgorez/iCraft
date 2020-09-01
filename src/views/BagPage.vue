@@ -35,9 +35,9 @@
               </b-col>
             </b-row>
             <TableProduct
-              v-for="item in products"
-              :product="item"
-              :key="item.id + Math.random().toString(16)"
+              v-for="product in products"
+              :product="product"
+              :key="product.id + Math.random().toString(16)"
             />
           </b-container>
         </b-col>

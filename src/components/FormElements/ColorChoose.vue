@@ -3,22 +3,22 @@
     <span>Color:</span>
     <div
       class="color-choose__wrap-input"
-      v-for="(color, index) in this.product_color"
+      v-for="(color, index) in product_color"
       :key="index"
       :ref="'color-choose' + index"
     >
       <input
         class="color-choose__radio-input"
-        :id="'color-choose' + index"
+        :id="'color-choose-' + product.id + '_' + index"
         v-model="model_color"
         type="radio"
-        name="color-choose"
+        :name="'color-choose-' + product.id"
         :value="color.color"
       />
       <label
         :style="{ backgroundImage: 'url(' + color.url + ')' }"
         class="color-choose__radio-label"
-        :for="'color-choose' + index"
+        :for="'color-choose-' + product.id + '_' + index"
       ></label>
       <b-tooltip
         :target="() => $refs['color-choose' + index]"
@@ -54,7 +54,9 @@ export default {
       model_color: "red"
     };
   },
-  props: {},
+  props: {
+    product: Object
+  },
   components: {},
   methods: {},
   watch: {

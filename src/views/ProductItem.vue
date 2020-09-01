@@ -6,7 +6,6 @@
       classes="custom-notification"
       group="app"
       position="top center"
-      width="600px"
     />
     <b-container class="product-max-container">
       <b-row>
@@ -47,10 +46,10 @@
               Save $20.00 (15%) + Free Shipping to Canada
             </p>
             <div class="color">
-              <ColorChoose @model_color="model_color_trigger" />
+              <ColorChoose @model_color="model_color_trigger" :product="product" />
             </div>
             <div class="size">
-              <SizeChoose @model_size="model_size_trigger" />
+              <SizeChoose @model_size="model_size_trigger" :product="product" />
               <span>Sizing Chart</span>
             </div>
 
@@ -388,7 +387,7 @@ export default {
     },
     checkProductInBag(product) {
       let check = false;
-      this.$store.state.product.productInBag.map(el => {
+      this.$store.state.shoppingBag.productInBag.map(el => {
         if (
           el.id === product.id &&
           el.size === product.size &&
