@@ -1,6 +1,6 @@
 export default {
   state: {
-    productInBag: []
+    sellers: []
   },
   mutations: {
     addToBag(state, payload) {
@@ -45,11 +45,15 @@ export default {
     }
   },
   getters: {
-    getProductsInBag(state) {
+    getSellers(state) {
       return state.productInBag;
     },
-    countProductsInBag(state) {
-      return state.productInBag.length;
+    getSeller(state) {
+      return (sellerId) => {
+        return state.sellers.find((seller) => {
+            return seller.id == sellerId
+        })
+      }
     }
   }
 };

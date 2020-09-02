@@ -98,6 +98,13 @@ body {
   min-width: 40px;
   padding: 0 5px;
 }
+.int-pm-decrement,
+.int-pm-increment{
+  color: #000;
+}
+.int-pm .int-pm-btn.disabled{
+  color: #d6d6d6;
+}
 
 ::v-deep .custom-notification {
   padding: 20px 65px;

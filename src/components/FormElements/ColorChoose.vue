@@ -41,6 +41,10 @@ export default {
       type: String,
       default: "red"
     },
+    one: {
+      type:Boolean,
+      default: false 
+    },
     productColors: {
       type: Array,
       default: () => {

@@ -2,16 +2,16 @@
   <div :class="['note-seller-wrap', this.wrapClass]">
     <label :for="this.id" class="note-seller__label">
       {{ this.labelText }}
-
+    </label>
       <textarea
         :id="this.id"
         :name="this.inputName"
-        :value="this.value"
-        @change="onChange"
+        v-model="value"
         rows="2"
         cols="35"
+        :placeholder="this.placeholder"
       ></textarea>
-    </label>
+    
     <div class="error-msg">{{ this.errorMsg }}</div>
   </div>
 </template>
@@ -20,10 +20,13 @@
 export default {
   name: "NoteForSeller",
   data() {
-    return {};
+    return {
+      value: ''
+    };
   },
   props: {
     labelText: String,
+    placeholder:String,
     inputName: String,
     wrapClass: String,
     checked: {
@@ -31,13 +34,18 @@ export default {
       default: false
     },
     id: String,
-    value: String,
     errorMsg: String
   },
   components: {},
   methods: {
-    onChange(e) {
-      this.$emit("changeHandler", e);
+    // onChange(e) {
+    //   console.log(e);
+    //   this.$emit("changeHandler", e);
+    // }
+  },
+  watch:{
+    value(val){
+      this.$emit("changeHandler", val);
     }
   }
 };

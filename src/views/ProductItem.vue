@@ -11,10 +11,12 @@
       <b-row>
         <b-col cols="12">
           <div class="back-to-products">
-            <a href="/" class="back-to-products__link"
-              ><span class="back-to-products__icon"></span>Back To All
-              Products</a
-            >
+            <router-link
+              :to="{ name: 'CollectionPage' }"
+              class="back-to-products__link"
+            ><span class="back-to-products__icon"></span>Back To All
+              Products
+            </router-link>
           </div>
         </b-col>
       </b-row>

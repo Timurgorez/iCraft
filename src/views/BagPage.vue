@@ -13,19 +13,19 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col cols="12" lg="8" xl="8">
+        <b-col cols="12" xl="8">
           <b-container fluid>
             <b-row class="checkout-table__head d-flex" align-v="center">
               <b-col cols="6">
                 <span>Product</span>
               </b-col>
-              <b-col cols="2">
+              <b-col cols="2" class="d-md-none d-lg-block">
                 <span>Quantity</span>
               </b-col>
-              <b-col cols="2">
+              <b-col cols="2" class="d-md-none d-lg-block">
                 <span>Price</span>
               </b-col>
-              <b-col cols="2">
+              <b-col cols="2" class="d-md-none d-lg-block">
                 <span>Amount</span>
               </b-col>
             </b-row>
@@ -41,8 +41,8 @@
             />
           </b-container>
         </b-col>
-        <b-col cols="12" lg="4" xl="4">
-          <OrderSummary />
+        <b-col cols="12" xl="4">
+          <OrderSummary :products="products"/>
         </b-col>
       </b-row>
     </b-container>
@@ -62,7 +62,6 @@ export default {
   props: "",
   data() {
     return {
-      // products: []
     };
   },
   components: {
@@ -88,11 +87,7 @@ export default {
     }
   },
   created() {
-    // this.$store.getters.getProductsInBag.forEach(el => {
-    //   const prod = Object.assign({}, this.$store.getters.product(el.prodId));
-    //   prod["bag"] = el;
-    //   this.products.push(prod);
-    // });
+    
   }
 };
 </script>
