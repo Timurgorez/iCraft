@@ -46,10 +46,16 @@
               Save $20.00 (15%) + Free Shipping to Canada
             </p>
             <div class="color">
-              <ColorChoose @model_color="model_color_trigger" :product="product" />
+              <ColorChoose
+                @model_color="model_color_trigger"
+                :initialColor="model_color"
+              />
             </div>
             <div class="size">
-              <SizeChoose @model_size="model_size_trigger" :product="product" />
+              <SizeChoose
+                @model_size="model_size_trigger"
+                :initialSize="model_size"
+              />
               <span>Sizing Chart</span>
             </div>
 
@@ -335,7 +341,7 @@ export default {
       quantity_step: 1,
       model_quantity: 1,
 
-      model_size: "M",
+      model_size: "S",
       model_color: "red"
     };
   },
@@ -361,12 +367,12 @@ export default {
   methods: {
     addToBagHandler() {
       const product = {
-        id: this.id,
+        id: `f${(~~(Math.random() * 1e8)).toString(16)}`,
+        prodId: this.id,
         count: this.model_quantity,
         size: this.model_size,
         color: this.model_color
       };
-      console.log(this.checkProductInBag(this.id));
       if (this.checkProductInBag(product)) {
         this.$notify({
           group: "app",
@@ -389,7 +395,7 @@ export default {
       let check = false;
       this.$store.state.shoppingBag.productInBag.map(el => {
         if (
-          el.id === product.id &&
+          el.prodId === product.prodId &&
           el.size === product.size &&
           el.color === product.color
         )
@@ -400,7 +406,8 @@ export default {
     buyNowHandler() {
       console.log("buyNowHandler");
       const productToAdd = {
-        id: this.id,
+        id: `f${(~~(Math.random() * 1e8)).toString(16)}`,
+        prodId: this.id,
         count: this.model_quantity,
         size: this.model_size,
         color: this.model_color

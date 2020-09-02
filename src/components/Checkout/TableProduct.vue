@@ -1,116 +1,133 @@
 <template>
-  <b-row class="table-product">
-    <b-col cols="12" lg="6">
-      <div class="first-block">
-        <div class="img-block">
-          <div class="img-block__img">
-            <img :src="product.images[0]" :alt="product.name" />
+  <transition name="fade">
+    <b-row class="table-product">
+      <b-col cols="12" lg="6">
+        <div class="first-block">
+          <div class="img-block">
+            <div class="img-block__img">
+              <img :src="product.images[0]" :alt="product.name" />
+            </div>
+            <div class="img-block__btns">
+              <button @click="removeProductFromBag(product.bag.id)">
+                Remove
+              </button>
+            </div>
           </div>
-          <div class="img-block__btns">
-            Remove
+          <div class="desc-block">
+            <h3 class="desc-block__title">{{ product.name }}</h3>
+            <div class="color">
+              <ColorChoose
+                @model_color="model_color_trigger"
+                :initialColor="product.bag.color"
+              />
+            </div>
+            <div class="size">
+              <SizeChoose
+                @model_size="model_size_trigger"
+                :initialSize="product.bag.size"
+              />
+              <span>Sizing Chart</span>
+            </div>
+
+            <div class="custom-request">
+              <Checkbox
+                labelText="This will be a gift"
+                inputName="gift-order"
+                :id="'gift-order-' + product.id"
+                value="gift-order"
+                @changeHandler="customGiftHandler"
+              />
+              <div
+                class="custom-request__hint"
+                :id="'popover-gift__hint' + product.id"
+              ></div>
+
+              <b-popover
+                custom-class="custom-popover"
+                :target="'popover-gift__hint' + product.id"
+                triggers="hover"
+              >
+                <h4>Placing Custom Orders</h4>
+                You can place a Custom Order for this item and provide seller
+                with your color and other product preferences and modifications.
+                You will be able to add this information at the Checkout.
+              </b-popover>
+            </div>
+            <div class="custom-request">
+              <Checkbox
+                labelText="This is a Custom Order"
+                inputName="custom-order"
+                :id="'custom-order-' + product.id"
+                value="custom-order"
+                @changeHandler="customRequstHandler"
+              />
+              <div
+                class="custom-request__hint"
+                :id="'popover-custom-request__hint' + product.id"
+              ></div>
+
+              <b-popover
+                custom-class="custom-popover"
+                :target="'popover-custom-request__hint' + product.id"
+                triggers="hover"
+              >
+                <h4>Placing Custom Orders</h4>
+                You can place a Custom Order for this item and provide seller
+                with your color and other product preferences and modifications.
+                You will be able to add this information at the Checkout.
+              </b-popover>
+            </div>
+            <NoteForSeller
+              labelText="Note for Seller (Optional)"
+              inputName="note-order"
+              id="note-order"
+              value="note-order"
+              @changeHandler="noteHandler"
+            />
           </div>
         </div>
-        <div class="desc-block">
-          <h3 class="desc-block__title">{{ product.name }}</h3>
-          <div class="color">
-            <ColorChoose @model_color="model_color_trigger" :product="product"/>
-          </div>
-          <div class="size">
-            <SizeChoose @model_size="model_size_trigger" :product="product"/>
-            <span>Sizing Chart</span>
-          </div>
+      </b-col>
+      <b-col cols="12" lg="2">
+        <div class="quantity">
+          <integer-plusminus
+            :min="quantity_min"
+            :max="quantity_max"
+            :step="quantity_step"
+            v-model="model_quantity"
+          >
+            {{ model_quantity }}
+            <template slot="decrement">-</template>
 
-          <div class="custom-request">
-            <Checkbox
-              labelText="This will be a gift"
-              inputName="gift-order"
-              :id="'gift-order-' + product.id"
-              value="gift-order"
-              @changeHandler="customGiftHandler"
-            />
-            <div class="custom-request__hint" :id="'popover-gift__hint' + product.id"></div>
-
-            <b-popover
-              custom-class="custom-popover"
-              :target="'popover-gift__hint' + product.id"
-              triggers="hover"
-            >
-              <h4>Placing Custom Orders</h4>
-              You can place a Custom Order for this item and provide seller with
-              your color and other product preferences and modifications. You
-              will be able to add this information at the Checkout.
-            </b-popover>
-          </div>
-          <div class="custom-request">
-            <Checkbox
-              labelText="This is a Custom Order"
-              inputName="custom-order"
-              :id="'custom-order-' + product.id"
-              value="custom-order"
-              @changeHandler="customRequstHandler"
-            />
-            <div
-              class="custom-request__hint"
-              :id="'popover-custom-request__hint' + product.id"
-            ></div>
-
-            <b-popover
-              custom-class="custom-popover"
-              :target="'popover-custom-request__hint' + product.id"
-              triggers="hover"
-            >
-              <h4>Placing Custom Orders</h4>
-              You can place a Custom Order for this item and provide seller with
-              your color and other product preferences and modifications. You
-              will be able to add this information at the Checkout.
-            </b-popover>
-          </div>
-          <NoteForSeller
-            labelText="Note for Seller (Optional)"
-            inputName="note-order"
-            id="note-order"
-            value="note-order"
-            @changeHandler="noteHandler"
-          />
+            <template slot="increment">+</template>
+          </integer-plusminus>
+          <span class="quantity-available"
+            >Only {{ product.available }} Avaliable</span
+          >
         </div>
-      </div>
-    </b-col>
-    <b-col cols="12" lg="2">
-      <div class="quantity">
-        <integer-plusminus
-          :min="quantity_min"
-          :max="quantity_max"
-          :step="quantity_step"
-          v-model="model_quantity"
+      </b-col>
+      <b-col cols="12" lg="2">
+        <div class="price">
+          <span class="price__new"
+            >$ {{ product.price.new }}
+            <span class="price__currency">{{
+              product.price.currency_code
+            }}</span>
+          </span>
+          <span class="price__old"
+            >$ {{ product.price.old }}
+            <span class="price__currency">{{
+              product.price.currency_code
+            }}</span>
+          </span>
+        </div>
+      </b-col>
+      <b-col cols="12" lg="2">
+        <span class="count-sum-price">
+          $ {{ countSumPrice }} {{ product.price.currency_code }}</span
         >
-          {{ model_quantity }}
-          <template slot="decrement">-</template>
-
-          <template slot="increment">+</template>
-        </integer-plusminus>
-        <span class="quantity-available"
-          >Only {{ product.available }} Avaliable</span
-        >
-      </div>
-    </b-col>
-    <b-col cols="12" lg="2">
-      <div class="price">
-        <span class="price__new"
-          >$ {{ product.price.new }}
-          <span class="price__currency">{{ product.price.currency_code }}</span>
-        </span>
-        <span class="price__old"
-          >$ {{ product.price.old }}
-          <span class="price__currency">{{ product.price.currency_code }}</span>
-        </span>
-      </div>
-    </b-col>
-    <b-col cols="12" lg="2">
-      <span class="count-sum-price">
-        $ {{ countSumPrice }} {{ product.price.currency_code }}</span
-      >
-    </b-col>
-  </b-row>
+      </b-col>
+    </b-row>
+  </transition>
 </template>
 
 <script>
@@ -127,15 +144,9 @@ export default {
       quantity_min: 1,
 
       quantity_step: 1,
-      model_quantity: this.product.count,
+      model_quantity: this.product.bag.count,
 
-
-      // model_size: this.product.size,
-      // model_color: this.product.color,
-
-
-      countSumPrice: this.product.price.new * this.product.count
-
+      countSumPrice: this.product.price.new * this.product.bag.count
     };
   },
   props: {
@@ -159,25 +170,41 @@ export default {
       console.log("noteHandler");
     },
     model_size_trigger(model_size) {
-      this.product.size = model_size;
+      this.$store.commit("modifyFieldInBag", {
+        id: this.product.bag.id,
+        name: "size",
+        value: model_size
+      });
     },
     model_color_trigger(model_color) {
-      this.product.color = model_color;
+      this.$store.commit("modifyFieldInBag", {
+        id: this.product.bag.id,
+        name: "color",
+        value: model_color
+      });
+    },
+    removeProductFromBag(id) {
+      console.log(id);
+      this.$store.commit("removeProductFromBag", id);
     }
   },
   computed: {
     quantity_max() {
       return this.product.available;
-    },
+    }
   },
   watch: {
-    model_quantity(value){
-      // this.$state.productInBag
+    model_quantity(value) {
+      this.$store.commit("modifyFieldInBag", {
+        id: this.product.bag.id,
+        name: "count",
+        value: value
+      });
       this.countSumPrice = this.product.price.new * value;
     }
   },
   created() {
-    console.log('Bag product ->', this.product);
+    console.log("Bag product ->", this.product);
     window.addEventListener("scroll", this.onScroll);
   },
   destroyed() {
@@ -252,6 +279,14 @@ export default {
   font-family: $font_montserrat_regular;
   font-size: 20px;
   color: $text_color;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
 }
 
 @media only screen and (max-width: 480px) {

@@ -3,18 +3,18 @@
     <span>Size:</span>
     <div
       class="size-choose__wrap-input"
-      v-for="(size, index) in  product_size"
+      v-for="(size, index) in productSizes"
       :key="index"
     >
       <input
         class="size-choose__radio-input"
-        :id="'size-choose-' + product.id + '_' + index"
+        :id="randomID + index"
         v-model="model_size"
         type="radio"
-        :name="'size-choose-' + product.id"
+        :name="randomID + index"
         :value="size"
       />
-      <label class="size-choose__radio-label" :for="'size-choose-' + product.id + '_' + index">{{
+      <label class="size-choose__radio-label" :for="randomID + index">{{
         size
       }}</label>
     </div>
@@ -26,15 +26,28 @@ export default {
   name: "SizeChoose",
   data() {
     return {
-      product_size: ["S", "M", "L", "XL"],
-      model_size: "S"
+      model_size: this.initialSize
     };
   },
   props: {
-    product: Object
+    initialSize: {
+      type: String,
+      default: "S"
+    },
+    productSizes: {
+      type: Array,
+      default: () => {
+        return ["S", "M", "L", "XL"];
+      }
+    }
   },
   components: {},
   methods: {},
+  computed: {
+    randomID() {
+      return `size-choose-${(~~(Math.random() * 1e8)).toString(16)}-`;
+    }
+  },
   watch: {
     model_size(val) {
       this.$emit("model_size", val);

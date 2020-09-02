@@ -3,22 +3,22 @@
     <span>Color:</span>
     <div
       class="color-choose__wrap-input"
-      v-for="(color, index) in product_color"
+      v-for="(color, index) in productColors"
       :key="index"
       :ref="'color-choose' + index"
     >
       <input
         class="color-choose__radio-input"
-        :id="'color-choose-' + product.id + '_' + index"
+        :id="randomID + index"
         v-model="model_color"
         type="radio"
-        :name="'color-choose-' + product.id"
+        :name="randomID + index"
         :value="color.color"
       />
       <label
         :style="{ backgroundImage: 'url(' + color.url + ')' }"
         class="color-choose__radio-label"
-        :for="'color-choose-' + product.id + '_' + index"
+        :for="randomID + index"
       ></label>
       <b-tooltip
         :target="() => $refs['color-choose' + index]"
@@ -33,32 +33,45 @@ export default {
   name: "ColorChoose",
   data() {
     return {
-      product_color: [
-        {
-          color: "red",
-          url: "./tmp/colors_of_product/img-1@2x.png"
-        },
-        {
-          color: "yellow",
-          url: "./tmp/colors_of_product/img-2@2x.png"
-        },
-        {
-          color: "green",
-          url: "./tmp/colors_of_product/img-3@2x.png"
-        },
-        {
-          color: "blue",
-          url: "./tmp/colors_of_product/img-4@2x.png"
-        }
-      ],
-      model_color: "red"
+      model_color: this.initialColor
     };
   },
   props: {
-    product: Object
+    initialColor: {
+      type: String,
+      default: "red"
+    },
+    productColors: {
+      type: Array,
+      default: () => {
+        return [
+          {
+            color: "red",
+            url: "./tmp/colors_of_product/img-1@2x.png"
+          },
+          {
+            color: "yellow",
+            url: "./tmp/colors_of_product/img-2@2x.png"
+          },
+          {
+            color: "green",
+            url: "./tmp/colors_of_product/img-3@2x.png"
+          },
+          {
+            color: "blue",
+            url: "./tmp/colors_of_product/img-4@2x.png"
+          }
+        ];
+      }
+    }
   },
   components: {},
   methods: {},
+  computed: {
+    randomID() {
+      return `color-choose-${(~~(Math.random() * 1e8)).toString(16)}-`;
+    }
+  },
   watch: {
     model_color(val) {
       this.$emit("model_color", val);

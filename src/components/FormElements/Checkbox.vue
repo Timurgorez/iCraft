@@ -1,14 +1,14 @@
 <template>
   <div :class="['checkbox-wrap', this.wrapClass]">
     <input
-      :id="id"
+      :id="randomID"
       type="checkbox"
       :name="this.inputName"
       :value="this.value"
       @change="onChange"
       :checked="this.checked"
     />
-    <label :for="id" class="checkbox-wrap__label">
+    <label :for="randomID" class="checkbox-wrap__label">
       {{ this.labelText }}
     </label>
     <div class="error-msg">{{ this.errorMsg }}</div>
@@ -37,6 +37,11 @@ export default {
   methods: {
     onChange(e) {
       this.$emit("changeHandler", e);
+    }
+  },
+  computed: {
+    randomID() {
+      return `checkbox-${(~~(Math.random() * 1e8)).toString(16)}`;
     }
   }
 };

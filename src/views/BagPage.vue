@@ -62,7 +62,7 @@ export default {
   props: "",
   data() {
     return {
-      products: []
+      // products: []
     };
   },
   components: {
@@ -76,16 +76,23 @@ export default {
   computed: {
     countProductsInBag() {
       return this.$store.getters.countProductsInBag;
+    },
+    products() {
+      const arr = [];
+      this.$store.getters.getProductsInBag.forEach(el => {
+        const prod = Object.assign({}, this.$store.getters.product(el.prodId));
+        prod["bag"] = el;
+        arr.push(prod);
+      });
+      return arr;
     }
   },
   created() {
-    this.$store.getters.getProductsInBag.forEach(el => {
-      const prod = Object.assign({}, this.$store.getters.product(el.id));
-      for (let key in el) {
-        prod[key] = el[key];
-      }
-      this.products.push(prod);
-    });
+    // this.$store.getters.getProductsInBag.forEach(el => {
+    //   const prod = Object.assign({}, this.$store.getters.product(el.prodId));
+    //   prod["bag"] = el;
+    //   this.products.push(prod);
+    // });
   }
 };
 </script>
