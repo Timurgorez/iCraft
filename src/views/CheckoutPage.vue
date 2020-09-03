@@ -22,20 +22,20 @@
     </b-container>
     <b-container class="checkout-page__table-header default-max-container d-flex align-items-center">
         <b-row>
-          <b-col cols="6">
+          <b-col cols="12" sm="12" md="6" lg="6" xl="6">
             <span>Shippment and Payment</span>
           </b-col>
-          <b-col cols="6">
+          <b-col cols="12" sm="12" md="6" lg="6" xl="6">
             <span>Order Summary</span>
           </b-col>
       </b-row>
     </b-container>
     <b-container class="default-max-container">
       <b-row>
-        <b-col cols="6">
+        <b-col cols="12" sm="12" md="6" lg="6" xl="6">
           <ShipmentInfo />
         </b-col>
-        <b-col cols="6" class="checkout-page__order-summary">
+        <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary">
           <CheckoutOrderSummary />
         </b-col>
       </b-row>
