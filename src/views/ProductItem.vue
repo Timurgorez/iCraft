@@ -601,7 +601,8 @@ export default {
     display: flex;
     align-items: center;
     &:hover {
-      color: $purple_color_btn;
+      color: $purple_color;
+      opacity: 70%;
       text-decoration: none;
     }
   }
@@ -701,6 +702,10 @@ export default {
     letter-spacing: normal;
     color: #000000;
     margin: 0;
+
+    &:hover {
+      opacity: 70%;
+    }
   }
 
   &__toggle-arrow {

@@ -4,7 +4,7 @@
     <b-container class="default-max-container">
       <b-row>
         <b-col cols="12">
-          <div class="checkout-page__title">
+          <div class="checkout-page__title mb-3">
             <h2 class="mt-4">Guest Checkout</h2>
             <div class="mt-4 d-flex flex-row flex-wrap align-items-center justify-content-xl-between justify-content-lg-between justify-content-md-start justify-content-sm-start justify-content-start">
               <p class="mb-0">You will have an opportunity to create an account later, if you'd like.</p>
@@ -33,10 +33,10 @@
     <b-container class="default-max-container">
       <b-row>
         <b-col cols="6">
-
+          <ShipmentInfo />
         </b-col>
-        <b-col cols="6">
-
+        <b-col cols="6" class="checkout-page__order-summary">
+          <CheckoutOrderSummary />
         </b-col>
       </b-row>
     </b-container>
@@ -47,9 +47,11 @@
 <script>
 import HeaderWhite from "@/components/Header/HeaderWhite";
 import Footer from "@/components/Footer/Footer";
+import ShipmentInfo from "@/components/Checkout/ShipmentInfo";
+import CheckoutOrderSummary from "@/components/Checkout/CheckoutOrderSummary";
 export default {
   name: "CheckoutPage",
-  components: {Footer, HeaderWhite}
+  components: {CheckoutOrderSummary, ShipmentInfo, Footer, HeaderWhite}
 }
 </script>
 
@@ -98,6 +100,10 @@ export default {
     .facebook-sign-in {
       background-image: url("~@/assets/facebook-2.svg");
     }
+  }
+
+  &__order-summary {
+    background-color: $checkout_bg_gray;
   }
 }
 
