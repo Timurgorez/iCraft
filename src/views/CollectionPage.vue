@@ -138,10 +138,10 @@ export default {
 .header-block__text {
   min-height: 517px;
   width: 100%;
-  background-image: url('~@/assets/desctop/pages/collectionPage/topImg.png');
+  background-image: url('~@/assets/desctop/pages/collectionPage/topImg-cropped.png');
   background-color: #f2f4ef;
   background-size: contain;
-  background-position: 30% 50%;
+  background-position: 20% 50%;
   background-repeat: no-repeat;
   position: relative;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
@@ -329,7 +329,7 @@ export default {
 
 @media only screen and (max-width: 1400px) {
   .header-block__text {
-    background-size: 75%;
+    background-size: 45%;
     background-position: 10% 15%;
   }
 }
@@ -342,8 +342,8 @@ export default {
     margin-top: 0;
   }
   .header-block__text {
-    background-size: 122%;
-    background-position: -55% 20%;
+    background-size: 75%;
+    background-position: 50% 20%;
 
     h1 {
       font-size: 30px;
@@ -363,8 +363,8 @@ export default {
     margin-top: 0;
   }
   .header-block__text {
-    background-size: 165%;
-    background-position: 2% 25%;
+    background-size: 100%;
+    background-position: 0% 25%;
 
     h1 {
       font-size: 30px;
