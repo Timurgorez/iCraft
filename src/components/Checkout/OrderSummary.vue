@@ -9,20 +9,43 @@
       <b-col cols="12" class="text-right">
         <div class="price-desc">
           <p>
-            Sub-total: <span>{{products[0].price.currency_formatting || $}}{{ sumPriceWithoutDiscount }}</span>
+            Sub-total:
+            <span
+              >{{ product.price.currency_formatting || $
+              }}{{ sumPriceWithoutDiscount }}</span
+            >
           </p>
           <p>
             Discounts:
-            <span class="red-text">-{{products[0].price.currency_formatting || $}}{{ sumPriceWithoutDiscount - sumPriceWithDiscount }}</span>
+            <span class="red-text"
+              >-{{ product.price.currency_formatting || $
+              }}{{ sumPriceWithoutDiscount - sumPriceWithDiscount }}</span
+            >
           </p>
-          <p>DExpedited Shipping (by UPS): <span>{{products[0].price.currency_formatting || $}}15.00</span></p>
-          <p>Expedited Shipping (by Canada Post): <span>{{products[0].price.currency_formatting || $}}25.00</span></p>
-          <p>Insurance: <span>{{products[0].price.currency_formatting || $}}25.00</span></p>
+          <p>
+            DExpedited Shipping (by UPS):
+            <span>{{ product.price.currency_formatting || $ }}15.00</span>
+          </p>
+          <p>
+            Expedited Shipping (by Canada Post):
+            <span>{{ product.price.currency_formatting || $ }}25.00</span>
+          </p>
+          <p>
+            Insurance:
+            <span>{{ product.price.currency_formatting || $ }}25.00</span>
+          </p>
         </div>
         <p class="price-total">
-          Total ({{products[0].price.currency_code || CAD}}): <span>{{products[0].price.currency_formatting || $}}{{ sumPriceWithDiscount + 15 }}</span>
+          Total ({{ product.price.currency_code || CAD }}):
+          <span
+            >{{ product.price.currency_formatting || $
+            }}{{ sumPriceWithDiscount + 15 }}</span
+          >
         </p>
-        <p>(You Save {{products[0].price.currency_formatting || $}}{{ sumPriceWithoutDiscount - sumPriceWithDiscount }})</p>
+        <p>
+          (You Save {{ product.price.currency_formatting || $
+          }}{{ sumPriceWithoutDiscount - sumPriceWithDiscount }})
+        </p>
         <RedButton
           text="PROCEED TO CHECKOUT"
           iconClass="accepted-icon"
@@ -31,15 +54,15 @@
           @clickHandler="proceedToCheckoutHandler"
         />
         <router-link
-              :to="{ name: 'CollectionPage' }"
-              class="price-additianal-duties"
-            >Additional duties & taxes <span>may apply</span>
+          :to="{ name: 'CollectionPage' }"
+          class="price-additianal-duties"
+          >Additional duties & taxes <span>may apply</span>
         </router-link>
         <router-link
-              :to="{ name: 'CollectionPage' }"
-              class="back-to-products__link"
-            ><span class="back-to-products__icon"></span>Continue Shopping
-            </router-link>
+          :to="{ name: 'CollectionPage' }"
+          class="back-to-products__link"
+          ><span class="back-to-products__icon"></span>Continue Shopping
+        </router-link>
       </b-col>
     </b-row>
   </b-container>
@@ -54,7 +77,7 @@ export default {
     return {};
   },
   props: {
-    products: Array
+    product: Object
   },
   components: {
     RedButton
@@ -90,38 +113,38 @@ export default {
 .order-summary {
   position: sticky;
   top: 0;
-  p{
+  p {
     font-family: $font_montserrat_regular;
     font-size: 18px;
     color: #000000;
   }
-  .red-text{
+  .red-text {
     color: $text_color_red;
   }
-  .price-desc span{
+  .price-desc span {
     min-width: 90px;
     display: inline-block;
   }
-  .price-total{
+  .price-total {
     font-family: $font_montserrat_medium;
     font-size: 22px;
     margin-top: 40px;
-    span{
+    span {
       padding-left: 20px;
     }
   }
-  .price-additianal-duties{
-      font-family: $font_montserrat_regular;
-      font-size: 16px;
-      color: $purple_color_btn;
-      margin-bottom: 60px;
-      display: inline-block;
-      span{
-        color: #000000;
-      }
-      &:hover{
-        text-decoration: none;
-      }
+  .price-additianal-duties {
+    font-family: $font_montserrat_regular;
+    font-size: 16px;
+    color: $purple_color_btn;
+    margin-bottom: 60px;
+    display: inline-block;
+    span {
+      color: #000000;
+    }
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 .text-right {
@@ -130,10 +153,9 @@ export default {
   padding: 30px;
 }
 
-.proceed-btn{
+.proceed-btn {
   margin-bottom: 30px;
 }
-
 
 .back-to-products__link {
   font-family: $font_montserrat_regular;

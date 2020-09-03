@@ -48,7 +48,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 2
+                "available": 2,
+                "seller": {"id": "1"}
             },
             {
                 "id":2,
@@ -96,7 +97,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 5
+                "available": 5,
+                "seller": {"id": "4"}
             },
             {
                 "id":3,
@@ -142,7 +144,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 1
+                "available": 1,
+                "seller": {"id": "2"}
             },
             {
                 "id":4,
@@ -191,7 +194,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 1
+                "available": 1,
+                "seller": {"id": "1"}
             },
             {
                 "id":5,
@@ -238,7 +242,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 7
+                "available": 7,
+                "seller": {"id": "3"}
             },
             {
                 "id":6,
@@ -285,7 +290,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 3
+                "available": 3,
+                "seller": {"id": "1"}
             },
             {
                 "id":7,
@@ -333,7 +339,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 4
+                "available": 4,
+                "seller": {"id": "4"}
             },
             {
                 "id":8,
@@ -381,7 +388,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 1
+                "available": 1,
+                "seller": {"id": "2"}
             },
             {
                 "id":9,
@@ -429,7 +437,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 7
+                "available": 7,
+                "seller": {"id": "3"}
             },
             {
                 "id":10,
@@ -476,7 +485,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 3
+                "available": 3,
+                "seller": {"id": "4"}
             },
             {
                 "id":11,
@@ -524,7 +534,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 5
+                "available": 5,
+                "seller": {"id": "1"}
             },
             {
                 "id":12,
@@ -571,7 +582,8 @@ export default {
                     "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
 
                 },
-                "available": 10
+                "available": 10,
+                "seller": {"id": "4"}
             }
         ]
     },
@@ -627,9 +639,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 2
+                    "available": 2,
+                    "seller": {"id": "1"}
                 },
                 {
                     "id":2,
@@ -647,7 +660,7 @@ export default {
                         "currency_code": "USD",
                         "currency_formatting": "$"
                     },
-
+    
                     "icons":[
                         "exclusive",
                         "new",
@@ -675,9 +688,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 5
+                    "available": 5,
+                    "seller": {"id": "4"}
                 },
                 {
                     "id":3,
@@ -721,9 +735,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 1
+                    "available": 1,
+                    "seller": {"id": "2"}
                 },
                 {
                     "id":4,
@@ -770,9 +785,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 1
+                    "available": 1,
+                    "seller": {"id": "1"}
                 },
                 {
                     "id":5,
@@ -817,9 +833,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 7
+                    "available": 7,
+                    "seller": {"id": "3"}
                 },
                 {
                     "id":6,
@@ -864,9 +881,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 3
+                    "available": 3,
+                    "seller": {"id": "1"}
                 },
                 {
                     "id":7,
@@ -912,9 +930,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 4
+                    "available": 4,
+                    "seller": {"id": "4"}
                 },
                 {
                     "id":8,
@@ -960,9 +979,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 1
+                    "available": 1,
+                    "seller": {"id": "2"}
                 },
                 {
                     "id":9,
@@ -1008,9 +1028,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 7
+                    "available": 7,
+                    "seller": {"id": "3"}
                 },
                 {
                     "id":10,
@@ -1055,9 +1076,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 3
+                    "available": 3,
+                    "seller": {"id": "4"}
                 },
                 {
                     "id":11,
@@ -1103,9 +1125,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 5
+                    "available": 5,
+                    "seller": {"id": "1"}
                 },
                 {
                     "id":12,
@@ -1150,9 +1173,10 @@ export default {
                         "size": "S, M, L, XL",
                         "description": " Hair Clips with Japanese and Czech beads embroidery, genuine leather on reverse. This little piece of jewelry can dress up a casual outfit, or complete a formal outfit. Whether you have an ordinary or special day - there will be room for your little new friend.",
                         "ships": "Yaroslavl', Yaroslavl Oblast’, Russia",
-
+    
                     },
-                    "available": 10
+                    "available": 10,
+                    "seller": {"id": "4"}
                 }
             ];
             commit('setProducts', products)

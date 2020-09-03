@@ -29,20 +29,31 @@
                 <span>Amount</span>
               </b-col>
             </b-row>
-            <b-row class="checkout-table__shipment d-flex" align-v="center">
-              <b-col cols="12">
-                <p><b>Shipment 1 </b> (2 Products)</p>
-              </b-col>
-            </b-row>
-            <TableProduct
-              v-for="product in products"
-              :product="product"
-              :key="product.id + Math.random().toString(16)"
-            />
+
+            <div
+              v-for="(product, index) in products"
+              :key="index + Math.random().toString(16)"
+            >
+              <b-row class="checkout-table__shipment d-flex" align-v="center">
+                <b-col cols="12">
+                  <p><b>Shipment 1 </b> (2 Products)</p>
+                </b-col>
+              </b-row>
+              <TableProduct
+                v-for="prod in product"
+                :product="prod"
+                :key="prod.id + Math.random().toString(16)"
+              />
+              <b-row class="checkout-table__shipment d-flex" align-v="center">
+                <b-col cols="12">
+                  <p>Delivery</p>
+                </b-col>
+              </b-row>
+            </div>
           </b-container>
         </b-col>
         <b-col cols="12" xl="4">
-          <OrderSummary :products="products"/>
+          <OrderSummary :product="firstProduct" />
         </b-col>
       </b-row>
     </b-container>
@@ -61,8 +72,7 @@ export default {
   name: "BagPage",
   props: "",
   data() {
-    return {
-    };
+    return {};
   },
   components: {
     HeaderWhite,
@@ -77,18 +87,33 @@ export default {
       return this.$store.getters.countProductsInBag;
     },
     products() {
-      const arr = [];
+      const arrSort = {};
       this.$store.getters.getProductsInBag.forEach(el => {
         const prod = Object.assign({}, this.$store.getters.product(el.prodId));
         prod["bag"] = el;
-        arr.push(prod);
+
+        if (prod.seller.id in arrSort) {
+          arrSort[prod.seller.id].push(prod);
+        } else {
+          arrSort[prod.seller.id] = [prod];
+        }
       });
-      return arr;
+
+      return arrSort;
+    },
+    firstProduct() {
+      console.log(
+        "ARR_SORT--- ",
+        this.$store.getters.product(
+          this.$store.getters.getProductsInBag[0].prodId
+        )
+      );
+      return this.$store.getters.product(
+        this.$store.getters.getProductsInBag[0].prodId
+      );
     }
   },
-  created() {
-    
-  }
+  created() {}
 };
 </script>
 <style scoped lang="scss">
