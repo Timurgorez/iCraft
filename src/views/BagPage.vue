@@ -36,7 +36,7 @@
             >
               <b-row class="checkout-table__shipment d-flex" align-v="center">
                 <b-col cols="12">
-                  <p><b>Shipment 1 </b> (2 Products)</p>
+                  <p><b>Shipment 1 </b> ({{product.length}} Products)</p>
                 </b-col>
               </b-row>
               <TableProduct
@@ -98,7 +98,7 @@ export default {
           arrSort[prod.seller.id] = [prod];
         }
       });
-
+      console.log('RTEST  ->',arrSort);
       return arrSort;
     },
     firstProduct() {
