@@ -1,29 +1,51 @@
 <template>
-  <div class="color-choose">
+  <div :class="['color-choose', classWrap]">
     <span>Color:</span>
-    <div
-      class="color-choose__wrap-input"
-      v-for="(color, index) in productColors"
-      :key="index"
-      :ref="'color-choose' + index"
-    >
-      <input
-        class="color-choose__radio-input"
-        :id="randomID + index"
-        v-model="model_color"
-        type="radio"
-        :name="randomID + index"
-        :value="color.color"
-      />
-      <label
-        :style="{ backgroundImage: 'url(' + color.url + ')' }"
-        class="color-choose__radio-label"
-        :for="randomID + index"
-      ></label>
-      <b-tooltip
-        :target="() => $refs['color-choose' + index]"
-        :title="color.color"
-      ></b-tooltip>
+
+    <div v-if="!one" class="d-flex">
+      <div
+        class="color-choose__wrap-input"
+        v-for="(color, index) in productColors"
+        :key="index"
+        :ref="'color-choose' + index"
+      >
+        <input
+          class="color-choose__radio-input"
+          :id="randomID + index"
+          v-model="model_color"
+          type="radio"
+          :name="randomID + index"
+          :value="color.color"
+        />
+        <label
+          :style="{ backgroundImage: 'url(' + color.url + ')' }"
+          class="color-choose__radio-label"
+          :for="randomID + index"
+        ></label>
+        <b-tooltip
+          :target="() => $refs['color-choose' + index]"
+          :title="color.color"
+        ></b-tooltip>
+      </div>
+    </div>
+    <div v-else>
+      <div
+        class="color-choose__wrap-input"
+        v-for="(color, index) in productColors"
+        :key="index"
+        :ref="'color-choose' + index"
+        v-show="initialColor == color.color"
+      >
+        <label
+          :style="{ backgroundImage: 'url(' + color.url + ')' }"
+          class="color-choose__radio-label"
+          :for="randomID + index"
+        ></label>
+        <b-tooltip
+          :target="() => $refs['color-choose' + index]"
+          :title="color.color"
+        ></b-tooltip>
+      </div>
     </div>
   </div>
 </template>
@@ -42,9 +64,10 @@ export default {
       default: "red"
     },
     one: {
-      type:Boolean,
-      default: false 
+      type: Boolean,
+      default: false
     },
+    classWrap: String,
     productColors: {
       type: Array,
       default: () => {

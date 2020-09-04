@@ -3,15 +3,15 @@
     <label :for="this.id" class="note-seller__label">
       {{ this.labelText }}
     </label>
-      <textarea
-        :id="this.id"
-        :name="this.inputName"
-        v-model="value"
-        rows="2"
-        cols="35"
-        :placeholder="this.placeholder"
-      ></textarea>
-    
+    <textarea
+      class="note-seller__textarea"
+      :id="this.id"
+      :name="this.inputName"
+      v-model="value"
+      rows="2"
+      :placeholder="this.placeholder"
+    ></textarea>
+
     <div class="error-msg">{{ this.errorMsg }}</div>
   </div>
 </template>
@@ -21,12 +21,12 @@ export default {
   name: "NoteForSeller",
   data() {
     return {
-      value: ''
+      value: ""
     };
   },
   props: {
     labelText: String,
-    placeholder:String,
+    placeholder: String,
     inputName: String,
     wrapClass: String,
     checked: {
@@ -43,8 +43,8 @@ export default {
     //   this.$emit("changeHandler", e);
     // }
   },
-  watch:{
-    value(val){
+  watch: {
+    value(val) {
       this.$emit("changeHandler", val);
     }
   }
@@ -59,6 +59,7 @@ export default {
 }
 
 .note-seller__label {
+  width: 100%;
   position: relative;
   font-size: 16px;
   font-family: $font_montserrat_regular;
@@ -71,6 +72,13 @@ export default {
 
 .error-msg {
   display: none;
+}
+
+.note-seller__textarea {
+  border: 1px solid $checkout_border_gray;
+  border-radius: 3px;
+  padding: 10px;
+  min-width: 320px;
 }
 
 @media only screen and (max-width: 768px) {

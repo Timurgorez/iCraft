@@ -12,49 +12,63 @@
           <h1>Shopping Bag ({{ countProductsInBag }})</h1>
         </b-col>
       </b-row>
-      <b-row>
+
+      <b-row v-if="firstProduct">
         <b-col cols="12" xl="8">
-          <b-container fluid>
+          <b-container fluid class="checkout-table__wrap">
             <b-row class="checkout-table__head d-flex" align-v="center">
               <b-col cols="6">
                 <span>Product</span>
               </b-col>
-              <b-col cols="2" class="d-md-none d-lg-block">
+              <b-col cols="2" class="d-none d-lg-block d-xl-block">
                 <span>Quantity</span>
               </b-col>
-              <b-col cols="2" class="d-md-none d-lg-block">
+              <b-col cols="2" class="d-none d-lg-block d-xl-block">
                 <span>Price</span>
               </b-col>
-              <b-col cols="2" class="d-md-none d-lg-block">
+              <b-col cols="2" class="d-none d-lg-block d-xl-block">
                 <span>Amount</span>
               </b-col>
             </b-row>
 
             <div
-              v-for="(product, index) in products"
+              v-for="(product, key, index) in products"
               :key="index + Math.random().toString(16)"
             >
-              <b-row class="checkout-table__shipment d-flex" align-v="center">
+              <b-row
+                class="checkout-table__shipment d-flex"
+                align-v="center"
+                v-b-toggle="'collapse_shipping_' + key"
+              >
                 <b-col cols="12">
-                  <p><b>Shipment 1 </b> ({{product.length}} Products)</p>
+                  <p>
+                    <b>Shipment {{ index + 1 }} </b> ({{ product.length }}
+                    Products)
+                  </p>
                 </b-col>
               </b-row>
-              <TableProduct
-                v-for="prod in product"
-                :product="prod"
-                :key="prod.id + Math.random().toString(16)"
-              />
-              <b-row class="checkout-table__shipment d-flex" align-v="center">
-                <b-col cols="12">
-                  <p>Delivery</p>
-                </b-col>
-              </b-row>
+
+              <b-collapse visible :id="'collapse_shipping_' + key">
+                <TableProduct
+                  v-for="prod in product"
+                  :product="prod"
+                  :key="prod.id + Math.random().toString(16)"
+                />
+                <b-row class="checkout-table__delivery d-flex" align-v="center">
+                  <b-col cols="12">
+                    <p>Delivery</p>
+                  </b-col>
+                </b-row>
+              </b-collapse>
             </div>
           </b-container>
         </b-col>
         <b-col cols="12" xl="4">
           <OrderSummary :product="firstProduct" />
         </b-col>
+      </b-row>
+      <b-row v-else>
+        <p>No item in shopping bag!</p>
       </b-row>
     </b-container>
     <ProductSlider />
@@ -98,19 +112,15 @@ export default {
           arrSort[prod.seller.id] = [prod];
         }
       });
-      console.log('RTEST  ->',arrSort);
+      console.log("RTEST  ->", arrSort);
       return arrSort;
     },
     firstProduct() {
-      console.log(
-        "ARR_SORT--- ",
-        this.$store.getters.product(
-          this.$store.getters.getProductsInBag[0].prodId
-        )
-      );
-      return this.$store.getters.product(
-        this.$store.getters.getProductsInBag[0].prodId
-      );
+      return this.$store.getters.getProductsInBag[0]
+        ? this.$store.getters.product(
+            this.$store.getters.getProductsInBag[0].prodId
+          )
+        : null;
     }
   },
   created() {}
@@ -127,7 +137,6 @@ export default {
   min-height: 60px;
 }
 .checkout-table__shipment {
-  background-color: #d9d9d9;
   font-family: $font_montserrat_regular;
   font-size: 18px;
   font-weight: 600;
@@ -142,6 +151,19 @@ export default {
   b {
     text-transform: uppercase;
   }
+}
+.checkout-table__delivery {
+  font-family: $font_montserrat_regular;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  min-height: 60px;
+  border-left: solid 1px #d9d9d9;
+  border-right: solid 1px #d9d9d9;
+}
+
+.checkout-table__wrap {
+  border-bottom: solid 1px #d9d9d9;
 }
 
 ::v-deep .custom-request {
@@ -161,6 +183,12 @@ export default {
 
   & > div:not(.custom-request__hint) {
     margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .checkout-table__wrap {
+    margin-bottom: 40px;
   }
 }
 

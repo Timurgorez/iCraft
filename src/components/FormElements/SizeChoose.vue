@@ -1,22 +1,36 @@
 <template>
-  <div class="size-choose">
+  <div :class="['size-choose', classWrap]">
     <span>Size:</span>
-    <div
-      class="size-choose__wrap-input"
-      v-for="(size, index) in productSizes"
-      :key="index"
-    >
-      <input
-        class="size-choose__radio-input"
-        :id="randomID + index"
-        v-model="model_size"
-        type="radio"
-        :name="randomID + index"
-        :value="size"
-      />
-      <label class="size-choose__radio-label" :for="randomID + index">{{
-        size
-      }}</label>
+    <div v-if="!one" class="d-flex ">
+      <div
+        class="size-choose__wrap-input"
+        v-for="(size, index) in productSizes"
+        :key="index"
+      >
+        <input
+          class="size-choose__radio-input"
+          :id="randomID + index"
+          v-model="model_size"
+          type="radio"
+          :name="randomID + index"
+          :value="size"
+        />
+        <label class="size-choose__radio-label" :for="randomID + index">{{
+          size
+        }}</label>
+      </div>
+    </div>
+    <div v-else class="d-flex">
+      <div
+        class="size-choose__wrap-input"
+        v-for="(size, index) in productSizes"
+        :key="index"
+        v-show="initialSize == size"
+      >
+        <label class="size-choose__radio-label" :for="randomID + index">{{
+          size
+        }}</label>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +48,11 @@ export default {
       type: String,
       default: "S"
     },
+    one: {
+      type: Boolean,
+      default: false
+    },
+    classWrap: String,
     productSizes: {
       type: Array,
       default: () => {

@@ -1,5 +1,5 @@
 <template>
-  <b-container class="order-summary">
+  <b-container fluid class="order-summary">
     <b-row class="checkout-table__head d-flex" align-v="center">
       <b-col cols="12">
         <span>Order Summary</span>
@@ -179,6 +179,6 @@ export default {
   background-position: 50% 50%;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 992px) {
 }
 </style>

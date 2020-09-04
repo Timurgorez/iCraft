@@ -14,8 +14,7 @@
             <router-link
               :to="{ name: 'CollectionPage' }"
               class="back-to-products__link"
-            ><span class="back-to-products__icon"></span>Back To All
-              Products
+              ><span class="back-to-products__icon"></span>Back To All Products
             </router-link>
           </div>
         </b-col>
@@ -81,7 +80,7 @@
                 labelText="This is a Custom Order"
                 inputName="custom-order"
                 id="custom-order"
-                value="custom-order"
+                :value="customRequest"
                 @changeHandler="customRequstHandler"
               />
               <div
@@ -337,6 +336,7 @@ export default {
   data() {
     return {
       popoverCustomRequest: false,
+      customRequest: false,
 
       quantity_min: 1,
 
@@ -373,7 +373,8 @@ export default {
         prodId: this.id,
         count: this.model_quantity,
         size: this.model_size,
-        color: this.model_color
+        color: this.model_color,
+        customRequest: this.customRequest
       };
       if (this.checkProductInBag(product)) {
         this.$notify({
@@ -412,7 +413,8 @@ export default {
         prodId: this.id,
         count: this.model_quantity,
         size: this.model_size,
-        color: this.model_color
+        color: this.model_color,
+        customRequest: this.customRequest
       };
 
       this.$store.dispatch("addProductToBag", productToAdd);
@@ -427,6 +429,7 @@ export default {
     },
     customRequstHandler(e) {
       console.log("customRequstHandler", e);
+      this.customRequest = e.target.checked;
     },
     model_size_trigger(model_size) {
       this.model_size = model_size;

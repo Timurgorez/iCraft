@@ -7,92 +7,118 @@
             <div class="img-block__img">
               <img :src="product.images[0]" :alt="product.name" />
             </div>
+            <router-link
+              :to="{ name: 'ProductPage', params: { id: product.id } }"
+              class="product-card__link d-block  d-md-none d-lg-none d-xl-none"
+              ><h3 class="desc-block__title">
+                {{ product.name }}
+              </h3>
+            </router-link>
             <div class="img-block__btns">
-              <button class="img-block__remove-btn" @click="removeProductFromBag(product.bag.id)">
+              <button
+                class="img-block__remove-btn d-none d-lg-block d-xl-block"
+                @click="removeProductFromBag(product.bag.id)"
+              >
                 Remove
               </button>
             </div>
           </div>
           <div class="desc-block">
-            <h3 class="desc-block__title">{{ product.name }}</h3>
-            <div class="color">
-              <ColorChoose
-                @model_color="model_color_trigger"
-                :initialColor="product.bag.color"
-                :one="false"
-              />
+            <router-link
+              :to="{ name: 'ProductPage', params: { id: product.id } }"
+              class="product-card__link d-none d-md-block d-lg-block d-xl-block"
+              ><h3 class="desc-block__title">
+                {{ product.name }}
+              </h3>
+            </router-link>
+            <div class="color-size-choosen">
+              <div class="color">
+                <ColorChoose
+                  @model_color="model_color_trigger"
+                  :initialColor="product.bag.color"
+                  :one="true"
+                />
+              </div>
+              <div class="size">
+                <SizeChoose
+                  @model_size="model_size_trigger"
+                  :initialSize="product.bag.size"
+                  :one="true"
+                />
+                <span class="d-none d-lg-block d-xl-block">Sizing Chart</span>
+              </div>
             </div>
-            <div class="size">
-              <SizeChoose
-                @model_size="model_size_trigger"
-                :initialSize="product.bag.size"
-                :one="false"
-              />
-              <span>Sizing Chart</span>
-            </div>
+            <div class="d-none d-lg-block d-xl-block">
+              <div class="custom-request">
+                <Checkbox
+                  labelText="This will be a gift"
+                  inputName="gift-order"
+                  :id="'gift-order-' + product.id"
+                  value="true"
+                  @changeHandler="customGiftHandler"
+                />
+                <div
+                  class="custom-request__hint"
+                  :id="'popover-gift__hint' + product.bag.id"
+                ></div>
 
-            <div class="custom-request">
-              <Checkbox
-                labelText="This will be a gift"
-                inputName="gift-order"
-                :id="'gift-order-' + product.id"
-                value="true"
-                @changeHandler="customGiftHandler"
-              />
-              <div
-                class="custom-request__hint"
-                :id="'popover-gift__hint' + product.bag.id"
-              ></div>
+                <b-popover
+                  custom-class="custom-popover"
+                  :target="'popover-gift__hint' + product.bag.id"
+                  triggers="hover"
+                >
+                  <h4>Placing Custom Orders</h4>
+                  You can place a Custom Order for this item and provide seller
+                  with your color and other product preferences and
+                  modifications. You will be able to add this information at the
+                  Checkout.
+                </b-popover>
+              </div>
+              <div class="custom-request">
+                <Checkbox
+                  labelText="This is a Custom Order"
+                  inputName="custom-order"
+                  :id="'custom-order-' + product.id"
+                  value="custom-order"
+                  :checked="this.product.bag.customRequest"
+                  @changeHandler="customRequstHandler"
+                />
+                <div
+                  class="custom-request__hint"
+                  :id="'popover-custom-request__hint' + product.bag.id"
+                ></div>
 
-              <b-popover
-                custom-class="custom-popover"
-                :target="'popover-gift__hint' + product.bag.id"
-                triggers="hover"
-              >
-                <h4>Placing Custom Orders</h4>
-                You can place a Custom Order for this item and provide seller
-                with your color and other product preferences and modifications.
-                You will be able to add this information at the Checkout.
-              </b-popover>
+                <b-popover
+                  custom-class="custom-popover"
+                  :target="'popover-custom-request__hint' + product.bag.id"
+                  triggers="hover"
+                >
+                  <h4>Placing Custom Orders</h4>
+                  You can place a Custom Order for this item and provide seller
+                  with your color and other product preferences and
+                  modifications. You will be able to add this information at the
+                  Checkout.
+                </b-popover>
+              </div>
+              <transition name="fade">
+                <NoteForSeller
+                  v-show="this.product.bag.customRequest"
+                  labelText="Note for Seller (Optional)"
+                  placeholder="Add Note to Seller"
+                  inputName="note-order"
+                  id="note-order"
+                  @changeHandler="noteHandler"
+                />
+              </transition>
             </div>
-            <div class="custom-request">
-              <Checkbox
-                labelText="This is a Custom Order"
-                inputName="custom-order"
-                :id="'custom-order-' + product.id"
-                value="custom-order"
-                @changeHandler="customRequstHandler"
-              />
-              <div
-                class="custom-request__hint"
-                :id="'popover-custom-request__hint' + product.bag.id"
-              ></div>
-
-              <b-popover
-                custom-class="custom-popover"
-                :target="'popover-custom-request__hint' + product.bag.id"
-                triggers="hover"
-              >
-                <h4>Placing Custom Orders</h4>
-                You can place a Custom Order for this item and provide seller
-                with your color and other product preferences and modifications.
-                You will be able to add this information at the Checkout.
-              </b-popover>
-            </div>
-            <NoteForSeller
-              v-show="customRequst"
-              labelText="Note for Seller (Optional)"
-              placeholder="Add Note to Seller"
-              inputName="note-order"
-              id="note-order"
-              @changeHandler="noteHandler"
-            />
           </div>
         </div>
       </b-col>
       <b-col cols="12" lg="2">
         <div class="quantity">
-          <span class="d-none d-md-block d-lg-none">Quantity</span>
+          <span class="quantity__title d-block d-lg-none d-xl-none"
+            >Quantity</span
+          >
           <integer-plusminus
             :min="quantity_min"
             :max="quantity_max"
@@ -104,31 +130,112 @@
 
             <template slot="increment">+</template>
           </integer-plusminus>
-          <span class="quantity-available">Only {{ product.available }} Avaliable</span>
+          <span class="quantity-available"
+            >Only {{ product.available }} Avaliable</span
+          >
         </div>
       </b-col>
       <b-col cols="12" lg="2">
         <div class="price">
-          <span class="d-none d-md-block d-lg-none">Price</span>
-          <span class="price__new"
-            >$ {{ product.price.new }}
-            <span class="price__currency">{{
-              product.price.currency_code
-            }}</span>
-          </span>
-          <span class="price__old"
-            >$ {{ product.price.old }}
-            <span class="price__currency">{{
-              product.price.currency_code
-            }}</span>
-          </span>
+          <span class="price-title d-block d-lg-none d-xl-none">Price:</span>
+          <div class="prices-wrap">
+            <span class="price__new"
+              >$ {{ product.price.new }}
+              <span class="price__currency">{{
+                product.price.currency_code
+              }}</span>
+            </span>
+            <span class="price__old"
+              >$ {{ product.price.old }}
+              <span class="price__currency">{{
+                product.price.currency_code
+              }}</span>
+            </span>
+          </div>
         </div>
       </b-col>
       <b-col cols="12" lg="2">
-        <span class="count-sum-price">
-          <span class="d-none d-md-block d-lg-none">Amount</span>
-          $ {{ countSumPrice }} {{ product.price.currency_code }}</span
-        >
+        <div class="count-sum-price">
+          <span class="count-sum-price__title d-block d-lg-none d-xl-none">
+            Amount:
+          </span>
+          <span class="count-sum-price__price">
+            $ {{ countSumPrice }} {{ product.price.currency_code }}
+          </span>
+        </div>
+      </b-col>
+
+      <b-col cols="12" lg="2" class="d-block d-lg-none d-xl-none">
+        <div class="custom-request">
+          <Checkbox
+            labelText="This will be a gift"
+            inputName="gift-order"
+            :id="'gift-order-' + product.id"
+            value="true"
+            @changeHandler="customGiftHandler"
+          />
+          <div
+            class="custom-request__hint"
+            :id="'popover-gift__hint' + product.bag.id"
+          ></div>
+
+          <b-popover
+            custom-class="custom-popover"
+            :target="'popover-gift__hint' + product.bag.id"
+            triggers="hover"
+          >
+            <h4>Placing Custom Orders</h4>
+            You can place a Custom Order for this item and provide seller with
+            your color and other product preferences and modifications. You will
+            be able to add this information at the Checkout.
+          </b-popover>
+        </div>
+        <div class="custom-request">
+          <Checkbox
+            labelText="This is a Custom Order"
+            inputName="custom-order"
+            :id="'custom-order-' + product.id"
+            value="custom-order"
+            :checked="this.product.bag.customRequest"
+            @changeHandler="customRequstHandler"
+          />
+          <div
+            class="custom-request__hint"
+            :id="'popover-custom-request__hint' + product.bag.id"
+          ></div>
+
+          <b-popover
+            custom-class="custom-popover"
+            :target="'popover-custom-request__hint' + product.bag.id"
+            triggers="hover"
+          >
+            <h4>Placing Custom Orders</h4>
+            You can place a Custom Order for this item and provide seller with
+            your color and other product preferences and modifications. You will
+            be able to add this information at the Checkout.
+          </b-popover>
+        </div>
+        <transition name="fade">
+          <NoteForSeller
+            v-show="this.product.bag.customRequest"
+            labelText="Note for Seller (Optional)"
+            placeholder="Add Note to Seller"
+            inputName="note-order"
+            id="note-order"
+            @changeHandler="noteHandler"
+          />
+        </transition>
+      </b-col>
+
+      <b-col cols="12" lg="2" class="d-block d-lg-none d-xl-none">
+        <div class="img-block__remove-btn-wrap">
+          <button
+            class="img-block__remove-btn"
+            @click="removeProductFromBag(product.bag.id)"
+          >
+            Remove
+          </button>
+        </div>
       </b-col>
     </b-row>
   </transition>
@@ -150,9 +257,9 @@ export default {
       quantity_step: 1,
       model_quantity: this.product.bag.count,
 
-      countSumPrice: this.product.price.new * this.product.bag.count,
+      countSumPrice: this.product.price.new * this.product.bag.count
 
-      customRequst: false,
+      // customRequst: this.product.bag.customRequst
     };
   },
   props: {
@@ -169,14 +276,18 @@ export default {
     customRequstHandler(val) {
       console.log("customRequstHandler");
       this.customRequst = val.target.checked;
-      if(this.customRequst){
+      this.$store.commit("modifyFieldInBag", {
+        id: this.product.bag.id,
+        name: "customRequest",
+        value: this.customRequst
+      });
+      if (this.customRequst) {
         this.$store.commit("modifyFieldInBag", {
           id: this.product.bag.id,
           name: "note",
-          value: ''
+          value: ""
         });
       }
-      
     },
     customGiftHandler(val) {
       console.log("customGiftHandler", val.target.checked);
@@ -269,10 +380,24 @@ export default {
   color: $purple_color_btn;
 }
 
+.quantity__title {
+  font-family: $font_montserrat_regular;
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 10px;
+}
 .quantity-available {
   font-family: $font_montserrat_regular;
   font-size: 14px;
   color: $text_color_red;
+  display: inline-block;
+  width: 100%;
+}
+
+.price-title {
+  font-family: $font_montserrat_regular;
+  font-size: 20px;
+  color: #000;
 }
 
 .price__new {
@@ -299,10 +424,11 @@ export default {
   img {
     max-height: 140px;
     width: 100%;
+    max-width: 220px;
   }
 }
 
-.img-block__remove-btn{
+.img-block__remove-btn {
   border: none;
   font-family: $font_montserrat_medium;
   font-size: 16px;
@@ -311,8 +437,8 @@ export default {
   padding-left: 30px;
   text-transform: uppercase;
   position: relative;
-  &:before{
-    content: '';
+  &:before {
+    content: "";
     display: inline-block;
     width: 24px;
     height: 24px;
@@ -330,6 +456,14 @@ export default {
   color: $text_color;
 }
 
+.count-sum-price__title {
+  font-family: $font_montserrat_regular;
+  font-size: 20px;
+  color: $text_color;
+}
+.count-sum-price__price {
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -338,6 +472,50 @@ export default {
   opacity: 0;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 992px) {
+  .quantity {
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  .color-size-choosen {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .price {
+    display: flex;
+    justify-content: space-between;
+  }
+  .price__old {
+    padding-right: 0;
+  }
+  .prices-wrap {
+    text-align: right;
+  }
+  .count-sum-price {
+    display: flex;
+    justify-content: space-between;
+  }
+  .img-block__remove-btn-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+  }
+  .count-sum-price {
+    margin-bottom: 25px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .img-block {
+    display: flex;
+    width: 100%;
+    text-align: left;
+  }
+  .desc-block {
+    width: 100%;
+  }
+  .img-block__img {
+    padding-right: 10px;
+    margin-bottom: 10px;
+  }
 }
 </style>
