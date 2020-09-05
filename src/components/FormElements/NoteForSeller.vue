@@ -53,6 +53,7 @@ export default {
 
 <style scoped lang="scss">
 .note-seller-wrap {
+  margin-top: 30px;
   input {
     display: none;
   }
@@ -78,7 +79,8 @@ export default {
   border: 1px solid $checkout_border_gray;
   border-radius: 3px;
   padding: 10px;
-  min-width: 320px;
+  width: 100%;
+  max-width: 320px;
 }
 
 @media only screen and (max-width: 768px) {

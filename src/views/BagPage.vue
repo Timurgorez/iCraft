@@ -55,9 +55,116 @@
                   :key="prod.id + Math.random().toString(16)"
                 />
                 <b-row class="checkout-table__delivery d-flex" align-v="center">
-                  <b-col cols="12">
-                    <p>Delivery</p>
+                  <b-col cols="12" lg="2" class="mt-4 mb-4">
+                    <label
+                      :for="'coupon-for-seller__' + key"
+                      class="coupon-for-seller__label"
+                      >Store Coupon (optional)</label
+                    >
                   </b-col>
+                  <b-col cols="12" lg="4" class="mt-lg-4 mt-xl-4 mb-4">
+                    <InputText
+                      :id="'coupon-for-seller__' + key"
+                      inputName="coupon-for-seller"
+                      placeholder="ThankYouCoupon25"
+                      @changeHandler="addCouponHandler"
+                    />
+                  </b-col>
+                  <b-col lg="6"></b-col>
+
+                  <b-col
+                    cols="12"
+                    v-b-toggle="'delivery-options_' + key"
+                    class="mb-4 d-flex align-item-center delivery-options__title"
+                    >Delivery Options</b-col
+                  >
+                  <b-collapse
+                    visible
+                    class="delivery-options__collapse"
+                    :id="'delivery-options_' + key"
+                  >
+                    <b-row class="align-items-center">
+                      <b-col cols="12" lg="2" class="mb-3">
+                        <label
+                          :for="'delivery-options__' + key"
+                          class="delivery-options__label"
+                          >Delivery Method
+                          <div
+                            class="icraft-hint"
+                            :id="'delivery__' + key"
+                          ></div>
+                        </label>
+                        <b-popover
+                          custom-class="custom-popover"
+                          :target="'delivery__' + key"
+                          triggers="hover"
+                        >
+                          <h4>Placing Custom Orders</h4>
+                          You can place a Custom Order for this item and provide
+                          seller with your color and other product preferences
+                          and modifications. You will be able to add this
+                          information at the Checkout.
+                        </b-popover>
+                      </b-col>
+                      <b-col cols="12" lg="4" class="mb-3">
+                        <b-form-select
+                          v-model="shoppingType"
+                          :options="shoppingOptions"
+                          class="type-shipping"
+                        ></b-form-select>
+                      </b-col>
+                      <b-col lg="6" class="mb-3">
+                        <Checkbox
+                          labelText="Add Insurance (+ $25.00)"
+                          inputName="add-insurance"
+                          :id="'add-insurance'"
+                          value="true"
+                          @changeHandler="addInsuranceHandler"
+                        />
+                      </b-col>
+                    </b-row>
+                    <b-row class="align-items-center">
+                      <b-col cols="12" lg="2" class="mb-3">
+                        <label class="ship-to-address__label"
+                          >Ship to this Address
+                          <div class="icraft-hint" :id="'ship__' + key"></div>
+                        </label>
+                        <b-popover
+                          custom-class="custom-popover"
+                          :target="'ship__' + key"
+                          triggers="hover"
+                        >
+                          <h4>Placing Custom Orders</h4>
+                          You can place a Custom Order for this item and provide
+                          seller with your color and other product preferences
+                          and modifications. You will be able to add this
+                          information at the Checkout.
+                        </b-popover>
+                      </b-col>
+                      <b-col cols="12" lg="5" class="mb-3">
+                        <button
+                          class="shipping-action-btn shipping-action-btn__select"
+                          @click="selectAddress()"
+                        >
+                          Select Address
+                        </button>
+                        <button
+                          class="shipping-action-btn shipping-action-btn__addNew"
+                          @click="addNewAddress()"
+                        >
+                          Add New
+                        </button>
+                      </b-col>
+                      <b-col lg="5" class="mb-3"></b-col>
+                    </b-row>
+                    <b-row>
+                      <b-col cols="12">
+                        <p class="delivery-date">
+                          Approx. Delivery Date: <span>Aug 16, 2018</span>
+                        </p>
+                      </b-col>
+                    </b-row>
+                  </b-collapse>
                 </b-row>
               </b-collapse>
             </div>
@@ -81,21 +188,55 @@ import Footer from "../components/Footer/Footer.vue";
 import ProductSlider from "../components/StaticComponents/ProductSlider/ProductSlider.vue";
 import TableProduct from "../components/Checkout/TableProduct.vue";
 import OrderSummary from "../components/Checkout/OrderSummary.vue";
+import InputText from "../components/FormElements/InputText.vue";
+import Checkbox from "../components/FormElements/Checkbox.vue";
 
 export default {
   name: "BagPage",
   props: "",
   data() {
-    return {};
+    return {
+      shoppingType: null,
+      shoppingOptions: [
+        { value: null, text: "Please select delivery" },
+        {
+          value: { type: "UPS", price: 15 },
+          text: "Standard Shipping (UPS) - $15.00"
+        },
+        {
+          value: { type: "UkrPost", price: 25 },
+          text: "Standard Shipping (UkrPost) - $25.00"
+        },
+        {
+          value: { type: "DHL", price: 35 },
+          text: "Standard Shipping (DHL) - $35.00"
+        }
+      ]
+    };
   },
   components: {
     HeaderWhite,
     Footer,
     ProductSlider,
     TableProduct,
-    OrderSummary
+    OrderSummary,
+    InputText,
+    Checkbox
   },
-  methods: {},
+  methods: {
+    selectAddress() {
+      console.log("selectAddress");
+    },
+    addNewAddress() {
+      console.log("addNewAddress");
+    },
+    addInsuranceHandler(val) {
+      console.log("addInsuranceHandler", val);
+    },
+    addCouponHandler(val) {
+      console.log("addCouponHandler", val);
+    }
+  },
   computed: {
     countProductsInBag() {
       return this.$store.getters.countProductsInBag;
@@ -186,9 +327,154 @@ export default {
   }
 }
 
-@media only screen and (max-width: 992px) {
+.first-block {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.img-block {
+  width: 30%;
+  padding-right: 20px;
+  text-align: center;
+}
+.desc-block {
+  width: 70%;
+}
+
+.ship-to-address__label,
+.delivery-options__label,
+.coupon-for-seller__label {
+  font-family: $font_montserrat_regular;
+  font-size: 16px;
+  color: #000000;
+  position: relative;
+  padding-left: 35px;
+  padding-right: 10px;
+  &:before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 12px);
+    left: 0;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M23.063 3.692H.938c-.518 0-.938.42-.938.938v3.562c0 .518.42.938.938.938 1.55 0 2.812 1.261 2.812 2.812S2.488 14.755.937 14.755c-.517 0-.937.42-.937.937v3.563c0 .518.42.937.938.937h22.125c.517 0 .937-.42.937-.937V4.63c0-.518-.42-.938-.938-.938zm-.938 14.625H9.375V16.63c0-.518-.42-.938-.938-.938-.517 0-.937.42-.937.938v1.687H1.875v-1.781c2.137-.436 3.75-2.33 3.75-4.594 0-2.263-1.613-4.157-3.75-4.593V5.567H7.5v1.688c0 .518.42.937.938.937.517 0 .937-.42.937-.937V5.567h12.75v12.75zm-12.75-7.312v1.875c0 .518-.42.937-.938.937-.517 0-.937-.42-.937-.937v-1.875c0-.518.42-.938.938-.938.517 0 .937.42.937.938z'/%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+}
+.delivery-options__label:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M19.406 10.014c-1.522 0-2.76 1.238-2.76 2.761 0 1.522 1.238 2.761 2.76 2.761 1.523 0 2.762-1.239 2.762-2.76 0-1.524-1.239-2.762-2.762-2.762zm0 3.973c-.668 0-1.212-.544-1.212-1.212 0-.67.544-1.213 1.212-1.213.67 0 1.213.544 1.213 1.213 0 .668-.544 1.212-1.213 1.212zM15.432.026H.774C.347.026 0 .373 0 .801v11.922c0 .428.347.774.774.774H3.2V11.95H1.548V1.575h13.11v11.148h1.548V.801c0-.428-.346-.775-.774-.775z' transform='translate(0 4.615)'/%3E%3Cpath d='M6.994 11.949H17.42V13.497H6.994z' transform='translate(0 4.615)'/%3E%3Cpath d='M5.084 10.014c-1.523 0-2.761 1.238-2.761 2.761 0 1.522 1.238 2.761 2.76 2.761 1.523 0 2.762-1.239 2.762-2.76 0-1.524-1.239-2.762-2.761-2.762zm0 3.973c-.669 0-1.213-.544-1.213-1.212 0-.67.544-1.213 1.213-1.213s1.213.544 1.213 1.213c0 .668-.544 1.212-1.213 1.212zM23.226 6.452h-7.794v1.549h7.02v3.948h-1.11v1.548h1.884c.427 0 .774-.346.774-.774V7.226c0-.427-.347-.774-.774-.774z' transform='translate(0 4.615)'/%3E%3Cpath d='M20.885 3.24c-.136-.247-.396-.4-.679-.4h-4.774v1.548h4.317L21.515 7.6l1.357-.747-1.987-3.613z' transform='translate(0 4.615)'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.ship-to-address__label:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg%3E%3Cpath d='M8.719 0C3.926 0 .027 3.9.027 8.692c0 5.948 7.778 14.68 8.11 15.048.31.347.854.346 1.164 0 .331-.368 8.11-9.1 8.11-15.048C17.41 3.899 13.51 0 8.719 0zm0 22.019C6.1 18.909 1.592 12.774 1.592 8.692c0-3.93 3.197-7.127 7.127-7.127 3.93 0 7.126 3.197 7.126 7.127 0 4.082-4.508 10.216-7.126 13.327z' transform='translate(3.692)'/%3E%3Cpath d='M8.719 4.319c-2.412 0-4.373 1.962-4.373 4.373 0 2.411 1.961 4.373 4.373 4.373 2.411 0 4.373-1.962 4.373-4.373 0-2.411-1.962-4.373-4.373-4.373zm0 7.18C7.17 11.5 5.91 10.24 5.91 8.693s1.26-2.808 2.808-2.808c1.548 0 2.808 1.26 2.808 2.808 0 1.548-1.26 2.808-2.808 2.808z' transform='translate(3.692)'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.shipping-action-btn {
+  border: none;
+  font-family: $font_montserrat_medium;
+  font-size: 16px;
+  color: #000000;
+  background-color: transparent;
+  padding-left: 30px;
+  text-transform: uppercase;
+  position: relative;
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='26px' height='26px' viewBox='0 0 26 26' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3E1BA3205A-E980-4696-A271-6845886D6AF5%3C/title%3E%3Cg id='Step-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Shopping-Bag' transform='translate(-85.000000, -824.000000)' fill='%23000000'%3E%3Cg id='Helper/Product-1---1440-variant' transform='translate(50.000000, 663.000000)'%3E%3Cg id='Group-10' transform='translate(22.000000, 23.000000)'%3E%3Cg id='Group-5' transform='translate(13.000000, 5.000000)'%3E%3Cg id='icons/pluss-copy-3' transform='translate(0.000000, 133.000000)'%3E%3Cpath d='M16.6111111,5 L16.611,15.388 L27,15.3888889 L27,16.6111111 L16.611,16.611 L16.6111111,27 L15.3888889,27 L15.388,16.611 L5,16.6111111 L5,15.3888889 L15.388,15.388 L15.3888889,5 L16.6111111,5 Z' id='Combined-Shape' transform='translate(16.000000, 16.000000) rotate(45.000000) translate(-16.000000, -16.000000) '%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-size: cover;
+    position: absolute;
+    top: -3px;
+    left: 0;
+  }
+}
+
+.shipping-action-btn__select {
+  margin-right: 30px;
+}
+.shipping-action-btn__select:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath fill-rule='evenodd' d='M25.707 3.33c-.39-.39-1.024-.39-1.414 0L8.083 19.54l-6.376-6.375c-.39-.391-1.024-.391-1.414 0-.39.39-.39 1.023 0 1.414l7.083 7.083c.39.39 1.024.39 1.414 0L25.707 4.745c.39-.39.39-1.024 0-1.415z'/%3E%3C/svg%3E%0A");
+}
+
+.shipping-action-btn__addNew:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath fill-rule='evenodd' d='M13.611 2v10.388H24v1.223H13.611V24H12.39l-.001-10.389H2V12.39l10.388-.001V2h1.223z'/%3E%3C/svg%3E%0A");
+}
+
+.delivery-options__title {
+  font-family: $font_montserrat_semi_bold;
+  font-size: 16px;
+
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath fill='%23000' d='M7.41 8.59L12 13.17 16.59 8.59 18 10 12 16 6 10z' transform='matrix(1 0 0 -1 1 25)'/%3E%3Cpath d='M0 0L24 0 24 24 0 24z' transform='matrix(1 0 0 -1 1 25)'/%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    margin-left: 40px;
+    transition: all 0.2s;
+  }
+  &.collapsed:after {
+    transform: rotate(180deg);
+    transition: all 0.2s;
+  }
+}
+
+.delivery-options__collapse {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.delivery-date {
+  font-family: $font_montserrat_regular;
+  font-size: 16px;
+  color: #000000;
+  margin: 40px auto;
+  span {
+    font-family: $font_montserrat_semi_bold;
+  }
+}
+
+.type-shipping {
+  font-family: $font_montserrat_regular;
+  font-size: 18px;
+  padding: 14px 10px;
+  border: 1px solid $checkout_border_gray;
+  border-radius: 3px;
+  width: 100%;
+  min-height: 50px;
+  padding-right: 20px;
+}
+
+.icraft-hint {
+  position: absolute;
+  right: -15px;
+  top: calc(50% - 9px);
+}
+
+@media only screen and (max-width: 1200px) {
   .checkout-table__wrap {
     margin-bottom: 40px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .ship-to-address__label,
+  .delivery-options__label {
+    padding-right: 30px;
+  }
+  .delivery-options__title {
+    border-bottom: 1px solid #d9d9d9;
+    &.collapsed {
+      border-bottom: none;
+    }
   }
 }
 

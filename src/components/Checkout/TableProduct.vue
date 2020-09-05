@@ -2,14 +2,18 @@
   <transition name="fade">
     <b-row class="table-product">
       <b-col cols="12" lg="6">
-        <div class="first-block">
-          <div class="img-block">
+        <b-row class="first-block">
+          <b-col
+            cols="12"
+            lg="4"
+            class="d-flex d-lg-inline-block d-xl-inline-block flex-lg-wrap flex-xl-wrap"
+          >
             <div class="img-block__img">
               <img :src="product.images[0]" :alt="product.name" />
             </div>
             <router-link
               :to="{ name: 'ProductPage', params: { id: product.id } }"
-              class="product-card__link d-block  d-md-none d-lg-none d-xl-none"
+              class="product-card__link d-block d-lg-none d-xl-none"
               ><h3 class="desc-block__title">
                 {{ product.name }}
               </h3>
@@ -22,11 +26,11 @@
                 Remove
               </button>
             </div>
-          </div>
-          <div class="desc-block">
+          </b-col>
+          <b-col cols="12" lg="8" class="">
             <router-link
               :to="{ name: 'ProductPage', params: { id: product.id } }"
-              class="product-card__link d-none d-md-block d-lg-block d-xl-block"
+              class="product-card__link d-none d-lg-block d-xl-block"
               ><h3 class="desc-block__title">
                 {{ product.name }}
               </h3>
@@ -111,8 +115,8 @@
                 />
               </transition>
             </div>
-          </div>
-        </div>
+          </b-col>
+        </b-row>
       </b-col>
       <b-col cols="12" lg="2">
         <div class="quantity">
@@ -422,9 +426,9 @@ export default {
 .img-block__img {
   margin-bottom: 35px;
   img {
-    max-height: 140px;
+    max-height: 110px;
     width: 100%;
-    max-width: 220px;
+    max-width: 150px;
   }
 }
 
@@ -516,6 +520,11 @@ export default {
   .img-block__img {
     padding-right: 10px;
     margin-bottom: 10px;
+  }
+
+  .count-sum-price__title,
+  .price-title {
+    font-size: 16px;
   }
 }
 </style>

@@ -46,23 +46,29 @@
           (You Save {{ product.price.currency_formatting || $
           }}{{ sumPriceWithoutDiscount - sumPriceWithDiscount }})
         </p>
-        <RedButton
-          text="PROCEED TO CHECKOUT"
-          iconClass="accepted-icon"
-          :animate="true"
-          customClass="proceed-btn"
-          @clickHandler="proceedToCheckoutHandler"
-        />
-        <router-link
-          :to="{ name: 'CollectionPage' }"
-          class="price-additianal-duties"
-          >Additional duties & taxes <span>may apply</span>
-        </router-link>
-        <router-link
-          :to="{ name: 'CollectionPage' }"
-          class="back-to-products__link"
-          ><span class="back-to-products__icon"></span>Continue Shopping
-        </router-link>
+        <p>
+          <RedButton
+            text="PROCEED TO CHECKOUT"
+            iconClass="accepted-icon"
+            :animate="true"
+            customClass="proceed-btn"
+            @clickHandler="proceedToCheckoutHandler"
+          />
+        </p>
+        <p>
+          <router-link
+            :to="{ name: 'CollectionPage' }"
+            class="price-additianal-duties"
+            >Additional duties & taxes <span>may apply</span>
+          </router-link>
+        </p>
+        <p>
+          <router-link
+            :to="{ name: 'CollectionPage' }"
+            class="back-to-products__link"
+            ><span class="back-to-products__icon"></span>Continue Shopping
+          </router-link>
+        </p>
       </b-col>
     </b-row>
   </b-container>
