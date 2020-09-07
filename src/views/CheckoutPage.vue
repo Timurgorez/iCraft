@@ -31,12 +31,28 @@
       </b-row>
     </b-container>
     <b-container class="default-max-container">
-      <b-row>
+      <b-row class="gray-bg">
         <b-col cols="12" sm="12" md="6" lg="6" xl="6">
           <ShipmentInfo />
         </b-col>
         <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary">
           <CheckoutOrderSummary />
+          <CheckoutOrderSummary />
+        </b-col>
+      </b-row>
+    </b-container>
+
+    <div class="separator"></div>
+    <b-container class="default-max-container">
+      <b-row cols-lg="gray-bg">
+        <b-col cols="12" sm="12" md="6" lg="6" xl="6">
+          <PaymentForm class="mt-4" />
+          <ContactInfo/>
+        </b-col>
+        <b-col cols="12" sm="12" md="6" lg="6" xl="6">
+          <div>
+
+          </div>
         </b-col>
       </b-row>
     </b-container>
@@ -49,13 +65,37 @@ import HeaderWhite from "@/components/Header/HeaderWhite";
 import Footer from "@/components/Footer/Footer";
 import ShipmentInfo from "@/components/Checkout/ShipmentInfo";
 import CheckoutOrderSummary from "@/components/Checkout/CheckoutOrderSummary";
+import PaymentForm from "@/components/FormElements/PaymentForm";
+import ContactInfo from "@/components/FormElements/ContactInfo";
 export default {
   name: "CheckoutPage",
-  components: {CheckoutOrderSummary, ShipmentInfo, Footer, HeaderWhite}
+  components: {
+    ContactInfo,
+    PaymentForm,
+    CheckoutOrderSummary,
+    ShipmentInfo,
+    Footer,
+    HeaderWhite
+  },
+  data() {
+    return{}
+  },
+  computed: {
+  }
 }
 </script>
 
 <style scoped lang="scss">
+.gray-bg {
+  margin-right: -30px;
+}
+
+.separator {
+  height: 15px;
+  width: 100%;
+  background-color: #ebebeb;
+}
+
 .checkout-page {
   h2 {
     font-family: $font_neue_kabel;
