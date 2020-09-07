@@ -44,15 +44,19 @@
 
     <div class="separator"></div>
     <b-container class="default-max-container">
-      <b-row cols-lg="gray-bg">
+      <b-row class="gray-bg">
         <b-col cols="12" sm="12" md="6" lg="6" xl="6">
           <PaymentForm class="mt-4" />
           <ContactInfo/>
-        </b-col>
-        <b-col cols="12" sm="12" md="6" lg="6" xl="6">
-          <div>
+          <div class="d-flex flex-row align-items-center mt-4 mb-4">
+            <h3 class="mr-4">Billing Address</h3>
+            <div class="mr-4 shipping-action-btn shipping-action-btn__select d-flex align-items-center">Select Address </div>
+            <div class="shipping-action-btn shipping-action-btn__add-new d-flex align-items-center">Add New</div>
 
           </div>
+        </b-col>
+        <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary">
+          <OrderSummary :checkout-page="true" :product="firstProduct" ></OrderSummary>
         </b-col>
       </b-row>
     </b-container>
@@ -67,9 +71,11 @@ import ShipmentInfo from "@/components/Checkout/ShipmentInfo";
 import CheckoutOrderSummary from "@/components/Checkout/CheckoutOrderSummary";
 import PaymentForm from "@/components/FormElements/PaymentForm";
 import ContactInfo from "@/components/FormElements/ContactInfo";
+import OrderSummary from "@/components/Checkout/OrderSummary";
 export default {
   name: "CheckoutPage",
   components: {
+    OrderSummary,
     ContactInfo,
     PaymentForm,
     CheckoutOrderSummary,
@@ -81,6 +87,13 @@ export default {
     return{}
   },
   computed: {
+    firstProduct() {
+      return this.$store.getters.getProductsInBag[0]
+          ? this.$store.getters.product(
+              this.$store.getters.getProductsInBag[0].prodId
+          )
+          : null;
+    }
   }
 }
 </script>
@@ -107,6 +120,19 @@ export default {
     letter-spacing: normal;
     color: $text_color;
   }
+
+  h3 {
+    font-family: $font_montserrat_medium;
+    font-size: 22px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
   p {
     font-family: $font_montserrat_regular;
     font-size: 18px;
@@ -144,6 +170,30 @@ export default {
 
   &__order-summary {
     background-color: $checkout_bg_gray;
+  }
+
+  .shipping-action-btn {
+    font-family: $font_montserrat_medium;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+
+    &__select {
+      &:before {
+        width: 35px;
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath fill-rule='evenodd' d='M25.707 3.33c-.39-.39-1.024-.39-1.414 0L8.083 19.54l-6.376-6.375c-.39-.391-1.024-.391-1.414 0-.39.39-.39 1.023 0 1.414l7.083 7.083c.39.39 1.024.39 1.414 0L25.707 4.745c.39-.39.39-1.024 0-1.415z'/%3E%3C/svg%3E%0A");
+      }
+    }
+    &__add-new {
+      &:before {
+        width: 35px;
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath fill-rule='evenodd' d='M13.611 2v10.388H24v1.223H13.611V24H12.39l-.001-10.389H2V12.39l10.388-.001V2h1.223z'/%3E%3C/svg%3E%0A");
+      }
+    }
   }
 }
 
