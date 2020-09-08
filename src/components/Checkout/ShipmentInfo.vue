@@ -1,8 +1,8 @@
 <template>
-  <div class="shipment-info mt-4">
+  <div class="shipment-info mt-4 mb-4">
     <div class="shipment-info__title d-flex flex-row justify-content-between">
       <div class="shipment-info__text">
-        <h3 class="title-text"><span>SHIPMENT 1</span> (2 Products)</h3>
+        <h3 class="title-text"><span>SHIPMENT 1</span> ({{quantity}} Products)</h3>
       </div>
       <div class="shipment-info__edit">EDIT</div>
     </div>
@@ -28,7 +28,10 @@
 
 <script>
 export default {
-name: "ShipmentInfo"
+  name: "ShipmentInfo",
+  props: {
+    quantity: Number
+  }
 }
 </script>
 

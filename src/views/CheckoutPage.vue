@@ -1,7 +1,7 @@
 <template>
   <div class="checkout-page">
     <HeaderWhite/>
-    <b-container class="default-max-container">
+    <b-container fluid>
       <b-row>
         <b-col cols="12">
           <div class="checkout-page__title mb-3">
@@ -20,7 +20,7 @@
         </b-col>
       </b-row>
     </b-container>
-    <b-container class="checkout-page__table-header default-max-container d-flex align-items-center">
+    <b-container fluid class="checkout-page__table-header d-flex align-items-center">
         <b-row>
           <b-col cols="12" sm="12" md="6" lg="6" xl="6">
             <span>Shippment and Payment</span>
@@ -30,20 +30,22 @@
           </b-col>
       </b-row>
     </b-container>
-    <b-container class="default-max-container">
-      <b-row class="gray-bg">
-        <b-col cols="12" sm="12" md="6" lg="6" xl="6">
-          <ShipmentInfo />
-        </b-col>
-        <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary">
-          <CheckoutOrderSummary />
-          <CheckoutOrderSummary />
-        </b-col>
-      </b-row>
-    </b-container>
+    <div v-for="(product, key, index) in products"
+         :key="index + Math.random().toString(16)">
+      <b-container fluid>
+        <b-row class="gray-bg">
+          <b-col cols="12" sm="12" md="6" lg="6" xl="6">
+            <ShipmentInfo :quantity="product.length" />
+          </b-col>
+          <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary">
+            <CheckoutOrderSummary :products="product" />
+          </b-col>
+        </b-row>
+      </b-container>
+      <div class="separator"></div>
+    </div>
 
-    <div class="separator"></div>
-    <b-container class="default-max-container">
+    <b-container fluid>
       <b-row class="gray-bg">
         <b-col cols="12" sm="12" md="6" lg="6" xl="6">
           <PaymentForm class="mt-4" />
@@ -87,6 +89,21 @@ export default {
     return{}
   },
   computed: {
+    products() {
+      const arrSort = {};
+      this.$store.getters.getProductsInBag.forEach(el => {
+        const prod = Object.assign({}, this.$store.getters.product(el.prodId));
+        prod["bag"] = el;
+
+        if (prod.seller.id in arrSort) {
+          arrSort[prod.seller.id].push(prod);
+        } else {
+          arrSort[prod.seller.id] = [prod];
+        }
+      });
+      console.log("RTEST  ->", arrSort);
+      return arrSort;
+    },
     firstProduct() {
       return this.$store.getters.getProductsInBag[0]
           ? this.$store.getters.product(
@@ -99,8 +116,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.container-fluid {
+  padding-left: 30px;
+ // padding-right: 30px;
+}
 .gray-bg {
-  margin-right: -30px;
+  //margin-right: -30px;
 }
 
 .separator {

@@ -1,48 +1,58 @@
 <template>
-<div class="order-item mt-4">
-  <div class="order-item__details d-flex flex-row mb-3">
-    <div class="order-item__img">
-      <img src="/tmp/im-3.jpg" />
-    </div>
-    <div class="order-item__info">
-      <h3 class="order-item__name">Beautiful Festive Earrings (Japanese Bead Embroidery)</h3>
-      <div class="d-flex flex-row mb-3">
-        <div class="order-item__color d-flex align-items-center mr-3">
-          <p class="mb-0 mr-2">Color:</p>
-          <div class="order-item__color-size order-item__product-color"></div>
-        </div>
-        <div class="order-item__size d-flex align-items-center">
-          <p class="mb-0 mr-2">Size:</p>
-          <div class="order-item__color-size order-item__product-size">L</div>
-        </div>
+<div class="order-item">
+  <div class="mb-4" v-for="product in products"
+       :key="product.id + Math.random().toString(16)"
+       :class="products.length > 1 && products.lastIndexOf(product) !== (products.length - 1) ? 'border-bottom' : ''">
+    <div class="order-item__details d-flex flex-row mb-3 mt-4" >
+      <div class="order-item__img">
+        <img :src="product.images[0]" />
       </div>
-      <p class="order-item__price mb-0">1 x $ 50.00 CAD</p>
+      <div class="order-item__info">
+        <h3 class="order-item__name">{{ product.name }}</h3>
+        <div class="d-flex flex-row mb-3">
+          <div class="order-item__color d-flex align-items-center mr-3">
+            <p class="mb-0 mr-2">Color:</p>
+            <div class="order-item__color-size order-item__product-color"></div>
+          </div>
+          <div class="order-item__size d-flex align-items-center">
+            <p class="mb-0 mr-2">Size:</p>
+            <div class="order-item__color-size order-item__product-size">{{ product.bag.size }}</div>
+          </div>
+        </div>
+        <p class="order-item__price mb-0">{{ product.bag.count }} x  {{product.price.currency_formatting}}{{ product.price.new }} {{ product.price.currency_code}}</p>
+      </div>
     </div>
-  </div>
-  <div class="d-flex flex-row">
-    <div class="order-item__selected-options d-flex align-items-center mb-2">This is a gift</div>
-    <div class="custom-request__hint"></div>
-  </div>
-  <div class="d-flex flex-row">
-    <div class="order-item__selected-options d-flex align-items-center mb-2">This is a Custom Order</div>
-    <div class="custom-request__hint"></div>
-  </div>
-  <div class="d-flex flex-row flex-wrap mt-3 mb-2">
-    <div class="order-item__actions order-item__remove mr-5 d-flex align-items-center">REMOVE</div>
-    <div class="order-item__actions order-item__edit d-flex align-items-center">EDIT</div>
+    <div class="d-flex flex-row">
+      <div class="order-item__selected-options d-flex align-items-center mb-2">This is a gift</div>
+      <div class="custom-request__hint"></div>
+    </div>
+    <div v-if="product.bag.customRequest" class="d-flex flex-row">
+      <div class="order-item__selected-options d-flex align-items-center mb-2">This is a Custom Order</div>
+      <div class="custom-request__hint"></div>
+    </div>
+    <div class="d-flex flex-row flex-wrap mt-3 mb-2">
+      <div class="order-item__actions order-item__remove mr-5 d-flex align-items-center">REMOVE</div>
+      <div class="order-item__actions order-item__edit d-flex align-items-center">EDIT</div>
+    </div>
   </div>
 </div>
 </template>
 
 <script>
 export default {
-name: "CheckoutOrderSummary"
+  name: "CheckoutOrderSummary",
+  props: {
+    products: Object
+  }
 }
 </script>
 
 <style scoped lang="scss">
 .order-item {
-  border-bottom: 2px solid #d7d7d7;
+
+  .border-bottom {
+    border-bottom: 2px solid #d7d7d7;
+  }
 
   &__img {
    padding-right: 10px;
