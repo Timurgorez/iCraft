@@ -143,17 +143,36 @@
                       </b-col>
                       <b-col cols="12" lg="5" class="mb-3">
                         <button
+                          v-if="!isAddressChosen(key)"
                           class="shipping-action-btn shipping-action-btn__select"
-                          @click="selectAddress()"
+                          @click="$bvModal.show('shipping-modal')"
                         >
                           Select Address
                         </button>
+                        <div v-else>
+                          Address Card
+                        </div>
                         <button
                           class="shipping-action-btn shipping-action-btn__addNew"
                           @click="addNewAddress()"
                         >
                           Add New
                         </button>
+                        <b-modal id="shipping-modal" hide-footer hide-header>
+                          <p class="my-4">Modal with Shipping</p>
+                          <button
+                            class="shipping-action-btn shipping-action-btn__select"
+                            @click="selectAddress(key, 'some address')"
+                          >
+                            Select Address
+                          </button>
+                          <button
+                            class="shipping-action-btn shipping-action-btn__addNew"
+                            @click="addNewAddress()"
+                          >
+                            Add New
+                          </button>
+                        </b-modal>
                       </b-col>
                       <b-col lg="5" class="mb-3"></b-col>
                     </b-row>
@@ -224,9 +243,6 @@ export default {
     Checkbox
   },
   methods: {
-    selectAddress() {
-      console.log("selectAddress");
-    },
     addNewAddress() {
       console.log("addNewAddress");
     },
@@ -235,6 +251,18 @@ export default {
     },
     addCouponHandler(val) {
       console.log("addCouponHandler", val);
+    },
+    selectAddress(sellerId, address) {
+      console.log(sellerId, address);
+      const addressObj = {
+        sellerId: sellerId,
+        address: address
+      };
+      this.$store.dispatch("addAddressToShippingInfo", addressObj);
+    },
+    isAddressChosen(sellerId) {
+      console.log("WWWWW ", !!this.$store.getters.isAddressChosen(sellerId));
+      return !!this.$store.getters.isAddressChosen(sellerId);
     }
   },
   computed: {
@@ -446,7 +474,6 @@ export default {
 .type-shipping {
   font-family: $font_montserrat_regular;
   font-size: 18px;
-  padding: 14px 10px;
   border: 1px solid $checkout_border_gray;
   border-radius: 3px;
   width: 100%;

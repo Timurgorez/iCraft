@@ -80,7 +80,7 @@
                 labelText="This is a Custom Order"
                 inputName="custom-order"
                 id="custom-order"
-                :value="customRequest"
+                value="customRequest"
                 @changeHandler="customRequstHandler"
               />
               <div
@@ -374,7 +374,8 @@ export default {
         count: this.model_quantity,
         size: this.model_size,
         color: this.model_color,
-        customRequest: this.customRequest
+        customRequest: this.customRequest,
+        sellerId: this.product.seller.id
       };
       if (this.checkProductInBag(product)) {
         this.$notify({
@@ -414,10 +415,15 @@ export default {
         count: this.model_quantity,
         size: this.model_size,
         color: this.model_color,
-        customRequest: this.customRequest
+        customRequest: this.customRequest,
+        sellerId: this.product.seller.id
       };
 
-      this.$store.dispatch("addProductToBag", productToAdd);
+      this.$store.dispatch(
+        "addProductToBag",
+        productToAdd,
+        this.product.seller.id
+      );
       this.model_quantity = 1;
       this.$router.push("/shopping-bag");
     },
