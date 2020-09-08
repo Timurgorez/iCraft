@@ -84,6 +84,7 @@ export default {
   span {
     display: inline-block;
     min-width: 95px;
+    padding-right: 15px;
   }
 }
 

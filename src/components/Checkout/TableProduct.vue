@@ -41,6 +41,7 @@
                   @model_color="model_color_trigger"
                   :initialColor="product.bag.color"
                   :one="true"
+                  classWrap="custom-color"
                 />
               </div>
               <div class="size">
@@ -48,8 +49,8 @@
                   @model_size="model_size_trigger"
                   :initialSize="product.bag.size"
                   :one="true"
+                  classWrap="custom-size"
                 />
-                <span class="d-none d-lg-block d-xl-block">Sizing Chart</span>
               </div>
             </div>
             <div class="d-none d-lg-block d-xl-block">
@@ -474,6 +475,23 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
   opacity: 0;
+}
+
+.color-size-choosen {
+  display: flex;
+  margin: 10px auto 30px;
+}
+
+::v-deep .custom-size {
+  span {
+    min-width: auto;
+  }
+}
+
+::v-deep .custom-color {
+  span {
+    min-width: auto;
+  }
 }
 
 @media only screen and (max-width: 992px) {
