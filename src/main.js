@@ -5,12 +5,15 @@ import store from "./store";
 
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import VueAwesomeSwiper from "vue-awesome-swiper";
+import VueCardFormat from "vue-credit-card-validation";
+
 
 import Notifications from "vue-notification";
 
 Vue.use(BootstrapVue);
 Vue.use(VueAwesomeSwiper);
 Vue.use(IconsPlugin);
+Vue.use(VueCardFormat);
 
 Vue.use(Notifications);
 

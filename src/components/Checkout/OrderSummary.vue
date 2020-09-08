@@ -1,12 +1,12 @@
 <template>
   <b-container fluid class="order-summary">
-    <b-row class="checkout-table__head d-flex" align-v="center">
+    <b-row v-if="!checkoutPage" class="checkout-table__head d-flex" align-v="center">
       <b-col cols="12">
         <span>Order Summary</span>
       </b-col>
     </b-row>
     <b-row>
-      <b-col cols="12" class="text-right">
+      <b-col cols="12" :class="checkoutPage ? 'text-right no-border' : 'text-right' ">
         <div class="price-desc">
           <p>
             Sub-total:
@@ -46,13 +46,22 @@
           (You Save {{ product.price.currency_formatting || $
           }}{{ sumPriceWithoutDiscount - sumPriceWithDiscount }})
         </p>
-        <p>
+        <p v-if="!checkoutPage">
           <RedButton
             text="PROCEED TO CHECKOUT"
             iconClass="accepted-icon"
             :animate="true"
             customClass="proceed-btn"
             @clickHandler="proceedToCheckoutHandler"
+          />
+        </p>
+        <p v-if="checkoutPage">
+          <RedButton
+              text="PLACE ORDER"
+              iconClass="place-order-icon"
+              :animate="true"
+              customClass="place-order-btn"
+              @clickHandler="placeOrder"
           />
         </p>
         <p>
@@ -62,7 +71,7 @@
             >Additional duties & taxes <span>may apply</span>
           </router-link>
         </p>
-        <p>
+        <p v-if="!checkoutPage">
           <router-link
             :to="{ name: 'CollectionPage' }"
             class="back-to-products__link"
@@ -83,7 +92,8 @@ export default {
     return {};
   },
   props: {
-    product: Object
+    product: Object,
+    checkoutPage: Boolean
   },
   components: {
     RedButton
@@ -92,6 +102,10 @@ export default {
     proceedToCheckoutHandler() {
       console.log("proceedToCheckoutHandler");
       this.$router.push("/checkout");
+    },
+    placeOrder() {
+      console.log("placeOrder");
+
     }
   },
   computed: {
@@ -159,8 +173,16 @@ export default {
   padding: 30px;
 }
 
+.no-border {
+  border: none;
+}
+
 .proceed-btn {
   margin-bottom: 30px;
+}
+
+.place-order-btn {
+  padding: 10px 70px;
 }
 
 .back-to-products__link {
