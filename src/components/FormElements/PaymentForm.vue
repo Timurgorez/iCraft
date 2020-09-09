@@ -13,7 +13,7 @@
     <p class="payment-form__remainder mt-3 mb-4">We don’t store your credit cards.</p>
     <div class="payment-form__options mb-4">
       <b-row>
-        <b-col cols="6">
+        <b-col cols="12" sm="12" md="6" lg="6" xl="6">
           <b-form-radio v-model="paymentMethod" name="some-radios" value="card">
             <div class="payment-form__card-icons d-flex flex-row">
               <div class="payment-form__card-type-container d-flex justify-content-center payment-form__card-type-container-border">
@@ -31,7 +31,7 @@
             </div>
           </b-form-radio>
         </b-col>
-        <b-col cols="6">
+        <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="mt-3 mt-sm-3 mt-md-0 mt-lg-0 mt-xl-0">
           <b-form-radio v-model="paymentMethod" name="some-radios" value="paypal">
             <div class="payment-form__card-type-container d-flex justify-content-center payment-form__card-type-container-border">
               <div class="payment-form__card-type paypal"></div>
@@ -44,7 +44,7 @@
       <b-container class="payment-form__container">
         <b-row class="mb-3">
           <b-col cols="12">
-            <div class="d-flex flex-row align-items-center">
+            <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row align-items-md-center align-items-lg-center align-items-xl-center">
               <label for="card-number">Card Number</label>
               <div class="d-flex flex-row align-items-center w-100 card-number-wrapper">
                 <div class="payment-form__card-type-container d-flex justify-content-center" :class="cardNumber.length > 1 ? 'payment-form__card-type-container-border': ''">
@@ -60,7 +60,7 @@
         </b-row>
         <b-row class="pt-2">
           <b-col cols="6">
-            <div class="d-flex flex-row align-items-center">
+            <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row align-items-md-center align-items-lg-center align-items-xl-center">
               <label for="card-exp">Card Expiration</label>
               <b-form-input ref="cardExpInput" id="card-exp" @input="validateExpirationDate" :data-error="(cardErrors.cardExpiry)?true:false" v-model="cardExpiry" maxlength="10" v-cardformat:formatCardExpiry></b-form-input>
             </div>
@@ -69,7 +69,7 @@
             </div>
           </b-col>
           <b-col cols="6">
-            <div class="d-flex flex-row align-items-center">
+            <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row align-items-md-center align-items-lg-center align-items-xl-center">
               <label for="card-cvc">Security Code</label>
               <b-form-input ref="cardCvcInput" id="card-cvc" @input="validateCVC" :data-error="(cardErrors.cardCvc)?true:false" v-model="cardCvc" placeholder="XXX" v-cardformat:formatCardCVC></b-form-input>
               <div class="custom-request__hint" id="popover-card-save__hint"></div>
@@ -324,6 +324,28 @@ export default {
 
   .secure-code-error {
     margin-left: 95px;
+  }
+}
+
+@media screen and (max-width: 576px){
+  .payment-form {
+    .custom-request__hint {
+      position: absolute;
+      top: 50px;
+      right: 20px;
+      left: inherit;
+
+    }
+
+    #card-exp {
+      margin-left: 0;
+    }
+
+    #card-cvc {
+      margin-right: 0;
+      margin-left: 0;
+      width: 130px;
+    }
   }
 }
 </style>

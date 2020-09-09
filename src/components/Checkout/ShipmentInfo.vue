@@ -6,6 +6,12 @@
       </div>
       <div class="shipment-info__edit">EDIT</div>
     </div>
+    <div class="shipment-info__product-images d-flex d-sm-flex d-md-none d-lg-none d-xl-none">
+      <div class="image-wrapper" v-for="product in products"
+           :key="product.id + Math.random().toString(16)">
+        <div class="div-img" :style="{'background-image': 'url('+ product.images[0] +')'}" />
+      </div>
+    </div>
     <div class="shipment-info__address">
       <div class="shipment-info__gray-box">
         <h3 class="title-text">Shipping Address</h3>
@@ -30,7 +36,11 @@
 export default {
   name: "ShipmentInfo",
   props: {
-    quantity: Number
+    quantity: Number,
+    products: Array
+  },
+  methods: {
+
   }
 }
 </script>
@@ -81,6 +91,24 @@ export default {
       height: 20px;
     }
   }
+
+  &__product-images {
+    margin: 20px 0;
+
+    .image-wrapper {
+      margin-right: 15px;
+    }
+
+    .div-img {
+      width: 80px;
+      height: 60px;
+      border-radius: 6px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
   &__gray-box {
     margin: 15px 0;
     background-color: $checkout_bg_gray;

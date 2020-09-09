@@ -378,7 +378,7 @@ export default {
 }
 
 .desc-block__title {
-  font-family: NeueKabel;
+  font-family: $font_neue_kabel;
   font-size: 20px;
   line-height: 1.25;
   letter-spacing: normal;
