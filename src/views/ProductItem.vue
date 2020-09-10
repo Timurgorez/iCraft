@@ -612,7 +612,7 @@ export default {
     align-items: center;
     &:hover {
       color: $purple_color;
-      opacity: 70%;
+     // opacity: 70%;
       text-decoration: none;
     }
   }
@@ -714,7 +714,7 @@ export default {
     margin: 0;
 
     &:hover {
-      opacity: 70%;
+    //  opacity: 70%;
     }
   }
 
