@@ -132,7 +132,7 @@
                 <div class="product-info__toggle-arrow"></div>
               </div>
               <b-collapse visible id="collapse-description" class="mt-2">
-                <div class="product-info__text">
+                <div class="product-info__text pt-2">
                   <div class="d-flex flex-row">
                     <ul class="product-info__main-info">
                       <li class="product-info__main-info-item list-mb">

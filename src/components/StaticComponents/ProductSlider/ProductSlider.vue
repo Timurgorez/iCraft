@@ -1,9 +1,10 @@
 <template>
-  <div class="product-slider">
+  <div class="product-slider" :class="checkoutPage ? 'bg-white': ''">
     <b-container fluid>
       <b-row align-h="center" class="text-center">
         <b-col cols="12" class="centered">
-          <h3 class="product-slider__title">Items You Might Like</h3>
+          <h3 v-if="!checkoutPage" class="product-slider__title">Items You Might Like</h3>
+          <h3 v-if="checkoutPage" class="product-slider__title">Saved For Later (6 items)</h3>
           <img
             class="product-slider__title-img"
             src="~@/assets/desctop/pages/collectionPage/for-title-2.svg"
@@ -82,7 +83,9 @@ export default {
       }
     };
   },
-  props: {},
+  props: {
+    checkoutPage: Boolean
+  },
   components: {
     Swiper,
     SwiperSlide,
@@ -122,6 +125,12 @@ export default {
   background-color: $bg_grey;
   padding-bottom: 100px;
 }
+
+.bg-white {
+  background-color: #fff;
+  margin-top: 0;
+}
+
 .product-slider__title-img {
   width: 200px;
   height: 40px;

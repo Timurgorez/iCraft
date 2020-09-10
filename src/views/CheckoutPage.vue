@@ -1,7 +1,7 @@
 <template>
   <div class="checkout-page">
     <HeaderWhite/>
-    <b-container class="default-max-container">
+    <b-container fluid>
       <b-row>
         <b-col cols="12">
           <div class="checkout-page__title mb-3">
@@ -9,7 +9,7 @@
             <div class="mt-4 d-flex flex-row flex-wrap align-items-center justify-content-xl-between justify-content-lg-between justify-content-md-start justify-content-sm-start justify-content-start">
               <p class="mb-0">You will have an opportunity to create an account later, if you'd like.</p>
               <div class="checkout-page__sign-in d-flex flex-row align-items-center">
-                <p class="mb-0">Existing Customer? <a href="#">Sign In</a> or Sign with</p>
+                <p class="mb-0 mt-sm-3 mt-3 mt-md-0 mt-lg-0 mt-lg-0 mr-5 mr-sm-0 mr-md-0 mr-lg-0 mr-xl-0">Existing Customer? <a href="#">Sign In</a> or Sign with</p>
                 <div class="checkout-page__sign-in-options d-flex flex-row align-items-center">
                   <div class="sign-in-icon google-sign-in"></div>
                   <div class="sign-in-icon facebook-sign-in"></div>
@@ -20,7 +20,7 @@
         </b-col>
       </b-row>
     </b-container>
-    <b-container class="checkout-page__table-header default-max-container d-flex align-items-center">
+    <b-container fluid class="checkout-page__table-header d-none d-sm-none d-md-flex align-items-center d-lg-flex d-xl-flex">
         <b-row>
           <b-col cols="12" sm="12" md="6" lg="6" xl="6">
             <span>Shippment and Payment</span>
@@ -30,36 +30,67 @@
           </b-col>
       </b-row>
     </b-container>
-    <b-container class="default-max-container">
-      <b-row class="gray-bg">
-        <b-col cols="12" sm="12" md="6" lg="6" xl="6">
-          <ShipmentInfo />
-        </b-col>
-        <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary">
-          <CheckoutOrderSummary />
-          <CheckoutOrderSummary />
-        </b-col>
-      </b-row>
-    </b-container>
+    <div class="separator d-block d-sm-block d-md-none d-lg-none d-xl-none"></div>
+    <div v-for="(product, key, index) in products"
+         :key="index + Math.random().toString(16)">
+      <b-container fluid>
+        <b-row class="gray-bg">
+          <b-col cols="12" sm="12" md="6" lg="6" xl="6">
+            <ShipmentInfo :quantity="product.length" :products="product" />
+          </b-col>
+          <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary d-none d-sm-none d-md-block d-lg-block d-xl-block">
+            <CheckoutOrderSummary :products="product" />
+          </b-col>
+        </b-row>
+      </b-container>
+      <div class="separator"></div>
+    </div>
 
-    <div class="separator"></div>
-    <b-container class="default-max-container">
+    <b-container fluid>
       <b-row class="gray-bg">
         <b-col cols="12" sm="12" md="6" lg="6" xl="6">
           <PaymentForm class="mt-4" />
           <ContactInfo/>
-          <div class="d-flex flex-row align-items-center mt-4 mb-4">
-            <h3 class="mr-4">Billing Address</h3>
-            <div class="mr-4 shipping-action-btn shipping-action-btn__select d-flex align-items-center">Select Address </div>
-            <div class="shipping-action-btn shipping-action-btn__add-new d-flex align-items-center">Add New</div>
-
+          <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row mt-4 mb-4">
+            <h3 class="mr-4 mb-3">Billing Address</h3>
+            <div class="mr-4 mb-3 shipping-action-btn shipping-action-btn__select d-flex align-items-center">Select Address </div>
+            <div class=" mb-3 shipping-action-btn shipping-action-btn__add-new d-flex align-items-center">Add New</div>
           </div>
         </b-col>
-        <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary">
+        <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary d-none d-sm-none d-md-block d-lg-block d-xl-block">
           <OrderSummary :checkout-page="true" :product="firstProduct" ></OrderSummary>
         </b-col>
       </b-row>
     </b-container>
+    <div class="separator"></div>
+    <!-- Mobile blocks   -->
+    <b-container fluid class="checkout-page__table-header d-flex d-sm-flex d-md-none align-items-center d-lg-none d-xl-none">
+      <b-row>
+        <b-col cols="12" sm="12">
+          <span>Order Summary</span>
+        </b-col>
+      </b-row>
+    </b-container>
+    <div class="d-block d-sm-block d-md-none d-lg-none d-xl-none" v-for="(product, key, index) in products"
+         :key="index + Math.random().toString(16)">
+      <b-container fluid>
+        <b-row class="gray-bg">
+          <b-col cols="12" sm="12" class="checkout-page__order-summary">
+            <CheckoutOrderSummary :products="product" />
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
+
+    <b-container fluid  class="d-block d-sm-block d-md-none d-lg-none d-xl-none">
+      <b-row>
+        <b-col cols="12">
+          <OrderSummary :checkout-page="true" :product="firstProduct" ></OrderSummary>
+        </b-col>
+      </b-row>
+    </b-container>
+    <!-- Mobile blocks   -->
+    <ProductSlider :checkoutPage="true"/>
     <Footer/>
   </div>
 </template>
@@ -72,9 +103,11 @@ import CheckoutOrderSummary from "@/components/Checkout/CheckoutOrderSummary";
 import PaymentForm from "@/components/FormElements/PaymentForm";
 import ContactInfo from "@/components/FormElements/ContactInfo";
 import OrderSummary from "@/components/Checkout/OrderSummary";
+import ProductSlider from "@/components/StaticComponents/ProductSlider/ProductSlider";
 export default {
   name: "CheckoutPage",
   components: {
+    ProductSlider,
     OrderSummary,
     ContactInfo,
     PaymentForm,
@@ -87,6 +120,21 @@ export default {
     return{}
   },
   computed: {
+    products() {
+      const arrSort = {};
+      this.$store.getters.getProductsInBag.forEach(el => {
+        const prod = Object.assign({}, this.$store.getters.product(el.prodId));
+        prod["bag"] = el;
+
+        if (prod.seller.id in arrSort) {
+          arrSort[prod.seller.id].push(prod);
+        } else {
+          arrSort[prod.seller.id] = [prod];
+        }
+      });
+      console.log("RTEST  ->", arrSort);
+      return arrSort;
+    },
     firstProduct() {
       return this.$store.getters.getProductsInBag[0]
           ? this.$store.getters.product(
@@ -99,8 +147,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.container-fluid {
+  padding-left: 30px;
+}
 .gray-bg {
-  margin-right: -30px;
+  //margin-right: -30px;
 }
 
 .separator {
@@ -129,7 +180,6 @@ export default {
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
-    text-align: center;
     margin-bottom: 0;
   }
 
@@ -206,4 +256,31 @@ export default {
   color: #000;
   min-height: 60px;
 }
+
+@media screen and (max-width: 576px){
+  .container-fluid {
+    padding-left: 15px;
+  }
+  .checkout-page {
+    &__title {
+      h2 {
+        font-size: 26px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+    &__sign-in {
+      p {
+        font-size: 14px;
+      }
+    }
+    .sign-in-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+}
+
 </style>

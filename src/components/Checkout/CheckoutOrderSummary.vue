@@ -1,11 +1,28 @@
 <template>
-<div class="order-item mt-4">
-  <div class="order-item__details d-flex flex-row mb-3">
-    <div class="order-item__img">
-      <img src="/tmp/im-3.jpg" />
+<div class="order-item">
+  <div class="mb-4" v-for="product in products"
+       :key="product.id + Math.random().toString(16)"
+       :class="products.length > 1 && products.lastIndexOf(product) !== (products.length - 1) ? 'border-bottom' : ''">
+    <div class="order-item__details d-flex flex-row mb-0 mb-sm-0 mb-md-3 mb-lg-3 mb-xl-3 mt-4" >
+      <div class="order-item__img">
+        <img :src="product.images[0]" />
+      </div>
+      <div class="order-item__info">
+        <h3 class="order-item__name">{{ product.name }}</h3>
+        <div class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex flex-row mb-3">
+          <div class="order-item__color d-flex align-items-center mr-3">
+            <p class="mb-0 mr-2">Color:</p>
+            <div class="order-item__color-size order-item__product-color"></div>
+          </div>
+          <div class="order-item__size d-flex align-items-center">
+            <p class="mb-0 mr-2">Size:</p>
+            <div class="order-item__color-size order-item__product-size">{{ product.bag.size }}</div>
+          </div>
+        </div>
+        <p class="order-item__price mb-0 d-none d-sm-none d-md-block d-lg-block d-xl-block">{{ product.bag.count }} x  {{product.price.currency_formatting}}{{ product.price.new }} {{ product.price.currency_code}}</p>
+      </div>
     </div>
-    <div class="order-item__info">
-      <h3 class="order-item__name">Beautiful Festive Earrings (Japanese Bead Embroidery)</h3>
+    <div class="d-flex flex-column mb-4 d-sm-flex d-md-none d-lg-none d-xl-none">
       <div class="d-flex flex-row mb-3">
         <div class="order-item__color d-flex align-items-center mr-3">
           <p class="mb-0 mr-2">Color:</p>
@@ -13,36 +30,58 @@
         </div>
         <div class="order-item__size d-flex align-items-center">
           <p class="mb-0 mr-2">Size:</p>
-          <div class="order-item__color-size order-item__product-size">L</div>
+          <div class="order-item__color-size order-item__product-size">{{ product.bag.size }}</div>
         </div>
       </div>
-      <p class="order-item__price mb-0">1 x $ 50.00 CAD</p>
+      <p class="order-item__price mb-0">{{ product.bag.count }} x  {{product.price.currency_formatting}}{{ product.price.new }} {{ product.price.currency_code}}</p>
     </div>
-  </div>
-  <div class="d-flex flex-row">
-    <div class="order-item__selected-options d-flex align-items-center mb-2">This is a gift</div>
-    <div class="custom-request__hint"></div>
-  </div>
-  <div class="d-flex flex-row">
-    <div class="order-item__selected-options d-flex align-items-center mb-2">This is a Custom Order</div>
-    <div class="custom-request__hint"></div>
-  </div>
-  <div class="d-flex flex-row flex-wrap mt-3 mb-2">
-    <div class="order-item__actions order-item__remove mr-5 d-flex align-items-center">REMOVE</div>
-    <div class="order-item__actions order-item__edit d-flex align-items-center">EDIT</div>
+    <div class="d-flex flex-row">
+      <div class="order-item__selected-options d-flex align-items-center mb-2">This is a gift</div>
+      <div class="custom-request__hint"></div>
+    </div>
+    <div v-if="product.bag.customRequest" class="d-flex flex-row">
+      <div class="order-item__selected-options d-flex align-items-center mb-2">This is a Custom Order</div>
+      <div class="custom-request__hint" id="popover-custom-request__hint"></div>
+      <b-popover
+          custom-class="custom-popover"
+          target="popover-custom-request__hint"
+          triggers="hover"
+      >
+        <h4>Placing Custom Orders</h4>
+        You can place a Custom Order for this item and provide seller
+        with your color and other product preferences and modifications.
+        You will be able to add this information at the Checkout.
+      </b-popover>
+
+    </div>
+    <div class="d-flex flex-row flex-wrap mt-3 mb-2 justify-content-sm-center justify-content-center justify-content-md-start justify-content-lg-start justify-content-xl-start">
+      <div class="order-item__actions order-item__remove mr-5 d-flex align-items-center" @click="removeProductFromBag(product.bag.id)">REMOVE</div>
+      <div class="order-item__actions order-item__edit d-flex align-items-center">EDIT</div>
+    </div>
   </div>
 </div>
 </template>
 
 <script>
 export default {
-name: "CheckoutOrderSummary"
+  name: "CheckoutOrderSummary",
+  props: {
+    products: Array
+  },
+  methods: {
+    removeProductFromBag(id) {
+      this.$store.commit("removeProductFromBag", id);
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
 .order-item {
-  border-bottom: 2px solid #d7d7d7;
+
+  .border-bottom {
+    border-bottom: 2px solid #d7d7d7;
+  }
 
   &__img {
    padding-right: 10px;
@@ -139,6 +178,11 @@ name: "CheckoutOrderSummary"
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 70%;
+    }
   }
 
   &__edit::before {
@@ -150,6 +194,23 @@ name: "CheckoutOrderSummary"
     content: url("~@/assets/remove.svg");
     width: 30px;
     height: 33px;
+  }
+}
+
+@media screen and (max-width: 576px){
+  .order-item {
+    .mobile-bottom {
+      border-bottom: 2px solid #d7d7d7;
+    }
+
+    &__price {
+      font-size: 20px;
+    }
+    &__color-size {
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+    }
   }
 }
 </style>

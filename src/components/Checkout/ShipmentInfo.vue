@@ -1,10 +1,16 @@
 <template>
-  <div class="shipment-info mt-4">
+  <div class="shipment-info mt-4 mb-4">
     <div class="shipment-info__title d-flex flex-row justify-content-between">
       <div class="shipment-info__text">
-        <h3 class="title-text"><span>SHIPMENT 1</span> (2 Products)</h3>
+        <h3 class="title-text"><span>SHIPMENT 1</span> ({{quantity}} Products)</h3>
       </div>
       <div class="shipment-info__edit">EDIT</div>
+    </div>
+    <div class="shipment-info__product-images d-flex d-sm-flex d-md-none d-lg-none d-xl-none">
+      <div class="image-wrapper" v-for="product in products"
+           :key="product.id + Math.random().toString(16)">
+        <div class="div-img" :style="{'background-image': 'url('+ product.images[0] +')'}" />
+      </div>
     </div>
     <div class="shipment-info__address">
       <div class="shipment-info__gray-box">
@@ -28,7 +34,14 @@
 
 <script>
 export default {
-name: "ShipmentInfo"
+  name: "ShipmentInfo",
+  props: {
+    quantity: Number,
+    products: Array
+  },
+  methods: {
+
+  }
 }
 </script>
 
@@ -78,6 +91,24 @@ name: "ShipmentInfo"
       height: 20px;
     }
   }
+
+  &__product-images {
+    margin: 20px 0;
+
+    .image-wrapper {
+      margin-right: 15px;
+    }
+
+    .div-img {
+      width: 80px;
+      height: 60px;
+      border-radius: 6px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
   &__gray-box {
     margin: 15px 0;
     background-color: $checkout_bg_gray;

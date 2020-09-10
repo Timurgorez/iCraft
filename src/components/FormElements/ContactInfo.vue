@@ -4,14 +4,14 @@
     <form>
       <b-container class="contact-info__container">
         <b-row class="mb-2">
-          <b-col cols="6">
-            <div class="d-flex flex-row">
+          <b-col cols="12" sm="12" md="6" lg="6" xl="6">
+            <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row align-items-md-center align-items-lg-center align-items-xl-center">
                 <label class="name-label" for="input-name">First Name</label>
                 <b-form-input id="input-name" placeholder="Enter first name"></b-form-input>
             </div>
           </b-col>
-          <b-col cols="6">
-            <div class="d-flex flex-row">
+          <b-col cols="12" sm="12" md="6" lg="6" xl="6">
+            <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row align-items-md-center align-items-lg-center align-items-xl-center">
                 <label for="input-surname">Last Name</label>
                 <b-form-input id="input-surname" size="sm" placeholder="Enter last name"></b-form-input>
             </div>
@@ -19,7 +19,7 @@
         </b-row>
         <b-row class="mb-2">
           <b-col cols="12">
-            <div class="d-flex align-items-center">
+            <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row align-items-md-center align-items-lg-center align-items-xl-center">
               <label for="input-email">Email</label>
               <b-form-input id="input-email" size="sm" placeholder="Enter your email"></b-form-input>
               <div class="custom-request__hint" id="popover-save__hint"></div>
@@ -28,14 +28,14 @@
                   target="popover-save__hint"
                   triggers="hover"
               >
-                Your security code is a three digt number on the back of your credit card.
+                We collect your email address in order to be able to communicate with you about your purchases and other important updates.
               </b-popover>
             </div>
           </b-col>
         </b-row>
         <b-row class="mb-2">
           <b-col cols="12">
-            <div class="d-flex align-items-center">
+            <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row align-items-md-center align-items-lg-center align-items-xl-center">
               <label class="phone-label" for="input-phone">Phone (optional)</label>
               <b-form-input id="input-phone" size="sm" type="tel" placeholder="XXX-XXX-XX-XX"></b-form-input>
             </div>
@@ -122,6 +122,21 @@ name: "ContactInfo"
 
   #input-email {
     margin-left: 38px;
+  }
+}
+
+@media screen and (max-width: 576px){
+  .contact-info {
+    #input-email {
+      margin-left: 10px;
+      width: 300px;
+    }
+    .custom-request__hint {
+      right: 15px;
+      position: absolute;
+      top: 60px;
+      left: inherit;
+    }
   }
 }
 </style>
