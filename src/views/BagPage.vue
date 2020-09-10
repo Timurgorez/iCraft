@@ -62,7 +62,7 @@
                       >Store Coupon (optional)</label
                     >
                   </b-col>
-                  <b-col cols="12" lg="4" class="mt-lg-4 mt-xl-4 mb-4">
+                  <b-col cols="12" lg="5" class="mt-lg-4 mt-xl-4 mb-4">
                     <InputText
                       :id="'coupon-for-seller__' + key"
                       inputName="coupon-for-seller"
@@ -70,7 +70,7 @@
                       @changeHandler="addCouponHandler"
                     />
                   </b-col>
-                  <b-col lg="6"></b-col>
+                  <b-col lg="5"></b-col>
 
                   <b-col
                     cols="12"
@@ -83,7 +83,7 @@
                     class="delivery-options__collapse"
                     :id="'delivery-options_' + key"
                   >
-                    <b-row class="align-items-center">
+                    <b-row class="align-items-center mb-3">
                       <b-col cols="12" lg="2" class="mb-3">
                         <label
                           :for="'delivery-options__' + key"
@@ -106,14 +106,14 @@
                           information at the Checkout.
                         </b-popover>
                       </b-col>
-                      <b-col cols="12" lg="4" class="mb-3">
+                      <b-col cols="12" lg="5" class="mb-3">
                         <b-form-select
                           v-model="shoppingType"
                           :options="shoppingOptions"
                           class="type-shipping"
                         ></b-form-select>
                       </b-col>
-                      <b-col lg="6" class="mb-3">
+                      <b-col lg="5" class="mb-3">
                         <Checkbox
                           labelText="Add Insurance (+ $25.00)"
                           inputName="add-insurance"
@@ -123,7 +123,7 @@
                         />
                       </b-col>
                     </b-row>
-                    <b-row class="align-items-center">
+                    <b-row class="align-items-center ">
                       <b-col cols="12" lg="2" class="mb-3">
                         <label class="ship-to-address__label"
                           >Ship to this Address
@@ -141,16 +141,35 @@
                           information at the Checkout.
                         </b-popover>
                       </b-col>
-                      <b-col cols="12" lg="5" class="mb-3">
+                      <b-col
+                        cols="12"
+                        lg="8"
+                        class="mb-3 d-flex align-items-center"
+                      >
                         <button
-                          v-if="!isAddressChosen(key)"
+                          v-show="!selectedAddress[key]"
                           class="shipping-action-btn shipping-action-btn__select"
-                          @click="$bvModal.show('shipping-modal')"
+                          @click="$bvModal.show('shipping-modal__' + key)"
                         >
                           Select Address
                         </button>
-                        <div v-else>
-                          Address Card
+                        <div v-show="selectedAddress[key]">
+                          <div class="shipment-info__address">
+                            <div class="shipment-info__gray-box">
+                              <h3 class="title-text">Shipping Address</h3>
+                              <p class="sub-text">
+                                Kelly Hoffman <br />
+                                2349 Boston ST SE Apt 2 <br />
+                                Albany, OR 97321 <br />
+                                United States (US)
+                              </p>
+                              <div
+                                class="same-billing-address d-flex align-items-end mb-2"
+                              >
+                                Same as Billing Address
+                              </div>
+                            </div>
+                          </div>
                         </div>
                         <button
                           class="shipping-action-btn shipping-action-btn__addNew"
@@ -158,23 +177,9 @@
                         >
                           Add New
                         </button>
-                        <b-modal id="shipping-modal" hide-footer hide-header>
-                          <p class="my-4">Modal with Shipping</p>
-                          <button
-                            class="shipping-action-btn shipping-action-btn__select"
-                            @click="selectAddress(key, 'some address')"
-                          >
-                            Select Address
-                          </button>
-                          <button
-                            class="shipping-action-btn shipping-action-btn__addNew"
-                            @click="addNewAddress()"
-                          >
-                            Add New
-                          </button>
-                        </b-modal>
+                        <SelectAddress :sellerId="key" />
                       </b-col>
-                      <b-col lg="5" class="mb-3"></b-col>
+                      <b-col lg="2" class="mb-3"></b-col>
                     </b-row>
                     <b-row>
                       <b-col cols="12">
@@ -209,6 +214,7 @@ import TableProduct from "../components/Checkout/TableProduct.vue";
 import OrderSummary from "../components/Checkout/OrderSummary.vue";
 import InputText from "../components/FormElements/InputText.vue";
 import Checkbox from "../components/FormElements/Checkbox.vue";
+import SelectAddress from "../components/ShoppingBag/SelectAddress.vue";
 
 export default {
   name: "BagPage",
@@ -230,7 +236,8 @@ export default {
           value: { type: "DHL", price: 35 },
           text: "Standard Shipping (DHL) - $35.00"
         }
-      ]
+      ],
+      selectedAddress: this.$store.getters.getSelectedAddress
     };
   },
   components: {
@@ -240,7 +247,8 @@ export default {
     TableProduct,
     OrderSummary,
     InputText,
-    Checkbox
+    Checkbox,
+    SelectAddress
   },
   methods: {
     addNewAddress() {
@@ -251,18 +259,6 @@ export default {
     },
     addCouponHandler(val) {
       console.log("addCouponHandler", val);
-    },
-    selectAddress(sellerId, address) {
-      console.log(sellerId, address);
-      const addressObj = {
-        sellerId: sellerId,
-        address: address
-      };
-      this.$store.dispatch("addAddressToShippingInfo", addressObj);
-    },
-    isAddressChosen(sellerId) {
-      console.log("WWWWW ", !!this.$store.getters.isAddressChosen(sellerId));
-      return !!this.$store.getters.isAddressChosen(sellerId);
     }
   },
   computed: {
@@ -281,7 +277,6 @@ export default {
           arrSort[prod.seller.id] = [prod];
         }
       });
-      console.log("RTEST  ->", arrSort);
       return arrSort;
     },
     firstProduct() {
@@ -291,6 +286,10 @@ export default {
           )
         : null;
     }
+    // selectedAddress() {
+    //   console.log("selectedAddress", this.$store.getters.getSelectedAddress);
+    //   return this.$store.getters.getSelectedAddress;
+    // }
   },
   created() {}
 };
@@ -485,6 +484,53 @@ export default {
   position: absolute;
   right: -15px;
   top: calc(50% - 9px);
+}
+
+.shipment-info__address {
+  .title-text {
+    font-family: $font_montserrat_regular;
+    font-size: 18px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: $text_color;
+  }
+
+  .sub-text {
+    font-family: $font_montserrat_regular;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+  }
+  .shipment-info__gray-box {
+    background-color: $checkout_bg_gray;
+    border: 1px solid $checkout_border_gray;
+    border-radius: 4px;
+    max-width: 360px;
+    padding: 20px;
+    padding-right: 60px;
+    margin-right: 30px;
+    .same-billing-address {
+      font-family: $font_montserrat_regular;
+      font-size: 18px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+
+      &::before {
+        content: url("~@/assets/yes.svg");
+        width: 35px;
+        height: 26px;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 1200px) {

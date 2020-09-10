@@ -1,17 +1,17 @@
 export default {
   state: {
     productInBag: [],
-    shippingInfo: {}
+    selectedAddress: {}
   },
   mutations: {
     addToBag(state, payload) {
       state.productInBag.push(payload);
     },
-    addToShippingInfo(state, payload) {
-      if (payload.sellerId in state.shippingInfo) {
-        state.shippingInfo[payload.sellerId].push(payload);
+    addToSelectedAddress(state, payload) {
+      if (payload.sellerId in state.selectedAddress) {
+        state.selectedAddress[payload.sellerId].push(payload);
       } else {
-        state.shippingInfo[payload.sellerId] = [payload];
+        state.selectedAddress[payload.sellerId] = [payload];
       }
     },
     initialiseUserBag(state) {
@@ -19,7 +19,7 @@ export default {
         state.productInBag = JSON.parse(localStorage.getItem("userBag"));
       }
       if (localStorage.getItem("shipping")) {
-        state.shippingInfo = JSON.parse(localStorage.getItem("shipping"));
+        state.selectedAddress = JSON.parse(localStorage.getItem("shipping"));
       }
     },
     modifyFieldInBag(state, obj) {
@@ -54,9 +54,9 @@ export default {
       commit("addToBag", product);
       localStorage.setItem("userBag", JSON.stringify(state.productInBag));
     },
-    addAddressToShippingInfo({ commit, state }, shipping) {
-      commit("addToShippingInfo", shipping);
-      localStorage.setItem("shipping", JSON.stringify(state.shippingInfo));
+    addAddressToSelectedAddress({ commit, state }, shipping) {
+      commit("addToSelectedAddress", shipping);
+      localStorage.setItem("shipping", JSON.stringify(state.selectedAddress));
     }
   },
   getters: {
@@ -66,10 +66,13 @@ export default {
     countProductsInBag(state) {
       return state.productInBag.length;
     },
-    isAddressChosen(state) {
+    isSelectedAddress(state) {
       return sellerId => {
-        return state.shippingInfo[sellerId];
+        return !!state.selectedAddress[sellerId];
       };
+    },
+    getSelectedAddress(state) {
+      return state.selectedAddress;
     }
   }
 };

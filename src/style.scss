@@ -56,6 +56,10 @@ body {
   font-size: 16px;
 }
 
+*:focus {
+  outline: none !important;
+}
+
 a:hover {
   text-decoration: none;
   opacity: 0.7;
@@ -101,7 +105,7 @@ button:hover {
   border-radius: 2px !important;
   border: solid 1px $border_hover_grey_color !important;
   background-color: #ffffff !important;
-  display: inline-block;
+  display: flex;
   margin-right: 20px;
 }
 .checkout-page .int-pm {

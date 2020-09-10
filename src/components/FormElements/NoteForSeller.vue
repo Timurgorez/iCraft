@@ -64,7 +64,7 @@ export default {
   position: relative;
   font-size: 16px;
   font-family: $font_montserrat_regular;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 
   &:focus {
     outline: none;
@@ -81,6 +81,11 @@ export default {
   padding: 10px;
   width: 100%;
   max-width: 320px;
+  &::placeholder {
+    font-family: $font_montserrat_italic;
+    font-size: 16px;
+    color: $text_color;
+  }
 }
 
 @media only screen and (max-width: 768px) {

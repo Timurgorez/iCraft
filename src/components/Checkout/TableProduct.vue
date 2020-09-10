@@ -119,7 +119,7 @@
           </b-col>
         </b-row>
       </b-col>
-      <b-col cols="12" lg="2">
+      <b-col cols="12" lg="2" class="text-right text-lg-left text-xl-left">
         <div class="quantity">
           <span class="quantity__title d-block d-lg-none d-xl-none"
             >Quantity</span
@@ -385,6 +385,10 @@ export default {
   color: $purple_color_btn;
 }
 
+.quantity {
+  display: inline-block;
+}
+
 .quantity__title {
   font-family: $font_montserrat_regular;
   font-size: 16px;
@@ -442,6 +446,7 @@ export default {
   padding-left: 30px;
   text-transform: uppercase;
   position: relative;
+  margin: auto;
   &:before {
     content: "";
     display: inline-block;
@@ -486,11 +491,24 @@ export default {
   span {
     min-width: auto;
   }
+  .size-choose__radio-label {
+    margin-bottom: 0;
+  }
+  .size-choose__radio-label:hover {
+    cursor: default;
+    background: #f3f3f3;
+  }
 }
 
 ::v-deep .custom-color {
   span {
     min-width: auto;
+  }
+  .color-choose__radio-label {
+    margin-bottom: 0;
+  }
+  .color-choose__radio-label:hover {
+    cursor: default;
   }
 }
 
@@ -498,6 +516,7 @@ export default {
   .quantity {
     text-align: right;
     margin-bottom: 20px;
+    display: inline-block;
   }
   .color-size-choosen {
     display: flex;
