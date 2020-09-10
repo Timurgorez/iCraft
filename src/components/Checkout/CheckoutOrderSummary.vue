@@ -41,10 +41,21 @@
     </div>
     <div v-if="product.bag.customRequest" class="d-flex flex-row">
       <div class="order-item__selected-options d-flex align-items-center mb-2">This is a Custom Order</div>
-      <div class="custom-request__hint"></div>
+      <div class="custom-request__hint" id="popover-custom-request__hint"></div>
+      <b-popover
+          custom-class="custom-popover"
+          target="popover-custom-request__hint"
+          triggers="hover"
+      >
+        <h4>Placing Custom Orders</h4>
+        You can place a Custom Order for this item and provide seller
+        with your color and other product preferences and modifications.
+        You will be able to add this information at the Checkout.
+      </b-popover>
+
     </div>
     <div class="d-flex flex-row flex-wrap mt-3 mb-2 justify-content-sm-center justify-content-center justify-content-md-start justify-content-lg-start justify-content-xl-start">
-      <div class="order-item__actions order-item__remove mr-5 d-flex align-items-center">REMOVE</div>
+      <div class="order-item__actions order-item__remove mr-5 d-flex align-items-center" @click="removeProductFromBag(product.bag.id)">REMOVE</div>
       <div class="order-item__actions order-item__edit d-flex align-items-center">EDIT</div>
     </div>
   </div>
@@ -56,6 +67,11 @@ export default {
   name: "CheckoutOrderSummary",
   props: {
     products: Array
+  },
+  methods: {
+    removeProductFromBag(id) {
+      this.$store.commit("removeProductFromBag", id);
+    }
   }
 }
 </script>
@@ -162,6 +178,11 @@ export default {
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 70%;
+    }
   }
 
   &__edit::before {
