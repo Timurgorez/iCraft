@@ -560,6 +560,7 @@ export default {
 
 .quantity {
   margin-bottom: 30px;
+  display: inline-block;
   & > span {
     font-family: $font_montserrat_regular;
     font-size: 16px;
