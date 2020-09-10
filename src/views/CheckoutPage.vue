@@ -62,7 +62,7 @@
         </b-col>
       </b-row>
     </b-container>
-
+    <div class="separator"></div>
     <!-- Mobile blocks   -->
     <b-container fluid class="checkout-page__table-header d-flex d-sm-flex d-md-none align-items-center d-lg-none d-xl-none">
       <b-row>
@@ -90,6 +90,7 @@
       </b-row>
     </b-container>
     <!-- Mobile blocks   -->
+    <ProductSlider :checkoutPage="true"/>
     <Footer/>
   </div>
 </template>
@@ -102,9 +103,11 @@ import CheckoutOrderSummary from "@/components/Checkout/CheckoutOrderSummary";
 import PaymentForm from "@/components/FormElements/PaymentForm";
 import ContactInfo from "@/components/FormElements/ContactInfo";
 import OrderSummary from "@/components/Checkout/OrderSummary";
+import ProductSlider from "@/components/StaticComponents/ProductSlider/ProductSlider";
 export default {
   name: "CheckoutPage",
   components: {
+    ProductSlider,
     OrderSummary,
     ContactInfo,
     PaymentForm,

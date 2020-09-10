@@ -28,7 +28,7 @@
                   target="popover-save__hint"
                   triggers="hover"
               >
-                Your security code is a three digt number on the back of your credit card.
+                We collect your email address in order to be able to communicate with you about your purchases and other important updates.
               </b-popover>
             </div>
           </b-col>
