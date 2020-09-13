@@ -292,6 +292,7 @@ export default {
     model_price_trigger(model_price) {
       this.model_price = model_price.filter;
       this.model_price_name = model_price.name;
+      //model_price.filter.from + " - " + model_price.filter.to;
     },
     model_price_min_trigger(model_price_min) {
       this.model_price_min = parseFloat(model_price_min);
@@ -550,15 +551,16 @@ export default {
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .filter-product-block__arrow {
   background: url("~@/assets/arrow-white.svg") no-repeat 50% 50%;
   display: inline-block;
   width: 15px;
   height: 8px;
-  position: absolute;
-  top: calc(50% - 4px);
-  right: 8px;
+  // position: absolute;
+  // top: calc(50% - 4px);
+  // right: 8px;
 }
 .filter-product-block__one-filter {
   display: flex;

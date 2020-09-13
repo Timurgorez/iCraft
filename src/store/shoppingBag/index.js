@@ -1,18 +1,46 @@
 export default {
   state: {
     productInBag: [],
-    selectedAddress: {}
+    selectedAddress: {},
+    shippingAdresses: [
+      {
+        id: 1,
+        name: "Kelly Hoffman",
+        country: "Ukraine",
+        state: "Kharkiv",
+        zip_code: "Ukraine",
+        city: "Kharkiv",
+        address: "per. Pushkina 12",
+        default: false
+      },
+      {
+        id: 2,
+        name: "Kelly Hoffman",
+        country: "Canada",
+        state: "Quebec",
+        zip_code: "134234",
+        city: "Ottawa",
+        address: "ave. Lenina 12",
+        default: false
+      },
+      {
+        id: 3,
+        name: "Kelly Hoffman",
+        country: "USA",
+        state: "Texas",
+        zip_code: "34523",
+        city: "Miniapalis",
+        address: "ave. Lenina 12",
+        default: false
+      }
+    ]
   },
   mutations: {
     addToBag(state, payload) {
       state.productInBag.push(payload);
     },
     addToSelectedAddress(state, payload) {
-      if (payload.sellerId in state.selectedAddress) {
-        state.selectedAddress[payload.sellerId].push(payload);
-      } else {
-        state.selectedAddress[payload.sellerId] = [payload];
-      }
+      state.selectedAddress[payload.sellerId] = payload.address;
     },
     initialiseUserBag(state) {
       if (localStorage.getItem("userBag")) {
@@ -73,6 +101,15 @@ export default {
     },
     getSelectedAddress(state) {
       return state.selectedAddress;
+    },
+    getDefaultAddress(state) {
+      // return state.selectedAddress;
+      return state.shippingAdresses.find(address => {
+        return address.default;
+      });
+    },
+    getShippingAdresses(state) {
+      return state.shippingAdresses;
     }
   }
 };

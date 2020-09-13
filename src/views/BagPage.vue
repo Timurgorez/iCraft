@@ -147,21 +147,76 @@
                         class="mb-3 d-flex align-items-center"
                       >
                         <button
-                          v-show="!selectedAddress[key]"
+                          v-if="!selectedAddress[key] && !defaultAddress"
                           class="shipping-action-btn shipping-action-btn__select"
                           @click="$bvModal.show('shipping-modal__' + key)"
                         >
                           Select Address
                         </button>
-                        <div v-show="selectedAddress[key]">
+                        <div
+                          v-if="selectedAddress[key]"
+                          @click="$bvModal.show('shipping-modal__' + key)"
+                        >
                           <div class="shipment-info__address">
                             <div class="shipment-info__gray-box">
+                              <button
+                                class="shipping-action-btn shipping-action-btn__edit"
+                                @click.stop="editAddress(selectedAddress[key])"
+                              >
+                                Edit
+                              </button>
+                              <h3 class="title-text">
+                                Shipping Address
+                              </h3>
+                              <p class="sub-text">
+                                {{
+                                  selectedAddress[key] &&
+                                    selectedAddress[key].name
+                                }}
+                                <br />
+                                {{
+                                  selectedAddress[key] &&
+                                    selectedAddress[key].zip_code
+                                }}
+                                {{
+                                  selectedAddress[key] &&
+                                    selectedAddress[key].address
+                                }}
+                                <br />
+                                {{
+                                  selectedAddress[key] &&
+                                    selectedAddress[key].state
+                                }}<br />
+                                {{
+                                  selectedAddress[key] &&
+                                    selectedAddress[key].country
+                                }}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          v-if="!selectedAddress[key] && defaultAddress"
+                          @click="$bvModal.show('shipping-modal__' + key)"
+                        >
+                          <div class="shipment-info__address">
+                            <div class="shipment-info__gray-box">
+                              <button
+                                class="shipping-action-btn shipping-action-btn__edit"
+                                @click.stop="editAddress(defaultAddress)"
+                              >
+                                Edit
+                              </button>
                               <h3 class="title-text">Shipping Address</h3>
                               <p class="sub-text">
-                                Kelly Hoffman <br />
-                                2349 Boston ST SE Apt 2 <br />
-                                Albany, OR 97321 <br />
-                                United States (US)
+                                {{ defaultAddress && defaultAddress.name }}
+                                <br />
+                                {{ defaultAddress && defaultAddress.zip_code }}
+                                {{ defaultAddress && defaultAddress.address }}
+                                <br />
+                                {{ defaultAddress && defaultAddress.state
+                                }}<br />
+                                {{ defaultAddress && defaultAddress.country }}
                               </p>
                               <div
                                 class="same-billing-address d-flex align-items-end mb-2"
@@ -198,8 +253,8 @@
           <OrderSummary :product="firstProduct" />
         </b-col>
       </b-row>
-      <b-row v-else>
-        <p>No item in shopping bag!</p>
+      <b-row v-else class="text-center d-inline">
+        <h3>Your Shopping Bag is Empty</h3>
       </b-row>
     </b-container>
     <ProductSlider />
@@ -259,6 +314,9 @@ export default {
     },
     addCouponHandler(val) {
       console.log("addCouponHandler", val);
+    },
+    editAddress(address) {
+      console.log("editAddress", address);
     }
   },
   computed: {
@@ -285,11 +343,11 @@ export default {
             this.$store.getters.getProductsInBag[0].prodId
           )
         : null;
+    },
+    defaultAddress() {
+      console.log("defaultAddress", this.$store.getters.getDefaultAddress);
+      return this.$store.getters.getDefaultAddress;
     }
-    // selectedAddress() {
-    //   console.log("selectedAddress", this.$store.getters.getSelectedAddress);
-    //   return this.$store.getters.getSelectedAddress;
-    // }
   },
   created() {}
 };
@@ -487,6 +545,8 @@ export default {
 }
 
 .shipment-info__address {
+  position: relative;
+  margin-right: 30px;
   .title-text {
     font-family: $font_montserrat_regular;
     font-size: 18px;
@@ -506,15 +566,17 @@ export default {
     font-style: normal;
     line-height: 1.56;
     letter-spacing: normal;
+    margin-bottom: 0;
   }
   .shipment-info__gray-box {
     background-color: $checkout_bg_gray;
     border: 1px solid $checkout_border_gray;
     border-radius: 4px;
     max-width: 360px;
+    width: 420px;
     padding: 20px;
     padding-right: 60px;
-    margin-right: 30px;
+    cursor: pointer;
     .same-billing-address {
       font-family: $font_montserrat_regular;
       font-size: 18px;
@@ -530,6 +592,15 @@ export default {
         height: 26px;
       }
     }
+  }
+}
+
+.shipping-action-btn__edit {
+  position: absolute;
+  right: 15px;
+  top: 25px;
+  &:before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000'%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cpath d='M17.699.845c-1.072-1.07-2.809-1.07-3.881 0l-.972.977L2.505 12.158l-.022.022c-.005.006-.005.011-.011.011-.011.017-.028.033-.038.05 0 .005-.006.005-.006.01-.011.017-.016.028-.028.045-.005.005-.005.01-.01.016l-.017.044c0 .005-.005.005-.005.011l-2.295 6.9c-.067.196-.016.414.132.56.104.102.244.16.39.159.06-.001.118-.01.175-.028l6.895-2.3c.005 0 .005 0 .01-.005.018-.005.035-.012.05-.022.004 0 .008-.002.011-.005.016-.011.038-.022.055-.033.016-.011.033-.028.05-.039.005-.005.01-.005.01-.01.006-.006.017-.012.022-.023L19.186 6.208c1.07-1.072 1.07-2.808 0-3.88L17.7.844zM7.489 16.368l-3.82-3.82 9.562-9.562 3.82 3.82-9.562 9.562zM3.13 13.564L6.468 16.9 1.456 18.57l1.674-5.006zM18.412 5.44l-.581.587-3.821-3.82.588-.588c.642-.642 1.684-.642 2.327 0l1.493 1.493c.638.646.635 1.685-.006 2.328z' transform='translate(-1063 -392) translate(370 277) translate(29 94) translate(392) translate(272 21)'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
   }
 }
 

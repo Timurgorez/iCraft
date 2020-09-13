@@ -21,19 +21,20 @@
     </div>
     <div class="radio-group__inputs">
       <input
-        class="radio-group__input-min"
-        type="text"
+        :class="['radio-group__input-min', model_price_min && 'active']"
+        type="number"
         name="price"
         v-model="model_price_min"
         placeholder="$ Min"
       />
       <input
-        class="radio-group__input-max"
-        type="text"
+        :class="['radio-group__input-max', model_price_max && 'active']"
+        type="number"
         name="price"
         v-model="model_price_max"
         placeholder="$ Max"
       />
+      <span v-show="error" class="error">Min couldn't be more than max</span>
     </div>
   </div>
 </template>
@@ -47,16 +48,16 @@ export default {
       model_price: {
         name: "ALL",
         value: "all",
-        filter: { from: 0, to: 999999999 }
+        filter: { from: 0, to: ">" }
       },
-      model_price_min: "",
-      model_price_max: "",
+      model_price_min: null,
+      model_price_max: null,
 
       price_data_filter: [
         {
           name: "ALL",
           value: "all",
-          filter: { from: 0, to: 999999999 }
+          filter: { from: 0, to: ">" }
         },
         {
           name: "Under $25",
@@ -81,9 +82,10 @@ export default {
         {
           name: "$200  & Above",
           value: "$200>",
-          filter: { from: 200, to: 999999999 }
+          filter: { from: 200, to: ">" }
         }
-      ]
+      ],
+      error: false
     };
   },
   methods: {
@@ -91,22 +93,86 @@ export default {
       this.model_price = {
         name: "ALL",
         value: "all",
-        filter: { from: 0, to: 999999999 }
+        filter: { from: 0, to: ">" }
       };
-      this.model_price_min = "";
-      this.model_price_max = "";
+      this.model_price_min = null;
+      this.model_price_max = null;
     }
   },
   watch: {
     model_price(val) {
+      if (this.price_data_filter.includes(val)) {
+        this.model_price_min = "";
+        this.model_price_max = "";
+      }
       this.$emit("model_price", val);
       return val;
     },
     model_price_min(val) {
+      this.error =
+        +this.model_price_max && +val && +this.model_price_max < +val;
+      if (this.model_price_max && val) {
+        this.model_price = {
+          name: val + " - " + this.model_price_max,
+          value: "Custom",
+          filter: { from: val, to: this.model_price_max }
+        };
+      } else {
+        this.model_price = {
+          name: val + " - >",
+          value: "Custom",
+          filter: { from: val, to: ">" }
+        };
+      }
+      if (!!this.model_price_max && !val) {
+        this.model_price = {
+          name: "0 - " + this.model_price_max,
+          value: "Custom",
+          filter: { from: 0, to: ">" }
+        };
+      }
+      if (!this.model_price_max && !this.model_price_min) {
+        this.model_price = {
+          name: "ALL",
+          value: "all",
+          filter: { from: 0, to: ">" }
+        };
+      }
+
       this.$emit("model_price_min", val);
       return val;
     },
     model_price_max(val) {
+      this.error =
+        +this.model_price_min && +val && +this.model_price_min > +val;
+      if (this.model_price_min && val) {
+        this.model_price = {
+          name: this.model_price_min + " - " + val,
+          value: "Custom",
+          filter: { from: this.model_price_min, to: val }
+        };
+      } else {
+        this.model_price = {
+          name: "0 - " + val,
+          value: "Custom",
+          filter: { from: 0, to: val }
+        };
+      }
+      if (!!this.model_price_min && !val) {
+        this.model_price = {
+          name: this.model_price_min + " - >",
+          value: "Custom",
+          filter: { from: this.model_price_min, to: ">" }
+        };
+      }
+      if (!this.model_price_max && !this.model_price_min) {
+        this.model_price = {
+          name: "ALL",
+          value: "all",
+          filter: { from: 0, to: ">" }
+        };
+      }
+
       this.$emit("model_price_max", val);
       return val;
     }
@@ -142,6 +208,10 @@ export default {
   font-family: $font_montserrat_italic;
 }
 
+.radio-group__inputs {
+  position: relative;
+}
+
 .radio-group__radio-input {
   display: none;
 
@@ -158,6 +228,17 @@ export default {
     height: 18px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Cpath fill='%23BC00FF' fill-rule='evenodd' d='M17.797 2.306c-.27-.27-.708-.27-.979 0L5.596 13.528 1.182 9.114c-.27-.27-.709-.27-.98 0-.27.27-.27.709 0 .979l4.904 4.904c.27.27.71.27.98 0L17.796 3.285c.27-.27.27-.709 0-.98z'/%3E%3C/svg%3E");
   }
+}
+
+.active {
+  border-color: $purple_color_btn;
+}
+
+.error {
+  position: absolute;
+  bottom: -13px;
+  left: 0px;
+  color: $text_color_red;
 }
 
 @media only screen and (max-width: 768px) {
