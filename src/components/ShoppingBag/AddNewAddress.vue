@@ -1,0 +1,175 @@
+<template>
+  <b-modal
+      size="lg"
+      :id="'add-new-modal__' + sellerId"
+      hide-footer
+      hide-header
+      class="add-address-modal"
+  >
+    <b-container>
+      <b-row>
+        <b-col cols="12" class="mb-3 mt-2">
+          <h3 class="add-address-modal__title">Add Address</h3>
+        </b-col>
+      </b-row>
+      <b-row class="padding">
+        <b-col cols="12" sm="12" md="3" lg="3" xl="3" >
+          <label for="input-name">Your Name <br> (optional)</label>
+        </b-col>
+        <b-col cols="12" sm="12" md="9" lg="9" xl="9" >
+          <b-form-input id="input-name" size="sm" placeholder="Enter your name" class="add-address-modal__input"></b-form-input>
+        </b-col>
+      </b-row>
+      <b-row class="padding">
+        <b-col cols="12" sm="12" md="3" lg="3" xl="3" >
+          <label for="input-country">Country</label>
+        </b-col>
+        <b-col cols="12" sm="12" md="9" lg="9" xl="9" >
+          <b-form-input id="input-country" size="sm" placeholder="Please Select" class="add-address-modal__input"></b-form-input>
+        </b-col>
+      </b-row>
+      <b-row class="padding">
+        <b-col cols="12" sm="12" md="3" lg="3" xl="3" >
+          <label for="input-state">Province / State </label>
+        </b-col>
+        <b-col cols="12" sm="12" md="9" lg="9" xl="9" >
+          <b-form-input id="input-state" size="sm" placeholder="Please Select" class="add-address-modal__input"></b-form-input>
+        </b-col>
+      </b-row>
+      <b-row class="padding">
+        <b-col cols="12" sm="12" md="3" lg="3" xl="3" >
+          <label for="input-postal">Postal / Zip Code </label>
+        </b-col>
+        <b-col cols="12" sm="12" md="9" lg="9" xl="9" >
+          <b-form-input id="input-postal" size="sm" placeholder="" class="add-address-modal__input"></b-form-input>
+        </b-col>
+      </b-row>
+      <b-row class="padding">
+        <b-col cols="12" sm="12" md="3" lg="3" xl="3" >
+          <label for="input-city">City</label>
+        </b-col>
+        <b-col cols="12" sm="12" md="9" lg="9" xl="9" >
+          <b-form-input id="input-city" size="sm" placeholder="Select City" class="add-address-modal__input"></b-form-input>
+        </b-col>
+      </b-row>
+      <b-row class="padding">
+        <b-col cols="12" sm="12" md="3" lg="3" xl="3" >
+          <label for="input-address">Address</label>
+        </b-col>
+        <b-col cols="12" sm="12" md="9" lg="9" xl="9" >
+          <b-form-input id="input-address" size="sm" placeholder="" class="add-address-modal__input"></b-form-input>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col cols="12">
+          <div class="d-flex justify-content-center mb-4 mt-3">
+            <Checkbox
+                class="mr-4"
+                labelText="Same as Billing Address"
+                inputName="billing-address"
+                :id="'billing-address-' + sellerId"
+                value="true" />
+<!--                @changeHandler="customGiftHandler"-->
+            <Checkbox
+                labelText="Make it as Default Address"
+                inputName="default-address"
+                :id="'default-address-' + sellerId"
+                value="true" />
+<!--                @changeHandler="customGiftHandler"-->
+
+          </div>
+        </b-col>
+      </b-row>
+      <b-row class="text-right">
+        <b-col cols="12" class="mb-3 mt-3">
+          <PurpleButton
+              text="Cancel"
+              iconClass="bag-icon"
+              :animate="true"
+              customClass="add-to-bag__btn mr-3"
+              @clickHandler="cancelHandler(sellerId)"
+          />
+          <RedButton
+              text="Save"
+              iconClass="accepted-icon"
+              :animate="true"
+              customClass="buy-now__btn"
+              @clickHandler="saveAddress(sellerId)"
+          />
+        </b-col>
+      </b-row>
+    </b-container>
+  </b-modal>
+</template>
+
+<script>
+import RedButton from "@/components/Buttons/RedButton";
+import PurpleButton from "@/components/Buttons/PurpleButton";
+import Checkbox from "@/components/FormElements/Checkbox";
+
+export default {
+  name: "AddNewAddress",
+  components: {Checkbox, PurpleButton, RedButton},
+  props: {
+    sellerId: String
+  },
+  methods: {
+    cancelHandler(sellerId) {
+      console.log(sellerId)
+    },
+    saveAddress(sellerId) {
+      console.log(sellerId)
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.modal .modal-dialog {
+  max-width: 50vw;
+}
+
+.padding {
+  padding: 0 30px;
+}
+
+label {
+  font-family: $font_montserrat_regular ;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.11;
+  letter-spacing: normal;
+  margin: 10px;
+  padding: 10px;
+}
+
+.add-address-modal {
+  &__title {
+    font-family: $font_neue_kabel;
+    font-size: 30px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: 2px;
+  }
+  &__input {
+    margin: 10px;
+    height: 50px;
+    border-radius: 3px;
+    border: solid 1px #909090;
+    background-color: #ffffff;
+    font-family: $font_neue_kabel;
+    font-size: 16px;
+
+    &::placeholder {
+      font-family: $font_montserrat_italic;
+      color: #5f5f5f;
+    }
+  }
+
+}
+
+</style>

@@ -48,7 +48,7 @@
           <b-row align-v="center" class="text-center">
               <b-col cols="12" class="centered">
                 <div class="footer-subscribe-block__wrap">
-                  <h3 class="footer-subscribe-block__title">BE THE FIRST TO KNOW</h3>
+                  <h3 class="footer-subscribe-block__title">Be The First To Know</h3>
                   <p class="footer-subscribe-block__text">Subscribe to our Newsletter to stay up-to-date on new arrivals and special deals.</p>
                   <form action="" @submit.prevent="subscribeSubmit" :class="['footer-subscribe-block__form', isEmailValid()]">
                     <div class="footer-subscribe-block__input-wrap">

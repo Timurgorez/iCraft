@@ -228,11 +228,12 @@
                         </div>
                         <button
                           class="shipping-action-btn shipping-action-btn__addNew"
-                          @click="addNewAddress()"
+                          @click="$bvModal.show('add-new-modal__' + key)"
                         >
                           Add New
                         </button>
                         <SelectAddress :sellerId="key" />
+                        <AddNewAddress :sellerId="key" />
                       </b-col>
                       <b-col lg="2" class="mb-3"></b-col>
                     </b-row>
@@ -270,6 +271,7 @@ import OrderSummary from "../components/Checkout/OrderSummary.vue";
 import InputText from "../components/FormElements/InputText.vue";
 import Checkbox from "../components/FormElements/Checkbox.vue";
 import SelectAddress from "../components/ShoppingBag/SelectAddress.vue";
+import AddNewAddress from "@/components/ShoppingBag/AddNewAddress";
 
 export default {
   name: "BagPage",
@@ -296,6 +298,7 @@ export default {
     };
   },
   components: {
+    AddNewAddress,
     HeaderWhite,
     Footer,
     ProductSlider,
