@@ -46,8 +46,10 @@ export default {
       if (localStorage.getItem("userBag")) {
         state.productInBag = JSON.parse(localStorage.getItem("userBag"));
       }
-      if (localStorage.getItem("shipping")) {
-        state.selectedAddress = JSON.parse(localStorage.getItem("shipping"));
+      if (localStorage.getItem("selectedAddress")) {
+        state.selectedAddress = JSON.parse(
+          localStorage.getItem("selectedAddress")
+        );
       }
     },
     modifyFieldInBag(state, obj) {
@@ -84,7 +86,10 @@ export default {
     },
     addAddressToSelectedAddress({ commit, state }, shipping) {
       commit("addToSelectedAddress", shipping);
-      localStorage.setItem("shipping", JSON.stringify(state.selectedAddress));
+      localStorage.setItem(
+        "selectedAddress",
+        JSON.stringify(state.selectedAddress)
+      );
     }
   },
   getters: {

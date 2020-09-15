@@ -32,13 +32,13 @@
             </b-row>
 
             <div
-              v-for="(product, key, index) in products"
+              v-for="(product, sellerId, index) in products"
               :key="index + Math.random().toString(16)"
             >
               <b-row
                 class="checkout-table__shipment d-flex"
                 align-v="center"
-                v-b-toggle="'collapse_shipping_' + key"
+                v-b-toggle="'collapse_shipping_' + sellerId"
               >
                 <b-col cols="12">
                   <p>
@@ -48,7 +48,7 @@
                 </b-col>
               </b-row>
 
-              <b-collapse visible :id="'collapse_shipping_' + key">
+              <b-collapse visible :id="'collapse_shipping_' + sellerId">
                 <TableProduct
                   v-for="prod in product"
                   :product="prod"
@@ -57,14 +57,14 @@
                 <b-row class="checkout-table__delivery d-flex" align-v="center">
                   <b-col cols="12" lg="2" class="mt-4 mb-4">
                     <label
-                      :for="'coupon-for-seller__' + key"
+                      :for="'coupon-for-seller__' + sellerId"
                       class="coupon-for-seller__label"
                       >Store Coupon (optional)</label
                     >
                   </b-col>
                   <b-col cols="12" lg="5" class="mt-lg-4 mt-xl-4 mb-4">
                     <InputText
-                      :id="'coupon-for-seller__' + key"
+                      :id="'coupon-for-seller__' + sellerId"
                       inputName="coupon-for-seller"
                       placeholder="ThankYouCoupon25"
                       @changeHandler="addCouponHandler"
@@ -74,29 +74,29 @@
 
                   <b-col
                     cols="12"
-                    v-b-toggle="'delivery-options_' + key"
+                    v-b-toggle="'delivery-options_' + sellerId"
                     class="mb-4 d-flex align-item-center delivery-options__title"
                     >Delivery Options</b-col
                   >
                   <b-collapse
                     visible
                     class="delivery-options__collapse"
-                    :id="'delivery-options_' + key"
+                    :id="'delivery-options_' + sellerId"
                   >
                     <b-row class="align-items-center mb-3">
                       <b-col cols="12" lg="2" class="mb-3">
                         <label
-                          :for="'delivery-options__' + key"
+                          :for="'delivery-options__' + sellerId"
                           class="delivery-options__label"
                           >Delivery Method
                           <div
                             class="icraft-hint"
-                            :id="'delivery__' + key"
+                            :id="'delivery__' + sellerId"
                           ></div>
                         </label>
                         <b-popover
                           custom-class="custom-popover"
-                          :target="'delivery__' + key"
+                          :target="'delivery__' + sellerId"
                           triggers="hover"
                         >
                           <h4>Placing Custom Orders</h4>
@@ -127,11 +127,11 @@
                       <b-col cols="12" lg="2" class="mb-3">
                         <label class="ship-to-address__label"
                           >Ship to this Address
-                          <div class="icraft-hint" :id="'ship__' + key"></div>
+                          <div class="icraft-hint" :id="'ship__' + sellerId"></div>
                         </label>
                         <b-popover
                           custom-class="custom-popover"
-                          :target="'ship__' + key"
+                          :target="'ship__' + sellerId"
                           triggers="hover"
                         >
                           <h4>Placing Custom Orders</h4>
@@ -144,24 +144,24 @@
                       <b-col
                         cols="12"
                         lg="8"
-                        class="mb-3 d-flex align-items-center"
+                        class="mb-3 d-flex align-items-center flex-wrap"
                       >
                         <button
-                          v-if="!selectedAddress[key] && !defaultAddress"
+                          v-show="!selectedAddress[sellerId] && !defaultAddress"
                           class="shipping-action-btn shipping-action-btn__select"
-                          @click="$bvModal.show('shipping-modal__' + key)"
+                          @click="$bvModal.show('shipping-modal__' + sellerId)"
                         >
                           Select Address
                         </button>
                         <div
-                          v-if="selectedAddress[key]"
-                          @click="$bvModal.show('shipping-modal__' + key)"
+                          v-show="selectedAddress[sellerId]"
+                          @click="$bvModal.show('shipping-modal__' + sellerId)"
                         >
                           <div class="shipment-info__address">
                             <div class="shipment-info__gray-box">
                               <button
                                 class="shipping-action-btn shipping-action-btn__edit"
-                                @click.stop="editAddress(selectedAddress[key])"
+                                @click.stop="editAddress(selectedAddress[sellerId])"
                               >
                                 Edit
                               </button>
@@ -170,34 +170,34 @@
                               </h3>
                               <p class="sub-text">
                                 {{
-                                  selectedAddress[key] &&
-                                    selectedAddress[key].name
+                                  selectedAddress[sellerId] &&
+                                    selectedAddress[sellerId].name
                                 }}
                                 <br />
                                 {{
-                                  selectedAddress[key] &&
-                                    selectedAddress[key].zip_code
+                                  selectedAddress[sellerId] &&
+                                    selectedAddress[sellerId].zip_code
                                 }}
                                 {{
-                                  selectedAddress[key] &&
-                                    selectedAddress[key].address
+                                  selectedAddress[sellerId] &&
+                                    selectedAddress[sellerId].address
                                 }}
                                 <br />
                                 {{
-                                  selectedAddress[key] &&
-                                    selectedAddress[key].state
+                                  selectedAddress[sellerId] &&
+                                    selectedAddress[sellerId].state
                                 }}<br />
                                 {{
-                                  selectedAddress[key] &&
-                                    selectedAddress[key].country
+                                  selectedAddress[sellerId] &&
+                                    selectedAddress[sellerId].country
                                 }}
                               </p>
                             </div>
                           </div>
                         </div>
                         <div
-                          v-if="!selectedAddress[key] && defaultAddress"
-                          @click="$bvModal.show('shipping-modal__' + key)"
+                          v-show="!selectedAddress[sellerId] && defaultAddress"
+                          @click="$bvModal.show('shipping-modal__' + sellerId)"
                         >
                           <div class="shipment-info__address">
                             <div class="shipment-info__gray-box">
@@ -228,12 +228,11 @@
                         </div>
                         <button
                           class="shipping-action-btn shipping-action-btn__addNew"
-                          @click="$bvModal.show('add-new-modal__' + key)"
+                          @click="addNewAddress()"
                         >
                           Add New
                         </button>
-                        <SelectAddress :sellerId="key" />
-                        <AddNewAddress :sellerId="key" />
+                        <SelectAddress :sellerId="sellerId" />
                       </b-col>
                       <b-col lg="2" class="mb-3"></b-col>
                     </b-row>
@@ -271,7 +270,6 @@ import OrderSummary from "../components/Checkout/OrderSummary.vue";
 import InputText from "../components/FormElements/InputText.vue";
 import Checkbox from "../components/FormElements/Checkbox.vue";
 import SelectAddress from "../components/ShoppingBag/SelectAddress.vue";
-import AddNewAddress from "@/components/ShoppingBag/AddNewAddress";
 
 export default {
   name: "BagPage",
@@ -293,12 +291,10 @@ export default {
           value: { type: "DHL", price: 35 },
           text: "Standard Shipping (DHL) - $35.00"
         }
-      ],
-      selectedAddress: this.$store.getters.getSelectedAddress
+      ]
     };
   },
   components: {
-    AddNewAddress,
     HeaderWhite,
     Footer,
     ProductSlider,
@@ -348,8 +344,15 @@ export default {
         : null;
     },
     defaultAddress() {
-      console.log("defaultAddress", this.$store.getters.getDefaultAddress);
       return this.$store.getters.getDefaultAddress;
+    },
+    selectedAddress(){
+      return this.$store.getters.getSelectedAddress;
+    }
+  },
+  watch: {
+    selectedAddress() {
+      console.log("watch", this.selectedAddress);
     }
   },
   created() {}
@@ -489,8 +492,10 @@ export default {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath fill-rule='evenodd' d='M25.707 3.33c-.39-.39-1.024-.39-1.414 0L8.083 19.54l-6.376-6.375c-.39-.391-1.024-.391-1.414 0-.39.39-.39 1.023 0 1.414l7.083 7.083c.39.39 1.024.39 1.414 0L25.707 4.745c.39-.39.39-1.024 0-1.415z'/%3E%3C/svg%3E%0A");
 }
 
-.shipping-action-btn__addNew:before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath fill-rule='evenodd' d='M13.611 2v10.388H24v1.223H13.611V24H12.39l-.001-10.389H2V12.39l10.388-.001V2h1.223z'/%3E%3C/svg%3E%0A");
+.shipping-action-btn__addNew {
+  &:before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath fill-rule='evenodd' d='M13.611 2v10.388H24v1.223H13.611V24H12.39l-.001-10.389H2V12.39l10.388-.001V2h1.223z'/%3E%3C/svg%3E%0A");
+  }
 }
 
 .delivery-options__title {
@@ -629,6 +634,14 @@ export default {
   .buy-set-save__btns {
     button {
       margin-right: 0;
+    }
+  }
+  .shipping-action-btn__addNew {
+    margin: 20px 0;
+  }
+  .shipment-info__address {
+    .shipment-info__gray-box {
+      width: 320px;
     }
   }
 }

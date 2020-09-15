@@ -235,9 +235,7 @@ export default {
 }
 
 .error {
-  position: absolute;
-  bottom: -13px;
-  left: 0px;
+  font-size: 12px;
   color: $text_color_red;
 }
 

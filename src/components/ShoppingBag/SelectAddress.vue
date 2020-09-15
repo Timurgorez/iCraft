@@ -8,8 +8,8 @@
   >
     <b-container>
       <b-row>
-        <b-col cols="12" class="mb-3">
-          <h3 class="my-4">Select Address</h3>
+        <b-col cols="12">
+          <h3 class="select-addres-modal__title">Select Address</h3>
         </b-col>
       </b-row>
       <b-row class="justify-content-evenly">
@@ -47,7 +47,7 @@
           </label>
         </div>
       </b-row>
-      <b-row class="text-center">
+      <b-row class="text-center mb-4 mt-3">
         <b-col cols="12" class="mb-3">
           <button
             class="shipping-action-btn shipping-action-btn__addNew"
@@ -71,7 +71,7 @@
             iconClass="accepted-icon"
             :animate="true"
             customClass="buy-now__btn"
-            @clickHandler="selectAddress(sellerId, model_select_address)"
+            @clickHandler="selectAddress"
           />
         </b-col>
       </b-row>
@@ -87,8 +87,8 @@ export default {
   data() {
     return {
       model_select_address:
-        this.$store.getters.getDefaultAddress &&
-        this.$store.getters.getSelectedAddress[this.sellerId]
+        this.$store.getters.getSelectedAddress[this.sellerId] ||
+        this.$store.getters.getDefaultAddress
     };
   },
   props: {
@@ -102,18 +102,18 @@ export default {
     addNewAddress() {
       console.log("addNewAddress");
     },
-    selectAddress(sellerId, address) {
-      console.log(sellerId, address);
+    selectAddress() {
+      console.log(this.sellerId, this.model_select_address);
       const addressObj = {
-        sellerId: sellerId,
-        address: address
+        sellerId: this.sellerId,
+        address: this.model_select_address
       };
 
       this.$store.dispatch("addAddressToSelectedAddress", addressObj);
       this.$forceUpdate();
     },
     cancelHandler(key) {
-      console.log("cancelHandler");
+      console.log("cancelHandler", this.model_select_address);
       this.$bvModal.hide("shipping-modal__" + key);
     },
     editAddress(address) {
@@ -132,6 +132,13 @@ export default {
 .modal .modal-dialog {
   max-width: 80vw;
 }
+
+.select-addres-modal__title {
+  font-family: $font_neue_kabel;
+  font-size: 30px;
+  color: $text_color;
+}
+
 .shipping-action-btn {
   border: none;
   font-family: $font_montserrat_medium;
