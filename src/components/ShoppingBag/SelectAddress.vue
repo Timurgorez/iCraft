@@ -6,7 +6,7 @@
     hide-header
     class="select-addres-modal"
   >
-    <b-container>
+    <b-container fluid>
       <b-row>
         <b-col cols="12">
           <h3 class="select-addres-modal__title">Select Address</h3>
@@ -174,7 +174,7 @@ export default {
 }
 .shipment-info__address {
   margin: 15px;
-  min-width: 360px;
+  width: 358px;
   position: relative;
   .title-text {
     font-family: $font_montserrat_regular;
@@ -260,7 +260,7 @@ export default {
     max-width: 760px;
   }
   .shipment-info__address {
-    min-width: 330px;
+    width: 330px;
   }
 }
 @media (max-width: 768px) {
