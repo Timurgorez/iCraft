@@ -7,6 +7,12 @@
     :lg="size.lg"
     class="centered product-card-wrap"
   >
+    <notifications
+      class="custom-notification-wrap"
+      classes="custom-notification"
+      group="app"
+      position="top center"
+    />
     <b-card class="product-card">
       <div
         v-if="item.sale"
@@ -20,13 +26,17 @@
       >
         <div
           class="product-card__image d-flex flex-column justify-content-center align-items-center"
-          
           @mouseover="hover = true"
           @mouseleave="hover = false"
         >
-        <img class="product-card__image-pic" :src="item.images[0]" :alt="item.name">
+          <img
+            class="product-card__image-pic"
+            :src="item.images[0]"
+            :alt="item.name"
+          />
           <div
             v-if="hover"
+            @click.prevent="addToCartFast"
             class="product-card__add-to-cart d-flex justify-content-center align-items-center"
           >
             <div class="product-card__add-to-card-icon"></div>
@@ -114,7 +124,46 @@ export default {
     ProductRating
   },
   methods: {
-
+    checkProductInBag(product) {
+      let check = false;
+      this.$store.state.shoppingBag.productInBag.map(el => {
+        if (
+          el.prodId === product.prodId &&
+          el.size === product.size &&
+          el.color === product.color
+        )
+          check = true;
+      });
+      return check;
+    },
+    addToCartFast() {
+      console.log("addToCartFast");
+      const product = {
+        id: `f${(~~(Math.random() * 1e8)).toString(16)}`,
+        prodId: this.item.id,
+        count: 1,
+        size: this.item.product_detail.size.split(", ")[0],
+        color: this.item.product_detail.dominant_color.name,
+        customRequest: false,
+        sellerId: this.item.seller.id
+      };
+      if (this.checkProductInBag(product)) {
+        this.$notify({
+          group: "app",
+          type: "warn",
+          title: "WARNING",
+          text: "This item already in your bag!"
+        });
+      } else {
+        this.$notify({
+          group: "app",
+          type: "success",
+          title: "SUCCESS",
+          text: "Item was added to your bag!"
+        });
+        this.$store.dispatch("addProductToBag", product);
+      }
+    }
   }
 };
 </script>
@@ -248,7 +297,7 @@ export default {
       border: solid 2px $border_hover_grey_color;
       cursor: pointer;
     }
-    img{
+    img {
       max-height: 376px;
       max-width: 100%;
     }

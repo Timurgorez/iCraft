@@ -77,7 +77,7 @@ export default {
             url: "./tmp/colors_of_product/img-1@2x.png"
           },
           {
-            color: "yellow",
+            color: "Purple",
             url: "./tmp/colors_of_product/img-2@2x.png"
           },
           {

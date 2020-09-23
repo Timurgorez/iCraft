@@ -1,10 +1,14 @@
 <template>
-  <div class="product-slider" :class="checkoutPage ? 'bg-white': ''">
+  <div class="product-slider" :class="checkoutPage ? 'bg-white' : ''">
     <b-container fluid>
       <b-row align-h="center" class="text-center">
         <b-col cols="12" class="centered">
-          <h3 v-if="!checkoutPage" class="product-slider__title">Items You Might Like</h3>
-          <h3 v-if="checkoutPage" class="product-slider__title">Saved For Later (6 items)</h3>
+          <h3 v-if="!checkoutPage" class="product-slider__title">
+            Items You Might Like
+          </h3>
+          <h3 v-if="checkoutPage" class="product-slider__title">
+            Saved For Later (6 items)
+          </h3>
           <img
             class="product-slider__title-img"
             src="~@/assets/desctop/pages/collectionPage/for-title-2.svg"
@@ -190,6 +194,9 @@ export default {
   padding: 0;
 }
 
+::v-deep .product-card__slider {
+  height: 100%;
+}
 
 @media only screen and (max-width: 768px) {
   .swiper {
@@ -204,7 +211,7 @@ export default {
   .product-slider {
     margin-top: 30px;
   }
-  ::v-deep .product-card__slider .product-card{
+  ::v-deep .product-card__slider .product-card {
     padding-bottom: 10px;
   }
 }
@@ -218,16 +225,16 @@ export default {
   .slider-btn__prev {
     display: none;
   }
-  .product-slider__title{
+  .product-slider__title {
     font-size: 22px;
     padding: 30px 20px 10px;
   }
-  .product-slider__title-img{
+  .product-slider__title-img {
     width: 91px;
     height: 17px;
     margin-bottom: 35px;
   }
-  .product-slider{
+  .product-slider {
     padding-bottom: 56px;
   }
 }

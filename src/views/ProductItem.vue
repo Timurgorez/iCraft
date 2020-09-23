@@ -399,7 +399,7 @@ export default {
       let check = false;
       this.$store.state.shoppingBag.productInBag.map(el => {
         if (
-          el.prodId === product.prodId &&
+          el.prodId == product.prodId &&
           el.size === product.size &&
           el.color === product.color
         )
@@ -612,7 +612,7 @@ export default {
     align-items: center;
     &:hover {
       color: $purple_color;
-     // opacity: 70%;
+      // opacity: 70%;
       text-decoration: none;
     }
   }
@@ -714,7 +714,7 @@ export default {
     margin: 0;
 
     &:hover {
-    //  opacity: 70%;
+      //  opacity: 70%;
     }
   }
 
