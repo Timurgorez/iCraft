@@ -66,18 +66,15 @@
                   class="custom-request__hint"
                   :id="'popover-gift__hint' + product.bag.id"
                 ></div>
-
-                <b-popover
-                  custom-class="custom-popover"
+                <Popover
+                  customClass="custom-popover"
                   :target="'popover-gift__hint' + product.bag.id"
-                  triggers="hover"
-                >
-                  <h4>Placing Custom Orders</h4>
-                  You can place a Custom Order for this item and provide seller
-                  with your color and other product preferences and
-                  modifications. You will be able to add this information at the
-                  Checkout.
-                </b-popover>
+                  title="Placing Custom Orders"
+                  text="You can place a Custom Order for this item and provide
+                          seller with your color and other product preferences
+                          and modifications. You will be able to add this
+                          information at the Checkout."
+                />
               </div>
               <div class="custom-request">
                 <Checkbox
@@ -93,17 +90,15 @@
                   :id="'popover-custom-request__hint' + product.bag.id"
                 ></div>
 
-                <b-popover
-                  custom-class="custom-popover"
+                <Popover
+                  customClass="custom-popover"
                   :target="'popover-custom-request__hint' + product.bag.id"
-                  triggers="hover"
-                >
-                  <h4>Placing Custom Orders</h4>
-                  You can place a Custom Order for this item and provide seller
-                  with your color and other product preferences and
-                  modifications. You will be able to add this information at the
-                  Checkout.
-                </b-popover>
+                  title="Placing Custom Orders"
+                  text="You can place a Custom Order for this item and provide
+                          seller with your color and other product preferences
+                          and modifications. You will be able to add this
+                          information at the Checkout."
+                />
               </div>
               <transition name="fade">
                 <NoteForSeller
@@ -252,6 +247,7 @@ import Checkbox from "../FormElements/Checkbox.vue";
 import SizeChoose from "../FormElements/SizeChoose.vue";
 import ColorChoose from "../FormElements/ColorChoose.vue";
 import NoteForSeller from "../FormElements/NoteForSeller.vue";
+import Popover from "../StaticComponents/Popover.vue";
 
 export default {
   name: "TableProduct",
@@ -275,7 +271,8 @@ export default {
     Checkbox,
     SizeChoose,
     ColorChoose,
-    NoteForSeller
+    NoteForSeller,
+    Popover
   },
   methods: {
     customRequstHandler(val) {
@@ -345,7 +342,7 @@ export default {
     }
   },
   created() {
-    console.log("Bag product ->", this.product);
+    console.log("Created Bag product ->", this.product);
     window.addEventListener("scroll", this.onScroll);
   },
   destroyed() {

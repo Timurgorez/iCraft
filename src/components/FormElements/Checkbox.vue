@@ -7,6 +7,7 @@
       :value="this.value"
       @change="onChange"
       :checked="this.checked"
+      :data-id="dataAttr"
     />
     <label :for="randomID" class="checkbox-wrap__label">
       {{ this.labelText }}
@@ -31,7 +32,8 @@ export default {
     },
     id: String,
     value: String,
-    errorMsg: String
+    errorMsg: String,
+    dataAttr: String
   },
   components: {},
   methods: {

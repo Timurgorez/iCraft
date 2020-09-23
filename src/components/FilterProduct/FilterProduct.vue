@@ -42,7 +42,7 @@
               <div class="filter-product-block__colors-wrap">
                 <div class="filter-product-block__colors">
                   <div
-                    v-for="(color, index) of countOfColorsDefault"
+                    v-for="(color, index) of countOfColors"
                     :key="index"
                     :style="[
                       color === 'Multi-Colored'
@@ -251,25 +251,25 @@ export default {
         { name: "Orange", color: "#f36b26", url: "", border: false },
         { name: "Green", color: "#36c747", url: "", border: false },
         { name: "Brown", color: "#825d41", url: "", border: false },
-        { name: "Aqua", color: "#ffffff", url: "", border: true },
-        { name: "Bright", color: "#ffffff", url: "", border: true },
-        { name: "Bronze", color: "#ffffff", url: "", border: true },
-        { name: "Burgundy", color: "#ffffff", url: "", border: true },
-        { name: "Clear", color: "#ffffff", url: "", border: true },
-        { name: "Colorless", color: "#ffffff", url: "", border: true },
-        { name: "Copper", color: "#ffffff", url: "", border: true },
-        { name: "Cranberry", color: "#ffffff", url: "", border: true },
-        { name: "Floral", color: "#ffffff", url: "", border: true },
-        { name: "Gold", color: "#ffffff", url: "", border: true },
-        { name: "Magenta", color: "#ffffff", url: "", border: true },
-        { name: "Navy", color: "#ffffff", url: "", border: true },
-        { name: "Neutral", color: "#ffffff", url: "", border: true },
-        { name: "Peach", color: "#ffffff", url: "", border: true },
-        { name: "Purple", color: "#ffffff", url: "", border: true },
-        { name: "Silver", color: "#ffffff", url: "", border: true },
-        { name: "Teal", color: "#ffffff", url: "", border: true },
-        { name: "Turquoise", color: "#ffffff", url: "", border: true },
-        { name: "Warm", color: "#ffffff", url: "", border: true },
+        { name: "Aqua1", color: "red", url: "", border: false },
+        { name: "Bright", color: "yellow", url: "", border: false },
+        { name: "Bronze", color: "black", url: "", border: false },
+        { name: "Burgundy", color: "grey", url: "", border: false },
+        { name: "Clear", color: "lightgrey", url: "", border: false },
+        { name: "Colorless", color: "orange", url: "", border: false },
+        { name: "Copper", color: "green", url: "", border: false },
+        { name: "Cranberry", color: "lightgreen", url: "", border: false },
+        { name: "Floral", color: "pink", url: "", border: false },
+        { name: "Gold", color: "purple", url: "", border: false },
+        { name: "Magenta", color: "lightblue", url: "", border: false },
+        { name: "Navy", color: "coral", url: "", border: false },
+        { name: "Neutral", color: "#30bfcc", url: "", border: false },
+        { name: "Peach", color: "blue", url: "", border: false },
+        { name: "Purple", color: "#d4d4d4", url: "", border: false },
+        { name: "Silver", color: "#f3f3f3", url: "", border: true },
+        { name: "Teal", color: "teal", url: "", border: false },
+        { name: "Turquoise", color: "turquoise", url: "", border: false },
+        { name: "Warm", color: "#af5af5", url: "", border: false },
         {
           name: "Multi",
           color: "Multi-Colored",
@@ -278,7 +278,7 @@ export default {
         }
       ],
       selected_colors: [],
-      countOfColors: [],
+      // countOfColors: [],
       showAllFilters: [
         "colorFilter",
         "sortFilter",
@@ -504,9 +504,18 @@ export default {
     countOfColorsDefault() {
       return this.model_color.slice(0, 2);
     },
+    countOfColors() {
+      if (window.innerWidth > 998) {
+        return this.model_color.slice(0, 4);
+      }
+      if (window.innerWidth > 480 && window.innerWidth < 998)
+        return this.model_color.slice(0, 3);
+      return this.model_color.slice(0, 2);
+    },
     leftCountColors() {
-      return this.model_color.length > 2
-        ? "+ " + (this.model_color.length - 2).toString()
+      return this.model_color.length > this.countOfColors.length
+        ? "+ " +
+            (this.model_color.length - this.countOfColors.length).toString()
         : "";
     },
     categoryNames() {

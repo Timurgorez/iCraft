@@ -7,7 +7,6 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import VueAwesomeSwiper from "vue-awesome-swiper";
 import VueCardFormat from "vue-credit-card-validation";
 
-
 import Notifications from "vue-notification";
 
 Vue.use(BootstrapVue);
@@ -30,6 +29,7 @@ new Vue({
   store,
   beforeCreate() {
     this.$store.commit("initialiseUserBag");
+    this.$store.commit("initialiseShoppingType");
   },
   render: h => h(App),
   created() {

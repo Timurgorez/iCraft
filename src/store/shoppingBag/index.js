@@ -2,6 +2,8 @@ export default {
   state: {
     productInBag: [],
     selectedAddress: {},
+    shoppingType: {},
+    insurance: {},
     shippingAdresses: [
       {
         id: 1,
@@ -68,6 +70,18 @@ export default {
         }
       });
       localStorage.setItem("userBag", JSON.stringify(state.productInBag));
+    },
+    modifyInsurance(state, { sellerId, value }) {
+      state.insurance[sellerId] = value;
+    },
+    modifyShoppingType(state, { sellerId, value }) {
+      state.shoppingType[sellerId] = value;
+    },
+    initialiseShoppingType(state) {
+      state.productInBag.forEach(el => {
+        state.shoppingType[el.sellerId] = null;
+        state.insurance[el.sellerId] = false;
+      });
     }
     // addNewFieldToBag(state, id, fieldName, value){
     //   console.log(id, fieldName, value);
@@ -115,6 +129,12 @@ export default {
     },
     getShippingAdresses(state) {
       return state.shippingAdresses;
+    },
+    getInsurance(state) {
+      return state.insurance;
+    },
+    getShoppingType(state) {
+      return state.shoppingType;
     }
   }
 };

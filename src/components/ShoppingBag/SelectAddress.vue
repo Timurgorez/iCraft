@@ -103,14 +103,11 @@ export default {
       console.log("addNewAddress");
     },
     selectAddress() {
-      console.log(this.sellerId, this.model_select_address);
       const addressObj = {
         sellerId: this.sellerId,
         address: this.model_select_address
       };
-
-      this.$store.dispatch("addAddressToSelectedAddress", addressObj);
-      this.$forceUpdate();
+      this.$emit("selectAddress", addressObj);
     },
     cancelHandler(key) {
       console.log("cancelHandler", this.model_select_address);

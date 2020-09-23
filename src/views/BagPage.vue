@@ -94,21 +94,20 @@
                             :id="'delivery__' + sellerId"
                           ></div>
                         </label>
-                        <b-popover
-                          custom-class="custom-popover"
+
+                        <Popover
+                          customClass="custom-popover"
                           :target="'delivery__' + sellerId"
-                          triggers="hover"
-                        >
-                          <h4>Placing Custom Orders</h4>
-                          You can place a Custom Order for this item and provide
+                          title="Placing Custom Orders"
+                          text="You can place a Custom Order for this item and provide
                           seller with your color and other product preferences
                           and modifications. You will be able to add this
-                          information at the Checkout.
-                        </b-popover>
+                          information at the Checkout."
+                        />
                       </b-col>
                       <b-col cols="12" lg="5" class="mb-3">
                         <b-form-select
-                          v-model="shoppingType"
+                          v-model="shoppingType[sellerId]"
                           :options="shoppingOptions"
                           class="type-shipping"
                         ></b-form-select>
@@ -118,7 +117,8 @@
                           labelText="Add Insurance (+ $25.00)"
                           inputName="add-insurance"
                           :id="'add-insurance'"
-                          value="true"
+                          :checked="insurance[sellerId]"
+                          :dataAttr="sellerId"
                           @changeHandler="addInsuranceHandler"
                         />
                       </b-col>
@@ -127,19 +127,20 @@
                       <b-col cols="12" lg="2" class="mb-3">
                         <label class="ship-to-address__label"
                           >Ship to this Address
-                          <div class="icraft-hint" :id="'ship__' + sellerId"></div>
+                          <div
+                            class="icraft-hint"
+                            :id="'ship__' + sellerId"
+                          ></div>
                         </label>
-                        <b-popover
-                          custom-class="custom-popover"
+                        <Popover
+                          customClass="custom-popover"
                           :target="'ship__' + sellerId"
-                          triggers="hover"
-                        >
-                          <h4>Placing Custom Orders</h4>
-                          You can place a Custom Order for this item and provide
+                          title="Placing Custom Orders"
+                          text="You can place a Custom Order for this item and provide
                           seller with your color and other product preferences
                           and modifications. You will be able to add this
-                          information at the Checkout.
-                        </b-popover>
+                          information at the Checkout."
+                        />
                       </b-col>
                       <b-col
                         cols="12"
@@ -161,7 +162,9 @@
                             <div class="shipment-info__gray-box">
                               <button
                                 class="shipping-action-btn shipping-action-btn__edit"
-                                @click.stop="editAddress(selectedAddress[sellerId])"
+                                @click.stop="
+                                  editAddress(selectedAddress[sellerId])
+                                "
                               >
                                 Edit
                               </button>
@@ -232,7 +235,10 @@
                         >
                           Add New
                         </button>
-                        <SelectAddress :sellerId="sellerId" />
+                        <SelectAddress
+                          :sellerId="sellerId"
+                          @selectAddress="selectAddress"
+                        />
                       </b-col>
                       <b-col lg="2" class="mb-3"></b-col>
                     </b-row>
@@ -270,13 +276,14 @@ import OrderSummary from "../components/Checkout/OrderSummary.vue";
 import InputText from "../components/FormElements/InputText.vue";
 import Checkbox from "../components/FormElements/Checkbox.vue";
 import SelectAddress from "../components/ShoppingBag/SelectAddress.vue";
+import Popover from "../components/StaticComponents/Popover.vue";
 
 export default {
   name: "BagPage",
   props: "",
   data() {
     return {
-      shoppingType: null,
+      insurance: this.$store.getters.getInsurance,
       shoppingOptions: [
         { value: null, text: "Please select delivery" },
         {
@@ -302,23 +309,41 @@ export default {
     OrderSummary,
     InputText,
     Checkbox,
-    SelectAddress
+    SelectAddress,
+    Popover
   },
   methods: {
     addNewAddress() {
       console.log("addNewAddress");
     },
     addInsuranceHandler(val) {
-      console.log("addInsuranceHandler", val);
+      console.log("addInsuranceHandler", val.target.dataset.id);
+      if (val.target.dataset.id) {
+        const sellerId = val.target.dataset.id;
+        const value = val.target.checked;
+        this.insurance[sellerId] = value;
+        this.$store.commit("modifyInsurance", { sellerId, value });
+      }
     },
     addCouponHandler(val) {
       console.log("addCouponHandler", val);
     },
     editAddress(address) {
       console.log("editAddress", address);
+    },
+    selectAddress(newAddress) {
+      console.log("selectAddress bug page", newAddress);
+
+      this.$store.dispatch("addAddressToSelectedAddress", newAddress);
+      this.$bvModal.hide("shipping-modal__" + newAddress.sellerId);
+      // this.$forceUpdate();
+      // this.selectedAddress = this.$store.getters.getSelectedAddress;
     }
   },
   computed: {
+    shoppingType() {
+      return this.$store.getters.getShoppingType;
+    },
     countProductsInBag() {
       return this.$store.getters.countProductsInBag;
     },
@@ -346,13 +371,17 @@ export default {
     defaultAddress() {
       return this.$store.getters.getDefaultAddress;
     },
-    selectedAddress(){
+    selectedAddress() {
+      console.log(this.$store.getters.getSelectedAddress);
       return this.$store.getters.getSelectedAddress;
     }
   },
   watch: {
     selectedAddress() {
       console.log("watch", this.selectedAddress);
+    },
+    shoppingType() {
+      console.log("shoppingType", this.shoppingType);
     }
   },
   created() {}
