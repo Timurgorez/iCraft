@@ -3,142 +3,198 @@
     <div class="header-block__text d-flex flex-column">
       <Header />
       <b-container fluid="xl">
-        <div class="header-block__text-wrap" >
-          <h2>Buy One of a Kind Jewelry<br> Direct from Crafters</h2>
+        <div class="header-block__text-wrap">
+          <h2>
+            Buy One of a Kind Jewelry<br />
+            Direct from Crafters
+          </h2>
           <h1>Handmade & Stunning</h1>
-          <img class="header-block__image" src="~@/assets/desctop/pages/collectionPage/group.png" alt="">
+          <img
+            class="header-block__image"
+            src="~@/assets/desctop/pages/collectionPage/group.png"
+            alt=""
+          />
         </div>
       </b-container>
-
     </div>
 
     <b-container fluid="xl">
-        <b-row align-h="center" class="text-center">
-            <b-col cols="12" class="centered">
-                <div class="main-desc-block">
-                  <h3>Buy Exclusive Handmade Jewelry Direct from Crafters</h3>
-                  <img src="~@/assets/desctop/pages/collectionPage/for-title-2.svg" alt="">
-                  <p>The iCraft Marketplace specializes in handmade art and crafts. We bring you the most unique, 
-                    high quality jewelry from trusted sellers around the world. Most items are exclusive to iCraft and when sold out, can be recreated at your request - uniquely for you.
-                    By the way, nothing is mass-produced. Ever.</p>
-                </div>
-            </b-col>
-        </b-row>
+      <b-row align-h="center" class="text-center">
+        <b-col cols="12" class="centered">
+          <div class="main-desc-block">
+            <h3>Buy Exclusive Handmade Jewelry Direct from Crafters</h3>
+            <img
+              src="~@/assets/desctop/pages/collectionPage/for-title-2.svg"
+              alt=""
+            />
+            <p>
+              The iCraft Marketplace specializes in handmade art and crafts. We
+              bring you the most unique, high quality jewelry from trusted
+              sellers around the world. Most items are exclusive to iCraft and
+              when sold out, can be recreated at your request - uniquely for
+              you. By the way, nothing is mass-produced. Ever.
+            </p>
+          </div>
+        </b-col>
+      </b-row>
     </b-container>
 
     <FilterProduct :products="products" @filterProduct="filterProduct" />
-    <WrapperCard :productItems="products" :limit="12"/>
+    <WrapperCard :productItems="products" :limit="12" />
     <WhyBuyHere />
-    <WrapperCard :productItems="products" :limit="8"/>
+    <WrapperCard :productItems="products" :limit="8" />
 
     <div class="load-more mb-5">
       <b-container fluid="xl">
         <b-row cols="12" align-v="center" align-h="center">
           <PurpleButton
-                text="LOAD MORE"
-                iconClass="d-none"
-                @clickHandler="loadMoreHandler"
-              />
+            text="LOAD MORE"
+            iconClass="d-none"
+            @clickHandler="loadMoreHandler"
+          />
         </b-row>
       </b-container>
     </div>
 
     <div class="footer-subscribe-block">
       <b-container fluid="xl">
-          <b-row align-v="center" class="text-center">
-              <b-col cols="12" class="centered">
-                <div class="footer-subscribe-block__wrap">
-                  <h3 class="footer-subscribe-block__title">Be The First To Know</h3>
-                  <p class="footer-subscribe-block__text">Subscribe to our Newsletter to stay up-to-date on new arrivals and special deals.</p>
-                  <form action="" @submit.prevent="subscribeSubmit" :class="['footer-subscribe-block__form', isEmailValid()]">
-                    <div class="footer-subscribe-block__input-wrap">
-                      <input class="footer-subscribe-block__input" type="text" v-model="subscribe_email">
-                      <button type="submit" class="footer-subscribe-block__submit"></button>
-                    </div>
-                    <span v-if="validationError" class="footer-subscribe-block__validation-error">{{validationError}}</span>
-                  </form>
-                  <b-modal @hide="hideModal" ref="subscribe_modal" hide-footer hide-header>
-                    <p class="my-4">Your email {{subscribe_email}} has been added.</p>
-                  </b-modal>
+        <b-row align-v="center" class="text-center">
+          <b-col cols="12" class="centered">
+            <div class="footer-subscribe-block__wrap">
+              <h3 class="footer-subscribe-block__title">
+                Be The First To Know
+              </h3>
+              <p class="footer-subscribe-block__text">
+                Subscribe to our Newsletter to stay up-to-date on new arrivals
+                and special deals.
+              </p>
+              <form
+                action=""
+                @submit.prevent="subscribeSubmit"
+                :class="['footer-subscribe-block__form', isEmailValid()]"
+              >
+                <div class="footer-subscribe-block__input-wrap">
+                  <input
+                    class="footer-subscribe-block__input"
+                    type="text"
+                    v-model="subscribe_email"
+                  />
+                  <button
+                    type="submit"
+                    class="footer-subscribe-block__submit"
+                  ></button>
                 </div>
-              </b-col>
-          </b-row>
+                <span
+                  v-if="validationError"
+                  class="footer-subscribe-block__validation-error"
+                  >{{ validationError }}</span
+                >
+              </form>
+              <b-modal
+                dialog-class="thx-for-subscribe"
+                @hide="hideModal"
+                ref="subscribe_modal"
+                hide-footer
+                hide-header
+              >
+                <span
+                  @click="$refs['subscribe_modal'].hide()"
+                  class="thx-for-subscribe__close"
+                ></span>
+                <div>
+                  <h3>
+                    Thank you for Subscribing<br />
+                    to our Newsletter!
+                  </h3>
+                  <p class="my-4">
+                    We've sent you an email to confirm your subscription.
+                  </p>
+                </div>
+              </b-modal>
+            </div>
+          </b-col>
+        </b-row>
       </b-container>
-    </div>  
+    </div>
     <Footer />
-
-
   </div>
 </template>
 
 <script>
-import Header from '../components/Header/Header.vue';
-import Footer from '../components/Footer/Footer.vue';
-import FilterProduct from '../components/FilterProduct/FilterProduct.vue';
-import WrapperCard from '../components/ProductInfo/WrapperCard.vue';
-import WhyBuyHere from '../components/StaticComponents/WhyBuyHere/WhyBuyHere.vue';
-import PurpleButton from '../components/Buttons/PurpleButton.vue';
+import Header from "../components/Header/Header.vue";
+import Footer from "../components/Footer/Footer.vue";
+import FilterProduct from "../components/FilterProduct/FilterProduct.vue";
+import WrapperCard from "../components/ProductInfo/WrapperCard.vue";
+import WhyBuyHere from "../components/StaticComponents/WhyBuyHere/WhyBuyHere.vue";
+import PurpleButton from "../components/Buttons/PurpleButton.vue";
 
 export default {
-  name: 'CollectionPage',
-  data(){
-      return{
-        subscribe_email: '',
-        validationError: ''
-      }
+  name: "CollectionPage",
+  data() {
+    return {
+      subscribe_email: "",
+      validationError: ""
+    };
   },
   components: {
-    FilterProduct, WrapperCard, Header, WhyBuyHere, Footer, PurpleButton
+    FilterProduct,
+    WrapperCard,
+    Header,
+    WhyBuyHere,
+    Footer,
+    PurpleButton
   },
   // mounted(){
   //   $(this.$refs.subscribe_modal).on("hidden.bs.modal", this.hideModal)
   // },
-  methods:{
-    filterProduct(newProducts){
-       this.$store.dispatch('filterProducts', newProducts);
+  methods: {
+    filterProduct(newProducts) {
+      this.$store.dispatch("filterProducts", newProducts);
     },
-    subscribeSubmit(){
+    subscribeSubmit() {
       const email = this.subscribe_email.trim();
-      if(email == ''){
-        this.validationError = 'This field is mandatory!'
-        return ;
+      if (email == "") {
+        this.validationError = "This field is mandatory!";
+        return;
       }
-      if(this.isEmailValid() === 'has-error'){
-        this.validationError = 'Incorrect email!'
-        return ;
+      if (this.isEmailValid() === "has-error") {
+        this.validationError = "Incorrect email!";
+        return;
       }
-      this.validationError = '';
-      this.$refs['subscribe_modal'].show();
+      this.validationError = "";
+      this.$refs["subscribe_modal"].show();
     },
-    hideModal(){
-      this.subscribe_email = '';
+    hideModal() {
+      this.subscribe_email = "";
     },
 
     isEmailValid: function() {
       var regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       // regex.test(String(this.subscribe_email.trim()).toLowerCase()) ? '' : 'has-error';
-      return (this.subscribe_email == "")? "" : (regex.test(this.subscribe_email)) ? '' : 'has-error';
+      return this.subscribe_email == ""
+        ? ""
+        : regex.test(this.subscribe_email)
+        ? ""
+        : "has-error";
     },
-    loadMoreHandler(){
-      console.log('Load More');
+    loadMoreHandler() {
+      console.log("Load More");
     }
-
   },
 
   computed: {
     products() {
-      return this.$store.getters.products
+      return this.$store.getters.products;
     }
-  },
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-
 .header-block__text {
   min-height: 517px;
   width: 100%;
-  background-image: url('~@/assets/desctop/pages/collectionPage/topImg-cropped.png');
+  background-image: url("~@/assets/desctop/pages/collectionPage/topImg-cropped.png");
   background-color: #f2f4ef;
   background-size: contain;
   background-position: 20% 50%;
@@ -173,7 +229,6 @@ export default {
     text-transform: uppercase;
     margin-bottom: 35px;
   }
-
 }
 
 .header-block__text-wrap {
@@ -206,7 +261,6 @@ export default {
 
   img {
     margin-bottom: 20px;
-
   }
 
   p {
@@ -220,20 +274,18 @@ export default {
     color: #000000;
     text-align: left;
   }
-
 }
 
-.purple-custom-btn{
-  
+.purple-custom-btn {
   padding: 16px 80px;
 
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
 
 .footer-subscribe-block {
-  background: url('~@/assets/desctop/pages/collectionPage/footer-pattern.jpg');
+  background: url("~@/assets/desctop/pages/collectionPage/footer-pattern.jpg");
   min-height: 370px;
 }
 
@@ -301,7 +353,7 @@ export default {
   height: 100%;
   background-color: #452650;
   border: none;
-  background-image: url('~@/assets/send.svg');
+  background-image: url("~@/assets/send.svg");
   background-position: 50% 50%;
   background-repeat: no-repeat;
   position: absolute;
@@ -325,6 +377,57 @@ export default {
 
 .has-error {
   border-color: $text_color_red;
+}
+
+::v-deep .thx-for-subscribe {
+  max-width: 1200px;
+  padding: 50px;
+  position: relative;
+  &__close {
+    position: absolute;
+    transform: rotate(45deg);
+    cursor: pointer;
+    top: 26px;
+    right: 26px;
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath fill-rule='evenodd' d='M13.611 2v10.388H24v1.223H13.611V24H12.39l-.001-10.389H2V12.39l10.388-.001V2h1.223z'/%3E%3C/svg%3E%0A");
+  }
+
+  .modal-content {
+    background-image: url("/tmp/thx-for-subscibe.jpg");
+    background-position: 50% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 250px;
+    border-radius: 6px;
+    height: calc(90vh - 100px);
+    max-height: 500px;
+    .modal-body {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    h3 {
+      font-family: $font_neue_kabel;
+      font-size: 40px;
+      letter-spacing: normal;
+      text-align: center;
+      color: $text_color;
+    }
+    p {
+      font-family: $font_montserrat_regular;
+      font-size: 16px;
+      line-height: 1.56;
+      letter-spacing: normal;
+      text-align: center;
+      color: #000000;
+    }
+  }
 }
 
 @media only screen and (max-width: 1400px) {
@@ -390,7 +493,6 @@ export default {
     margin-top: 30%;
   }
 
-
   .main-desc-block {
     padding: 50px 0 30px;
 
@@ -405,7 +507,6 @@ export default {
     p {
       font-size: 14px;
     }
-
   }
   .footer-subscribe-block__form {
     max-width: 325px;
@@ -432,5 +533,4 @@ export default {
     min-height: 490px;
   }
 }
-
 </style>

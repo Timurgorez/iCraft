@@ -32,7 +32,7 @@
           >
             <button
               class="shipping-action-btn shipping-action-btn__edit"
-              @click="editAddress(address)"
+              @click.stop="editAddress(address)"
             >
               Edit
             </button>
@@ -51,7 +51,7 @@
         <b-col cols="12" class="mb-3">
           <button
             class="shipping-action-btn shipping-action-btn__addNew"
-            @click="addNewAddress()"
+            @click="addNewAddress(sellerId)"
           >
             Add New
           </button>
@@ -99,8 +99,9 @@ export default {
     PurpleButton
   },
   methods: {
-    addNewAddress() {
+    addNewAddress(sellerId) {
       console.log("addNewAddress");
+      this.$bvModal.show("add-new-modal__" + sellerId);
     },
     selectAddress() {
       const addressObj = {
@@ -115,6 +116,8 @@ export default {
     },
     editAddress(address) {
       console.log("editAddress", address);
+      this.$emit("editAddress", this.sellerId, address);
+      this.$bvModal.show("edit-modal__" + this.sellerId);
     }
   },
   computed: {
@@ -239,6 +242,10 @@ export default {
     bottom: 15px;
     right: 10px;
   }
+}
+
+.buy-now__btn {
+  padding: 13.5px 80px;
 }
 
 @media (min-width: 1200px) {

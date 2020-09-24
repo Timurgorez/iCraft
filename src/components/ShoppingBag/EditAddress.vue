@@ -1,15 +1,16 @@
 <template>
   <b-modal
     size="lg"
-    :id="'add-new-modal__' + sellerId"
+    :id="'edit-modal__' + sellerId"
     hide-footer
     hide-header
     class="add-address-modal"
+    :visible="true"
   >
     <b-container>
       <b-row>
         <b-col cols="12" class="mb-3 mt-2">
-          <h3 class="add-address-modal__title">Add Address</h3>
+          <h3 class="add-address-modal__title">Edit Address</h3>
         </b-col>
       </b-row>
       <b-row class="padding">
@@ -25,7 +26,7 @@
             size="sm"
             placeholder="Enter your name"
             class="add-address-modal__input"
-            v-model="address.name"
+            v-model="address_modal.name"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -39,7 +40,7 @@
             size="sm"
             placeholder="Please Select"
             class="add-address-modal__input"
-            v-model="address.country"
+            v-model="address_modal.country"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -53,7 +54,7 @@
             size="sm"
             placeholder="Please Select"
             class="add-address-modal__input"
-            v-model="address.state"
+            v-model="address_modal.state"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -67,7 +68,7 @@
             size="sm"
             placeholder=""
             class="add-address-modal__input"
-            v-model="address.zip_code"
+            v-model="address_modal.zip_code"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -81,7 +82,7 @@
             size="sm"
             placeholder="Select City"
             class="add-address-modal__input"
-            v-model="address.city"
+            v-model="address_modal.city"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -95,7 +96,7 @@
             size="sm"
             placeholder=""
             class="add-address-modal__input"
-            v-model="address.address"
+            v-model="address_modal.address"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -150,41 +151,47 @@ import PurpleButton from "@/components/Buttons/PurpleButton";
 import Checkbox from "@/components/FormElements/Checkbox";
 
 export default {
-  name: "AddNewAddress",
+  name: "EditAddress",
   components: { Checkbox, PurpleButton, RedButton },
   data() {
     return {
-      address: {
-        name: "",
-        country: "",
-        state: "",
-        zip_code: "",
-        city: "",
-        address: "",
-        default: false
-      }
+      address_modal: this.address
     };
   },
   props: {
-    sellerId: String
+    sellerId: String,
+    address: {
+      type: Object,
+      default: () => {
+        return {
+          name: "",
+          country: "",
+          state: "",
+          zip_code: "",
+          city: "",
+          address: "",
+          default: false
+        };
+      }
+    }
   },
   methods: {
     cancelHandler(sellerId) {
       console.log("cancelHandler", sellerId);
-      this.$bvModal.hide("add-new-modal__" + sellerId);
+      this.$bvModal.hide("edit-modal__" + sellerId);
     },
     saveAddress(sellerId) {
       console.log(sellerId);
       console.log("address", this.address);
 
-      this.$bvModal.hide("add-new-modal__" + sellerId);
+      this.$bvModal.hide("edit-modal__" + sellerId);
     },
     makeBillingHandler(e) {
       console.log("makeBillingHandler", e);
     },
     makeDefaultHandler(e) {
-      console.log("makeDefaultHandler", e);
-      this.address.default = e.target.checked;
+      console.log("makeDefaultHandler", e, this.address_modal);
+      this.address_modal.default = e.target.checked;
     }
   }
 };

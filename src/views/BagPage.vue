@@ -163,7 +163,10 @@
                               <button
                                 class="shipping-action-btn shipping-action-btn__edit"
                                 @click.stop="
-                                  editAddress(selectedAddress[sellerId])
+                                  editAddress(
+                                    sellerId,
+                                    selectedAddress[sellerId]
+                                  )
                                 "
                               >
                                 Edit
@@ -206,10 +209,17 @@
                             <div class="shipment-info__gray-box">
                               <button
                                 class="shipping-action-btn shipping-action-btn__edit"
-                                @click.stop="editAddress(defaultAddress)"
+                                @click.stop="
+                                  editAddress(sellerId, defaultAddress)
+                                "
                               >
                                 Edit
                               </button>
+                              <EditAddress
+                                v-if="editingAddress"
+                                :sellerId="sellerId"
+                                :address="editingAddress"
+                              />
                               <h3 class="title-text">Shipping Address</h3>
                               <p class="sub-text">
                                 {{ defaultAddress && defaultAddress.name }}
@@ -231,13 +241,16 @@
                         </div>
                         <button
                           class="shipping-action-btn shipping-action-btn__addNew"
-                          @click="addNewAddress()"
+                          @click="addNewAddress(sellerId)"
                         >
                           Add New
                         </button>
+                        <AddNewAddress :sellerId="sellerId" />
+
                         <SelectAddress
                           :sellerId="sellerId"
                           @selectAddress="selectAddress"
+                          @editAddress="editAddress"
                         />
                       </b-col>
                       <b-col lg="2" class="mb-3"></b-col>
@@ -277,12 +290,15 @@ import InputText from "../components/FormElements/InputText.vue";
 import Checkbox from "../components/FormElements/Checkbox.vue";
 import SelectAddress from "../components/ShoppingBag/SelectAddress.vue";
 import Popover from "../components/StaticComponents/Popover.vue";
+import AddNewAddress from "../components/ShoppingBag/AddNewAddress.vue";
+import EditAddress from "../components/ShoppingBag/EditAddress.vue";
 
 export default {
   name: "BagPage",
   props: "",
   data() {
     return {
+      editingAddress: null,
       insurance: this.$store.getters.getInsurance,
       shoppingOptions: [
         { value: null, text: "Please select delivery" },
@@ -310,11 +326,14 @@ export default {
     InputText,
     Checkbox,
     SelectAddress,
-    Popover
+    Popover,
+    AddNewAddress,
+    EditAddress
   },
   methods: {
-    addNewAddress() {
+    addNewAddress(sellerId) {
       console.log("addNewAddress");
+      this.$bvModal.show("add-new-modal__" + sellerId);
     },
     addInsuranceHandler(val) {
       console.log("addInsuranceHandler", val.target.dataset.id);
@@ -328,8 +347,10 @@ export default {
     addCouponHandler(val) {
       console.log("addCouponHandler", val);
     },
-    editAddress(address) {
+    editAddress(sellerId, address) {
       console.log("editAddress", address);
+      this.editingAddress = address;
+      this.$bvModal.show("edit-modal__" + sellerId);
     },
     selectAddress(newAddress) {
       console.log("selectAddress bug page", newAddress);

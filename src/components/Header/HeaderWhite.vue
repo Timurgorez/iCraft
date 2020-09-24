@@ -1,12 +1,12 @@
 <template>
   <div class="header-white">
     <div class="header-logo">
-      <a href="/">
+      <router-link :to="{ name: 'CollectionPage' }">
         <img
           src="~@/assets/desctop/pages/collectionPage/group.png"
           alt="iCraft Logo"
         />
-      </a>
+      </router-link>
     </div>
     <div class="shoping-card-lang-block">
       <ShoppingBag />
