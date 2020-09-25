@@ -127,14 +127,14 @@
         <b-col cols="12" class="mb-3 mt-3">
           <PurpleButton
             text="Cancel"
-            iconClass="bag-icon"
+            :simpleButton="true"
             :animate="true"
             customClass="add-to-bag__btn mr-3"
             @clickHandler="cancelHandler(sellerId)"
           />
           <RedButton
             text="Save"
-            iconClass="accepted-icon"
+            :simpleButton="true"
             :animate="true"
             customClass="save__btn"
             @clickHandler="saveAddress(sellerId)"

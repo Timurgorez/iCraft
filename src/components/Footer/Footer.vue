@@ -34,15 +34,6 @@ export default {
         facebook: 'https://facebook.com',
         pinterest: 'https://pinterest.com'
       }
-    },
-    props: {
-        
-    },
-    components:{
-         
-    },
-    methods:{
-        
     }
 }
 </script>
@@ -60,7 +51,7 @@ export default {
     background-size: 120%;
     background-repeat: no-repeat;
     position: relative;
-    box-shadow: 0px 0px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 0 40px rgba(0,0,0,0.3);
     z-index: 1;
     display: flex;
     flex-wrap: wrap;
@@ -76,7 +67,7 @@ export default {
     .footer-block__text {
       color: #ffffff;
       font-size: 0.8em;
-      font-family: $font_montserrat_medium;
+      font-family: $font_montserrat_regular;
       margin-bottom: 0;
       text-align: center;
     }
