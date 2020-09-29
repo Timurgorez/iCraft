@@ -323,6 +323,7 @@
         <h3>
           This Product has been added to your<br> Shopping Bag
         </h3>
+        <div>
         <PurpleButton
           :text="'SHOPPING BAG ( ' + this.$store.getters.countProductsInBag + ' )'"
           iconClass="bag-icon"
@@ -334,9 +335,10 @@
           text="PROCEED TO CHECKOUT"
           iconClass="d-none"
           :animate="true"
-          customClass="add-to-bag__btn-modal"
+          customClass="add-to-bag__btn-modal mb-3"
           @clickHandler="modalBtnToCheckoutHandler"
         />
+        </div>
       </div>
     </b-modal>
     <ProductSlider />
@@ -674,6 +676,12 @@ export default {
   position: relative;
   &-wrap{
     text-align: center;
+    & > div{
+      display: flex;
+          flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
   }
   &__close {
     position: absolute;
