@@ -324,7 +324,7 @@
           This Product has been added to your<br> Shopping Bag
         </h3>
         <PurpleButton
-          :text="'SHOPPING BAG( ' + this.$store.getters.countProductsInBag + ' )'"
+          :text="'SHOPPING BAG ( ' + this.$store.getters.countProductsInBag + ' )'"
           iconClass="bag-icon"
           :animate="true"
           customClass="add-to-bag__btn-modal mr-md-4 mb-3"
@@ -332,6 +332,7 @@
         />
         <PurpleButton
           text="PROCEED TO CHECKOUT"
+          iconClass="d-none"
           :animate="true"
           customClass="add-to-bag__btn-modal"
           @clickHandler="modalBtnToCheckoutHandler"
