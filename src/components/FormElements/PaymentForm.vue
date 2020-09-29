@@ -14,7 +14,7 @@
     <div class="payment-form__options mb-4">
       <b-row>
         <b-col cols="12" sm="12" md="6" lg="6" xl="6">
-          <b-form-radio v-model="paymentMethod" name="some-radios" value="card">
+          <b-form-radio v-model="paymentMethod" name="payment-card" class="payment-radio" value="card">
             <div class="payment-form__card-icons d-flex flex-row">
               <div class="payment-form__card-type-container d-flex justify-content-center payment-form__card-type-container-border">
                 <div class="payment-form__card-type visa-card"></div>
@@ -32,7 +32,7 @@
           </b-form-radio>
         </b-col>
         <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="mt-3 mt-sm-3 mt-md-0 mt-lg-0 mt-xl-0">
-          <b-form-radio v-model="paymentMethod" name="some-radios" value="paypal">
+          <b-form-radio v-model="paymentMethod" name="payment-paypal" value="paypal">
             <div class="payment-form__card-type-container d-flex justify-content-center payment-form__card-type-container-border">
               <div class="payment-form__card-type paypal"></div>
             </div>
@@ -41,7 +41,7 @@
       </b-row>
     </div>
     <form>
-      <b-container class="payment-form__container">
+      <b-container v-if="paymentMethod === 'card'" class="payment-form__container card-payment">
         <b-row class="mb-3">
           <b-col cols="12">
             <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row align-items-md-center align-items-lg-center align-items-xl-center">
@@ -87,6 +87,7 @@
           </b-col>
         </b-row>
       </b-container>
+      <b-container v-if="paymentMethod === 'paypal'" class="payment-form__container paypal-payment"></b-container>
     </form>
   </section>
 </template>

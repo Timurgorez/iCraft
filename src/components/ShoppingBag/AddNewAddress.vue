@@ -110,7 +110,6 @@
               value="true"
               @changeHandler="makeBillingHandler"
             />
-            <!--                @changeHandler="customGiftHandler"-->
             <Checkbox
               labelText="Make it as Default Address"
               inputName="default-address"
@@ -118,7 +117,6 @@
               value="true"
               @changeHandler="makeDefaultHandler"
             />
-            <!--                @changeHandler="customGiftHandler"-->
           </div>
         </b-col>
       </b-row>
@@ -126,15 +124,15 @@
         <b-col cols="12" class="mb-3 mt-3">
           <PurpleButton
             text="Cancel"
-            iconClass="bag-icon"
+            :simpleButton="true"
             :animate="true"
             customClass="add-to-bag__btn mr-3"
             @clickHandler="cancelHandler"
           />
           <RedButton
             text="Save"
-            iconClass="accepted-icon"
             :animate="true"
+            :simpleButton="true"
             customClass="save__btn"
             @clickHandler="saveAddress"
           />

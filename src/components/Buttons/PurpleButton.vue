@@ -5,7 +5,8 @@
       'purple-custom-btn',
       this.customClass,
       this.size,
-      this.animate && 'animate'
+      this.animate && 'animate',
+      this.simpleButton && 'simple-button'
     ]"
     @click="onClick"
   >
@@ -25,7 +26,8 @@ export default {
     iconClass: String,
     animate: Boolean,
     customClass: String,
-    size: String
+    size: String,
+    simpleButton: Boolean
   },
   components: {},
   methods: {
@@ -112,6 +114,12 @@ export default {
       left: -10%;
       width: 130%;
     }
+  }
+}
+
+.simple-button {
+  .purple-custom-btn__icon {
+    display: none;
   }
 }
 

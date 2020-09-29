@@ -1,7 +1,7 @@
 <template>
   <button
     :data-size="this.size"
-    :class="['red-custom-btn', this.customClass, this.animate && 'animate']"
+    :class="['red-custom-btn', this.customClass, this.animate && 'animate', this.simpleButton && 'simple-button']"
     @click="onClick"
   >
     <span :class="['red-custom-btn__icon', iconClass]"> </span>
@@ -20,7 +20,8 @@ export default {
     iconClass: String,
     animate: Boolean,
     customClass: String,
-    size: String
+    size: String,
+    simpleButton: Boolean
   },
   components: {},
   methods: {
@@ -100,6 +101,12 @@ export default {
       left: -20%;
       width: 150%;
     }
+  }
+}
+
+.simple-button {
+  .red-custom-btn__icon {
+    display: none;
   }
 }
 

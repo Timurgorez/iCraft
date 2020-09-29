@@ -54,7 +54,6 @@
           <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row mt-4 mb-4">
             <h3 class="mr-4 mb-3">Billing Address</h3>
             <div class="mr-4 mb-3 shipping-action-btn shipping-action-btn__select d-flex align-items-center">Select Address </div>
-            <div class=" mb-3 shipping-action-btn shipping-action-btn__add-new d-flex align-items-center">Add New</div>
           </div>
         </b-col>
         <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary d-none d-sm-none d-md-block d-lg-block d-xl-block">
@@ -104,6 +103,7 @@ import PaymentForm from "@/components/FormElements/PaymentForm";
 import ContactInfo from "@/components/FormElements/ContactInfo";
 import OrderSummary from "@/components/Checkout/OrderSummary";
 import ProductSlider from "@/components/StaticComponents/ProductSlider/ProductSlider";
+
 export default {
   name: "CheckoutPage",
   components: {
