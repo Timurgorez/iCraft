@@ -2,6 +2,12 @@
   <div>
     <div class="header-block__text d-flex flex-column">
       <Header />
+      <notifications
+      class="custom-notification-wrap"
+      classes="custom-notification"
+      group="app-product"
+      position="top center"
+    />
       <b-container fluid="xl">
         <div class="header-block__text-wrap">
           <h2>
@@ -399,7 +405,7 @@ export default {
   }
 
   .modal-content {
-    background-image: url("/tmp/thx-for-subscibe.jpg");
+    background-image: url("~@/assets/tmp/thx-for-subscibe.jpg");
     background-position: 50% 0%;
     background-repeat: no-repeat;
     background-size: cover;

@@ -1,6 +1,12 @@
 <template>
   <div class="checkout-page">
     <HeaderWhite/>
+    <notifications
+      class="custom-notification-wrap"
+      classes="custom-notification"
+      group="app-product"
+      position="top center"
+    />
     <b-container fluid>
       <b-row>
         <b-col cols="12">
