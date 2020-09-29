@@ -1,7 +1,7 @@
 <template>
   <b-modal
     size="lg"
-    :id="'add-new-modal__' + sellerId"
+    :id="'add-new-modal'"
     hide-footer
     hide-header
     class="add-address-modal"
@@ -106,7 +106,7 @@
               class="mr-4"
               labelText="Same as Billing Address"
               inputName="billing-address"
-              :id="'billing-address-' + sellerId"
+              :id="'billing-address'"
               value="true"
               @changeHandler="makeBillingHandler"
             />
@@ -114,7 +114,7 @@
             <Checkbox
               labelText="Make it as Default Address"
               inputName="default-address"
-              :id="'default-address-' + sellerId"
+              :id="'default-address'"
               value="true"
               @changeHandler="makeDefaultHandler"
             />
@@ -129,14 +129,14 @@
             iconClass="bag-icon"
             :animate="true"
             customClass="add-to-bag__btn mr-3"
-            @clickHandler="cancelHandler(sellerId)"
+            @clickHandler="cancelHandler"
           />
           <RedButton
             text="Save"
             iconClass="accepted-icon"
             :animate="true"
             customClass="save__btn"
-            @clickHandler="saveAddress(sellerId)"
+            @clickHandler="saveAddress"
           />
         </b-col>
       </b-row>
@@ -166,18 +166,26 @@ export default {
     };
   },
   props: {
-    sellerId: String
+    // sellerId: String
   },
   methods: {
-    cancelHandler(sellerId) {
-      console.log("cancelHandler", sellerId);
-      this.$bvModal.hide("add-new-modal__" + sellerId);
+    cancelHandler() {
+      console.log("cancelHandler");
+      this.$bvModal.hide("add-new-modal");
     },
-    saveAddress(sellerId) {
-      console.log(sellerId);
+    saveAddress() {
       console.log("address", this.address);
-
-      this.$bvModal.hide("add-new-modal__" + sellerId);
+      this.$store.commit("addNewShippingAddress", this.address);
+      this.$bvModal.hide("add-new-modal");
+      this.address = {
+        name: "",
+        country: "",
+        state: "",
+        zip_code: "",
+        city: "",
+        address: "",
+        default: false
+      };
     },
     makeBillingHandler(e) {
       console.log("makeBillingHandler", e);

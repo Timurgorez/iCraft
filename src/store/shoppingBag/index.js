@@ -82,6 +82,25 @@ export default {
         state.shoppingType[el.sellerId] = null;
         state.insurance[el.sellerId] = false;
       });
+    },
+    modifyShippingAddress(state, obj) {
+      state.shippingAdresses.forEach(address => {
+        if (address.id == obj.newModel.id) {
+          address = obj.newModel;
+        }
+      });
+      if (state.selectedAddress) {
+        for (let sellerId in state.selectedAddress) {
+          console.log(sellerId);
+          if (state.selectedAddress[sellerId].id == obj.newModel.id) {
+            state.selectedAddress[sellerId] = obj.newModel;
+          }
+        }
+      }
+    },
+    addNewShippingAddress(state, address) {
+      address.id = (~~(Math.random() * 1e8)).toString(16);
+      state.shippingAdresses.push(address);
     }
     // addNewFieldToBag(state, id, fieldName, value){
     //   console.log(id, fieldName, value);
@@ -115,14 +134,13 @@ export default {
     },
     isSelectedAddress(state) {
       return sellerId => {
-        return !!state.selectedAddress[sellerId];
+        return !!state.selectedAddress && !!state.selectedAddress[sellerId];
       };
     },
     getSelectedAddress(state) {
       return state.selectedAddress;
     },
     getDefaultAddress(state) {
-      // return state.selectedAddress;
       return state.shippingAdresses.find(address => {
         return address.default;
       });
@@ -135,6 +153,13 @@ export default {
     },
     getShoppingType(state) {
       return state.shoppingType;
+    },
+    getOneShippingAdresses(state) {
+      return addressId => {
+        return state.shippingAdresses.find(address => {
+          return address.id == addressId;
+        });
+      };
     }
   }
 };

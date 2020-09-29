@@ -51,7 +51,7 @@
         <b-col cols="12" class="mb-3">
           <button
             class="shipping-action-btn shipping-action-btn__addNew"
-            @click="addNewAddress(sellerId)"
+            @click="addNewAddress"
           >
             Add New
           </button>
@@ -92,16 +92,17 @@ export default {
     };
   },
   props: {
-    sellerId: String
+    sellerId: String,
+    shippingAdresses: Array
   },
   components: {
     RedButton,
     PurpleButton
   },
   methods: {
-    addNewAddress(sellerId) {
+    addNewAddress() {
       console.log("addNewAddress");
-      this.$bvModal.show("add-new-modal__" + sellerId);
+      this.$bvModal.show("add-new-modal");
     },
     selectAddress() {
       const addressObj = {
@@ -121,9 +122,9 @@ export default {
     }
   },
   computed: {
-    shippingAdresses() {
-      return this.$store.getters.getShippingAdresses;
-    }
+    // shippingAdresses() {
+    //   return this.$store.getters.getShippingAdresses;
+    // }
   },
   mounted() {}
 };

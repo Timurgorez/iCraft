@@ -1,7 +1,7 @@
 <template>
   <b-modal
     size="lg"
-    :id="'edit-modal__' + sellerId"
+    :id="'edit-modal'"
     hide-footer
     hide-header
     class="add-address-modal"
@@ -26,7 +26,7 @@
             size="sm"
             placeholder="Enter your name"
             class="add-address-modal__input"
-            v-model="address_modal.name"
+            v-model="edited_model.name"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -40,7 +40,7 @@
             size="sm"
             placeholder="Please Select"
             class="add-address-modal__input"
-            v-model="address_modal.country"
+            v-model="edited_model.country"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -54,7 +54,7 @@
             size="sm"
             placeholder="Please Select"
             class="add-address-modal__input"
-            v-model="address_modal.state"
+            v-model="edited_model.state"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -68,7 +68,7 @@
             size="sm"
             placeholder=""
             class="add-address-modal__input"
-            v-model="address_modal.zip_code"
+            v-model="edited_model.zip_code"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -82,7 +82,7 @@
             size="sm"
             placeholder="Select City"
             class="add-address-modal__input"
-            v-model="address_modal.city"
+            v-model="edited_model.city"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -96,7 +96,7 @@
             size="sm"
             placeholder=""
             class="add-address-modal__input"
-            v-model="address_modal.address"
+            v-model="edited_model.address"
           ></b-form-input>
         </b-col>
       </b-row>
@@ -107,19 +107,18 @@
               class="mr-4"
               labelText="Same as Billing Address"
               inputName="billing-address"
-              :id="'billing-address-' + sellerId"
+              :id="'billing-address-'"
               value="true"
               @changeHandler="makeBillingHandler"
             />
-            <!--                @changeHandler="customGiftHandler"-->
+
             <Checkbox
               labelText="Make it as Default Address"
               inputName="default-address"
-              :id="'default-address-' + sellerId"
+              :id="'default-address-'"
               value="true"
               @changeHandler="makeDefaultHandler"
             />
-            <!--                @changeHandler="customGiftHandler"-->
           </div>
         </b-col>
       </b-row>
@@ -130,14 +129,14 @@
             iconClass="bag-icon"
             :animate="true"
             customClass="add-to-bag__btn mr-3"
-            @clickHandler="cancelHandler(sellerId)"
+            @clickHandler="cancelHandler"
           />
           <RedButton
             text="Save"
             iconClass="accepted-icon"
             :animate="true"
             customClass="save__btn"
-            @clickHandler="saveAddress(sellerId)"
+            @clickHandler="saveAddress"
           />
         </b-col>
       </b-row>
@@ -155,11 +154,12 @@ export default {
   components: { Checkbox, PurpleButton, RedButton },
   data() {
     return {
-      address_modal: this.address
+      edited_model: Object.assign({}, this.address)
     };
   },
   props: {
-    sellerId: String,
+    // sellerId: String,
+    addressId: Number,
     address: {
       type: Object,
       default: () => {
@@ -176,22 +176,25 @@ export default {
     }
   },
   methods: {
-    cancelHandler(sellerId) {
-      console.log("cancelHandler", sellerId);
-      this.$bvModal.hide("edit-modal__" + sellerId);
+    cancelHandler() {
+      console.log("cancelHandler");
+      this.$bvModal.hide("edit-modal");
+      this.$emit("cancelEdit", this.edited_model);
     },
-    saveAddress(sellerId) {
-      console.log(sellerId);
-      console.log("address", this.address);
-
-      this.$bvModal.hide("edit-modal__" + sellerId);
+    saveAddress() {
+      console.log("address", this.edited_model);
+      this.$store.commit("modifyShippingAddress", {
+        newModel: this.edited_model
+      });
+      // this.address = this.edited_model;
+      this.$bvModal.hide("edit-modal");
     },
     makeBillingHandler(e) {
       console.log("makeBillingHandler", e);
     },
     makeDefaultHandler(e) {
-      console.log("makeDefaultHandler", e, this.address_modal);
-      this.address_modal.default = e.target.checked;
+      console.log("makeDefaultHandler", e, this.address_model);
+      this.address_model.default = e.target.checked;
     }
   }
 };

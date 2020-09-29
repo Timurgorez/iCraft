@@ -10,7 +10,8 @@ export default {
   data() {
     return {
       model_select_address:
-        this.$store.getters.getSelectedAddress[this.sellerId] ||
+        (this.$store.getters.getSelectedAddress &&
+          this.$store.getters.getSelectedAddress[this.sellerId]) ||
         this.$store.getters.getDefaultAddress
     };
   },

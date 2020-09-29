@@ -155,7 +155,7 @@
                           Select Address
                         </button>
                         <div
-                          v-show="selectedAddress[sellerId]"
+                          v-if="selectedAddress && selectedAddress[sellerId]"
                           @click="$bvModal.show('shipping-modal__' + sellerId)"
                         >
                           <div class="shipment-info__address">
@@ -202,7 +202,7 @@
                           </div>
                         </div>
                         <div
-                          v-show="!selectedAddress[sellerId] && defaultAddress"
+                          v-if="!selectedAddress[sellerId] && defaultAddress"
                           @click="$bvModal.show('shipping-modal__' + sellerId)"
                         >
                           <div class="shipment-info__address">
@@ -215,11 +215,7 @@
                               >
                                 Edit
                               </button>
-                              <EditAddress
-                                v-if="editingAddress"
-                                :sellerId="sellerId"
-                                :address="editingAddress"
-                              />
+
                               <h3 class="title-text">Shipping Address</h3>
                               <p class="sub-text">
                                 {{ defaultAddress && defaultAddress.name }}
@@ -241,14 +237,15 @@
                         </div>
                         <button
                           class="shipping-action-btn shipping-action-btn__addNew"
-                          @click="addNewAddress(sellerId)"
+                          @click="addNewAddress"
                         >
                           Add New
                         </button>
-                        <AddNewAddress :sellerId="sellerId" />
 
                         <SelectAddress
+                          :key="shippingAdresses.length"
                           :sellerId="sellerId"
+                          :shippingAdresses="shippingAdresses"
                           @selectAddress="selectAddress"
                           @editAddress="editAddress"
                         />
@@ -276,6 +273,12 @@
         <h3>Your Shopping Bag is Empty</h3>
       </b-row>
     </b-container>
+    <EditAddress
+      v-if="editingAddress"
+      :address="editingAddress"
+      @cancelEdit="cancelEdit"
+    />
+    <AddNewAddress />
     <ProductSlider />
     <Footer />
   </div>
@@ -299,6 +302,12 @@ export default {
   data() {
     return {
       editingAddress: null,
+
+      selectedAddress: this.$store.getters.getSelectedAddress,
+      defaultAddress: this.$store.getters.getDefaultAddress,
+
+      shippingAdresses: this.$store.getters.getShippingAdresses,
+
       insurance: this.$store.getters.getInsurance,
       shoppingOptions: [
         { value: null, text: "Please select delivery" },
@@ -331,9 +340,12 @@ export default {
     EditAddress
   },
   methods: {
-    addNewAddress(sellerId) {
+    addNewAddress() {
       console.log("addNewAddress");
-      this.$bvModal.show("add-new-modal__" + sellerId);
+      this.$bvModal.show("add-new-modal");
+    },
+    cancelEdit(oldEditAddress) {
+      this.editingAddress = oldEditAddress;
     },
     addInsuranceHandler(val) {
       console.log("addInsuranceHandler", val.target.dataset.id);
@@ -349,16 +361,20 @@ export default {
     },
     editAddress(sellerId, address) {
       console.log("editAddress", address);
-      this.editingAddress = address;
-      this.$bvModal.show("edit-modal__" + sellerId);
+      this.editingAddress = null;
+      this.$nextTick(() => {
+        this.editingAddress = address;
+      })
+      this.$bvModal.show("edit-modal");
     },
     selectAddress(newAddress) {
       console.log("selectAddress bug page", newAddress);
-
       this.$store.dispatch("addAddressToSelectedAddress", newAddress);
       this.$bvModal.hide("shipping-modal__" + newAddress.sellerId);
-      // this.$forceUpdate();
-      // this.selectedAddress = this.$store.getters.getSelectedAddress;
+      this.selectedAddress = null;
+      this.selectedAddress = this.$store.getters.getSelectedAddress;
+      (this.shippingAdresses = []),
+        (this.shippingAdresses = this.$store.getters.getShippingAdresses);
     }
   },
   computed: {
@@ -388,14 +404,15 @@ export default {
             this.$store.getters.getProductsInBag[0].prodId
           )
         : null;
-    },
-    defaultAddress() {
-      return this.$store.getters.getDefaultAddress;
-    },
-    selectedAddress() {
-      console.log(this.$store.getters.getSelectedAddress);
-      return this.$store.getters.getSelectedAddress;
     }
+    // defaultAddress() {
+    //   console.log("defaultAddress", this.$store.getters.getDefaultAddress);
+    //   return this.$store.getters.getDefaultAddress;
+    // },
+    // selectedAddress() {
+    //   console.log("selectedAddress", this.$store.getters.getSelectedAddress);
+    //   return this.$store.getters.getSelectedAddress;
+    // }
   },
   watch: {
     selectedAddress() {
