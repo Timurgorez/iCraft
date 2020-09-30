@@ -4,6 +4,7 @@ import CollectionPage from "@/views/CollectionPage";
 import ProductItem from "@/views/ProductItem";
 import BagPage from "@/views/BagPage";
 import CheckoutPage from "@/views/CheckoutPage";
+import Purchase from "@/views/Purchase";
 
 Vue.use(VueRouter);
 
@@ -31,6 +32,11 @@ export default new VueRouter({
       path: '/checkout',
       name: "CheckoutPage",
       component: CheckoutPage
+    },
+    {
+      path: '/purchase',
+      name: "Purchase",
+      component: Purchase
     }
   ],
   scrollBehavior(to, from, savedPosition) {
