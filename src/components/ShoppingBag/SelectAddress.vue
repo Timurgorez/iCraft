@@ -86,14 +86,14 @@ export default {
   name: "SelectAddress",
   data() {
     return {
+      shippingAdresses: this.$store.getters.getShippingAdresses,
       model_select_address:
-        this.$store.getters.getSelectedAddress[this.sellerId] ||
+        this.$store.getters.getSelectedAddressBySellerId(this.sellerId) ||
         this.$store.getters.getDefaultAddress
     };
   },
   props: {
-    sellerId: String,
-    shippingAdresses: Array
+    sellerId: String
   },
   components: {
     RedButton,
@@ -124,6 +124,12 @@ export default {
   computed: {
     // shippingAdresses() {
     //   return this.$store.getters.getShippingAdresses;
+    // }
+    // model_select_address() {
+    //   return (
+    //     this.$store.getters.getSelectedAddressBySellerId(this.sellerId) ||
+    //     this.$store.getters.getDefaultAddress
+    //   );
     // }
   },
   mounted() {}
