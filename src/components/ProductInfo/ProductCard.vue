@@ -7,12 +7,12 @@
     :lg="size.lg"
     class="centered product-card-wrap"
   >
-    <notifications
+    <!-- <notifications
       class="custom-notification-wrap"
       classes="custom-notification"
-      group="app"
+      group="app-product"
       position="top center"
-    />
+    /> -->
     <b-card class="product-card">
       <div
         v-if="item.sale"
@@ -149,14 +149,14 @@ export default {
       };
       if (this.checkProductInBag(product)) {
         this.$notify({
-          group: "app",
+          group: "app-product",
           type: "warn",
           title: "WARNING",
           text: "This item already in your bag!"
         });
       } else {
         this.$notify({
-          group: "app",
+          group: "app-product",
           type: "success",
           title: "SUCCESS",
           text: "Item was added to your bag!"

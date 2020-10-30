@@ -4,7 +4,7 @@
     <notifications
       class="custom-notification-wrap"
       classes="custom-notification"
-      group="app"
+      group="app-product"
       position="top center"
     />
     <b-container class="product-max-container">
@@ -308,6 +308,39 @@
         </b-col>
       </b-row>
     </b-container>
+    <b-modal
+      size="md"
+      ref="add-to-bag"
+      hide-footer
+      hide-header
+      dialog-class="add-to-bag__modal"
+      >
+      <span
+        @click="$refs['add-to-bag'].hide()"
+        class="add-to-bag__modal__close"
+      ></span>
+      <div class="add-to-bag__modal-wrap">
+        <h3>
+          This Product has been added to your<br> Shopping Bag
+        </h3>
+        <div>
+        <PurpleButton
+          :text="'SHOPPING BAG ( ' + this.$store.getters.countProductsInBag + ' )'"
+          iconClass="bag-icon"
+          :animate="true"
+          customClass="add-to-bag__btn-modal mr-md-4 mb-3"
+          @clickHandler="modalBtnToBagHandler"
+        />
+        <PurpleButton
+          text="PROCEED TO CHECKOUT"
+          iconClass="d-none"
+          :animate="true"
+          customClass="add-to-bag__btn-modal mb-3"
+          @clickHandler="modalBtnToCheckoutHandler"
+        />
+        </div>
+      </div>
+    </b-modal>
     <ProductSlider />
     <Footer />
   </div>
@@ -367,6 +400,12 @@ export default {
     ProductSlider
   },
   methods: {
+    modalBtnToBagHandler(){
+      this.$router.push("/shopping-bag");
+    },
+    modalBtnToCheckoutHandler(){
+      this.$router.push("/checkout");
+    },
     addToBagHandler() {
       const product = {
         id: `f${(~~(Math.random() * 1e8)).toString(16)}`,
@@ -379,18 +418,20 @@ export default {
       };
       if (this.checkProductInBag(product)) {
         this.$notify({
-          group: "app",
+          group: "app-product",
           type: "warn",
           title: "WARNING",
           text: "This item you already have in your bag!"
         });
       } else {
-        this.$notify({
-          group: "app",
-          type: "success",
-          title: "SUCCESS",
-          text: "Item was added to your bag!"
-        });
+        // this.$notify({
+        //   group: "app-product",
+        //   type: "success",
+        //   title: "SUCCESS",
+        //   text: "Item was added to your bag!"
+        // });
+      
+        this.$refs["add-to-bag"].show();
         this.$store.dispatch("addProductToBag", product);
       }
       this.model_quantity = 1;
@@ -425,7 +466,7 @@ export default {
         this.product.seller.id
       );
       this.model_quantity = 1;
-      this.$router.push("/shopping-bag");
+      
     },
     addToBagBestOfferHandler() {
       console.log("addToBagBestOfferHandler");
@@ -625,6 +666,69 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+  }
+}
+
+
+::v-deep .add-to-bag__modal {
+  max-width: 760px;
+  padding: 20px;
+  position: relative;
+  &-wrap{
+    text-align: center;
+    & > div{
+      display: flex;
+          flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &__close {
+    position: absolute;
+    transform: rotate(45deg);
+    cursor: pointer;
+    top: 26px;
+    right: 26px;
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath fill-rule='evenodd' d='M13.611 2v10.388H24v1.223H13.611V24H12.39l-.001-10.389H2V12.39l10.388-.001V2h1.223z'/%3E%3C/svg%3E%0A");
+  }
+
+  .modal-content {
+    background-image: url("~@/assets/tmp/rectangle-2.jpg");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 400px;
+    border-radius: 15px;
+    // height: calc(90vh - 100px);
+    // max-height: 500px;
+    .modal-body {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      padding: 60px 20px;
+    }
+    h3 {
+      font-family: $font_neue_kabel;
+      font-size: 40px;
+      font-weight: bold;
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 40px;
+    }
+    p {
+      font-family: $font_montserrat_regular;
+      font-size: 16px;
+      line-height: 1.56;
+      letter-spacing: normal;
+      text-align: center;
+      color: #000000;
+    }
   }
 }
 

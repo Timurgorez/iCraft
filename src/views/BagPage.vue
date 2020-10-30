@@ -2,8 +2,9 @@
   <div class="bag-page">
     <HeaderWhite />
     <notifications
+      class="custom-notification-wrap"
       classes="custom-notification"
-      group="app"
+      group="app-product"
       position="top center"
     />
     <b-container class="default-max-container">

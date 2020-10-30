@@ -1,6 +1,12 @@
 <template>
   <div class="checkout-page">
     <HeaderWhite/>
+    <notifications
+      class="custom-notification-wrap"
+      classes="custom-notification"
+      group="app-product"
+      position="top center"
+    />
     <b-container fluid>
       <b-row>
         <b-col cols="12">
@@ -84,7 +90,7 @@
     <b-container fluid  class="d-block d-sm-block d-md-none d-lg-none d-xl-none">
       <b-row>
         <b-col cols="12">
-          <OrderSummary :checkout-page="true" :product="firstProduct" ></OrderSummary>
+          <OrderSummary :checkout-page="true" :product="firstProduct"></OrderSummary>
         </b-col>
       </b-row>
     </b-container>
