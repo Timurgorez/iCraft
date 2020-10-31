@@ -1,5 +1,5 @@
 <template>
-  <div class="header-main">
+  <b-container class="header-main" fluid>
     <b-row class="header-main__top">
       <b-col cols="12" lg="3" class="header-logo mb-3">
         <router-link :to="{ name: 'CollectionPage' }">
@@ -42,7 +42,7 @@
       </b-col>
     </b-row>
     <Navigation />
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -103,7 +103,10 @@ export default {
 }
 
 .personal-info {
-  padding-left: 40px;
+  justify-content: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+
   .sell-handmade__link {
     margin-right: 20px;
   }
@@ -159,7 +162,7 @@ export default {
     background: $bg_purple;
     height: 100%;
     display: inline-block;
-    width: 68px;
+    width: 78px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='26' viewBox='0 0 27 26'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFF'%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cpath d='M11 2.5c4.694 0 8.5 3.806 8.5 8.5 0 2.167-.811 4.145-2.146 5.646L23.707 23l-.707.707-6.354-6.353C15.145 18.689 13.167 19.5 11 19.5c-4.694 0-8.5-3.806-8.5-8.5S6.306 2.5 11 2.5zm0 1c-4.142 0-7.5 3.358-7.5 7.5 0 4.142 3.358 7.5 7.5 7.5 4.142 0 7.5-3.358 7.5-7.5 0-4.142-3.358-7.5-7.5-7.5z' transform='translate(-1285 -63) translate(590 45) translate(695 18)'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
     background-repeat: no-repeat;
     background-position: 50% 50%;

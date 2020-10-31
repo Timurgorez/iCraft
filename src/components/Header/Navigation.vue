@@ -1,5 +1,5 @@
 <template>
-  <div class="header-main__nav">
+  <b-row class="header-main__nav">
     <div class="header-main__wrap-link">
       <ul class="header-main__ul">
         <li class="header-main__li">
@@ -579,7 +579,7 @@
       </ul>
       <a href="#" class="nav-link without-line nav-link__community"><span></span>Community</a>
     </div>
-  </div>
+  </b-row>
 </template>
 <script>
 export default {
