@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import ShoppingBag from "../ShoppingBag/ShoppingBag.vue";
+import ShoppingBag from "@/components/Header/ShoppingBag.vue";
 import CurrencyLang from "../CurrencyLang/CurrencyLang.vue";
 
 export default {
