@@ -466,7 +466,7 @@ export default {
         this.product.seller.id
       );
       this.model_quantity = 1;
-      
+      this.$router.push("/shopping-bag");
     },
     addToBagBestOfferHandler() {
       console.log("addToBagBestOfferHandler");
@@ -678,7 +678,7 @@ export default {
     text-align: center;
     & > div{
       display: flex;
-          flex-wrap: wrap;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
     }
