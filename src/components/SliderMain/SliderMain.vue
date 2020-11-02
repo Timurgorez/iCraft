@@ -8,19 +8,7 @@
           :key="slide.id"
           :style="{ backgroundImage: 'url(' + slide.bg + ')' }"
         >
-          <div
-            class="slide-wrap-content"
-            :style="{
-              maxWidth:
-                slide.settings && slide.settings.maxWidth
-                  ? slide.settings.maxWidth
-                  : '400px',
-              top:
-                slide.settings && slide.settings.top ? slide.settings.top : '',
-              left:
-                slide.settings && slide.settings.left ? slide.settings.left : ''
-            }"
-          >
+          <div class="slide-wrap-content" :style="customStyles(slide)">
             <p>{{ slide.subText }}</p>
             <h2>{{ slide.title }}</h2>
             <RedButton
@@ -82,7 +70,13 @@ export default {
           settings: {
             maxWidth: "400px",
             top: "35%",
-            left: "60%"
+            left: "60%",
+            mobile: {
+              992: {
+                top: "35%",
+                left: "calc(50% - 200px)"
+              }
+            }
           }
         },
         {
@@ -98,7 +92,13 @@ export default {
           settings: {
             maxWidth: "600px",
             top: "35%",
-            left: "60%"
+            left: "60%",
+            mobile: {
+              992: {
+                top: "35%",
+                left: "calc(50% - 200px)"
+              }
+            }
           }
         },
         {
@@ -114,7 +114,13 @@ export default {
           settings: {
             maxWidth: "600px",
             top: "35%",
-            left: "10%"
+            left: "10%",
+            mobile: {
+              992: {
+                top: "35%",
+                left: "calc(50% - 200px)"
+              }
+            }
           }
         }
       ]
@@ -138,6 +144,39 @@ export default {
     goToSlide(index) {
       this.$refs.mySwiper.$swiper.slideTo(index);
       this.activeIndex = index;
+    },
+    customStyles(slide) {
+      var screen = "";
+      Object.keys(slide.settings.mobile).forEach(size => {
+        if (innerWidth < size) screen = size;
+      });
+      console.log("screen", screen);
+      if (screen) {
+        return {
+          maxWidth:
+            slide.settings.mobile[screen] &&
+            slide.settings.mobile[screen].maxWidth
+              ? slide.settings.mobile[screen].maxWidth
+              : "400px",
+          top:
+            slide.settings.mobile[screen] && slide.settings.mobile[screen].top
+              ? slide.settings.mobile[screen].top
+              : "",
+          left:
+            slide.settings.mobile[screen] && slide.settings.mobile[screen].left
+              ? slide.settings.mobile[screen].left
+              : ""
+        };
+      } else {
+        return {
+          maxWidth:
+            slide.settings && slide.settings.maxWidth
+              ? slide.settings.maxWidth
+              : "400px",
+          top: slide.settings && slide.settings.top ? slide.settings.top : "",
+          left: slide.settings && slide.settings.left ? slide.settings.left : ""
+        };
+      }
     }
   },
   computed: {
@@ -166,6 +205,7 @@ export default {
   min-height: 700px;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 .swiper,
 .swiper-wrapper {

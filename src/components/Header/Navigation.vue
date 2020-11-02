@@ -610,7 +610,6 @@ export default {
   width: 100%;
   .header-main__wrap-link {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     width: 100%;
@@ -619,7 +618,6 @@ export default {
     .header-main__ul {
       list-style: none;
       display: flex;
-      flex-wrap: wrap;
       margin: 0;
       padding: 0;
     }

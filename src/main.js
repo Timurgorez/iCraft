@@ -9,6 +9,8 @@ import VueCardFormat from "vue-credit-card-validation";
 
 import Notifications from "vue-notification";
 
+import "./directives/index.js";
+
 Vue.use(BootstrapVue);
 Vue.use(VueAwesomeSwiper);
 Vue.use(IconsPlugin);

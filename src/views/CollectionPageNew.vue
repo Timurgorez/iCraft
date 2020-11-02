@@ -31,7 +31,12 @@
       </b-row>
     </b-container>
 
-    <FilterProduct :products="products" @filterProduct="filterProduct" />
+    <FilterProduct
+      v-if="!isMobile"
+      :products="products"
+      @filterProduct="filterProduct"
+    />
+
     <WrapperCard :productItems="products" :limit="12" />
     <WhyBuyHere />
     <WrapperCard :productItems="products" :limit="8" />
@@ -108,13 +113,13 @@
         </b-row>
       </b-container>
     </div>
-    <Footer />
+    <FooterMain />
   </div>
 </template>
 
 <script>
 import HeaderMain from "../components/Header/HeaderMain.vue";
-import Footer from "../components/Footer/Footer.vue";
+import FooterMain from "../components/Footer/FooterMain.vue";
 import FilterProduct from "../components/FilterProduct/FilterProduct.vue";
 import WrapperCard from "../components/ProductInfo/WrapperCard.vue";
 import WhyBuyHere from "../components/StaticComponents/WhyBuyHere/WhyBuyHere.vue";
@@ -125,6 +130,7 @@ export default {
   name: "CollectionPageNew",
   data() {
     return {
+      isMobile: false,
       subscribe_email: "",
       validationError: ""
     };
@@ -134,14 +140,27 @@ export default {
     WrapperCard,
     HeaderMain,
     WhyBuyHere,
-    Footer,
+    FooterMain,
     PurpleButton,
     SliderMain
   },
-  // mounted(){
-  //   $(this.$refs.subscribe_modal).on("hidden.bs.modal", this.hideModal)
-  // },
+  mounted() {
+    this.isMobileHandler();
+    window.addEventListener("resize", this.isMobileHandler, { passive: true });
+  },
   methods: {
+    isMobileHandler() {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        ) ||
+        window.innerWidth < 992
+      ) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
+    },
     filterProduct(newProducts) {
       this.$store.dispatch("filterProducts", newProducts);
     },
@@ -152,7 +171,7 @@ export default {
         return;
       }
       if (this.isEmailValid() === "has-error") {
-        this.validationError = "Incorrect email!";
+        this.validationError = "You are already subscribed with this email.";
         return;
       }
       this.validationError = "";
@@ -371,6 +390,7 @@ export default {
 
 .has-error {
   border-color: $text_color_red;
+  border-width: 2px;
 }
 
 ::v-deep .thx-for-subscribe {

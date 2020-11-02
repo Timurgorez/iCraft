@@ -3,11 +3,11 @@
     <div class="header-block__text d-flex flex-column">
       <Header />
       <notifications
-      class="custom-notification-wrap"
-      classes="custom-notification"
-      group="app-product"
-      position="top center"
-    />
+        class="custom-notification-wrap"
+        classes="custom-notification"
+        group="app-product"
+        position="top center"
+      />
       <b-container fluid="xl">
         <div class="header-block__text-wrap">
           <h2>
@@ -164,7 +164,7 @@ export default {
         return;
       }
       if (this.isEmailValid() === "has-error") {
-        this.validationError = "Incorrect email!";
+        this.validationError = "You are already subscribed with this email.";
         return;
       }
       this.validationError = "";
@@ -383,6 +383,7 @@ export default {
 
 .has-error {
   border-color: $text_color_red;
+  border-width: 2px;
 }
 
 ::v-deep .thx-for-subscribe {
