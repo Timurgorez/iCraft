@@ -552,7 +552,7 @@ export default {
   top: 0;
   margin: 0;
   padding: 0;
-  z-index: 102;
+  z-index: 1;
 }
 .filter-product-block-wrap {
   padding-top: 15px;

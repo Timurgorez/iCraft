@@ -123,7 +123,7 @@ export default {
       this.$router.push("/checkout");
     },
     placeOrder() {
-      console.log("placeOrder");
+      this.$router.push("/purchase")
     }
   },
   computed: {

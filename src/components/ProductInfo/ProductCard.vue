@@ -14,12 +14,6 @@
       position="top center"
     /> -->
     <b-card class="product-card">
-      <div
-        v-if="item.sale"
-        class="product-card__sale d-flex flex-row justify-content-start align-items-center"
-      >
-        <p class="product-card__sale-text">{{ item.sale }}% Off</p>
-      </div>
       <router-link
         :to="{ name: 'ProductPage', params: { id: item.id } }"
         class="product-card__link"
@@ -43,6 +37,12 @@
           </div>
         </div>
       </router-link>
+      <div
+        v-if="item.sale"
+        class="product-card__sale d-flex flex-row justify-content-start align-items-center"
+      >
+        <p class="product-card__sale-text">{{ item.sale }}% Off</p>
+      </div>
       <b-card-text>
         <div
           class="product-card__mobile d-flex d-sm-flex d-md-none d-lg-none d-xl-none flex-row justify-content-center align-items-center"
@@ -230,7 +230,7 @@ export default {
     position: absolute;
     top: 20px;
     left: -10px;
-    z-index: 1;
+    z-index: 0;
   }
 
   .product-card__sale-text {

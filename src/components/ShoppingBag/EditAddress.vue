@@ -154,11 +154,10 @@ export default {
   components: { Checkbox, PurpleButton, RedButton },
   data() {
     return {
-      edited_model: Object.assign({}, this.address)
+      edited_model: this.address
     };
   },
   props: {
-    // sellerId: String,
     addressId: Number,
     address: {
       type: Object,
@@ -186,7 +185,6 @@ export default {
       this.$store.commit("modifyShippingAddress", {
         newModel: this.edited_model
       });
-      // this.address = this.edited_model;
       this.$bvModal.hide("edit-modal");
     },
     makeBillingHandler(e) {

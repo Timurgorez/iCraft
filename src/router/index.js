@@ -4,6 +4,8 @@ import CollectionPage from "@/views/CollectionPage";
 import ProductItem from "@/views/ProductItem";
 import BagPage from "@/views/BagPage";
 import CheckoutPage from "@/views/CheckoutPage";
+import Purchase from "@/views/Purchase";
+import CollectionPageNew from "@/views/CollectionPageNew";
 
 Vue.use(VueRouter);
 
@@ -17,6 +19,12 @@ export default new VueRouter({
       component: CollectionPage
     },
     {
+      path: "/new",
+      name: "CollectionPageNew",
+      props: true,
+      component: CollectionPageNew
+    },
+    {
       path: "/product/:id",
       name: "ProductPage",
       props: true,
@@ -28,9 +36,14 @@ export default new VueRouter({
       component: BagPage
     },
     {
-      path: '/checkout',
+      path: "/checkout",
       name: "CheckoutPage",
       component: CheckoutPage
+    },
+    {
+      path: "/purchase",
+      name: "Purchase",
+      component: Purchase
     }
   ],
   scrollBehavior(to, from, savedPosition) {

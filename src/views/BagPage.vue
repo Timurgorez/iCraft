@@ -156,86 +156,18 @@
                           Select Address
                         </button>
                         <div
-                          v-if="selectedAddress && selectedAddress[sellerId]"
+                          v-if="
+                            (selectedAddress && selectedAddress[sellerId]) ||
+                              defaultAddress
+                          "
                           @click="$bvModal.show('shipping-modal__' + sellerId)"
                         >
-                          <div class="shipment-info__address">
-                            <div class="shipment-info__gray-box">
-                              <button
-                                class="shipping-action-btn shipping-action-btn__edit"
-                                @click.stop="
-                                  editAddress(
-                                    sellerId,
-                                    selectedAddress[sellerId]
-                                  )
-                                "
-                              >
-                                Edit
-                              </button>
-                              <h3 class="title-text">
-                                Shipping Address
-                              </h3>
-                              <p class="sub-text">
-                                {{
-                                  selectedAddress[sellerId] &&
-                                    selectedAddress[sellerId].name
-                                }}
-                                <br />
-                                {{
-                                  selectedAddress[sellerId] &&
-                                    selectedAddress[sellerId].zip_code
-                                }}
-                                {{
-                                  selectedAddress[sellerId] &&
-                                    selectedAddress[sellerId].address
-                                }}
-                                <br />
-                                {{
-                                  selectedAddress[sellerId] &&
-                                    selectedAddress[sellerId].state
-                                }}<br />
-                                {{
-                                  selectedAddress[sellerId] &&
-                                    selectedAddress[sellerId].country
-                                }}
-                              </p>
-                            </div>
-                          </div>
+                          <ShippingCard
+                            :sellerId="sellerId"
+                            @editAddress="editAddress"
+                          />
                         </div>
-                        <div
-                          v-if="!selectedAddress[sellerId] && defaultAddress"
-                          @click="$bvModal.show('shipping-modal__' + sellerId)"
-                        >
-                          <div class="shipment-info__address">
-                            <div class="shipment-info__gray-box">
-                              <button
-                                class="shipping-action-btn shipping-action-btn__edit"
-                                @click.stop="
-                                  editAddress(sellerId, defaultAddress)
-                                "
-                              >
-                                Edit
-                              </button>
 
-                              <h3 class="title-text">Shipping Address</h3>
-                              <p class="sub-text">
-                                {{ defaultAddress && defaultAddress.name }}
-                                <br />
-                                {{ defaultAddress && defaultAddress.zip_code }}
-                                {{ defaultAddress && defaultAddress.address }}
-                                <br />
-                                {{ defaultAddress && defaultAddress.state
-                                }}<br />
-                                {{ defaultAddress && defaultAddress.country }}
-                              </p>
-                              <div
-                                class="same-billing-address d-flex align-items-end mb-2"
-                              >
-                                Same as Billing Address
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                         <button
                           class="shipping-action-btn shipping-action-btn__addNew"
                           @click="addNewAddress"
@@ -244,9 +176,7 @@
                         </button>
 
                         <SelectAddress
-                          :key="shippingAdresses.length"
                           :sellerId="sellerId"
-                          :shippingAdresses="shippingAdresses"
                           @selectAddress="selectAddress"
                           @editAddress="editAddress"
                         />
@@ -285,6 +215,8 @@
   </div>
 </template>
 <script>
+// import { mapGetters, mapActions } from "vuex";
+
 import HeaderWhite from "../components/Header/HeaderWhite.vue";
 import Footer from "../components/Footer/Footer.vue";
 import ProductSlider from "../components/StaticComponents/ProductSlider/ProductSlider.vue";
@@ -296,6 +228,7 @@ import SelectAddress from "../components/ShoppingBag/SelectAddress.vue";
 import Popover from "../components/StaticComponents/Popover.vue";
 import AddNewAddress from "../components/ShoppingBag/AddNewAddress.vue";
 import EditAddress from "../components/ShoppingBag/EditAddress.vue";
+import ShippingCard from "../components/ShoppingBag/ShippingCard.vue";
 
 export default {
   name: "BagPage",
@@ -306,8 +239,6 @@ export default {
 
       selectedAddress: this.$store.getters.getSelectedAddress,
       defaultAddress: this.$store.getters.getDefaultAddress,
-
-      shippingAdresses: this.$store.getters.getShippingAdresses,
 
       insurance: this.$store.getters.getInsurance,
       shoppingOptions: [
@@ -338,7 +269,8 @@ export default {
     SelectAddress,
     Popover,
     AddNewAddress,
-    EditAddress
+    EditAddress,
+    ShippingCard
   },
   methods: {
     addNewAddress() {
@@ -365,7 +297,7 @@ export default {
       this.editingAddress = null;
       this.$nextTick(() => {
         this.editingAddress = address;
-      })
+      });
       this.$bvModal.show("edit-modal");
     },
     selectAddress(newAddress) {
@@ -374,8 +306,6 @@ export default {
       this.$bvModal.hide("shipping-modal__" + newAddress.sellerId);
       this.selectedAddress = null;
       this.selectedAddress = this.$store.getters.getSelectedAddress;
-      (this.shippingAdresses = []),
-        (this.shippingAdresses = this.$store.getters.getShippingAdresses);
     }
   },
   computed: {
@@ -618,66 +548,6 @@ export default {
   position: absolute;
   right: -15px;
   top: calc(50% - 9px);
-}
-
-.shipment-info__address {
-  position: relative;
-  margin-right: 30px;
-  .title-text {
-    font-family: $font_montserrat_regular;
-    font-size: 18px;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: $text_color;
-  }
-
-  .sub-text {
-    font-family: $font_montserrat_regular;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.56;
-    letter-spacing: normal;
-    margin-bottom: 0;
-  }
-  .shipment-info__gray-box {
-    background-color: $checkout_bg_gray;
-    border: 1px solid $checkout_border_gray;
-    border-radius: 4px;
-    max-width: 360px;
-    width: 420px;
-    padding: 20px;
-    padding-right: 60px;
-    cursor: pointer;
-    .same-billing-address {
-      font-family: $font_montserrat_regular;
-      font-size: 18px;
-      font-weight: normal;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: normal;
-      letter-spacing: normal;
-
-      &::before {
-        content: url("~@/assets/yes.svg");
-        width: 35px;
-        height: 26px;
-      }
-    }
-  }
-}
-
-.shipping-action-btn__edit {
-  position: absolute;
-  right: 15px;
-  top: 25px;
-  &:before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000'%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cpath d='M17.699.845c-1.072-1.07-2.809-1.07-3.881 0l-.972.977L2.505 12.158l-.022.022c-.005.006-.005.011-.011.011-.011.017-.028.033-.038.05 0 .005-.006.005-.006.01-.011.017-.016.028-.028.045-.005.005-.005.01-.01.016l-.017.044c0 .005-.005.005-.005.011l-2.295 6.9c-.067.196-.016.414.132.56.104.102.244.16.39.159.06-.001.118-.01.175-.028l6.895-2.3c.005 0 .005 0 .01-.005.018-.005.035-.012.05-.022.004 0 .008-.002.011-.005.016-.011.038-.022.055-.033.016-.011.033-.028.05-.039.005-.005.01-.005.01-.01.006-.006.017-.012.022-.023L19.186 6.208c1.07-1.072 1.07-2.808 0-3.88L17.7.844zM7.489 16.368l-3.82-3.82 9.562-9.562 3.82 3.82-9.562 9.562zM3.13 13.564L6.468 16.9 1.456 18.57l1.674-5.006zM18.412 5.44l-.581.587-3.821-3.82.588-.588c.642-.642 1.684-.642 2.327 0l1.493 1.493c.638.646.635 1.685-.006 2.328z' transform='translate(-1063 -392) translate(370 277) translate(29 94) translate(392) translate(272 21)'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
-  }
 }
 
 @media only screen and (max-width: 1200px) {

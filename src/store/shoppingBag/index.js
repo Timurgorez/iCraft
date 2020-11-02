@@ -42,7 +42,7 @@ export default {
       state.productInBag.push(payload);
     },
     addToSelectedAddress(state, payload) {
-      state.selectedAddress[payload.sellerId] = payload.address;
+      state.selectedAddress[payload.sellerId] = payload.address.id;
     },
     initialiseUserBag(state) {
       if (localStorage.getItem("userBag")) {
@@ -139,6 +139,13 @@ export default {
     },
     getSelectedAddress(state) {
       return state.selectedAddress;
+    },
+    getSelectedAddressBySellerId(state) {
+      return sellerId => {
+        return state.shippingAdresses.find(address => {
+          return address.id == state.selectedAddress[sellerId];
+        });
+      };
     },
     getDefaultAddress(state) {
       return state.shippingAdresses.find(address => {

@@ -60,13 +60,17 @@ body {
   outline: none !important;
 }
 
+a {
+  color: $purple_color_btn;
+}
+
 a:hover {
   text-decoration: none;
   opacity: 0.7;
 }
-button:hover {
-  opacity: 0.7;
-}
+// button:hover {
+//   opacity: 0.7;
+// }
 
 .default-max-container {
   max-width: $max-default-container-size;
