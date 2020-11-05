@@ -484,6 +484,9 @@ export default {
       font-size: 24px;
     }
   }
+  ::v-deep .thx-for-subscribe {
+    padding: 15px;
+  }
 }
 
 @media only screen and (max-width: 580px) {

@@ -210,7 +210,7 @@
       @cancelEdit="cancelEdit"
     />
     <AddNewAddress />
-    <ProductSlider />
+    <ProductSlider bgc="#fff" title="Saved For Later (6 items)" />
     <Footer />
   </div>
 </template>

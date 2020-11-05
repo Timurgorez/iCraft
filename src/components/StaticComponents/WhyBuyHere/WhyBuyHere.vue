@@ -1,5 +1,5 @@
 <template>
-  <div class="why-buy-here mt-5">
+  <div class="why-buy-here mt-5" :style="{ backgroundColor: bgc }">
     <b-container fluid="xl">
       <b-row align-h="center" class="text-center">
         <b-col cols="12" class="centered">
@@ -9,26 +9,38 @@
       <b-row align-h="center" class="text-center">
         <b-col cols="6" sm="6" lg="3" class="centered">
           <div class="why-buy-here__card">
-            <img src="~@/assets/static-images/handmade.svg" alt="handmade">
-            <p>35, 000+<br> Handmade Items</p>
+            <img src="~@/assets/static-images/handmade.svg" alt="handmade" />
+            <p>
+              35, 000+<br />
+              Handmade Items
+            </p>
           </div>
         </b-col>
         <b-col cols="6" sm="6" lg="3" class="centered">
           <div class="why-buy-here__card">
-            <img src="~@/assets/static-images/plest.svg" alt="eplestco">
-            <p>7,500+ Trusted<br> Crafters Worldwide</p>
+            <img src="~@/assets/static-images/plest.svg" alt="eplestco" />
+            <p>
+              7,500+ Trusted<br />
+              Crafters Worldwide
+            </p>
           </div>
         </b-col>
         <b-col cols="6" sm="6" lg="3" class="centered">
           <div class="why-buy-here__card">
-            <img src="~@/assets/static-images/eco.svg" alt="eco">
-            <p>Shop Local<br> & Eco-friendly</p>
+            <img src="~@/assets/static-images/eco.svg" alt="eco" />
+            <p>
+              Shop Local<br />
+              & Eco-friendly
+            </p>
           </div>
         </b-col>
         <b-col cols="6" sm="6" lg="3" class="centered">
           <div class="why-buy-here__card">
-            <img src="~@/assets/static-images/protect.svg" alt="protect">
-            <p>Shop<br> Securely</p>
+            <img src="~@/assets/static-images/protect.svg" alt="protect" />
+            <p>
+              Shop<br />
+              Securely
+            </p>
           </div>
         </b-col>
       </b-row>
@@ -37,21 +49,23 @@
 </template>
 
 <script>
-
 export default {
-  name: 'WhyBuyHere',
+  name: "WhyBuyHere",
   data() {
-    return {}
+    return {};
   },
-  props: {},
+  props: {
+    bgc: {
+      type: String
+    }
+  },
   components: {},
   methods: {},
   computed: {}
-}
+};
 </script>
 
 <style scoped lang="scss">
-
 .why-buy-here {
   min-height: 340px;
   background-color: $bg_grey;
@@ -86,7 +100,5 @@ export default {
     text-align: center;
     color: #000000;
   }
-
 }
-
 </style>

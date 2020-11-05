@@ -10,48 +10,76 @@
 
     <SliderMain />
 
-    <b-container fluid="xl">
+    <GiftCategories />
+
+    <MansoryGallery />
+
+    <b-container class="short-max-container">
       <b-row align-h="center" class="text-center">
         <b-col cols="12" class="centered">
           <div class="main-desc-block">
-            <h3>Buy Exclusive Handmade Jewelry Direct from Crafters</h3>
+            <h3>Shop by Occasion</h3>
             <img
               src="~@/assets/desctop/pages/collectionPage/for-title-2.svg"
               alt=""
             />
-            <p>
-              The iCraft Marketplace specializes in handmade art and crafts. We
-              bring you the most unique, high quality jewelry from trusted
-              sellers around the world. Most items are exclusive to iCraft and
-              when sold out, can be recreated at your request - uniquely for
-              you. By the way, nothing is mass-produced. Ever.
-            </p>
           </div>
         </b-col>
       </b-row>
     </b-container>
 
-    <FilterProduct
-      v-if="!isMobile"
-      :products="products"
-      @filterProduct="filterProduct"
+    <MansoryGalleryLink />
+
+    <ProductSlider
+      :bgi="'./tmp/home_page/bg_wood_home.jpg'"
+      bgc="#f6f6f6"
+      title="Featured Deals"
+      :showReiting="false"
+      :showMonogram="false"
     />
 
-    <WrapperCard :productItems="products" :limit="12" />
-    <WhyBuyHere />
-    <WrapperCard :productItems="products" :limit="8" />
+    <b-container
+      fluid
+      class="collection-poster"
+      :style="{
+        backgroundImage: 'url(./tmp/home_page/bg_collection_poster.jpg)'
+      }"
+    >
+      <b-row align-h="center" class="text-center">
+        <b-col
+          cols="12"
+          class="centered d-flex align-items-center justify-content-end"
+        >
+          <div class="collection-poster__text">
+            <h2>
+              AFFORDABLE<br />
+              GIFT IDEAS
+            </h2>
+            <p>Quality Handmade Jewelry, Crafts & Home Decor, all under $25</p>
+            <RedButton
+              text="Go To Collection"
+              :simpleButton="true"
+              :animate="true"
+              @clickHandler="goToCollection(1)"
+            />
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
 
-    <div class="load-more mb-5">
-      <b-container fluid="xl">
-        <b-row cols="12" align-v="center" align-h="center">
-          <PurpleButton
-            text="LOAD MORE"
-            iconClass="d-none"
-            @clickHandler="loadMoreHandler"
-          />
-        </b-row>
-      </b-container>
-    </div>
+    <TrendingNow />
+
+    <WhyBuyHere bgc="#fff" />
+
+    <ProductSlider
+      :bgi="'./tmp/home_page/bg_sherst.jpg'"
+      bgc="#fff"
+      title="New Arrivals"
+      :showReiting="false"
+      :showMonogram="false"
+    />
+
+    <!-- <LatestCommunityNews /> -->
 
     <div class="footer-subscribe-block">
       <b-container fluid="xl">
@@ -120,14 +148,18 @@
 <script>
 import HeaderMain from "../components/Header/HeaderMain.vue";
 import FooterMain from "../components/Footer/FooterMain.vue";
-import FilterProduct from "../components/FilterProduct/FilterProduct.vue";
-import WrapperCard from "../components/ProductInfo/WrapperCard.vue";
 import WhyBuyHere from "../components/StaticComponents/WhyBuyHere/WhyBuyHere.vue";
-import PurpleButton from "../components/Buttons/PurpleButton.vue";
 import SliderMain from "../components/SliderMain/SliderMain.vue";
+import GiftCategories from "../components/Home/GiftCategories.vue";
+import MansoryGallery from "../components/Home/MansoryGallery.vue";
+import MansoryGalleryLink from "../components/Home/MansoryGalleryLink.vue";
+import ProductSlider from "../components/StaticComponents/ProductSlider/ProductSlider.vue";
+import RedButton from "@/components/Buttons/RedButton.vue";
+import TrendingNow from "@/components/StaticComponents/TrendingNow.vue";
+// import LatestCommunityNews from "@/components/Community/LatestCommunityNews.vue";
 
 export default {
-  name: "CollectionPageNew",
+  name: "HomePage",
   data() {
     return {
       isMobile: false,
@@ -136,31 +168,20 @@ export default {
     };
   },
   components: {
-    FilterProduct,
-    WrapperCard,
     HeaderMain,
     WhyBuyHere,
     FooterMain,
-    PurpleButton,
-    SliderMain
+    SliderMain,
+    GiftCategories,
+    MansoryGallery,
+    MansoryGalleryLink,
+    ProductSlider,
+    RedButton,
+    TrendingNow
+    // LatestCommunityNews
   },
-  mounted() {
-    this.isMobileHandler();
-    window.addEventListener("resize", this.isMobileHandler, { passive: true });
-  },
+  mounted() {},
   methods: {
-    isMobileHandler() {
-      if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        ) ||
-        window.innerWidth < 992
-      ) {
-        this.isMobile = true;
-      } else {
-        this.isMobile = false;
-      }
-    },
     filterProduct(newProducts) {
       this.$store.dispatch("filterProducts", newProducts);
     },
@@ -192,6 +213,9 @@ export default {
     },
     loadMoreHandler() {
       console.log("Load More");
+    },
+    goToCollection(collectionId) {
+      console.log("goToCollection", collectionId);
     }
   },
 
@@ -204,52 +228,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.header-block__text {
-  min-height: 517px;
-  width: 100%;
-  background-image: url("~@/assets/desctop/pages/collectionPage/topImg-cropped.png");
-  background-color: #f2f4ef;
-  background-size: contain;
-  background-position: 20% 50%;
-  background-repeat: no-repeat;
-  position: relative;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
-  text-align: right;
-  padding-bottom: 15px;
-
-  h2 {
-    font-family: $font_montserrat_regular;
-    font-size: 28px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.29;
-    letter-spacing: normal;
-    text-align: center;
-    color: $text_color;
-  }
-
-  h1 {
-    font-family: $font_neue_kabel;
-    font-size: 40px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 0.75;
-    letter-spacing: normal;
-    text-align: center;
-    color: $text_color;
-    text-transform: uppercase;
-    margin-bottom: 35px;
-  }
-}
-
-.header-block__text-wrap {
-  display: inline-block;
-  text-align: center;
-  margin-top: 50px;
-}
-
 .header-block__image {
   max-width: 410px;
   width: 100%;
@@ -444,53 +422,36 @@ export default {
   }
 }
 
-@media only screen and (max-width: 1400px) {
-  .header-block__text {
-    background-size: 45%;
-    background-position: 10% 15%;
+.collection-poster {
+  min-height: 500px;
+  display: flex;
+  .collection-poster__text {
+    max-width: 680px;
+    text-align: left;
+    h2 {
+      font-family: $font_neue_kabel;
+      font-size: 69px;
+      font-weight: bold;
+      line-height: 1.04;
+      letter-spacing: 4.6px;
+      color: #000000;
+    }
+    p {
+      font-family: $font_montserrat_regular;
+      font-size: 40px;
+      line-height: 1.3;
+      color: #000000;
+    }
   }
+}
+
+@media only screen and (max-width: 1400px) {
 }
 
 @media only screen and (max-width: 998px) {
-  .header-block__text-wrap {
-    padding-top: 520px;
-    width: 100%;
-    padding-right: 0;
-    margin-top: 0;
-  }
-  .header-block__text {
-    background-size: 75%;
-    background-position: 50% 20%;
-
-    h1 {
-      font-size: 30px;
-    }
-
-    h2 {
-      font-size: 24px;
-    }
-  }
 }
 
 @media only screen and (max-width: 768px) {
-  .header-block__text-wrap {
-    padding-top: 520px;
-    width: 100%;
-    padding-right: 0;
-    margin-top: 0;
-  }
-  .header-block__text {
-    background-size: 100%;
-    background-position: 0% 25%;
-
-    h1 {
-      font-size: 30px;
-    }
-
-    h2 {
-      font-size: 24px;
-    }
-  }
   ::v-deep .thx-for-subscribe {
     padding: 15px;
   }
@@ -534,20 +495,5 @@ export default {
 }
 
 @media only screen and (max-width: 480px) {
-  .header-block__text {
-    h1 {
-      font-size: 22px;
-    }
-
-    h2 {
-      font-size: 18px;
-    }
-  }
-  .header-block__text-wrap {
-    padding-top: 300px;
-  }
-  .header-block__text {
-    min-height: 490px;
-  }
 }
 </style>

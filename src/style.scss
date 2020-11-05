@@ -84,6 +84,12 @@ a:hover {
   padding-right: 40px;
 }
 
+.short-max-container {
+  max-width: $max_short-container-size;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .custom-popover {
   background: #faeeff !important;
   border: 1px solid $purple_color_btn;

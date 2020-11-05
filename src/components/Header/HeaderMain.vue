@@ -98,6 +98,10 @@ export default {
   flex-wrap: wrap;
 
   .sell-handmade__link {
+    font-size: 16px;
+    font-family: $font_montserrat_regular;
+    color: $purple_color_btn;
+    text-decoration: underline;
     margin-right: 20px;
   }
 }

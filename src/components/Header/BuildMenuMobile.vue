@@ -120,7 +120,7 @@
           <ul class="header-main__wrap-sublink">
             <li class="header-main__li">
               <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                >Anklets</a
+                ><b>Anklets</b></a
               >
             </li>
             <li class="header-main__li">
@@ -156,7 +156,7 @@
           <ul class="header-main__wrap-sublink">
             <li class="header-main__li">
               <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                >Chains</a
+                ><b>Chains</b></a
               >
             </li>
             <li class="header-main__li">
@@ -223,7 +223,7 @@
           <ul class="header-main__wrap-sublink">
             <li class="header-main__li">
               <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                >Anklets</a
+                ><b>Anklets</b></a
               >
             </li>
             <li class="header-main__li">
@@ -259,7 +259,7 @@
           <ul class="header-main__wrap-sublink">
             <li class="header-main__li">
               <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                >Chains</a
+                ><b>Chains</b></a
               >
             </li>
             <li class="header-main__li">
@@ -326,7 +326,7 @@
           <ul class="header-main__wrap-sublink">
             <li class="header-main__li">
               <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                >Anklets</a
+                ><b>Anklets</b></a
               >
             </li>
             <li class="header-main__li">
@@ -572,6 +572,7 @@ export default {
   overflow-x: hidden;
   display: flex;
   flex-wrap: wrap;
+  background: #fff;
 }
 .header-main__li {
   display: flex;
@@ -620,15 +621,13 @@ export default {
   left: 100%;
   background: #fff;
   z-index: 1;
-  overflow: auto;
+  overflow-y: auto;
   transition: all 0.4s;
   list-style: none;
   padding: 0;
   margin: 0;
   padding-left: 30px;
-  & .header-main__wrap-sublink {
-    padding-left: 60px;
-  }
+  overflow-x: hidden;
 }
 .header-main__li-more {
   border-bottom: 1px solid $footer_font_color;
