@@ -20,7 +20,7 @@ export default new VueRouter({
       component: HomePage
     },
     {
-      path: "/collection/:id",
+      path: "/new",
       name: "CollectionPageNew",
       component: CollectionPageNew
     },
