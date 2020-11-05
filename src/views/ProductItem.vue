@@ -469,6 +469,7 @@ export default {
         this.product.seller.id
       );
       this.model_quantity = 1;
+      this.$router.push("/shopping-bag");
     },
     addToBagBestOfferHandler() {
       console.log("addToBagBestOfferHandler");
