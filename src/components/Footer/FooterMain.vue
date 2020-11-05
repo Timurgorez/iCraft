@@ -1,6 +1,6 @@
 <template>
   <b-container fluid class="footer-main">
-    <b-row class="footer-block pb-5 pt-5">
+    <b-row class="footer-block pb-3 pt-3 pb-lg-5 pt-lg-5">
       <b-col
         cols="12"
         lg="4"
@@ -30,7 +30,7 @@
           ></a>
         </div>
       </b-col>
-      <b-col cols="6" lg="2" class="pb-5 pt-5">
+      <b-col cols="6" lg="2" class="pr-4 pl-4 pb-3 pt-3 pb-lg-5 pt-lg-5">
         <h4>{{ "Company" | toUpperCase }}</h4>
         <ul>
           <li><a href="#">About Us</a></li>
@@ -39,7 +39,7 @@
           <li><a href="#">Contact</a></li>
         </ul>
       </b-col>
-      <b-col cols="6" lg="2" class="pb-5 pt-5">
+      <b-col cols="6" lg="2" class="pr-4 pl-4 pb-3 pt-3 pb-lg-5 pt-lg-5">
         <h4>{{ "Marketplace" | toUpperCase }}</h4>
         <ul>
           <li><a href="#">Buy Handmade</a></li>
@@ -48,7 +48,7 @@
           <li><a href="#">Help Center</a></li>
         </ul>
       </b-col>
-      <b-col cols="6" lg="2" class="pb-5 pt-5">
+      <b-col cols="6" lg="2" class="pr-4 pl-4 pb-3 pt-3 pb-lg-5 pt-lg-5">
         <h4>{{ "Sell" | toUpperCase }}</h4>
         <ul>
           <li><a href="#">Sell Handmade</a></li>
@@ -57,7 +57,7 @@
           <li><a href="#">Seller Testimonials</a></li>
         </ul>
       </b-col>
-      <b-col cols="6" lg="2" class="pb-5 pt-5">
+      <b-col cols="6" lg="2" class="pr-4 pl-4 pb-3 pt-3 pb-lg-5 pt-lg-5">
         <h4>{{ "Community" | toUpperCase }}</h4>
         <ul>
           <li><a href="#">Blog</a></li>
@@ -71,7 +71,7 @@
       <b-col cols="12" sm="12" md="12" class="res-margin-top pb-5">
         <p class="footer-block__text">
           © 2007 - 2020, ICraft marketplace is operated by unCommon Thread Inc.
-          <a class="ml-lg-5 mr-3" :href="termUrl"> Term of Use </a> |
+          <a class="ml-lg-5 ml-3 mr-3" :href="termUrl"> Term of Use </a> |
           <a class="ml-3" :href="privacyUrl">Privacy</a>
         </p>
       </b-col>
@@ -204,6 +204,21 @@ export default {
 
   .res-margin-bottom {
     margin-bottom: 15px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .footer-block .footer-block__text,
+  .footer-block .footer-block__text a {
+    font-size: 12px;
+  }
+  .footer-block ul a {
+    font-size: 12px;
+  }
+  .footer-block h4 {
+    font-size: 14px;
+  }
+  .footer-block__social-wrap {
+    padding-left: 0;
   }
 }
 </style>

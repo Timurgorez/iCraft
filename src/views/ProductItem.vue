@@ -314,34 +314,37 @@
       hide-footer
       hide-header
       dialog-class="add-to-bag__modal"
-      >
+    >
       <span
         @click="$refs['add-to-bag'].hide()"
         class="add-to-bag__modal__close"
       ></span>
       <div class="add-to-bag__modal-wrap">
         <h3>
-          This Product has been added to your<br> Shopping Bag
+          This Product has been added to your<br />
+          Shopping Bag
         </h3>
         <div>
-        <PurpleButton
-          :text="'SHOPPING BAG ( ' + this.$store.getters.countProductsInBag + ' )'"
-          iconClass="bag-icon"
-          :animate="true"
-          customClass="add-to-bag__btn-modal mr-md-4 mb-3"
-          @clickHandler="modalBtnToBagHandler"
-        />
-        <PurpleButton
-          text="PROCEED TO CHECKOUT"
-          iconClass="d-none"
-          :animate="true"
-          customClass="add-to-bag__btn-modal mb-3"
-          @clickHandler="modalBtnToCheckoutHandler"
-        />
+          <PurpleButton
+            :text="
+              'SHOPPING BAG ( ' + this.$store.getters.countProductsInBag + ' )'
+            "
+            iconClass="bag-icon"
+            :animate="true"
+            customClass="add-to-bag__btn-modal mr-md-4 mb-3"
+            @clickHandler="modalBtnToBagHandler"
+          />
+          <PurpleButton
+            text="PROCEED TO CHECKOUT"
+            iconClass="d-none"
+            :animate="true"
+            customClass="add-to-bag__btn-modal mb-3"
+            @clickHandler="modalBtnToCheckoutHandler"
+          />
         </div>
       </div>
     </b-modal>
-    <ProductSlider />
+    <ProductSlider bgc="#f6f6f6" title="Items You Might Like" />
     <Footer />
   </div>
 </template>
@@ -400,10 +403,10 @@ export default {
     ProductSlider
   },
   methods: {
-    modalBtnToBagHandler(){
+    modalBtnToBagHandler() {
       this.$router.push("/shopping-bag");
     },
-    modalBtnToCheckoutHandler(){
+    modalBtnToCheckoutHandler() {
       this.$router.push("/checkout");
     },
     addToBagHandler() {
@@ -430,7 +433,7 @@ export default {
         //   title: "SUCCESS",
         //   text: "Item was added to your bag!"
         // });
-      
+
         this.$refs["add-to-bag"].show();
         this.$store.dispatch("addProductToBag", product);
       }
@@ -466,7 +469,6 @@ export default {
         this.product.seller.id
       );
       this.model_quantity = 1;
-      
     },
     addToBagBestOfferHandler() {
       console.log("addToBagBestOfferHandler");
@@ -669,16 +671,15 @@ export default {
   }
 }
 
-
 ::v-deep .add-to-bag__modal {
   max-width: 760px;
   padding: 20px;
   position: relative;
-  &-wrap{
+  &-wrap {
     text-align: center;
-    & > div{
+    & > div {
       display: flex;
-          flex-wrap: wrap;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
     }

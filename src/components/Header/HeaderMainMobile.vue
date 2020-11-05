@@ -56,7 +56,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  background: #fff;
   box-shadow: 0 11px 16px 0 rgba(38, 38, 38, 0.15);
   justify-content: space-between;
 }
@@ -68,6 +67,7 @@ export default {
   // min-height: 150px;
   height: 50px;
   width: 100%;
+  background: #fff;
 }
 
 .personal-info {

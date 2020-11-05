@@ -1,6 +1,6 @@
 <template>
   <div class="checkout-page">
-    <HeaderWhite/>
+    <HeaderWhite />
     <notifications
       class="custom-notification-wrap"
       classes="custom-notification"
@@ -12,11 +12,24 @@
         <b-col cols="12">
           <div class="checkout-page__title mb-3">
             <h2 class="mt-4">Guest Checkout</h2>
-            <div class="mt-4 d-flex flex-row flex-wrap align-items-center justify-content-xl-between justify-content-lg-between justify-content-md-start justify-content-sm-start justify-content-start">
-              <p class="mb-0">You will have an opportunity to create an account later, if you'd like.</p>
-              <div class="checkout-page__sign-in d-flex flex-row align-items-center">
-                <p class="mb-0 mt-sm-3 mt-3 mt-md-0 mt-lg-0 mt-lg-0 mr-5 mr-sm-0 mr-md-0 mr-lg-0 mr-xl-0">Existing Customer? <a href="#">Sign In</a> or Sign with</p>
-                <div class="checkout-page__sign-in-options d-flex flex-row align-items-center">
+            <div
+              class="mt-4 d-flex flex-row flex-wrap align-items-center justify-content-xl-between justify-content-lg-between justify-content-md-start justify-content-sm-start justify-content-start"
+            >
+              <p class="mb-0">
+                You will have an opportunity to create an account later, if
+                you'd like.
+              </p>
+              <div
+                class="checkout-page__sign-in d-flex flex-row align-items-center"
+              >
+                <p
+                  class="mb-0 mt-sm-3 mt-3 mt-md-0 mt-lg-0 mt-lg-0 mr-5 mr-sm-0 mr-md-0 mr-lg-0 mr-xl-0"
+                >
+                  Existing Customer? <a href="#">Sign In</a> or Sign with
+                </p>
+                <div
+                  class="checkout-page__sign-in-options d-flex flex-row align-items-center"
+                >
                   <div class="sign-in-icon google-sign-in"></div>
                   <div class="sign-in-icon facebook-sign-in"></div>
                 </div>
@@ -26,25 +39,39 @@
         </b-col>
       </b-row>
     </b-container>
-    <b-container fluid class="checkout-page__table-header d-none d-sm-none d-md-flex align-items-center d-lg-flex d-xl-flex">
-        <b-row>
-          <b-col cols="12" sm="12" md="6" lg="6" xl="6">
-            <span>Shippment and Payment</span>
-          </b-col>
-          <b-col cols="12" sm="12" md="6" lg="6" xl="6">
-            <span>Order Summary</span>
-          </b-col>
+    <b-container
+      fluid
+      class="checkout-page__table-header d-none d-sm-none d-md-flex align-items-center d-lg-flex d-xl-flex"
+    >
+      <b-row>
+        <b-col cols="12" sm="12" md="6" lg="6" xl="6">
+          <span>Shippment and Payment</span>
+        </b-col>
+        <b-col cols="12" sm="12" md="6" lg="6" xl="6">
+          <span>Order Summary</span>
+        </b-col>
       </b-row>
     </b-container>
-    <div class="separator d-block d-sm-block d-md-none d-lg-none d-xl-none"></div>
-    <div v-for="(product, key, index) in products"
-         :key="index + Math.random().toString(16)">
+    <div
+      class="separator d-block d-sm-block d-md-none d-lg-none d-xl-none"
+    ></div>
+    <div
+      v-for="(product, key, index) in products"
+      :key="index + Math.random().toString(16)"
+    >
       <b-container fluid>
         <b-row class="gray-bg">
           <b-col cols="12" sm="12" md="6" lg="6" xl="6">
             <ShipmentInfo :quantity="product.length" :products="product" />
           </b-col>
-          <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary d-none d-sm-none d-md-block d-lg-block d-xl-block">
+          <b-col
+            cols="12"
+            sm="12"
+            md="6"
+            lg="6"
+            xl="6"
+            class="checkout-page__order-summary d-none d-sm-none d-md-block d-lg-block d-xl-block"
+          >
             <CheckoutOrderSummary :products="product" />
           </b-col>
         </b-row>
@@ -56,28 +83,50 @@
       <b-row class="gray-bg">
         <b-col cols="12" sm="12" md="6" lg="6" xl="6">
           <PaymentForm class="mt-4" />
-          <ContactInfo/>
-          <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row mt-4 mb-4">
+          <ContactInfo />
+          <div
+            class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row mt-4 mb-4"
+          >
             <h3 class="mr-4 mb-3">Billing Address</h3>
-            <div class="mr-4 mb-3 shipping-action-btn shipping-action-btn__select d-flex align-items-center">Select Address </div>
+            <div
+              class="mr-4 mb-3 shipping-action-btn shipping-action-btn__select d-flex align-items-center"
+            >
+              Select Address
+            </div>
           </div>
         </b-col>
-        <b-col cols="12" sm="12" md="6" lg="6" xl="6" class="checkout-page__order-summary d-none d-sm-none d-md-block d-lg-block d-xl-block">
-          <OrderSummary :checkout-page="true" :product="firstProduct" ></OrderSummary>
+        <b-col
+          cols="12"
+          sm="12"
+          md="6"
+          lg="6"
+          xl="6"
+          class="checkout-page__order-summary d-none d-sm-none d-md-block d-lg-block d-xl-block"
+        >
+          <OrderSummary
+            :checkout-page="true"
+            :product="firstProduct"
+          ></OrderSummary>
         </b-col>
       </b-row>
     </b-container>
     <div class="separator"></div>
     <!-- Mobile blocks   -->
-    <b-container fluid class="checkout-page__table-header d-flex d-sm-flex d-md-none align-items-center d-lg-none d-xl-none">
+    <b-container
+      fluid
+      class="checkout-page__table-header d-flex d-sm-flex d-md-none align-items-center d-lg-none d-xl-none"
+    >
       <b-row>
         <b-col cols="12" sm="12">
           <span>Order Summary</span>
         </b-col>
       </b-row>
     </b-container>
-    <div class="d-block d-sm-block d-md-none d-lg-none d-xl-none" v-for="(product, key, index) in products"
-         :key="index + Math.random().toString(16)">
+    <div
+      class="d-block d-sm-block d-md-none d-lg-none d-xl-none"
+      v-for="(product, key, index) in products"
+      :key="index + Math.random().toString(16)"
+    >
       <b-container fluid>
         <b-row class="gray-bg">
           <b-col cols="12" sm="12" class="checkout-page__order-summary">
@@ -87,16 +136,19 @@
       </b-container>
     </div>
 
-    <b-container fluid  class="d-block d-sm-block d-md-none d-lg-none d-xl-none">
+    <b-container fluid class="d-block d-sm-block d-md-none d-lg-none d-xl-none">
       <b-row>
         <b-col cols="12">
-          <OrderSummary :checkout-page="true" :product="firstProduct"></OrderSummary>
+          <OrderSummary
+            :checkout-page="true"
+            :product="firstProduct"
+          ></OrderSummary>
         </b-col>
       </b-row>
     </b-container>
     <!-- Mobile blocks   -->
-    <ProductSlider :checkoutPage="true"/>
-    <Footer/>
+    <ProductSlider bgc="#fff" />
+    <Footer />
   </div>
 </template>
 
@@ -123,7 +175,7 @@ export default {
     HeaderWhite
   },
   data() {
-    return{}
+    return {};
   },
   computed: {
     products() {
@@ -143,13 +195,13 @@ export default {
     },
     firstProduct() {
       return this.$store.getters.getProductsInBag[0]
-          ? this.$store.getters.product(
-              this.$store.getters.getProductsInBag[0].prodId
+        ? this.$store.getters.product(
+            this.$store.getters.getProductsInBag[0].prodId
           )
-          : null;
+        : null;
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -263,7 +315,7 @@ export default {
   min-height: 60px;
 }
 
-@media screen and (max-width: 576px){
+@media screen and (max-width: 576px) {
   .container-fluid {
     padding-left: 15px;
   }
@@ -286,7 +338,5 @@ export default {
       height: 24px;
     }
   }
-
 }
-
 </style>

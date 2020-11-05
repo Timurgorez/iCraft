@@ -6,6 +6,7 @@ import BagPage from "@/views/BagPage";
 import CheckoutPage from "@/views/CheckoutPage";
 import Purchase from "@/views/Purchase";
 import CollectionPageNew from "@/views/CollectionPageNew";
+import HomePage from "@/views/HomePage";
 
 Vue.use(VueRouter);
 
@@ -15,14 +16,19 @@ export default new VueRouter({
   routes: [
     {
       path: "/",
-      name: "CollectionPage",
-      component: CollectionPage
+      name: "HomePage",
+      component: HomePage
     },
     {
-      path: "/new",
+      path: "/collection/:id",
       name: "CollectionPageNew",
-      props: true,
       component: CollectionPageNew
+    },
+    {
+      path: "/old",
+      name: "CollectionPage",
+      props: true,
+      component: CollectionPage
     },
     {
       path: "/product/:id",

@@ -1,15 +1,19 @@
 <template>
-  <div class="product-slider" :class="checkoutPage ? 'bg-white' : ''">
+  <div
+    class="product-slider"
+    :style="{ backgroundColor: bgc, backgroundImage: 'url(' + bgi + ')' }"
+  >
     <b-container fluid>
       <b-row align-h="center" class="text-center">
         <b-col cols="12" class="centered">
-          <h3 v-if="!checkoutPage" class="product-slider__title">
-            Items You Might Like
-          </h3>
-          <h3 v-if="checkoutPage" class="product-slider__title">
-            Saved For Later (6 items)
+          <h3
+            class="product-slider__title"
+            :style="{ paddingBottom: !showMonogram ? '100px' : '' }"
+          >
+            {{ title }}
           </h3>
           <img
+            v-if="showMonogram"
             class="product-slider__title-img"
             src="~@/assets/desctop/pages/collectionPage/for-title-2.svg"
             alt=""
@@ -24,6 +28,7 @@
             :key="item.id"
           >
             <ProductCard
+              :showRating="showReiting"
               :item="item"
               :index="index"
               class="product-card__slider"
@@ -88,7 +93,19 @@ export default {
     };
   },
   props: {
-    checkoutPage: Boolean
+    showReiting: { type: Boolean, default: true },
+    showMonogram: { type: Boolean, default: true },
+    title: {
+      type: String,
+      required: true
+    },
+    bgi: {
+      type: String
+    },
+    bgc: {
+      type: String,
+      default: "#f6f6f6"
+    }
   },
   components: {
     Swiper,
@@ -125,9 +142,12 @@ export default {
 
 <style scoped lang="scss">
 .product-slider {
-  margin-top: 110px;
+  margin-top: 60px;
   background-color: $bg_grey;
   padding-bottom: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 .bg-white {

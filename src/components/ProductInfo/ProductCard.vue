@@ -7,12 +7,6 @@
     :lg="size.lg"
     class="centered product-card-wrap"
   >
-    <!-- <notifications
-      class="custom-notification-wrap"
-      classes="custom-notification"
-      group="app-product"
-      position="top center"
-    /> -->
     <b-card class="product-card">
       <router-link
         :to="{ name: 'ProductPage', params: { id: item.id } }"
@@ -75,7 +69,7 @@
           >
         </div>
 
-        <ProductRating :rating="item.rating" size="22px" />
+        <ProductRating v-if="showRating" :rating="item.rating" size="22px" />
 
         <div class="product-icons">
           <ProductIcon
@@ -101,6 +95,10 @@ export default {
     };
   },
   props: {
+    showRating: {
+      type: Boolean,
+      default: true
+    },
     item: Object,
     limit: {
       type: Number,

@@ -622,6 +622,8 @@ export default {
       padding: 0;
     }
     .header-main__li {
+      display: flex;
+      align-items: center;
       &:hover {
         background: $red_color_btn;
         .header-main__wrap-sublink {
@@ -640,6 +642,7 @@ export default {
       font-size: 16px;
       font-weight: 600;
       color: #ffffff;
+      text-align: center;
       .down-icon {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cpath fill='%23FFF' d='M7.41 8.59L12 13.17 16.59 8.59 18 10 12 16 6 10z' transform='translate(-1205 -173) translate(0 150) translate(1205 23) translate(1 1)'/%3E%3Cpath d='M0 0L24 0 24 24 0 24z' transform='translate(-1205 -173) translate(0 150) translate(1205 23) translate(1 1)'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
         background-size: cover;

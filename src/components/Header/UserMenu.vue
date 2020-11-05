@@ -42,6 +42,7 @@ export default {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  border: 3px solid #dbdbdb;
 }
 .user-menu__text {
   font-family: $font_montserrat_regular;

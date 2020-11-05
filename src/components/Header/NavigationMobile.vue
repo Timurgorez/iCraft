@@ -28,11 +28,13 @@
         <span class="nav-link__filters-count">3</span></a
       >
     </div>
-    <div v-show="isMenuOpen" class="header-main__menu">
+    <div :class="[{ show: isMenuOpen }]" class="header-main__menu">
       <MainSearch classWrap="search-mobile-wrap" />
       <BuildMenuMobile />
     </div>
-    <FilterMobile v-show="isFilterOpen" />
+    <div class="filter-wrap_animate" :class="[{ show: isFilterOpen }]">
+      <FilterMobile />
+    </div>
   </b-row>
 </template>
 <script>
@@ -64,6 +66,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.header-main__menu,
+.filter-wrap_animate {
+  width: 100%;
+  height: 0;
+  overflow: auto;
+  transition: height 0.2s;
+}
+
+.show {
+  transition: height 0.2s;
+  height: calc(100vh - 100px);
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .border-right-grey:after {
   content: "";
   display: block;
@@ -239,10 +255,6 @@ export default {
   font-family: Montserrat-Regular, serif;
   font-size: 14px;
   font-weight: 500;
-}
-
-.header-main__menu {
-  width: 100%;
 }
 
 ::v-deep.search-mobile-wrap {
