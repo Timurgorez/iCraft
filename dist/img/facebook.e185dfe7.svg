@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26" height="26" viewBox="0 0 26 26">
-    <defs>
-        <path id="dkmu4c7bqa" d="M4.62 24V13.266H.625V9H4.62V5.64C4.62 1.987 7.099 0 10.719 0c1.734 0 3.224.117 3.656.169v3.815h-2.51c-1.97 0-2.35.844-2.35 2.077V9h4.443l-.609 4.266H9.516V24"/>
-    </defs>
-    <g fill="none" fill-rule="evenodd" transform="translate(6 1)">
-        <use fill="#777" fill-rule="nonzero" xlink:href="#dkmu4c7bqa"/>
-    </g>
-</svg>
