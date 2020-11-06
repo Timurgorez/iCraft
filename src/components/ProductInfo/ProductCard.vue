@@ -5,7 +5,8 @@
     :sm="size.sm"
     :md="size.md"
     :lg="size.lg"
-    class="centered product-card-wrap"
+    :xl="size.xl"
+    :class="['centered', 'product-card-wrap', classWrap]"
   >
     <b-card class="product-card">
       <router-link
@@ -57,7 +58,7 @@
 
       <div class="product-card__bottom-wrap">
         <div
-          class="product-card__price-wrap d-flex  flex-sm-row flex-md-row flex-wrap justify-content-start align-items-start"
+          class="product-card__price-wrap d-flex  flex-sm-row flex-md-row flex-wrap justify-content-between align-items-start"
         >
           <span class="product-card__price"
             >{{ item.price.currency_formatting }}{{ item.price.new }}
@@ -105,6 +106,7 @@ export default {
       default: () => 999999
     },
     index: Number,
+    classWrap: String,
     size: {
       type: Object,
       default: () => {
@@ -112,7 +114,8 @@ export default {
           cols: "6",
           sm: "6",
           md: "4",
-          lg: "3"
+          lg: "3",
+          xl: "2"
         };
       }
     }
@@ -171,7 +174,7 @@ export default {
 .product-card__link {
   text-decoration: none;
   font-family: $font_montserrat_medium;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.28;
   color: $text_color;
@@ -203,19 +206,14 @@ export default {
     font-family: $font_montserrat_medium;
     font-size: 16px;
     font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.28;
-    letter-spacing: normal;
     color: $text_color;
     text-align: left;
     display: inline-block;
-    margin-bottom: 10px;
-    max-height: 90px;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+    margin-bottom: 5px;
+    height: 46px;
     overflow: hidden;
+    width: 100%;
+    display: inline-block;
   }
 
   .product-card__sale {
@@ -253,7 +251,6 @@ export default {
     line-height: normal;
     letter-spacing: normal;
     color: #c90000;
-    padding-right: 27px;
   }
 
   .product-card__price-old {
@@ -351,6 +348,10 @@ export default {
       top: 0;
       box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     }
+  }
+
+  .product-card .card-text {
+    height: 98px;
   }
 }
 

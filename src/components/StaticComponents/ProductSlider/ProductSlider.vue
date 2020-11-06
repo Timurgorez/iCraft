@@ -6,10 +6,7 @@
     <b-container fluid>
       <b-row align-h="center" class="text-center">
         <b-col cols="12" class="centered">
-          <h3
-            class="product-slider__title"
-            :style="{ paddingBottom: !showMonogram ? '100px' : '' }"
-          >
+          <h3 class="product-slider__title">
             {{ title }}
           </h3>
           <img
@@ -78,10 +75,10 @@ export default {
           920: {
             slidesPerView: 3
           },
-          1100: {
+          1200: {
             slidesPerView: 4
           },
-          1300: {
+          1400: {
             slidesPerView: 5
           },
           1600: {
@@ -171,7 +168,7 @@ export default {
   letter-spacing: normal;
   text-align: center;
   color: $text_color;
-  padding: 50px 50px 20px;
+  padding: 50px 50px;
 }
 
 .swiper {
@@ -217,6 +214,9 @@ export default {
 ::v-deep .product-card__slider {
   height: 100%;
 }
+::v-deep .product-card {
+  padding-bottom: 15px;
+}
 
 @media only screen and (max-width: 768px) {
   .swiper {
@@ -233,6 +233,13 @@ export default {
   }
   ::v-deep .product-card__slider .product-card {
     padding-bottom: 10px;
+  }
+  .product-slider__title {
+    font-size: 22px;
+    padding: 30px 0;
+  }
+  .product-slider__img {
+    width: 101px;
   }
 }
 

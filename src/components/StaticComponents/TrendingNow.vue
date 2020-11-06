@@ -1,5 +1,5 @@
 <template>
-  <div class="trending-now mt-5">
+  <div class="trending-now mt-md-5">
     <b-container fluid>
       <b-row align-h="center" class="text-center">
         <b-col cols="12" class="centered trending-now__title">
@@ -131,6 +131,29 @@ export default {
     font-weight: 600;
     color: #ffffff;
     margin: 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .trending-now__card {
+    height: 260px;
+  }
+  .trending-now__btn {
+    h5 {
+      font-size: 14px;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
+  .trending-now__title {
+    h3 {
+      font-size: 22px;
+    }
+
+    img {
+      margin-bottom: 30px;
+      width: 101px;
+    }
   }
 }
 </style>

@@ -16,7 +16,7 @@
           <UserMenuMobile />
         </b-col>
       </b-row>
-      <NavigationMobile />
+      <NavigationMobile :showFilterBtn="showFilterBtn" />
     </b-container>
   </div>
 </template>
@@ -31,7 +31,12 @@ export default {
   data() {
     return {};
   },
-  props: {},
+  props: {
+    showFilterBtn: {
+      type: Boolean,
+      default: true
+    }
+  },
   components: {
     ShoppingBag,
     NavigationMobile,
@@ -52,7 +57,7 @@ export default {
   background-repeat: no-repeat;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 5;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

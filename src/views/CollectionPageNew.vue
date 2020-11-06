@@ -13,6 +13,13 @@
     <b-container fluid="xl">
       <b-row align-h="center" class="text-center">
         <b-col cols="12" class="centered">
+          <div class="back-to-products">
+            <router-link
+              :to="{ name: 'HomePage' }"
+              class="back-to-products__link"
+              ><span class="back-to-products__icon"></span>All Collection
+            </router-link>
+          </div>
           <div class="main-desc-block">
             <h3>Buy Exclusive Handmade Jewelry Direct from Crafters</h3>
             <img
@@ -444,6 +451,38 @@ export default {
   }
 }
 
+.back-to-products {
+  min-height: 84px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: absolute;
+  top: 33px;
+  left: 20px;
+  &__link {
+    font-family: $font_montserrat_regular;
+    font-size: 20px;
+    color: $purple_color_btn;
+    display: flex;
+    align-items: center;
+    &:hover {
+      color: $purple_color;
+      // opacity: 70%;
+      text-decoration: none;
+    }
+  }
+  &__icon {
+    display: inline-block;
+    margin-right: 11px;
+    height: 18px;
+    width: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Cpath fill='%237F13A6' fill-rule='evenodd' d='M5.024 9.891l7.685 7.74c.49.492 1.282.492 1.77 0 .49-.493.49-1.29 0-1.783L7.68 9l6.8-6.848c.49-.492.49-1.29 0-1.783-.488-.492-1.28-.492-1.77 0L5.024 8.11c-.244.246-.367.568-.367.89 0 .323.123.646.367.892z'/%3E%3C/svg%3E%0A");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+}
+
 @media only screen and (max-width: 1400px) {
   .header-block__text {
     background-size: 45%;
@@ -468,6 +507,19 @@ export default {
 
     h2 {
       font-size: 24px;
+    }
+  }
+  .back-to-products {
+    min-height: 45px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    &__link {
+      font-size: 16px;
+    }
+    &__icon {
+      height: 14px;
+      width: 14px;
     }
   }
 }

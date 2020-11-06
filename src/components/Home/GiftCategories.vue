@@ -217,4 +217,16 @@ export default {
     text-align: left;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .main-desc-block {
+    padding: 30px 0 30px;
+    h3 {
+      font-size: 22px;
+    }
+    img {
+      height: 22px;
+    }
+  }
+}
 </style>

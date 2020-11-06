@@ -1,9 +1,9 @@
 <template>
-  <b-col md="3">
+  <b-col cols="6" sm="6" xl="3" class="gift-category-wrap">
     <div class="gift-category">
       <div
         class="gift-category__img"
-        :style="{ background: `url(${category.image})` }"
+        :style="{ backgroundImage: `url(${category.image})` }"
       ></div>
       <div
         class="gift-category__name"
@@ -36,6 +36,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.gift-category {
+  margin-bottom: 30px;
+}
 .gift-category__img {
   width: 100%;
   height: 296px;
@@ -46,13 +49,17 @@ export default {
 }
 .gift-category__name {
   width: 100%;
-  padding: 20px 15px;
+  padding: 7px;
   font-family: $font_montserrat_medium;
   font-size: 24px;
   font-weight: 500;
   letter-spacing: 2.67px;
   text-align: center;
   color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 76px;
 }
 .gift-category__items {
   border: 1px solid #d7d7d7;
@@ -72,6 +79,20 @@ export default {
     &:hover {
       color: $purple_color_btn;
     }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .gift-category-wrap {
+    padding-left: 7.5px !important;
+    padding-right: 7.5px !important;
+  }
+  .gift-category {
+    margin-bottom: 15px;
+  }
+  .gift-category__name {
+    min-height: 60px;
+    font-size: 18px;
+    letter-spacing: 2px;
   }
 }
 </style>
