@@ -6,7 +6,7 @@
       group="app-product"
       position="top center"
     />
-    <HeaderMain />
+    <HeaderMain :showFilterBtn="false" />
 
     <SliderMain />
 
@@ -38,19 +38,13 @@
       :showMonogram="false"
     />
 
-    <b-container
-      fluid
-      class="collection-poster"
-      :style="{
-        backgroundImage: 'url(./tmp/home_page/bg_collection_poster.jpg)'
-      }"
-    >
+    <b-container fluid class="collection-poster">
       <b-row align-h="center" class="text-center">
         <b-col
           cols="12"
-          class="centered d-flex align-items-center justify-content-end"
+          class="centered d-flex align-items-md-center align-items-end justify-content-end "
         >
-          <div class="collection-poster__text">
+          <div class="collection-poster__text pb-3">
             <h2>
               AFFORDABLE<br />
               GIFT IDEAS
@@ -71,13 +65,19 @@
 
     <WhyBuyHere bgc="#fff" />
 
-    <ProductSlider
-      :bgi="'./tmp/home_page/bg_sherst.jpg'"
-      bgc="#fff"
-      title="New Arrivals"
-      :showReiting="false"
-      :showMonogram="false"
-    />
+    <div class="new-arrivals__wrap">
+      <b-container class="short-max-container">
+        <b-row align-h="center" class="text-center">
+          <b-col cols="12" class="centered">
+            <div class="main-desc-block">
+              <h3>New Arrivals</h3>
+            </div>
+          </b-col>
+        </b-row>
+      </b-container>
+
+      <NewArrivals />
+    </div>
 
     <!-- <LatestCommunityNews /> -->
 
@@ -156,6 +156,7 @@ import MansoryGalleryLink from "../components/Home/MansoryGalleryLink.vue";
 import ProductSlider from "../components/StaticComponents/ProductSlider/ProductSlider.vue";
 import RedButton from "@/components/Buttons/RedButton.vue";
 import TrendingNow from "@/components/StaticComponents/TrendingNow.vue";
+import NewArrivals from "@/components/Home/NewArrivals.vue";
 // import LatestCommunityNews from "@/components/Community/LatestCommunityNews.vue";
 
 export default {
@@ -177,7 +178,8 @@ export default {
     MansoryGalleryLink,
     ProductSlider,
     RedButton,
-    TrendingNow
+    TrendingNow,
+    NewArrivals
     // LatestCommunityNews
   },
   mounted() {},
@@ -234,7 +236,7 @@ export default {
 }
 
 .main-desc-block {
-  padding: 60px 0 30px;
+  padding: 60px 0 60px;
   text-align: center;
 
   h3 {
@@ -425,6 +427,10 @@ export default {
 .collection-poster {
   min-height: 500px;
   display: flex;
+  background-image: url("../../public/tmp/home_page/bg_collection_poster.jpg");
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
   .collection-poster__text {
     max-width: 680px;
     text-align: left;
@@ -445,6 +451,17 @@ export default {
   }
 }
 
+.new-arrivals__wrap {
+  background-image: url("../../public/tmp/home_page/bg_sherst.jpg");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 70px;
+  // .main-desc-block {
+  //   padding-bottom: 70px;
+  // }
+}
+
 @media only screen and (max-width: 1400px) {
 }
 
@@ -454,6 +471,34 @@ export default {
 @media only screen and (max-width: 768px) {
   ::v-deep .thx-for-subscribe {
     padding: 15px;
+  }
+  .collection-poster {
+    background-image: url("../../public/tmp/home_page/bg_collection_mobile.jpg");
+
+    min-height: 432px;
+    .collection-poster__text {
+      h2 {
+        font-size: 40px;
+      }
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+  .new-arrivals__wrap {
+    background-image: none;
+    .main-desc-block h3 {
+      display: none;
+    }
+  }
+  .main-desc-block {
+    padding: 30px 0 30px;
+    h3 {
+      font-size: 22px;
+    }
+    img {
+      height: 22px;
+    }
   }
 }
 
@@ -472,7 +517,7 @@ export default {
   }
 
   .main-desc-block {
-    padding: 50px 0 30px;
+    padding: 30px 0 30px;
 
     h3 {
       font-size: 22px;

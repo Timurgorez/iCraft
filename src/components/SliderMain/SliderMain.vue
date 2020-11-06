@@ -57,6 +57,10 @@ export default {
   data() {
     return {
       activeIndex: 0,
+      loop: true,
+      autoplay: {
+        delay: 2500
+      },
       swiperOptions: {
         slidesPerView: 1,
         pagination: {
@@ -81,7 +85,7 @@ export default {
           },
           title: "FUN & GAMES",
           subText: "Something Fun to do for Kids and Parents",
-          link: "google.com",
+          link: "/new",
           settings: {
             maxWidth: "400px",
             top: "35%",
@@ -105,7 +109,7 @@ export default {
           },
           title: "HAND-KNITTED & ADORABLE",
           subText: "Keep your Bundle of Joy Bundled Up!",
-          link: "google.com",
+          link: "/new",
           settings: {
             maxWidth: "600px",
             top: "35%",
@@ -129,7 +133,7 @@ export default {
           },
           title: "HAND-KNITTED & ADORABLE",
           subText: "Keep your Bundle of Joy Bundled Up!",
-          link: "google.com",
+          link: "/new",
           settings: {
             main: {
               maxWidth: "600px",
@@ -178,6 +182,9 @@ export default {
       } else {
         return slide.settings.main;
       }
+    },
+    clickBtnSlide(url) {
+      this.$router.push(url);
     }
   },
   computed: {
@@ -319,6 +326,13 @@ export default {
   }
   .custom-slide {
     min-height: 450px;
+  }
+  .swiper-pagination-bullets span {
+    width: 14px;
+    height: 14px;
+  }
+  .slider-btn {
+    display: none;
   }
 }
 </style>

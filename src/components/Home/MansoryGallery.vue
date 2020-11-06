@@ -1,13 +1,21 @@
 <template>
   <b-container fluid class="p-0">
     <b-row class="mansory-gallery">
-      <b-col>
+      <b-col cols="12" md="4" class="p-0">
         <b-row>
           <b-col cols="12" class="p-0">
             <div
               class="mansory-gallery__img"
               style="background-image: url('./tmp/home_page/mansory/1.jpg')"
-            ></div>
+            >
+              <RedButton
+                class="go-to-collection"
+                text="Go To Collection"
+                :simpleButton="true"
+                :animate="true"
+                @clickHandler="goToCollection(1)"
+              />
+            </div>
           </b-col>
           <b-col cols="6" class="p-0">
             <div
@@ -23,13 +31,13 @@
           </b-col>
         </b-row>
       </b-col>
-      <b-col class="p-0"
-        ><div
-          class="mansory-gallery__img"
+      <b-col cols="12" md="4" class="p-0">
+        <div
+          class="mansory-gallery__img middle"
           style="background-image: url('./tmp/home_page/mansory/4.jpg')"
         ></div
       ></b-col>
-      <b-col class="p-0">
+      <b-col cols="12" md="4" class="p-0">
         <b-row>
           <b-col cols="6" class="p-0">
             <div
@@ -56,14 +64,20 @@
 </template>
 
 <script>
+import RedButton from "@/components/Buttons/RedButton.vue";
+
 export default {
   name: "GiftCategory",
   data() {
     return {};
   },
   props: {},
-  components: {},
-  methods: {},
+  components: { RedButton },
+  methods: {
+    goToCollection(collectionId) {
+      console.log("goToCollection", collectionId);
+    }
+  },
   computed: {}
 };
 </script>
@@ -85,6 +99,11 @@ export default {
   background-size: cover;
   transition: all 0.3s;
   overflow: hidden;
+  .go-to-collection {
+    position: absolute;
+    bottom: 15px;
+    right: calc(50% - 150px);
+  }
   &:hover {
     transform: scale(1.1);
     transition: all 0.3s;
@@ -92,7 +111,16 @@ export default {
 }
 @media only screen and (max-width: 1200px) {
   .mansory-gallery__img {
-    min-height: 200px;
+    min-height: 220px;
+  }
+  .mansory-gallery__img.middle {
+    min-height: 400px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mansory-gallery {
+    margin: 0;
   }
 }
 </style>

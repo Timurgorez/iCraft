@@ -33,7 +33,7 @@
       </b-row>
       <Navigation />
     </b-container>
-    <HeaderMainMobile v-onMobileShow />
+    <HeaderMainMobile v-onMobileShow :showFilterBtn="showFilterBtn" />
   </div>
 </template>
 
@@ -52,7 +52,12 @@ export default {
   data() {
     return {};
   },
-  props: {},
+  props: {
+    showFilterBtn: {
+      type: Boolean,
+      default: true
+    }
+  },
   components: {
     ShoppingBag,
     CurrencyLang,

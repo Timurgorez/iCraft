@@ -15,6 +15,7 @@
         <span></span>Menu</a
       >
       <a
+        v-if="showFilterBtn"
         href="#"
         @click.prevent="openFilter"
         :class="[
@@ -50,7 +51,12 @@ export default {
       isMenuOpen: false
     };
   },
-  props: {},
+  props: {
+    showFilterBtn: {
+      type: Boolean,
+      default: true
+    }
+  },
   components: { FilterMobile, BuildMenuMobile, MainSearch },
   methods: {
     openFilter() {
