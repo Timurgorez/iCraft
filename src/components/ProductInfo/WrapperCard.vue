@@ -1,7 +1,19 @@
 <template>
     <b-container  class="wrapper-card default-max-container">
         <b-row align-h="start">
-            <ProductCard v-for="( item, index ) in productItems" :item="item" :key="item.id" :limit="limit" :index="index" />
+            <ProductCard v-for="( item, index ) in productItems" 
+            :item="item" 
+            :key="item.id" 
+            :limit="limit" 
+            :index="index"
+            :size="{
+                cols: '6',
+                sm: '6',
+                md: '4',
+                lg: '3',
+                xl: '3'
+            }"
+             />
         </b-row>
     </b-container>
 </template>

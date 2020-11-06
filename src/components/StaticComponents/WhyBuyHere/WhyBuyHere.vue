@@ -1,5 +1,5 @@
 <template>
-  <div class="why-buy-here mt-5" :style="{ backgroundColor: bgc }">
+  <div class="why-buy-here mt-1 mt-md-5 mt-lg-5 mt-xl-5" :style="{ backgroundColor: bgc }">
     <b-container fluid="xl">
       <b-row align-h="center" class="text-center">
         <b-col cols="12" class="centered">
@@ -101,4 +101,12 @@ export default {
     color: #000000;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .why-buy-here__title {
+    font-size:22px;
+    padding: 30px 30px 30px;
+  }
+}
+
 </style>

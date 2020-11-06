@@ -174,6 +174,7 @@ export default {
 .swiper {
   margin: 0 90px;
   overflow: hidden;
+  width: 100%;
 }
 
 .slider-btn {
@@ -213,6 +214,7 @@ export default {
 
 ::v-deep .product-card__slider {
   height: 100%;
+  width: 100%; 
 }
 ::v-deep .product-card {
   padding-bottom: 15px;

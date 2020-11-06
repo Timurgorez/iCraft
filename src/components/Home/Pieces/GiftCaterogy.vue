@@ -59,7 +59,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 76px;
+  height: 76px;
 }
 .gift-category__items {
   border: 1px solid #d7d7d7;
@@ -90,7 +90,7 @@ export default {
     margin-bottom: 15px;
   }
   .gift-category__name {
-    min-height: 60px;
+    height: 60px;
     font-size: 18px;
     letter-spacing: 2px;
   }

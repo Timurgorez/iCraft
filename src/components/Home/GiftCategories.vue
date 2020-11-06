@@ -1,5 +1,5 @@
 <template>
-  <b-container class="short-max-container mb-5">
+  <b-container class="short-max-container mb-5" fluid>
     <b-row align-h="center" class="text-center">
       <b-col cols="12" class="centered">
         <div class="main-desc-block">

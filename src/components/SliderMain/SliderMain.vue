@@ -42,6 +42,16 @@
         :class="[{ last: this.activeIndex == this.slides.length - 1 }]"
         @click="nextSlide"
       ></div>
+
+      <div v-if="showBackLink" class="back-to-products">
+        <router-link
+          :to="{ name: 'HomePage' }"
+          class="back-to-products__link"
+          ><span class="back-to-products__icon"></span>
+          All Collection
+        </router-link>
+      </div>
+
     </b-row>
   </b-container>
 </template>
@@ -93,7 +103,7 @@ export default {
             mobile: {
               992: {
                 maxWidth: "250px",
-                top: "27%",
+                top: "22%",
                 left: "calc(50% - 125px)",
                 fontSize: "18px"
               }
@@ -117,7 +127,7 @@ export default {
             mobile: {
               992: {
                 maxWidth: "250px",
-                top: "27%",
+                top: "22%",
                 left: "calc(50% - 125px)",
                 fontSize: "18px"
               }
@@ -143,7 +153,7 @@ export default {
             mobile: {
               992: {
                 maxWidth: "250px",
-                top: "27%",
+                top: "22%",
                 left: "calc(50% - 125px)",
                 fontSize: "18px"
               }
@@ -154,7 +164,11 @@ export default {
     };
   },
   props: {
-    checkoutPage: Boolean
+    checkoutPage: Boolean,
+    showBackLink: {
+      type: Boolean,
+      default: false
+    }
   },
   components: {
     Swiper,
@@ -317,6 +331,56 @@ export default {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cdefs%3E%3Cfilter id='6xmdjjylwa' width='142.9%25' height='142.9%25' x='-21.4%25' y='-21.4%25' filterUnits='objectBoundingBox'%3E%3CfeOffset dy='2' in='SourceAlpha' result='shadowOffsetOuter1'/%3E%3CfeGaussianBlur in='shadowOffsetOuter1' result='shadowBlurOuter1' stdDeviation='2'/%3E%3CfeColorMatrix in='shadowBlurOuter1' result='shadowMatrixOuter1' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/%3E%3CfeMerge%3E%3CfeMergeNode in='shadowMatrixOuter1'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill='%237F13A6' fill-rule='evenodd' filter='url(%236xmdjjylwa)' opacity='.6' transform='matrix(-1 0 0 1 56 0)'%3E%3Cpath d='M42.48 30.772L18.57 54.851c-1.52 1.532-3.986 1.532-5.507 0-1.52-1.531-1.52-4.015 0-5.546L34.22 28 13.064 6.695c-1.52-1.532-1.52-4.015 0-5.546 1.52-1.532 3.986-1.532 5.507 0l23.91 24.079c.76.765 1.14 1.768 1.14 2.771 0 1.004-.38 2.008-1.14 2.773z'/%3E%3C/g%3E%3C/svg%3E%0A");
   transform: rotate(180deg);
 }
+
+.back-to-products {
+  min-height: 84px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: absolute;
+  bottom: -117px;
+  left: 20px;
+  &__link {
+    font-family: $font_montserrat_regular;
+    font-size: 20px;
+    color: $purple_color_btn;
+    display: flex;
+    align-items: center;
+    &:hover {
+      color: $purple_color;
+      // opacity: 70%;
+      text-decoration: none;
+    }
+  }
+  &__icon {
+    display: inline-block;
+    margin-right: 11px;
+    height: 18px;
+    width: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Cpath fill='%237F13A6' fill-rule='evenodd' d='M5.024 9.891l7.685 7.74c.49.492 1.282.492 1.77 0 .49-.493.49-1.29 0-1.783L7.68 9l6.8-6.848c.49-.492.49-1.29 0-1.783-.488-.492-1.28-.492-1.77 0L5.024 8.11c-.244.246-.367.568-.367.89 0 .323.123.646.367.892z'/%3E%3C/svg%3E%0A");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .back-to-products {
+    min-height: 45px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    bottom: auto;
+    // &__link {
+    //   font-size: 16px;
+    // }
+    // &__icon {
+    //   height: 14px;
+    //   width: 14px;
+    // }
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .slider-btn__next {
     right: 5px;
