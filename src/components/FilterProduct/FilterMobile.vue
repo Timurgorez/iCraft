@@ -25,6 +25,7 @@
             <p class="filter-block__mobile">Price range</p>
             <PriceGroup
               ref="priceFilter"
+              :mobile="true"
               @model_price="model_price_trigger"
               @model_price_min="model_price_min_trigger"
               @model_price_max="model_price_max_trigger"

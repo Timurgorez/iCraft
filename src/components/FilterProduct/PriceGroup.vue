@@ -1,5 +1,5 @@
 <template>
-  <div class="radio-group">
+  <div :class="['radio-group', {'mobile': mobile}]">
     <div class="radio-group__radio">
       <div
         class="radio-group__radio-wrap"
@@ -42,7 +42,12 @@
 <script>
 export default {
   name: "PriceGroup",
-  props: {},
+  props: {
+    mobile: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       model_price: {
@@ -183,6 +188,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+
+
 .radio-group {
   margin-top: 5px;
   padding-left: 25px;
@@ -257,6 +265,30 @@ export default {
       margin-right: 0;
       padding: 11px;
     }
+  }
+}
+
+
+.mobile{
+  padding: 0;
+  .radio-group__radio,
+  .radio-group__inputs{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .radio-group__inputs{
+    justify-content: space-between;
+  }
+  .radio-group__radio-wrap {
+    width: 50%;
+    padding-left: 25px;
+  }
+  .radio-group__input-min,
+  .radio-group__input-max{
+    width: 48%;
+  }
+  .radio-group__radio-input:checked + .radio-group__radio-label:after {
+    left: 0;
   }
 }
 </style>
