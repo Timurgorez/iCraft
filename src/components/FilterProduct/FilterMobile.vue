@@ -2,37 +2,41 @@
   <div class="filter-product-block">
     <b-container class="default-max-container">
       <b-row align-h="center" class="filter-product-block__wrapper">
+        
         <b-col
+          v-b-toggle.collapse-filter-price
           cols="12"
           lg="2"
           class="centered filter-product-block-wrap"
-          :style="{
-            backgroundColor:
-              showAllFilters.includes('priceFilter') && showFilter && isMobile
-                ? '#7f13a6'
-                : 'transparent'
-          }"
-          @click.stop="openPriceFilter"
         >
           <div class="filter-product-block__one-filter">
             <span class="filter-product-block__text">Price Range:</span>
             <span class="filter-product-block__blue-text"
-              >({{ model_price_name }})
-              <span class="filter-product-block__arrow"></span
-            ></span>
+              >({{ model_price_name }})</span>
           </div>
+          <span class="d-flex filter-product-block__arrow"></span>
         </b-col>
+        <b-collapse id="collapse-filter-price" class="w-100" :style="{backgroundColor: '#fff'}">
+          <b-col
+            cols="12"
+            lg="2"
+            class="filter-block__filter-price"
+          >
+            <p class="filter-block__mobile">Price range</p>
+            <PriceGroup
+              ref="priceFilter"
+              @model_price="model_price_trigger"
+              @model_price_min="model_price_min_trigger"
+              @model_price_max="model_price_max_trigger"
+            />
+          </b-col>
+        </b-collapse>
+
         <b-col
+          v-b-toggle.collapse-filter-color
           cols="12"
           lg="4"
           class="centered filter-product-block-wrap"
-          :style="{
-            backgroundColor:
-              showAllFilters.includes('colorFilter') && showFilter && isMobile
-                ? '#7f13a6'
-                : 'transparent'
-          }"
-          @click.stop="openColorFilter"
         >
           <div class="filter-product-block__one-filter">
             <span
@@ -61,147 +65,109 @@
                     model_color.length == colors.length
                       ? "All"
                       : leftCountColors
-                  }}
-                  <span class="filter-product-block__arrow"></span
-                ></span>
+                  }}</span>
               </div>
             </span>
           </div>
+          <span class="d-flex filter-product-block__arrow"></span>
         </b-col>
+        <b-collapse id="collapse-filter-color" class="w-100" :style="{backgroundColor: '#fff'}">
+          <b-col
+            cols="12"
+            lg="4"
+            class="filter-block__filter-color"
+          >
+            <p class="filter-block__mobile">Color</p>
+            <CheckboxColorGroup
+              ref="colorFilter"
+              :colors="colors"
+              @model_color="model_color_trigger"
+              @all_color="all_color_trigger"
+            />
+          </b-col>
+        </b-collapse>
+
         <b-col
+          v-b-toggle.collapse-filter-category
           cols="12"
           lg="4"
           class="centered filter-product-block-wrap"
-          :style="{
-            backgroundColor:
-              showAllFilters.includes('categoryFilter') &&
-              showFilter &&
-              isMobile
-                ? '#7f13a6'
-                : 'transparent'
-          }"
-          @click.stop="openCategoryFilter"
         >
           <div class="filter-product-block__one-filter">
             <span class="filter-product-block__text">Category:</span>
             <span class="filter-product-block__blue-text"
-              >{{ categoryNames }}
-              <span class="filter-product-block__arrow"></span
-            ></span>
+              >{{ categoryNames }}</span>
           </div>
+          <span class="d-flex filter-product-block__arrow"></span>
         </b-col>
+
+        <b-collapse id="collapse-filter-category" class="w-100" :style="{backgroundColor: '#fff'}">
+          <b-col
+            cols="12"
+            lg="4"
+            class="filter-block__filter-category"
+          >
+            <p class="filter-block__mobile">Category</p>
+            <CheckboxCategoryGroup
+              ref="categoryFilter"
+              @model_category="model_category_trigger"
+            />
+          </b-col>
+        </b-collapse>
+
+
         <b-col
+          v-b-toggle.collapse-filter-sort
           cols="12"
           lg="2"
           class="centered filter-product-block-wrap"
-          :style="{
-            backgroundColor:
-              showAllFilters.includes('sortFilter') && showFilter && isMobile
-                ? '#7f13a6'
-                : 'transparent'
-          }"
-          @click.stop="openSortFilter"
         >
           <div class="filter-product-block__one-filter justify-content-start">
             <span class="filter-product-block__text">Sort By:</span>
             <span class="filter-product-block__blue-text"
-              >{{ this.model_sort }}
-              <span class="filter-product-block__arrow"></span
-            ></span>
+              >{{ this.model_sort }}</span>
           </div>
+          <span class="d-flex filter-product-block__arrow"></span>
         </b-col>
+
+        <b-collapse id="collapse-filter-sort" class="w-100" :style="{backgroundColor: '#fff'}">
+          <b-col
+              cols="12"
+              lg="2"
+              class="filter-block__filter-sort"
+            >
+              <p class="filter-block__mobile">Sort by:</p>
+              <SortGroup
+                ref="sortFilter"
+                :model_sort="model_sort"
+                @model_sort="model_sort_trigger"
+              />
+            </b-col>
+        </b-collapse>
       </b-row>
 
-      <div :class="['filter-block', showFilter && 'show-filter']">
-        <div class="filter-block__inner-wrap">
-          <b-container class="default-max-container" fluid>
-            <b-row
-              align-h="center"
-              class="filter-block__filter"
-              align-v="stretch"
-            >
-              <b-col
-                v-show="showAllFilters.includes('priceFilter')"
-                cols="12"
-                lg="2"
-                class="filter-block__filter-price"
-              >
-                <p class="filter-block__mobile">Price range</p>
-                <PriceGroup
-                  ref="priceFilter"
-                  @model_price="model_price_trigger"
-                  @model_price_min="model_price_min_trigger"
-                  @model_price_max="model_price_max_trigger"
-                />
-              </b-col>
-              <b-col
-                v-show="showAllFilters.includes('colorFilter')"
-                cols="12"
-                lg="4"
-                class="filter-block__filter-color"
-                @click="openColorFilter"
-              >
-                <p class="filter-block__mobile">Color</p>
-                <CheckboxColorGroup
-                  ref="colorFilter"
-                  :colors="colors"
-                  @model_color="model_color_trigger"
-                  @all_color="all_color_trigger"
-                />
-              </b-col>
-              <b-col
-                v-show="showAllFilters.includes('categoryFilter')"
-                cols="12"
-                lg="4"
-                class="filter-block__filter-category"
-                @click="openCategoryFilter"
-              >
-                <p class="filter-block__mobile">Category</p>
-                <CheckboxCategoryGroup
-                  ref="categoryFilter"
-                  @model_category="model_category_trigger"
-                />
-              </b-col>
-              <b-col
-                v-show="showAllFilters.includes('sortFilter')"
-                cols="12"
-                lg="2"
-                class="filter-block__filter-sort"
-                @click="openSortFilter"
-              >
-                <p class="filter-block__mobile">Sort by:</p>
-                <SortGroup
-                  ref="sortFilter"
-                  :model_sort="model_sort"
-                  @model_sort="model_sort_trigger"
-                />
-              </b-col>
-            </b-row>
-            <b-row
-              class="filter-block__filter-btns d-flex justify-content-md-end justify-content-sm-center"
-            >
-              <b-col
-                cols="12"
-                md="6"
-                offset-md="6"
-                class="d-flex justify-content-md-end justify-content-sm-center justify-content-center align-items-center"
-              >
-                <PurpleButton
-                  text="Clear all"
-                  iconClass="clear-icon"
-                  @clickHandler="onCleanHandler"
-                />
-                <PurpleButton
-                  class="ml-4"
-                  text="Apply"
-                  iconClass="apply-icon"
-                  @clickHandler="onApplyHandler"
-                />
-              </b-col>
-            </b-row>
-          </b-container>
-        </div>
-      </div>
+      <b-row
+        class="filter-block__filter-btns d-flex justify-content-md-end justify-content-sm-center"
+      >
+        <b-col
+          cols="12"
+          md="6"
+          offset-md="6"
+          class="d-flex justify-content-md-end justify-content-sm-center justify-content-center align-items-center"
+        >
+          <PurpleButton
+            text="Clear all"
+            iconClass="clear-icon"
+            @clickHandler="onCleanHandler"
+          />
+          <PurpleButton
+            class="ml-4"
+            text="Apply"
+            iconClass="apply-icon"
+            @clickHandler="onApplyHandler"
+          />
+        </b-col>
+      </b-row>
     </b-container>
   </div>
 </template>
@@ -290,95 +256,44 @@ export default {
   },
   methods: {
     model_price_trigger(model_price) {
+      this.countingCount();
       this.model_price = model_price.filter;
       this.model_price_name = model_price.name;
       //model_price.filter.from + " - " + model_price.filter.to;
     },
     model_price_min_trigger(model_price_min) {
+      this.countingCount();
       this.model_price_min = parseFloat(model_price_min);
     },
     model_price_max_trigger(model_price_max) {
+      this.countingCount();
       this.model_price_max = parseFloat(model_price_max);
     },
     model_category_trigger(model_category) {
+      this.countingCount();
       this.model_category = model_category;
     },
     model_color_trigger(model_color) {
-      console.log("model_color_trigger", model_color);
+      this.countingCount();
       this.model_color = model_color;
     },
     all_color_trigger(all_color) {
-      console.log("all_color_trigger", all_color);
+      this.countingCount();
       this.all_color = all_color;
     },
     model_sort_trigger(model_sort) {
+      this.countingCount();
       this.model_sort = model_sort;
     },
-
-    openFilter(filterName, e) {
-      const filter = document.querySelector(".filter-block");
-      const filterOpener = document.querySelector(
-        ".filter-product-block__wrapper"
-      );
-      const filterChild = document.querySelector(".filter-block__inner-wrap");
-      const filterTop = document.querySelector(".filter-product-block");
-
-      if (
-        window.innerWidth <= 992 &&
-        e.target.closest(".filter-product-block-wrap")
-      ) {
-        if (!this.showFilter || this.showAllFilters.includes(filterName))
-          this.showFilter = !this.showFilter;
-        this.showAllFilters = [filterName];
-        if (!this.showFilter) {
-          filter.style.height = "0px";
-          // this.showAllFilters = [];
-        }
-      } else if (e.target.closest(".filter-product-block-wrap")) {
-        this.showFilter = !this.showFilter;
-
-        if (!this.showFilter) {
-          // this.showAllFilters = [];
-          filter.style.height = "0px";
-        }
-      }
-      setTimeout(() => {
-        if (
-          this.showFilter &&
-          window.innerHeight <
-            filterChild.offsetHeight + filterOpener.offsetHeight
-        ) {
-          filter.style.height =
-            window.innerHeight - filterOpener.offsetHeight + "px";
-          window.scrollTo({
-            top: filterTop.offsetTop,
-            behavior: "smooth"
-          });
-        } else if (this.showFilter) {
-          filter.style.height = filterChild.offsetHeight + "px";
-          window.scrollTo({
-            top: filterTop.offsetTop,
-            behavior: "smooth"
-          });
-        }
-      }, 0);
+    countingCount(){
+      let count = 0;
+      this.showAllFilters.forEach((el) => count += this.$refs[el].count);
+      this.$emit('countFilter', count);
     },
     closeFilter() {
       const filter = document.querySelector(".filter-block");
       if (this.showFilter) filter.style.height = "0px";
       this.showFilter = false;
-    },
-    openSortFilter(e) {
-      this.openFilter("sortFilter", e);
-    },
-    openColorFilter(e) {
-      this.openFilter("colorFilter", e);
-    },
-    openCategoryFilter(e) {
-      this.openFilter("categoryFilter", e);
-    },
-    openPriceFilter(e) {
-      this.openFilter("priceFilter", e);
     },
     resizeHandler(e) {
       if (e.target.innerWidth <= 992) {
@@ -405,15 +320,14 @@ export default {
       return (this.countOfColors = this.colors.slice(1, 3));
     },
     onCleanHandler() {
-      if (this.showAllFilters.length == 4) {
-        this.showAllFilters.forEach(el => this.$refs[el].clearFilter());
-      } else {
-        this.$refs[this.showAllFilters[0]].clearFilter();
-      }
+      this.$emit('countFilter', 0);
+      this.showAllFilters.forEach(el => this.$refs[el].clearFilter());
       this.productsForFilter = this.$store.dispatch("loadProducts");
     },
     onApplyHandler() {
       console.log("onApplyHandler");
+
+      this.$emit('closeFilter');
 
       let newProduct = [];
 
@@ -544,7 +458,7 @@ export default {
   min-height: 60px;
   //max-height: 100px;
   width: 100%;
-  background-color: #452650;
+  
   display: flex;
   align-items: center;
   color: #ffffff;
@@ -560,8 +474,9 @@ export default {
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   border-top: 1px solid #fff;
+  background-color: #452650;
 }
 .filter-product-block__arrow {
   background: url("~@/assets/arrow-white.svg") no-repeat 50% 50%;
@@ -572,6 +487,9 @@ export default {
   // top: calc(50% - 4px);
   // right: 8px;
 }
+.not-collapsed .filter-product-block__arrow {
+    transform: rotate(180deg);
+  }
 .filter-product-block__one-filter {
   display: flex;
   align-items: center;
@@ -728,6 +646,7 @@ export default {
 .filter-block__filter-btns {
   text-align: right;
   padding: 20px 0;
+  background-color: #fff;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -793,9 +712,6 @@ export default {
   .filter-product-block__color {
     width: 18px;
     height: 18px;
-  }
-  .filter-product-block__arrow {
-    display: none;
   }
   .filter-product-block__colors {
     min-height: 30px;

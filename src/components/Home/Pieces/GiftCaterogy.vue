@@ -94,5 +94,8 @@ export default {
     font-size: 18px;
     letter-spacing: 2px;
   }
+  .gift-category__items {
+    padding: 10px;
+  }
 }
 </style>

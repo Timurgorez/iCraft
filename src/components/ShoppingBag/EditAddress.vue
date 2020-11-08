@@ -128,14 +128,14 @@
             text="Cancel"
             :simpleButton="true"
             :animate="true"
-            customClass="add-to-bag__btn mr-3"
+            customClass="add-to-bag__btn mr-3 mb-2"
             @clickHandler="cancelHandler"
           />
           <RedButton
             text="Save"
             :simpleButton="true"
             :animate="true"
-            customClass="save__btn"
+            customClass="save__btn mb-2"
             @clickHandler="saveAddress"
           />
         </b-col>
@@ -230,7 +230,6 @@ label {
     letter-spacing: 2px;
   }
   &__input {
-    margin: 10px;
     height: 50px;
     border-radius: 3px;
     border: solid 1px #909090;
@@ -247,5 +246,11 @@ label {
 
 .save__btn {
   padding: 13.5px 80px;
+}
+
+@media only screen and (max-width: 480px) {
+ .padding {
+    padding: 0;
+  }
 }
 </style>

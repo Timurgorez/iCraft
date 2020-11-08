@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       model_sort: "Featured",
-
+      count: 0,
       sorting_data: [
         {
           name: "Featured",
@@ -55,6 +55,7 @@ export default {
   },
   watch: {
     model_sort(val) {
+      this.count = val !== 'Featured' ? 1 : 0;
       this.$emit("model_sort", val);
       return val;
     }
@@ -77,6 +78,7 @@ export default {
   margin-bottom: 1rem;
   font-family: $font_montserrat_regular;
   padding-left: 30px;
+  color: $text_color;
 }
 .sort-group__input-max,
 .sort-group__input-min {

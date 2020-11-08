@@ -52,7 +52,7 @@ export default {
       },
       model_price_min: null,
       model_price_max: null,
-
+      count: 0,
       price_data_filter: [
         {
           name: "ALL",
@@ -105,6 +105,7 @@ export default {
         this.model_price_min = "";
         this.model_price_max = "";
       }
+      this.count = this.model_price.name == 'ALL' ? 0 : 1;
       this.$emit("model_price", val);
       return val;
     },
@@ -138,7 +139,7 @@ export default {
           filter: { from: 0, to: ">" }
         };
       }
-
+      this.count = this.model_price.name !== 'All' ? 1 : 0;
       this.$emit("model_price_min", val);
       return val;
     },
@@ -172,7 +173,7 @@ export default {
           filter: { from: 0, to: ">" }
         };
       }
-
+      this.count = this.model_price.name !== 'All' ? 1 : 0;
       this.$emit("model_price_max", val);
       return val;
     }
@@ -196,6 +197,7 @@ export default {
   width: 100%;
   margin-bottom: 1rem;
   font-family: $font_montserrat_regular;
+  color: $text_color;
 }
 .radio-group__input-max,
 .radio-group__input-min {

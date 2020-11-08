@@ -95,9 +95,12 @@ export default {
   }
 }
 
-@media only screen and (max-width: 992px) {
-  // .form-search {
-  //   height: 42px;
-  // }
+@media only screen and (max-width: 768px) {
+  .form-search {
+    input {
+      font-size: 14px;
+    }
+  }
 }
+
 </style>

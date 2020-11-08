@@ -316,12 +316,15 @@ export default {
     },
 
     openFilter(filterName, e) {
-      const filter = document.querySelector(".filter-block");
-      const filterOpener = document.querySelector(
+      const filterTop = e.target.closest('.filter-product-block');
+      const filter = filterTop.querySelector(".filter-block");
+      const filterOpener = filterTop.querySelector(
         ".filter-product-block__wrapper"
       );
-      const filterChild = document.querySelector(".filter-block__inner-wrap");
-      const filterTop = document.querySelector(".filter-product-block");
+      const filterChild = filterTop.querySelector(".filter-block__inner-wrap");
+      
+
+      console.log(filterName, e);
 
       if (
         window.innerWidth <= 768 &&
@@ -343,6 +346,9 @@ export default {
         }
       }
       setTimeout(() => {
+        console.log(this.showFilter,
+          window.innerHeight,
+            filterChild + filterOpener);
         if (
           this.showFilter &&
           window.innerHeight <

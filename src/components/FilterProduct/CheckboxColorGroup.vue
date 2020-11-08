@@ -54,7 +54,8 @@ export default {
   data() {
     return {
       all: true,
-      model_color: []
+      model_color: [],
+      count: 0
     };
   },
   methods: {
@@ -85,6 +86,7 @@ export default {
         this.model_color.length === this.colors.length ||
         this.model_color.length == 0;
       this.$emit("all_color", this.all);
+      this.count = this.model_color.length;
       if (
         this.model_color.length === this.colors.length ||
         this.model_color.length == 0
@@ -141,6 +143,7 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  color: $text_color;
   span {
     position: relative;
     bottom: -30px;

@@ -26,15 +26,14 @@
           'nav-link__filters'
         ]"
         ><span class="nav-link__filters-icon"></span>Filters
-        <span class="nav-link__filters-count">3</span></a
-      >
+        <span v-show="countFilterNum > 0" class="nav-link__filters-count">{{countFilterNum}}</span></a>
     </div>
     <div :class="[{ show: isMenuOpen }]" class="header-main__menu">
       <MainSearch classWrap="search-mobile-wrap" />
       <BuildMenuMobile />
     </div>
     <div class="filter-wrap_animate" :class="[{ show: isFilterOpen }]">
-      <FilterMobile />
+      <FilterMobile @closeFilter="openFilter" @countFilter="countFilter"/>
     </div>
   </b-row>
 </template>
@@ -48,7 +47,8 @@ export default {
   data() {
     return {
       isFilterOpen: false,
-      isMenuOpen: false
+      isMenuOpen: false,
+      countFilterNum: 0
     };
   },
   props: {
@@ -59,6 +59,10 @@ export default {
   },
   components: { FilterMobile, BuildMenuMobile, MainSearch },
   methods: {
+    countFilter(count){
+      console.log(count);
+      this.countFilterNum = count;
+    },
     openFilter() {
       if (this.isMenuOpen) this.isMenuOpen = false;
       this.isFilterOpen = !this.isFilterOpen;
@@ -141,10 +145,6 @@ export default {
 .nav-link__filters {
   padding-right: 30px;
   margin-right: 10px;
-  &:hover .nav-link__filters-count {
-    background: #fff;
-    color: $text_color_red;
-  }
 }
 
 .nav-link__filters .nav-link__filters-icon,

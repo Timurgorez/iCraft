@@ -30,9 +30,19 @@
 
     <MansoryGalleryLink />
 
+    
     <ProductSlider
+      v-onDesctopShow
       :bgi="'./tmp/home_page/bg_wood_home.jpg'"
       bgc="#f6f6f6"
+      title="Featured Deals"
+      class="product-slider__home"
+      :showReiting="false"
+      :showMonogram="false"
+    />
+    <ProductSlider
+      v-onMobileShow
+      bgc="#fff"
       title="Featured Deals"
       :showReiting="false"
       :showMonogram="false"
@@ -457,13 +467,24 @@ export default {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 70px;
+  padding-bottom: 100px;
+
+  margin-bottom: 60px;
   // .main-desc-block {
   //   padding-bottom: 70px;
   // }
 }
 
+.product-slider__home{
+  padding-bottom: 200px;
+}
+
 @media only screen and (max-width: 1400px) {
+  .collection-poster{
+    .collection-poster__text {
+      margin-right: 0;
+    }
+  }
 }
 
 @media only screen and (max-width: 998px) {
@@ -487,6 +508,7 @@ export default {
     }
   }
   .new-arrivals__wrap {
+    padding-bottom: 0;
     background-image: none;
     .main-desc-block h3 {
       display: none;

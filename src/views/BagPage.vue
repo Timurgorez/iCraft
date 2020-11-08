@@ -156,6 +156,7 @@
                           Select Address
                         </button>
                         <div
+                        class=""
                           v-if="
                             (selectedAddress && selectedAddress[sellerId]) ||
                               defaultAddress
@@ -169,7 +170,7 @@
                         </div>
 
                         <button
-                          class="shipping-action-btn shipping-action-btn__addNew"
+                          class="shipping-action-btn shipping-action-btn__addNew ml-3"
                           @click="addNewAddress"
                         >
                           Add New

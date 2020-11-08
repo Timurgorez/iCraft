@@ -1,6 +1,42 @@
 <template>
   <ul class="header-main__ul" ref="menuMobile">
-    <li class="header-main__li">
+    <!-- <ul class="header-main__ul" ref="menuMobile"> -->
+
+    <li v-for="(elem, index) in menu" :key="index" :class="['header-main__li', {' header-main__li-more': elem.name == 'More'}]">
+      <a :href="elem.url" @click="goDeepMenu" :class="['nav-link', {'has-children': elem.children }]">{{elem.name}}</a>
+      <ul v-if="elem.children" class="header-main__wrap-sublink">
+        <li class="header-main__li">
+          <a class="nav-link go-back" @click.prevent="goBack" href="#">
+            <b>{{elem.name}}</b>
+          </a>
+        </li>
+        <li v-for="(subElem, index) in elem.children" :key="index" class="header-main__li">
+          <a :href="subElem.url" @click="goDeepMenu" :class="['nav-link', {'has-children': subElem.children }]">{{subElem.name}}</a>
+          <ul v-if="subElem.children" class="header-main__wrap-sublink">
+            <li class="header-main__li">
+              <a class="nav-link go-back" @click.prevent="goBack" href="#">
+                <b>{{subElem.name}}</b>
+              </a>
+            </li>
+            <li v-for="(subSubElem, index) in subElem.children" :key="index" class="header-main__li">
+              <a :href="subSubElem.url" @click="goDeepMenu" :class="['nav-link', {'has-children': subSubElem.children }]">{{subSubElem.name}}</a>
+              <ul v-if="subSubElem.children" class="header-main__wrap-sublink">
+                <li class="header-main__li">
+                  <a class="nav-link go-back" @click.prevent="goBack" href="#">
+                    <b>{{subSubElem.name}}</b>
+                  </a>
+                </li>
+                <li v-for="(subSubSubElem, index) in subSubElem.children" :key="index" class="header-main__li">
+                  <a :href="subSubSubElem.url" @click="goDeepMenu" :class="['nav-link']">{{subSubSubElem.name}}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <!-- <li class="header-main__li">
       <a href="#" @click.prevent="goDeepMenu" class="nav-link has-children"
         >Jewelry</a
       >
@@ -535,7 +571,7 @@
       <a href="#" @click.prevent="goDeepMenu" class="nav-link has-children"
         >My Account</a
       >
-    </li>
+    </li> -->
   </ul>
 </template>
 <script>
@@ -545,25 +581,151 @@
 export default {
   name: "BuildMenuMobile",
   data() {
-    return {};
+    return {
+      menu: [
+        {
+          name: 'Jewelry',
+          url: '#', 
+          children: [
+            {name: 'All Jewelry', url: '#'},
+            {name: 'Anklets', url: '#'},
+            {name: 'Beach Jewelry', url: '#'},
+            {name: 'Bracelets', url: '#', children: [
+              {name: 'level1.4.1', url: '#'},
+              {name: 'level1.4.2', url: '#'},
+              {name: 'level1.4.3', url: '#'},
+              {name: 'level1.4.4', url: '#'},
+              {name: 'level1.4.5', url: '#'},
+              {name: 'level1.4.6', url: '#'},
+              {name: 'level1.4.7', url: '#'},
+            ]},
+            {name: 'Bridal Jewelry', url: '#'},
+            {name: 'Brooches & Pins', url: '#'},
+            {name: 'Celtic', url: '#'},
+            {name: 'Chains', url: '#'},
+            {name: 'Chokers', url: '#'},
+            {name: 'Earrings', url: '#'},
+          ]
+        },{
+          name: 'Clothing',
+          url: '#', 
+          children: [
+            {name: 'level2.1', url: '#'},
+            {name: 'level2.2', url: '#'},
+            {name: 'level2.3', url: '#'},
+            {name: 'level2.4', url: '#'},
+            {name: 'level2.5', url: '#'},
+            {name: 'level2.6', url: '#'},
+            {name: 'level2.7', url: '#'},
+          ]
+        },
+        {
+          name: 'Accessories',
+          url: '#', 
+          children: [
+            {name: 'level3.1', url: '#'},
+            {name: 'level3.2', url: '#'},
+            {name: 'level3.3', url: '#'},
+            {name: 'level3.4', url: '#', children: [
+              {name: 'level3.4.1', url: '#'},
+              {name: 'level3.4.2', url: '#'},
+              {name: 'level3.4.3', url: '#'},
+              {name: 'level3.4.4', url: '#', children: [
+                {name: 'level3.4.4.1', url: '#'},
+                {name: 'level3.4.4.2', url: '#'},
+                {name: 'level3.4.4.3', url: '#'},
+                {name: 'level3.4.4.4', url: '#'}
+              ]}
+            ]},
+            {name: 'level3.5', url: '#'},
+            {name: 'level3.6', url: '#'},
+            {name: 'level3.7', url: '#'},
+            {name: 'level3.8', url: '#'},
+            {name: 'level3.9', url: '#'},
+            {name: 'level3.10', url: '#'},
+            {name: 'level3.11', url: '#'},
+            {name: 'level3.12', url: '#'},
+            {name: 'level3.13', url: '#', children: [
+              {name: 'level3.4.1', url: '#'},
+              {name: 'level3.4.2', url: '#'},
+              {name: 'level3.4.3', url: '#'},
+              {name: 'level3.4.4', url: '#', children: [
+                {name: 'level3.4.4.1', url: '#'},
+                {name: 'level3.4.4.2', url: '#'},
+                {name: 'level3.4.4.3', url: '#'},
+                {name: 'level3.4.4.4', url: '#'}
+              ]}
+            ]},
+          ]
+        },
+        {
+          name: 'Home Decor',
+          url: '#'
+        },
+        {
+          name: 'Bath & Body',
+          url: '#'
+        },
+        {
+          name: 'Toys & Games',
+          url: '#'
+        },
+        {
+          name: 'More',
+          url: '#'
+        },
+        {
+          name: 'Community',
+          url: '#'
+        },
+        {
+          name: 'Sell Handmade',
+          url: '#'
+        },
+        {
+          name: 'My Account',
+          url: '#'
+        },
+        
+      ]
+    };
   },
   props: {},
   components: {},
   methods: {
     goDeepMenu(e) {
       console.log(this.$refs.menuMobile, e);
-      e.target.nextElementSibling.style.left = "0";
+      if(e.target.nextElementSibling && e.target.nextElementSibling.tagName == 'UL'){
+        e.preventDefault();
+        e.target.nextElementSibling.style.left = "0";
+        const li = e.target.classList.contains('header-main__li') ? e.target : e.target.closest('.header-main__li');
+        if(li && li.parentElement){
+          li.parentElement.style.overflowY = 'hidden';
+          li.parentElement.scrollTo({
+              top: 0,
+              behavior: "smooth"
+          });
+        }
+      }
+      
     },
     goBack(e) {
-      console.log(this.$refs.menuMobile, e);
       e.target.closest(".header-main__wrap-sublink").style.left = "100%";
+      if(e.target.closest('.header-main__wrap-sublink').parentElement.parentElement.classList.contains('header-main__wrap-sublink')
+      || e.target.closest('.header-main__wrap-sublink').parentElement.parentElement.classList.contains('header-main__ul')){
+        e.target.closest('.header-main__wrap-sublink').parentElement.parentElement.style.overflowY = 'auto';
+      }
     }
+  },
+  computed: {
+  },
+  mounted(){
   }
 };
 </script>
 <style scoped lang="scss">
 .header-main__ul {
-  max-height: 80vh;
+  max-height: calc(80vh - 62px);
   overflow-y: auto;
   list-style-type: none;
   margin: 0;

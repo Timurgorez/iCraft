@@ -30,7 +30,7 @@
           ></a>
         </div>
       </b-col>
-      <b-col cols="6" lg="2" class="pr-4 pl-4 pb-3 pt-3 pb-lg-5 pt-lg-5">
+      <b-col cols="6" lg="2" class="pb-3 pt-3 pb-lg-5 pt-lg-5">
         <h4>{{ "Company" | toUpperCase }}</h4>
         <ul>
           <li><a href="#">About Us</a></li>
@@ -39,7 +39,7 @@
           <li><a href="#">Contact</a></li>
         </ul>
       </b-col>
-      <b-col cols="6" lg="2" class="pr-4 pl-4 pb-3 pt-3 pb-lg-5 pt-lg-5">
+      <b-col cols="6" lg="2" class="pb-3 pt-3 pb-lg-5 pt-lg-5">
         <h4>{{ "Marketplace" | toUpperCase }}</h4>
         <ul>
           <li><a href="#">Buy Handmade</a></li>
@@ -48,7 +48,7 @@
           <li><a href="#">Help Center</a></li>
         </ul>
       </b-col>
-      <b-col cols="6" lg="2" class="pr-4 pl-4 pb-3 pt-3 pb-lg-5 pt-lg-5">
+      <b-col cols="6" lg="2" class="pb-3 pt-3 pb-lg-5 pt-lg-5">
         <h4>{{ "Sell" | toUpperCase }}</h4>
         <ul>
           <li><a href="#">Sell Handmade</a></li>
@@ -57,7 +57,7 @@
           <li><a href="#">Seller Testimonials</a></li>
         </ul>
       </b-col>
-      <b-col cols="6" lg="2" class="pr-4 pl-4 pb-3 pt-3 pb-lg-5 pt-lg-5">
+      <b-col cols="6" lg="2" class="pb-3 pt-3 pb-lg-5 pt-lg-5">
         <h4>{{ "Community" | toUpperCase }}</h4>
         <ul>
           <li><a href="#">Blog</a></li>

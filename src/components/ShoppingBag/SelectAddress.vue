@@ -63,14 +63,14 @@
             text="Cancel"
             :simpleButton="true"
             :animate="true"
-            customClass="add-to-bag__btn mr-3"
+            customClass="add-to-bag__btn mr-3 mb-2"
             @clickHandler="cancelHandler(sellerId)"
           />
           <RedButton
             text="Save"
             :simpleButton="true"
             :animate="true"
-            customClass="buy-now__btn"
+            customClass="buy-now__btn mb-2"
             @clickHandler="selectAddress"
           />
         </b-col>
@@ -136,8 +136,9 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.modal .modal-dialog {
+::v-deep .modal .modal-dialog {
   max-width: 80vw;
+  margin: 0.5rem auto;
 }
 
 .select-addres-modal__title {
@@ -256,27 +257,21 @@ export default {
 }
 
 @media (min-width: 1200px) {
-  ::v-deep .modal-xl {
-    max-width: 1200px;
-  }
+  
 }
 @media (max-width: 1200px) {
-  ::v-deep .modal-xl {
-    max-width: 814px;
-  }
+  
 }
 
 @media (max-width: 992px) {
-  ::v-deep .modal-xl {
-    max-width: 760px;
-  }
+  
   .shipment-info__address {
     width: 330px;
   }
 }
 @media (max-width: 768px) {
-  ::v-deep .modal-xl {
-    max-width: 390px;
+  ::v-deep .modal .modal-dialog {
+    max-width: 95vw;
   }
 }
 </style>

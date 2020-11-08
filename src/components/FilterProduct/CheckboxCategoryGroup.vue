@@ -42,6 +42,7 @@ export default {
   data() {
     return {
       model_category: [],
+      count: 0,
       categories: [
         { value: "Gold Jewelry", name: "Gold Jewelry" },
         { value: "Silver Earrings", name: "Silver Earrings" },
@@ -92,6 +93,8 @@ export default {
           this.model_category.splice(index, 1);
         }
       }
+      
+      this.count = this.model_category.includes("ALL") ? 0 : this.model_category.length;
       if (this.model_category.length == 0) this.model_category = ["ALL"];
       console.log("model_category", val);
       this.$emit("model_category", val);
@@ -131,6 +134,7 @@ export default {
   height: 100%;
   position: relative;
   margin-bottom: 1rem;
+  color: $text_color;
 }
 
 .checkbox-category-group__input {
