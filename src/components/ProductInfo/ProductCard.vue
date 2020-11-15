@@ -49,6 +49,7 @@
           </div>
         </div>
         <router-link
+          v-splitTitle
           :to="{ name: 'ProductPage', params: { id: item.id } }"
           class="product-card__link"
         >
@@ -165,6 +166,9 @@ export default {
         this.$store.dispatch("addProductToBag", product);
       }
     }
+  },
+  filters: {
+    
   }
 };
 </script>
@@ -178,6 +182,9 @@ export default {
   font-weight: 500;
   line-height: 1.28;
   color: $text_color;
+  width: 100%;
+  display: inline-block;
+  height: 100%;
   &:hover {
     text-decoration: none;
     color: $text_color;
@@ -190,7 +197,7 @@ export default {
   height: 100%;
   padding-bottom: 70px;
   display: block;
-
+  border-radius: 0.4rem;
   &:hover {
     text-decoration: none;
   }
@@ -210,10 +217,11 @@ export default {
     text-align: left;
     display: inline-block;
     margin-bottom: 5px;
-    height: 46px;
+    height: 2.5rem;
     overflow: hidden;
     width: 100%;
     display: inline-block;
+    padding: 0 10px;
   }
 
   .product-card__sale {
@@ -270,6 +278,7 @@ export default {
     bottom: 0;
     right: 12px;
     left: 0;
+    padding: 0 10px;
   }
 
   .product-card__image {
@@ -284,12 +293,12 @@ export default {
     width: 100%;
     height: 100%;
     margin-bottom: 10px;
-    border: 2px solid $border_grey_color;
+    // border: 2px solid $border_grey_color;
     border-radius: 4px;
     position: relative;
     overflow: hidden;
     &:hover {
-      border: solid 2px $border_hover_grey_color;
+      // border: solid 2px $border_hover_grey_color;
       cursor: pointer;
     }
     img {

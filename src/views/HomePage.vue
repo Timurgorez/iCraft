@@ -6,7 +6,7 @@
       group="app-product"
       position="top center"
     />
-    <HeaderMain :showFilterBtn="false" />
+    <HeaderMain />
 
     <SliderMain />
 
@@ -444,7 +444,7 @@ export default {
   .collection-poster__text {
     max-width: 680px;
     text-align: left;
-    margin-right: 350px;
+    margin-right: 26%;
     h2 {
       font-family: $font_neue_kabel;
       font-size: 69px;

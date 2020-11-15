@@ -3,7 +3,7 @@
     <b-container v-onDesctopShow class="header-main" fluid>
       <b-row class="header-main__top">
         <b-col cols="6" xl="3" lg="4" class="header-logo mb-1 mt-1">
-          <router-link :to="{ name: 'CollectionPage' }">
+          <router-link :to="{ name: 'CollectionPageNew' }">
             <img
               src="~@/assets/desctop/pages/collectionPage/group.png"
               alt="iCraft Logo"
@@ -33,7 +33,7 @@
       </b-row>
       <Navigation />
     </b-container>
-    <HeaderMainMobile v-onMobileShow :showFilterBtn="showFilterBtn" />
+    <HeaderMainMobile v-if="isMobile" :showFilterBtn="showFilterBtn" />
   </div>
 </template>
 
@@ -50,12 +50,14 @@ import MainSearch from "@/components/Header/MainSearch.vue";
 export default {
   name: "HeaderMain",
   data() {
-    return {};
+    return {
+      isMobile: false
+    };
   },
   props: {
     showFilterBtn: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   components: {
@@ -68,8 +70,24 @@ export default {
     HeaderMainMobile,
     MainSearch
   },
-  methods: {},
-  mounted() {}
+  methods: {
+    isMobileHandler() {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        ) ||
+        window.innerWidth < 992
+      ) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
+    },
+  },
+  mounted() {
+    this.isMobileHandler();
+    window.addEventListener("resize", this.isMobileHandler, { passive: true });
+  }
 };
 </script>
 
@@ -120,7 +138,7 @@ export default {
 }
 
 .header-logo img {
-  height: 74px;
+  width: 100%;
   padding-left: 30px;
 }
 

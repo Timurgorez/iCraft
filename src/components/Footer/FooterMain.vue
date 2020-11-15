@@ -5,7 +5,7 @@
         cols="12"
         lg="4"
         md="12"
-        class="text-xl-left text-lg-left text-center"
+        class="pb-3 pt-3 text-xl-left text-lg-left text-center"
       >
         <img
           class="footer-block__image"
@@ -119,7 +119,7 @@ export default {
 
 .footer-block__social-wrap {
   display: inline-block;
-  padding-left: 30px;
+  padding-left: 10px;
   width: 100%;
 }
 
@@ -145,8 +145,8 @@ export default {
     color: $footer_font_color;
   }
   .footer-block__image {
-    max-width: 280px;
-    max-height: 74px;
+    max-width: 390px;
+    width: 100%;
     margin: 13px 15px;
     text-align: center;
   }

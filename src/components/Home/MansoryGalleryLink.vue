@@ -77,6 +77,7 @@ export default {
 <style scoped lang="scss">
 .mansory-gallery {
   margin: 40px 0;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
 }
 .p-0 {
   overflow: hidden;

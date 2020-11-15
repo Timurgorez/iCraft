@@ -1,6 +1,6 @@
 <template>
   <div class="checkout-page">
-    <HeaderWhite />
+    <HeaderMain />
     <notifications
       class="custom-notification-wrap"
       classes="custom-notification"
@@ -147,14 +147,14 @@
       </b-row>
     </b-container>
     <!-- Mobile blocks   -->
-    <ProductSlider bgc="#fff" />
-    <Footer />
+    <ProductSlider bgc="#fff" title="Saved For Later (6 items)" />
+    <FooterMain />
   </div>
 </template>
 
 <script>
-import HeaderWhite from "@/components/Header/HeaderWhite";
-import Footer from "@/components/Footer/Footer";
+import HeaderMain from "@/components/Header/HeaderMain";
+import FooterMain from "@/components/Footer/FooterMain";
 import ShipmentInfo from "@/components/Checkout/ShipmentInfo";
 import CheckoutOrderSummary from "@/components/Checkout/CheckoutOrderSummary";
 import PaymentForm from "@/components/FormElements/PaymentForm";
@@ -171,8 +171,8 @@ export default {
     PaymentForm,
     CheckoutOrderSummary,
     ShipmentInfo,
-    Footer,
-    HeaderWhite
+    FooterMain,
+    HeaderMain
   },
   data() {
     return {};

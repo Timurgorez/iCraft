@@ -89,7 +89,7 @@ export default {
   height: 100%;
   position: absolute;
   top: 20px;
-  z-index: 12;
+  z-index: 1;
   left: 5px;
 }
 
@@ -131,6 +131,7 @@ export default {
 .gallery-top {
   height: 70%;
   width: 100%;
+  z-index: 0;
 }
 .gallery-thumbs {
   box-sizing: border-box;

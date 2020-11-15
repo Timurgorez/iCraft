@@ -22,7 +22,6 @@
             lg="2"
             class="filter-block__filter-price"
           >
-            <p class="filter-block__mobile">Price range</p>
             <PriceGroup
               ref="priceFilter"
               :mobile="true"
@@ -78,7 +77,6 @@
             lg="4"
             class="filter-block__filter-color"
           >
-            <p class="filter-block__mobile">Color</p>
             <CheckboxColorGroup
               ref="colorFilter"
               :colors="colors"
@@ -108,7 +106,6 @@
             lg="4"
             class="filter-block__filter-category"
           >
-            <p class="filter-block__mobile">Category</p>
             <CheckboxCategoryGroup
               ref="categoryFilter"
               @model_category="model_category_trigger"
@@ -137,7 +134,6 @@
               lg="2"
               class="filter-block__filter-sort"
             >
-              <p class="filter-block__mobile">Sort by:</p>
               <SortGroup
                 ref="sortFilter"
                 :model_sort="model_sort"

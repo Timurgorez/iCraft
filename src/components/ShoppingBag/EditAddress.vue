@@ -16,7 +16,7 @@
       <b-row class="padding">
         <b-col cols="12" sm="12" md="3" lg="3" xl="3">
           <label for="input-name"
-            >Your Name <br />
+            >Your Name
             (optional)</label
           >
         </b-col>
@@ -102,9 +102,9 @@
       </b-row>
       <b-row>
         <b-col cols="12">
-          <div class="d-flex justify-content-center mb-4 mt-3">
+          <div class="add-new-checkbox d-flex">
             <Checkbox
-              class="mr-4"
+              class="mr-4 mb-4 mt-3"
               labelText="Same as Billing Address"
               inputName="billing-address"
               :id="'billing-address-'"
@@ -113,6 +113,7 @@
             />
 
             <Checkbox
+              class="mb-4 mt-3"
               labelText="Make it as Default Address"
               inputName="default-address"
               :id="'default-address-'"
@@ -123,7 +124,7 @@
         </b-col>
       </b-row>
       <b-row class="text-right">
-        <b-col cols="12" class="mb-3 mt-3">
+        <b-col cols="12" class="mb-3 mt-3 add-new-btns">
           <PurpleButton
             text="Cancel"
             :simpleButton="true"
@@ -205,6 +206,7 @@ export default {
 
 .padding {
   padding: 0 30px;
+  margin-bottom: 30px;
 }
 
 label {
@@ -215,8 +217,6 @@ label {
   font-style: normal;
   line-height: 1.11;
   letter-spacing: normal;
-  margin: 10px;
-  padding: 10px;
 }
 
 .add-address-modal {
@@ -247,9 +247,29 @@ label {
 .save__btn {
   padding: 13.5px 80px;
 }
+.add-new-checkbox{
+    justify-content: center;
+  }
 
 @media only screen and (max-width: 480px) {
  .padding {
+    padding: 0;
+    margin-bottom: 0;
+  }
+  label {
+    margin: 0;
+    padding: 20px 0 10px;
+  }
+  .add-new-checkbox{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .add-new-btns{
+    button{
+      width: 100%;
+    }
+  }
+  ::v-deep .modal-body {
     padding: 0;
   }
 }

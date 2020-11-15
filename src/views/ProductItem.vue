@@ -1,12 +1,14 @@
 <template>
   <div class="product-item">
-    <HeaderWhite />
     <notifications
       class="custom-notification-wrap"
       classes="custom-notification"
       group="app-product"
       position="top center"
     />
+
+    <HeaderMain />
+    
     <b-container class="product-max-container">
       <b-row>
         <b-col cols="12">
@@ -345,7 +347,7 @@
       </div>
     </b-modal>
     <ProductSlider bgc="#f6f6f6" title="Items You Might Like" />
-    <Footer />
+    <FooterMain />
   </div>
 </template>
 <script>
@@ -359,10 +361,10 @@ import SizeChoose from "../components/FormElements/SizeChoose.vue";
 import ColorChoose from "../components/FormElements/ColorChoose.vue";
 import BestOffer from "../components/ProductInfo/BestOffer.vue";
 import MoreFromThisStore from "../components/ProductInfo/MoreFromThisStore.vue";
-import HeaderWhite from "../components/Header/HeaderWhite.vue";
+import HeaderMain from "../components/Header/HeaderMain.vue";
 import ProductLabels from "@/components/ProductInfo/ProductLabels";
 import ProductGallery from "@/components/ProductInfo/ProductGallery";
-import Footer from "../components/Footer/Footer.vue";
+import FooterMain from "../components/Footer/FooterMain.vue";
 import ProductSlider from "../components/StaticComponents/ProductSlider/ProductSlider.vue";
 import ProductGalleryMobile from "@/components/ProductInfo/ProductGalleryMobile";
 
@@ -398,8 +400,8 @@ export default {
     ColorChoose,
     BestOffer,
     MoreFromThisStore,
-    HeaderWhite,
-    Footer,
+    HeaderMain,
+    FooterMain,
     ProductSlider
   },
   methods: {

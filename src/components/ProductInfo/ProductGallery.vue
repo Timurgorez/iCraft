@@ -1,8 +1,6 @@
 <template>
   <div class="product-slider">
-    <div class="sale d-flex flex-row justify-content-start align-items-center">
-      <p class="sale-text">10% Off</p>
-    </div>
+    
     <div class="thumb-example d-flex flex-row">
       <!-- swiper1 -->
       <div class="gallery-top" v-swiper:swiperTop="swiperOptionTop">
@@ -24,6 +22,9 @@
           <div class="swiper-slide slide-5"></div>
         </div>
       </div>
+    </div>
+    <div class="sale d-flex flex-row justify-content-start align-items-center">
+      <p class="sale-text">10% Off</p>
     </div>
   </div>
 </template>
@@ -81,7 +82,7 @@ export default {
     height: 100%;
     position: absolute;
     top: 20px;
-    z-index: 12;
+    z-index: 0;
     left: 5px;
   }
 
@@ -97,6 +98,10 @@ export default {
     margin-bottom: 0;
     padding-left: 10px;
   }
+}
+
+.swiper-wrapper{
+  z-index: 0;
 }
 
 .swiper-slide {
@@ -123,13 +128,14 @@ export default {
 .gallery-top {
   width: 100%;
   height: 100%;
+  z-index: 0;
 }
 .gallery-thumbs {
   box-sizing: border-box;
   top: 13px;
   position: absolute;
   width: 140px;
-  z-index: 1;
+  z-index: 0;
   vertical-align: baseline;
   height: 490px;
   right: 40px;

@@ -48,13 +48,13 @@ export default {
     return {
       isFilterOpen: false,
       isMenuOpen: false,
-      countFilterNum: 0
+      countFilterNum: 0,
     };
   },
   props: {
     showFilterBtn: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   components: { FilterMobile, BuildMenuMobile, MainSearch },

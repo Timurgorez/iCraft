@@ -33,7 +33,7 @@ export default {
 .product-icon {
   width: 42px;
   height: 42px;
-  background-size: cover;
+  background-size: contain;
   margin-right: 13px;
   background-repeat: no-repeat;
 }

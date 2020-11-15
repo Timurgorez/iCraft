@@ -6,9 +6,9 @@
           class="custom-slide"
           v-for="slide in slides"
           :key="slide.id"
-          :style="{ backgroundImage: 'url(' + slide.bg + ')' }"
+          :style="customStyles(slide.bgSettings)"
         >
-          <div class="slide-wrap-content" :style="customStyles(slide)">
+          <div class="slide-wrap-content" :style="customStyles(slide.settingsTextBlock)">
             <p>{{ slide.subText }}</p>
             <h2>{{ slide.title }}</h2>
             <RedButton
@@ -88,7 +88,9 @@ export default {
       slides: [
         {
           id: 1,
-          bg: "./tmp/slider/bg.jpg",
+          
+          
+          
           button: {
             color: "red",
             text: "SHOP NOW"
@@ -96,23 +98,38 @@ export default {
           title: "FUN & GAMES",
           subText: "Something Fun to do for Kids and Parents",
           link: "/new",
-          settings: {
-            maxWidth: "400px",
-            top: "35%",
-            left: "60%",
+          bgSettings : {
+            main: {
+              backgroundImage: "url(./tmp/slider/bg.jpg)",
+              backgroundColor: "#f2f3ee",
+              backgroundPosition: "50% 50%"
+            },
             mobile: {
-              992: {
-                maxWidth: "250px",
-                top: "22%",
-                left: "calc(50% - 125px)",
-                fontSize: "18px"
+              768: {
+                backgroundImage: "url(./tmp/slider/bgMobile.jpg)",
+                backgroundColor: "#f2f3ee",
+                backgroundPosition: "50% 117%"
+              }
+            }
+          },
+          settingsTextBlock: {
+            main: {
+              maxWidth: "400px",
+              left: "60%",
+            },
+            mobile: {
+              768: {
+                width: "100%",
+                left: "0",
+                fontSize: "10px",
+                bottom: "40px",
+                padding: "0 10px"
               }
             }
           }
         },
         {
           id: 2,
-          bg: "./tmp/slider/group.jpg",
           button: {
             color: "red",
             text: "SHOP NOW"
@@ -120,23 +137,38 @@ export default {
           title: "HAND-KNITTED & ADORABLE",
           subText: "Keep your Bundle of Joy Bundled Up!",
           link: "/new",
-          settings: {
-            maxWidth: "600px",
-            top: "35%",
-            left: "60%",
+          bgSettings : {
+            main: {
+              backgroundImage: "url(./tmp/slider/group.jpg)",
+              backgroundColor: "#f2f3ee",
+              backgroundPosition: "50% 50%"
+            },
             mobile: {
-              992: {
-                maxWidth: "250px",
-                top: "22%",
-                left: "calc(50% - 125px)",
-                fontSize: "18px"
+              768: {
+                backgroundImage: 'url(./tmp/slider/bgMobile.jpg)',
+                backgroundColor: "#f2f3ee",
+                backgroundPosition: "50% 117%"
+              }
+            }
+          },
+          settingsTextBlock: {
+            main: {
+              maxWidth: "600px",
+              left: "60%",
+            },
+            mobile: {
+              768: {
+                width: "100%",
+                left: "0",
+                fontSize: "10px",
+                bottom: "40px",
+                padding: "0 10px"
               }
             }
           }
         },
         {
           id: 3,
-          bg: "./tmp/slider/bg2.jpg",
           button: {
             color: "red",
             text: "SHOP NOW"
@@ -144,18 +176,32 @@ export default {
           title: "HAND-KNITTED & ADORABLE",
           subText: "Keep your Bundle of Joy Bundled Up!",
           link: "/new",
-          settings: {
+          bgSettings : {
+            main: {
+              backgroundImage: "url(./tmp/slider/bg2.jpg)",
+              backgroundColor: "#f2f3ee",
+              backgroundPosition: "50% 50%"
+            },
+            mobile: {
+              768: {
+                backgroundImage: 'url(./tmp/slider/bgMobile.jpg)',
+                backgroundColor: "#f2f3ee",
+                backgroundPosition: "50% 117%"
+              }
+            }
+          },
+          settingsTextBlock: {
             main: {
               maxWidth: "600px",
-              top: "35%",
               left: "10%"
             },
             mobile: {
-              992: {
-                maxWidth: "250px",
-                top: "22%",
-                left: "calc(50% - 125px)",
-                fontSize: "18px"
+              768: {
+                width: "100%",
+                left: "0",
+                fontSize: "10px",
+                bottom: "40px",
+                padding: "0 10px"
               }
             }
           }
@@ -176,6 +222,11 @@ export default {
     RedButton
   },
   methods: {
+    // getStyle(slide){
+    //   console.log('TEST', slide);
+    //   var bgi = innerWidth > 768 ? slide.bgi : slide.mobileBgi;
+    //   return  { backgroundImage: 'url(' + bgi + ')', backgroundColor: slide.bgc, ...this.customStyles(slide.bgSettings) };
+    // },
     prevSlide() {
       this.swiper.slidePrev();
     },
@@ -188,13 +239,13 @@ export default {
     },
     customStyles(slide) {
       var screen = "";
-      Object.keys(slide.settings.mobile).forEach(size => {
+      Object.keys(slide.mobile).forEach(size => {
         if (innerWidth < size) screen = size;
       });
       if (screen) {
-        return slide.settings.mobile[screen];
+        return slide.mobile[screen];
       } else {
-        return slide.settings.main;
+        return slide.main;
       }
     },
     clickBtnSlide(url) {
@@ -224,13 +275,16 @@ export default {
 <style scoped lang="scss">
 .slider-main {
   position: relative;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
 }
 .custom-slide {
   width: 100%;
-  min-height: 700px;
+  min-height: 35vw;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  display: flex;
+  align-items: center;
 }
 .swiper,
 .swiper-wrapper {
@@ -241,20 +295,18 @@ export default {
   text-align: center;
   display: block;
   position: absolute;
-  top: 35%;
-  left: 60%;
-  max-width: 400px;
+  // max-width: 400px;
   font-size: 22px;
   h2 {
     font-family: $font_neue_kabel;
-    font-size: 1.8em;
-    font-weight: 500;
+    font-size: 2.7em;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.5;
     letter-spacing: normal;
     text-align: center;
     color: #000000;
+    font-weight: bold;
   }
   p {
     font-family: $font_montserrat_regular;
@@ -268,8 +320,9 @@ export default {
     color: $text_color;
   }
   .slide-btn {
-    margin-top: 35px;
-    padding: 13.5px 40px;
+    margin-top: 1.2em;
+    padding: 1em 3em;
+    font-size: 0.8em;
   }
 }
 .swiper-pagination-bullets {
@@ -278,28 +331,31 @@ export default {
   bottom: 20px;
   text-align: center;
   span {
-    width: 36px;
-    height: 36px;
+    width: 20px;
+    height: 20px;
     display: inline-block;
     background: #fff;
     opacity: 0.6;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     margin-right: 20px;
+    cursor: pointer;
     &.active {
       background: $purple_color_btn;
     }
   }
+  span:last-child{
+    margin-right: 0;
+  }
 }
 
 .slider-btn {
-  display: block;
   position: absolute;
   top: calc(50% - 23px);
   width: 46px;
   height: 46px;
   cursor: pointer;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   background-size: contain;
@@ -379,6 +435,9 @@ export default {
     //   width: 14px;
     // }
   }
+  .custom-slide {
+    min-height: 50vw;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -388,15 +447,30 @@ export default {
   .slider-btn__prev {
     left: 5px;
   }
-  .custom-slide {
-    min-height: 450px;
-  }
-  .swiper-pagination-bullets span {
-    width: 14px;
-    height: 14px;
+  
+  .swiper-pagination-bullets{
+    bottom: 3px;
+     span {
+      width: 14px;
+      height: 14px;
+    }
   }
   .slider-btn {
     display: none;
+  }
+  .custom-slide {
+    min-height: 450px;
+  }
+  .slide-wrap-content {
+    h2 {
+      font-size: 2.7em;
+    }
+    p {
+      font-size: 1.8em;
+    }
+  }
+  .slide-wrap-content .slide-btn {
+    font-size: 1.2em;
   }
 }
 </style>

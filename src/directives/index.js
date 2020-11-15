@@ -36,3 +36,23 @@ Vue.directive("onDesctopShow", {
     window.addEventListener("resize", modify, { passive: true });
   }
 });
+
+Vue.directive("splitTitle", {
+  bind(el) {
+    
+    console.log(el.clientWidth);
+    function modify() {
+      if(el.clientWidth > 0){
+        const countOfSymbols = Math.floor((el.clientWidth - 20) / 20 * 2);
+        console.log('countOfSymbols', el.clientWidth);
+        console.log('countOfSymbols12', countOfSymbols);
+        if(el.innerText.length > countOfSymbols){
+          el.innerText =  el.innerText.substring(0, 53) + '...';
+        }
+      }
+    }
+    setTimeout(() => {modify();}, 0)
+    
+    window.addEventListener("resize", modify, { passive: true });
+  }
+});

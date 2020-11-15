@@ -274,4 +274,10 @@ export default {
     max-width: 95vw;
   }
 }
+@media only screen and (max-width: 480px) {
+    .purple-custom-btn,
+    .red-custom-btn{
+      width: 100%;
+    }
+}
 </style>

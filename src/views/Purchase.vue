@@ -1,6 +1,6 @@
 <template>
 <section>
-  <Header />
+  <HeaderMain />
   <b-container fluid="xl" class="mt-5">
     <b-row>
       <b-col cols="12">
@@ -19,17 +19,20 @@
       </b-col>
     </b-row>
   </b-container>
-  <ProductSlider/>
+  <ProductSlider title="Items You Might Like"/>
+  <FooterMain />
 </section>
 </template>
 
 <script>
 import ProductSlider from "@/components/StaticComponents/ProductSlider/ProductSlider";
 import RedButton from "@/components/Buttons/RedButton";
-import Header from "@/components/Header/Header";
+import HeaderMain from "@/components/Header/HeaderMain";
+import FooterMain from "@/components/Footer/FooterMain";
+
 export default {
 name: "Purchase",
-  components: {Header, RedButton, ProductSlider}
+  components: {HeaderMain, RedButton, ProductSlider, FooterMain}
 }
 </script>
 

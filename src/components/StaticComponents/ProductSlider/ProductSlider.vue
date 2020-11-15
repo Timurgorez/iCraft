@@ -175,6 +175,7 @@ export default {
   margin: 0 90px;
   overflow: hidden;
   width: 100%;
+  z-index: 0;
 }
 
 .slider-btn {
@@ -187,7 +188,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 0;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 50%;

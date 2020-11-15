@@ -72,7 +72,8 @@ export default {
     border-right: 1px solid #dadada;
     border-radius: 0;
     height: 80%;
-    width: 70px;
+    width: 170px;
+    max-width: 20%;
     font-family: $font_montserrat_regular;
     color: $text_color;
     &:focus {

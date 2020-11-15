@@ -6,7 +6,7 @@
       group="app-product"
       position="top center"
     />
-    <HeaderMain />
+    <HeaderMain  :showFilterBtn="true"/>
 
     <SliderMain :showBackLink="true" />
 

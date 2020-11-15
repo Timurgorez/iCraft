@@ -1,7 +1,7 @@
 <template>
   <div class="seller-info">
     <div class="seller-info__main d-flex flex-wrap flex-row mb-4 justify-content-sm-center justify-content-center justify-content-xl-start justify-content-md-start justify-content-lg-start">
-      <div class="seller-info__photo mr-3 d-flex flex-row align-items-end"  :style="{ backgroundImage: 'url(/tmp/group-10.jpg)' }">
+      <div class="seller-info__photo mr-3 d-flex flex-row align-items-end"  :style="{ backgroundImage: 'url(./tmp/group-10.jpg)' }">
        <div class="seller-info__info">
         <div class="seller-info__verify-seller"></div>
         <div class="custom-request__hint"></div>

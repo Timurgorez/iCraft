@@ -1,6 +1,6 @@
 <template>
   <div class="bag-page">
-    <HeaderWhite />
+    <HeaderMain />
     <notifications
       class="custom-notification-wrap"
       classes="custom-notification"
@@ -212,14 +212,14 @@
     />
     <AddNewAddress />
     <ProductSlider bgc="#fff" title="Saved For Later (6 items)" />
-    <Footer />
+    <FooterMain />
   </div>
 </template>
 <script>
 // import { mapGetters, mapActions } from "vuex";
 
-import HeaderWhite from "../components/Header/HeaderWhite.vue";
-import Footer from "../components/Footer/Footer.vue";
+import HeaderMain from "../components/Header/HeaderMain.vue";
+import FooterMain from "../components/Footer/FooterMain.vue";
 import ProductSlider from "../components/StaticComponents/ProductSlider/ProductSlider.vue";
 import TableProduct from "../components/Checkout/TableProduct.vue";
 import OrderSummary from "../components/Checkout/OrderSummary.vue";
@@ -260,8 +260,8 @@ export default {
     };
   },
   components: {
-    HeaderWhite,
-    Footer,
+    HeaderMain,
+    FooterMain,
     ProductSlider,
     TableProduct,
     OrderSummary,
