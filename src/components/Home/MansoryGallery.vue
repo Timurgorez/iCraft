@@ -102,7 +102,7 @@ export default {
   overflow: hidden;
   .go-to-collection {
     position: absolute;
-    bottom: 15px;
+    bottom: 50px;
     right: calc(50% - 150px);
   }
   &:hover {

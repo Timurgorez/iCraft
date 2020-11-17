@@ -120,10 +120,6 @@ export default {
   },
   computed: {
     products() {
-      console.log(
-        "this.$store.getters.productSlider  --- ",
-        this.$store.getters.productSlider
-      );
       return this.$store.getters.productSlider;
     },
     swiper() {
@@ -131,8 +127,6 @@ export default {
     }
   },
   mounted() {
-    console.log("Current Swiper instance object", this.swiper);
-    // this.swiper.slideTo(3, 1000, false);
   }
 };
 </script>

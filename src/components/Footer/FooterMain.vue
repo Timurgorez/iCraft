@@ -5,7 +5,7 @@
         cols="12"
         lg="4"
         md="12"
-        class="pb-3 pt-3 text-xl-left text-lg-left text-center"
+        class="pb-3 pt-3 pl-xl-5 text-xl-left text-lg-left text-center"
       >
         <img
           class="footer-block__image"
@@ -154,7 +154,7 @@ export default {
   .footer-block__text,
   .footer-block__text a {
     color: $footer_font_color;
-    font-size: 16px;
+    font-size: 14px;
     font-family: $font_montserrat_medium;
     margin-bottom: 0;
     text-align: center;
@@ -219,6 +219,13 @@ export default {
   }
   .footer-block__social-wrap {
     padding-left: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .footer-block .footer-block__image {
+      max-width: 290px;
+      margin: 13px 0px;
   }
 }
 </style>

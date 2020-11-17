@@ -63,6 +63,7 @@
             </div>
 
             <div class="quantity">
+              <span>Quantity:</span>
               <integer-plusminus
                 :min="quantity_min"
                 :max="quantity_max"
@@ -146,7 +147,7 @@
                       <li class="product-info__main-info-item list-mb">
                         Size:
                       </li>
-                    </ul>
+                    </ul>F
                     <div class="product-info__list-data">
                       <div
                         class="product-info__color d-flex flex-row flex-wrap align-items-center list-mb"
@@ -508,6 +509,16 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+::v-deep .card{
+  background-color: transparent;
+}
+::v-deep .product-card .product-card__image{
+  border: 2px solid #f2f2f2;
+  &:hover{
+    border-color: #d6d6d6;
+  }
+}
+
 .main-actions h3 {
   font-family: $font_neue_kabel;
   font-size: 30px;
@@ -606,10 +617,15 @@ export default {
 
 .quantity {
   margin-bottom: 30px;
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   & > span {
     font-family: $font_montserrat_regular;
     font-size: 16px;
+    display: inline-block;
+    min-width: 95px;
+    padding-right: 15px;
   }
 }
 

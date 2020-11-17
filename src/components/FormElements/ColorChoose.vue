@@ -117,6 +117,8 @@ export default {
     display: inline-block;
     min-width: 95px;
     padding-right: 15px;
+    font-family: $font_montserrat_regular;
+    font-size: 16px;
   }
 }
 

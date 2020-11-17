@@ -166,7 +166,7 @@ import MansoryGalleryLink from "../components/Home/MansoryGalleryLink.vue";
 import ProductSlider from "../components/StaticComponents/ProductSlider/ProductSlider.vue";
 import RedButton from "@/components/Buttons/RedButton.vue";
 import TrendingNow from "@/components/StaticComponents/TrendingNow.vue";
-import NewArrivals from "@/components/Home/NewArrivals.vue";
+import NewArrivals from "@/components/NewArrivals/NewArrivals.vue";
 // import LatestCommunityNews from "@/components/Community/LatestCommunityNews.vue";
 
 export default {
@@ -465,8 +465,8 @@ export default {
 .new-arrivals__wrap {
   background-image: url("../../public/tmp/home_page/bg_sherst.jpg");
   background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat-x;
+  background-size: contain;
   padding-bottom: 100px;
 
   margin-bottom: 60px;

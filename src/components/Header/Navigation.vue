@@ -115,7 +115,7 @@
           <div class="header-main__wrap-sublink">
             <b-row>
               <b-col cols="12" lg="2" class="mb-3">
-                <h3>Women’s Jewelry</h3>
+                <h3>Women’s Jewelry 2</h3>
                 <img
                   class="main-category-img"
                   src="@/assets/nav/im-1.jpg"
@@ -223,7 +223,7 @@
           <div class="header-main__wrap-sublink">
             <b-row>
               <b-col cols="12" lg="2" class="mb-3">
-                <h3>Women’s Jewelry</h3>
+                <h3>Women’s Jewelry 3</h3>
                 <img
                   class="main-category-img"
                   src="@/assets/nav/im-1.jpg"
@@ -592,7 +592,10 @@
           </div>
         </li>
       </ul>
-      <a href="#" class="nav-link without-line nav-link__community"><span></span>Community</a>
+      
+      <router-link class="nav-link without-line nav-link__community" :to="{ name: 'Community' }">
+        <span></span>Community
+      </router-link>
     </div>
   </b-row>
 </template>

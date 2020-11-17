@@ -52,6 +52,10 @@
   font-style: normal;
 }
 
+.row{
+  flex: 1 0 100%;
+}
+
 body {
   font-size: 16px;
 }
@@ -114,6 +118,7 @@ a:hover {
   align-items: center !important;
   border-radius: 2px !important;
   border: solid 1px $border_hover_grey_color !important;
+  border-radius: 2px !important;
   background-color: #ffffff !important;
   display: flex;
   margin-right: 20px;
@@ -123,19 +128,28 @@ a:hover {
 }
 .int-pm-decrement,
 .int-pm-increment {
-  height: 47px !important;
-  width: 50px !important;
+  height: 43px !important;
+  width: 45px !important;
   background: #fff !important;
   border: none !important;
   display: inline-block;
   color: $border_hover_grey_color;
   font-size: 26px;
+  &:hover{
+    background-color: #f9e6ff !important;
+  }
+}
+.int-pm-decrement{
+  border-right: 1px solid $border_hover_grey_color !important;
+}
+.int-pm-increment{
+  border-left: 1px solid $border_hover_grey_color !important;
 }
 .int-pm-value {
   border: none !important;
   display: inline-block;
   // min-width: 40px;
-  padding: 0 5px;
+  padding: 0 17px !important;
 }
 .int-pm-decrement,
 .int-pm-increment {

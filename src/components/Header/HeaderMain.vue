@@ -98,12 +98,12 @@ export default {
   background-size: 120%;
   background-repeat: no-repeat;
   position: relative;
-  z-index: 1;
+  z-index: 3;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   background: #fff;
-  box-shadow: 0 11px 16px 0 rgba(38, 38, 38, 0.15);
+  // box-shadow: 0 11px 16px 0 rgba(38, 38, 38, 0.15);
   justify-content: space-between;
 }
 .header-main__top {

@@ -446,7 +446,12 @@ export default {
   }
 }
 
-
+::v-deep .product-card .product-card__image{
+  border: 2px solid #f2f2f2;
+  &:hover{
+    border-color: #d6d6d6;
+  }
+}
 
 @media only screen and (max-width: 1400px) {
   .header-block__text {

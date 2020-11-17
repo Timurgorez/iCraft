@@ -58,7 +58,6 @@
 
 <script>
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import "swiper/swiper.scss";
 
 import RedButton from "@/components/Buttons/RedButton.vue";
 
@@ -67,12 +66,13 @@ export default {
   data() {
     return {
       activeIndex: 0,
-      loop: true,
-      autoplay: {
-        delay: 2500
-      },
+      
       swiperOptions: {
         slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 2500
+        },
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
@@ -108,7 +108,7 @@ export default {
               768: {
                 backgroundImage: "url(./tmp/slider/bgMobile.jpg)",
                 backgroundColor: "#f2f3ee",
-                backgroundPosition: "50% 117%"
+                backgroundPosition: "50% 53%"
               }
             }
           },
@@ -147,14 +147,14 @@ export default {
               768: {
                 backgroundImage: 'url(./tmp/slider/bgMobile.jpg)',
                 backgroundColor: "#f2f3ee",
-                backgroundPosition: "50% 117%"
+                backgroundPosition: "50% 53%"
               }
             }
           },
           settingsTextBlock: {
             main: {
               maxWidth: "600px",
-              left: "60%",
+              left: "45%",
             },
             mobile: {
               768: {
@@ -186,7 +186,7 @@ export default {
               768: {
                 backgroundImage: 'url(./tmp/slider/bgMobile.jpg)',
                 backgroundColor: "#f2f3ee",
-                backgroundPosition: "50% 117%"
+                backgroundPosition: "50% 53%"
               }
             }
           },
@@ -268,6 +268,8 @@ export default {
     this.swiper.on("slideChange", () => {
       this.activeIndex = this.swiper.realIndex;
     });
+    console.log(this.swiper.autoplay);
+    this.swiper.autoplay.start();
   }
 };
 </script>
@@ -302,7 +304,7 @@ export default {
     font-size: 2.7em;
     font-stretch: normal;
     font-style: normal;
-    line-height: 1.5;
+    line-height: 1;
     letter-spacing: normal;
     text-align: center;
     color: #000000;
@@ -396,6 +398,7 @@ export default {
   position: absolute;
   bottom: -117px;
   left: 20px;
+  z-index: 1;
   &__link {
     font-family: $font_montserrat_regular;
     font-size: 20px;

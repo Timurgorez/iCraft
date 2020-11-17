@@ -7,6 +7,7 @@ import CheckoutPage from "@/views/CheckoutPage";
 import Purchase from "@/views/Purchase";
 import CollectionPageNew from "@/views/CollectionPageNew";
 import HomePage from "@/views/HomePage";
+import Community from "@/views/Community";
 
 Vue.use(VueRouter);
 
@@ -51,6 +52,11 @@ export default new VueRouter({
       path: "/purchase",
       name: "Purchase",
       component: Purchase
+    },
+    {
+      path: "/community",
+      name: "Community",
+      component: Community
     }
   ],
   scrollBehavior(to, from, savedPosition) {
