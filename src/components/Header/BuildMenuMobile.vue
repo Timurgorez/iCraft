@@ -725,7 +725,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .header-main__ul {
-  max-height: calc(80vh - 62px);
+  max-height: calc(85vh - 62px);
   overflow-y: auto;
   list-style-type: none;
   margin: 0;
