@@ -14,7 +14,7 @@
         <b-col cols="12">
           <div class="back-to-products">
             <router-link
-              :to="{ name: 'CollectionPage' }"
+              :to="{ name: 'CollectionPageNew' }"
               class="back-to-products__link"
               ><span class="back-to-products__icon"></span>Back To All Products
             </router-link>
@@ -147,7 +147,7 @@
                       <li class="product-info__main-info-item list-mb">
                         Size:
                       </li>
-                    </ul>F
+                    </ul>
                     <div class="product-info__list-data">
                       <div
                         class="product-info__color d-flex flex-row flex-wrap align-items-center list-mb"

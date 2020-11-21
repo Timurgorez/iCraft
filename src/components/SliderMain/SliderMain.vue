@@ -476,4 +476,14 @@ export default {
     font-size: 1.2em;
   }
 }
+
+@media only screen and (max-width: 580px) {
+  .back-to-products__link{
+    font-size: 16px;
+    .back-to-products__icon {
+      height: 14px;
+      width: 14px;
+    }
+  }
+}
 </style>

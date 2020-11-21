@@ -113,6 +113,7 @@ export default {
 
 @media only screen and (max-width: 580px) {
   .product-rating__star-wrap {
+    margin-right: 3px;
     img {
       height: 12px;
     }
@@ -125,8 +126,8 @@ export default {
     font-size: 14px;
   }
   .star{
-    width: 22px;
-    height: 22px;
+    width: 14px;
+    height: 14px;
   }
 }
 </style>

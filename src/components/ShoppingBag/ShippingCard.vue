@@ -145,6 +145,28 @@ export default {
   }
 }
 
+@media (max-width: 480px) {
+  .delivery-date {
+    margin: 0 auto 20px;
+  }
+  
+  .shipment-info__address {
+    margin: 7px 0;
+    .shipment-info__gray-box {
+      min-width: 260px;
+    }
+    .title-text {
+      font-size: 16px;
+    }
+  }
+  .shipping-action-btn {
+    font-size: 14px;
+    &:before {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
 
 @media (max-width: 380px) {
   .shipment-info__gray-box {

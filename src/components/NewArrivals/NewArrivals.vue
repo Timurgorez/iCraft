@@ -88,7 +88,7 @@ export default {
       for(let i = 0; i < this.countPerView; i++){
         setTimeout(() => {
           this.productsItems.splice(i, 1, this.products[Math.floor(Math.random() * this.products.length)]);
-        }, i * 500)
+        }, i * 300)
       }
     }, 5000)
 
@@ -123,7 +123,7 @@ export default {
   position: relative;
   .new-arrivals__li{
     margin-right: 10px;
-    animation: fade 0.5s ease-in-out;
+    animation: fade 0.3s ease-in-out;
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);

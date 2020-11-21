@@ -275,9 +275,26 @@ export default {
   }
 }
 @media only screen and (max-width: 480px) {
-    .purple-custom-btn,
-    .red-custom-btn{
-      width: 100%;
+  .purple-custom-btn,
+  .red-custom-btn{
+    width: 100%;
+  }
+  .shipment-info__address {
+    margin: 7px 0;
+    .shipment-info__gray-box {
+      min-width: 230px;
     }
+    .title-text {
+      font-size: 16px;
+    }
+  }
+  .shipping-action-btn {
+    font-size: 14px;
+    &:before {
+      width: 20px;
+      height: 20px;
+    }
+  }
+    
 }
 </style>

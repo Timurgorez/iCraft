@@ -71,7 +71,7 @@
           >
         </div>
 
-        <ProductRating v-if="showRating" :rating="item.rating" size="22px" />
+        <ProductRating v-if="showRating" :rating="item.rating" />
 
         <div class="product-icons">
           <ProductIcon

@@ -2,9 +2,11 @@
   <div class="shipment-info mt-4 mb-4">
     <div class="shipment-info__title d-flex flex-row justify-content-between">
       <div class="shipment-info__text">
-        <h3 class="title-text"><span>SHIPMENT 1</span> ({{quantity}} Products)</h3>
+        <h3 class="title-text"><span>SHIPMENT {{index + 1}}</span> ({{quantity}} Products)</h3>
       </div>
-      <div class="shipment-info__edit">EDIT</div>
+      <router-link :class="['shipment-info__edit']" :to="{ name: 'ShoppingBag' }">
+        EDIT
+      </router-link>
     </div>
     <div class="shipment-info__product-images d-flex d-sm-flex d-md-none d-lg-none d-xl-none">
       <div class="image-wrapper" v-for="product in products"
@@ -12,17 +14,20 @@
         <div class="div-img" :style="{'background-image': 'url('+ product.images[0] +')'}" />
       </div>
     </div>
-    <div class="shipment-info__address">
+    <div v-if="selectedAddress" class="shipment-info__address">
       <div class="shipment-info__gray-box">
         <h3 class="title-text">Shipping Address</h3>
-        <p class="sub-text">Kelly Hoffman <br>
-          2349 Boston ST SE Apt 2 <br>
-          Albany, OR 97321 <br>
-          United States (US)
+        <p class="sub-text">
+          {{ selectedAddress.name }} <br />
+          {{ selectedAddress.zip_code }}
+          {{ selectedAddress.address }} <br />
+          {{ selectedAddress.state }}<br />
+          {{ selectedAddress.country }}
         </p>
         <div class="same-billing-address d-flex align-items-end mb-2">Same as Billing Address</div>
       </div>
     </div>
+    <div v-else class="not-select-address">Click "EDIT" and select shipping address</div>
     <div class="shipment-info__delivery">
       <h3 class="title-text">Delivery Options</h3>
       <p class="sub-text">Expedited Shipping by Canada Post (+ $25.00)</p>
@@ -37,15 +42,35 @@ export default {
   name: "ShipmentInfo",
   props: {
     quantity: Number,
-    products: Array
+    products: Array,
+    index: Number
+  },
+  computed: {
+    selectedAddress(){
+      return this.$store.getters.getSelectedAddressBySellerId(this.products[0].seller.id);
+    }
   },
   methods: {
 
+  },
+  mounted(){
+    console.log('ERWT', this.$store.getters.getSelectedAddressBySellerId(this.products[0].seller.id));
   }
 }
 </script>
 
 <style scoped lang="scss">
+.not-select-address{
+  font-family: $font_montserrat_regular;
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: $text_color_red;
+  margin: 25px 0;
+}
 .shipment-info {
 
   .title-text {
@@ -84,7 +109,7 @@ export default {
     line-height: normal;
     letter-spacing: normal;
     display: flex;
-
+    color: #212529;
     &::before {
       content: url("~@/assets/edit.svg");
       width: 30px;

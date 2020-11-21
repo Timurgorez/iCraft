@@ -3,7 +3,7 @@
     <b-container class="header-main-mobile" fluid>
       <b-row class="header-main-mobile__top">
         <b-col cols="6" xl="3" lg="4" class="header-logo">
-          <router-link :to="{ name: 'CollectionPageNew' }">
+          <router-link :to="{ name: 'HomePage' }">
             <img
               src="~@/assets/desctop/pages/collectionPage/group.png"
               alt="iCraft Logo"

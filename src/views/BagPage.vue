@@ -156,7 +156,7 @@
                           Select Address
                         </button>
                         <div
-                        class=""
+                        class="mr-3"
                           v-if="
                             (selectedAddress && selectedAddress[sellerId]) ||
                               defaultAddress
@@ -170,7 +170,7 @@
                         </div>
 
                         <button
-                          class="shipping-action-btn shipping-action-btn__addNew ml-3"
+                          class="shipping-action-btn shipping-action-btn__addNew ml-md-3"
                           @click="addNewAddress"
                         >
                           Add New
@@ -578,10 +578,12 @@ export default {
   .shipping-action-btn__addNew {
     margin: 20px 0;
   }
-  .shipment-info__address {
-    .shipment-info__gray-box {
-      width: 320px;
-    }
-  }
+  // .shipment-info__address {
+  //   .shipment-info__gray-box {
+  //     width: 260px;
+  //   }
+  // }
+  
+    
 }
 </style>

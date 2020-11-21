@@ -1,9 +1,10 @@
 <template>
   <ul class="header-main__ul" ref="menuMobile">
-    <!-- <ul class="header-main__ul" ref="menuMobile"> -->
-
     <li v-for="(elem, index) in menu" :key="index" :class="['header-main__li', {' header-main__li-more': elem.name == 'More'}]">
-      <a :href="elem.url" @click="goDeepMenu" :class="['nav-link', {'has-children': elem.children }]">{{elem.name}}</a>
+      <a v-if="elem.children" :href="elem.url" @click="goDeepMenu" :class="['nav-link', {'has-children': elem.children }]">{{elem.name}}</a>
+      <router-link v-else :class="['nav-link', {'has-children': elem.children }]" @click="goDeepMenu" :to="{ name: elem.url }">
+        {{elem.name}}
+      </router-link>
       <ul v-if="elem.children" class="header-main__wrap-sublink">
         <li class="header-main__li">
           <a class="nav-link go-back" @click.prevent="goBack" href="#">
@@ -11,7 +12,10 @@
           </a>
         </li>
         <li v-for="(subElem, index) in elem.children" :key="index" class="header-main__li">
-          <a :href="subElem.url" @click="goDeepMenu" :class="['nav-link', {'has-children': subElem.children }]">{{subElem.name}}</a>
+          <a v-if="subElem.children" :href="subElem.url" @click="goDeepMenu" :class="['nav-link', {'has-children': subElem.children }]">{{subElem.name}}</a>
+          <router-link v-else :class="['nav-link', {'has-children': subElem.children }]" @click="goDeepMenu" :to="{ name: subElem.url }">
+            {{subElem.name}}
+          </router-link>
           <ul v-if="subElem.children" class="header-main__wrap-sublink">
             <li class="header-main__li">
               <a class="nav-link go-back" @click.prevent="goBack" href="#">
@@ -19,7 +23,10 @@
               </a>
             </li>
             <li v-for="(subSubElem, index) in subElem.children" :key="index" class="header-main__li">
-              <a :href="subSubElem.url" @click="goDeepMenu" :class="['nav-link', {'has-children': subSubElem.children }]">{{subSubElem.name}}</a>
+              <a v-if="subSubElem.children" :href="subSubElem.url" @click="goDeepMenu" :class="['nav-link', {'has-children': subSubElem.children }]">{{subSubElem.name}}</a>
+              <router-link v-else :class="['nav-link', {'has-children': subSubElem.children }]" @click="goDeepMenu" :to="{ name: subSubElem.url }">
+                {{subSubElem.name}}
+              </router-link>
               <ul v-if="subSubElem.children" class="header-main__wrap-sublink">
                 <li class="header-main__li">
                   <a class="nav-link go-back" @click.prevent="goBack" href="#">
@@ -27,7 +34,10 @@
                   </a>
                 </li>
                 <li v-for="(subSubSubElem, index) in subSubElem.children" :key="index" class="header-main__li">
-                  <a :href="subSubSubElem.url" @click="goDeepMenu" :class="['nav-link']">{{subSubSubElem.name}}</a>
+                  <!-- <a :href="subSubSubElem.url" @click="goDeepMenu" :class="['nav-link']"></a> -->
+                  <router-link class="nav-link" @click="goDeepMenu" :to="{ name: subSubSubElem.url }">
+                    {{subSubSubElem.name}}
+                  </router-link>
                 </li>
               </ul>
             </li>
@@ -35,548 +45,9 @@
         </li>
       </ul>
     </li>
-
-    <!-- <li class="header-main__li">
-      <a href="#" @click.prevent="goDeepMenu" class="nav-link has-children"
-        >Jewelry</a
-      >
-      <ul class="header-main__wrap-sublink">
-        <li class="header-main__li">
-          <a class="nav-link go-back" @click.prevent="goBack" href="#"
-            ><b>Jewelry</b></a
-          >
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link has-children" @click.prevent="goDeepMenu" href="#"
-            >Anklets</a
-          >
-          <ul class="header-main__wrap-sublink">
-            <li class="header-main__li">
-              <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                >Anklets</a
-              >
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chains</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chokers</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Earrings</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Hair Pins</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Necklaces</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Rings</a>
-            </li>
-          </ul>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Brooches & Pins</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Bracelets</a>
-        </li>
-        <li class="header-main__li">
-          <a class="has-children nav-link" @click.prevent="goDeepMenu" href="#"
-            >Chains</a
-          >
-          <ul class="header-main__wrap-sublink">
-            <li class="header-main__li">
-              <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                >Chains</a
-              >
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">sfgsfgsf</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chokers</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Earrings</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Hair Pins</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Necklaces</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Rings</a>
-            </li>
-          </ul>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Chokers</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Earrings</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Hair Pins</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Necklaces</a>
-        </li>
-        <li class="header-main__li"><a class="nav-link" href="#">Rings</a></li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Brooches, Pins & Clips</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Beach Jewelry</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Nature Jewelry</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Silver Hoops</a>
-        </li>
-      </ul>
-    </li>
-    <li class="header-main__li">
-      <a href="#" @click.prevent="goDeepMenu" class="nav-link has-children"
-        >Clothing</a
-      >
-      <ul class="header-main__wrap-sublink">
-        <li class="header-main__li">
-          <a class="nav-link go-back" @click.prevent="goBack" href="#"
-            ><b>Clothing</b></a
-          >
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link has-children" @click.prevent="goDeepMenu" href="#"
-            >Anklets</a
-          >
-          <ul class="header-main__wrap-sublink">
-            <li class="header-main__li">
-              <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                ><b>Anklets</b></a
-              >
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chains</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chokers</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Earrings</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Hair Pins</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Necklaces</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Rings</a>
-            </li>
-          </ul>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Brooches & Pins</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Bracelets</a>
-        </li>
-        <li class="header-main__li">
-          <a class="has-children nav-link" @click.prevent="goDeepMenu" href="#"
-            >Chains</a
-          >
-          <ul class="header-main__wrap-sublink">
-            <li class="header-main__li">
-              <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                ><b>Chains</b></a
-              >
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">sfgsfgsf</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chokers</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Earrings</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Hair Pins</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Necklaces</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Rings</a>
-            </li>
-          </ul>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Chokers</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Earrings</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Hair Pins</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Necklaces</a>
-        </li>
-        <li class="header-main__li"><a class="nav-link" href="#">Rings</a></li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Brooches, Pins & Clips</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Beach Jewelry</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Nature Jewelry</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Silver Hoops</a>
-        </li>
-      </ul>
-    </li>
-    <li class="header-main__li">
-      <a href="#" @click.prevent="goDeepMenu" class="nav-link has-children"
-        >Accessories</a
-      >
-      <ul class="header-main__wrap-sublink">
-        <li class="header-main__li">
-          <a class="nav-link go-back" @click.prevent="goBack" href="#"
-            ><b>Accessories</b></a
-          >
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link has-children" @click.prevent="goDeepMenu" href="#"
-            >Anklets</a
-          >
-          <ul class="header-main__wrap-sublink">
-            <li class="header-main__li">
-              <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                ><b>Anklets</b></a
-              >
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chains</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chokers</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Earrings</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Hair Pins</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Necklaces</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Rings</a>
-            </li>
-          </ul>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Brooches & Pins</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Bracelets</a>
-        </li>
-        <li class="header-main__li">
-          <a class="has-children nav-link" @click.prevent="goDeepMenu" href="#"
-            >Chains</a
-          >
-          <ul class="header-main__wrap-sublink">
-            <li class="header-main__li">
-              <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                ><b>Chains</b></a
-              >
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">sfgsfgsf</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chokers</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Earrings</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Hair Pins</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Necklaces</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Rings</a>
-            </li>
-          </ul>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Chokers</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Earrings</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Hair Pins</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Necklaces</a>
-        </li>
-        <li class="header-main__li"><a class="nav-link" href="#">Rings</a></li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Brooches, Pins & Clips</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Beach Jewelry</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Nature Jewelry</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Silver Hoops</a>
-        </li>
-      </ul>
-    </li>
-    <li class="header-main__li">
-      <a href="#" @click.prevent="goDeepMenu" class="nav-link has-children"
-        >Home Decor</a
-      >
-      <ul class="header-main__wrap-sublink">
-        <li class="header-main__li">
-          <a class="nav-link go-back" @click.prevent="goBack" href="#"
-            ><b>Home Decor</b></a
-          >
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link has-children" @click.prevent="goDeepMenu" href="#"
-            >Anklets</a
-          >
-          <ul class="header-main__wrap-sublink">
-            <li class="header-main__li">
-              <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                ><b>Anklets</b></a
-              >
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chains</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chokers</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Earrings</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Hair Pins</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Necklaces</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Rings</a>
-            </li>
-          </ul>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Brooches & Pins</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Bracelets</a>
-        </li>
-        <li class="header-main__li">
-          <a class="has-children nav-link" @click.prevent="goDeepMenu" href="#"
-            >Chains</a
-          >
-          <ul class="header-main__wrap-sublink">
-            <li class="header-main__li">
-              <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                >Chains</a
-              >
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">sfgsfgsf</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chokers</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Earrings</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Hair Pins</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Necklaces</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Rings</a>
-            </li>
-          </ul>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Chokers</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Earrings</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Hair Pins</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Necklaces</a>
-        </li>
-        <li class="header-main__li"><a class="nav-link" href="#">Rings</a></li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Brooches, Pins & Clips</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Beach Jewelry</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Nature Jewelry</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Silver Hoops</a>
-        </li>
-      </ul>
-    </li>
-    <li class="header-main__li">
-      <a href="#" @click.prevent="goDeepMenu" class="nav-link">Bath & Body</a>
-    </li>
-    <li class="header-main__li">
-      <a href="#" @click.prevent="goDeepMenu" class="nav-link">Toys & Games</a>
-    </li>
-    <li class="header-main__li header-main__li-more">
-      <a href="#" @click.prevent="goDeepMenu" class="nav-link has-children"
-        >More</a
-      >
-      <ul class="header-main__wrap-sublink">
-        <li class="header-main__li">
-          <a class="nav-link go-back" @click.prevent="goBack" href="#"
-            ><b>More</b></a
-          >
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link has-children" @click.prevent="goDeepMenu" href="#"
-            >Anklets</a
-          >
-          <ul class="header-main__wrap-sublink">
-            <li class="header-main__li">
-              <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                >Anklets</a
-              >
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chains</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chokers</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Earrings</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Hair Pins</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Necklaces</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Rings</a>
-            </li>
-          </ul>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Brooches & Pins</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Bracelets</a>
-        </li>
-        <li class="header-main__li">
-          <a class="has-children nav-link" @click.prevent="goDeepMenu" href="#"
-            >Chains</a
-          >
-          <ul class="header-main__wrap-sublink">
-            <li class="header-main__li">
-              <a class="nav-link go-back" @click.prevent="goBack" href="#"
-                >Chains</a
-              >
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">sfgsfgsf</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Chokers</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Earrings</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Hair Pins</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Necklaces</a>
-            </li>
-            <li class="header-main__li">
-              <a class="nav-link" href="#">Rings</a>
-            </li>
-          </ul>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Chokers</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Earrings</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Hair Pins</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Necklaces</a>
-        </li>
-        <li class="header-main__li"><a class="nav-link" href="#">Rings</a></li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Brooches, Pins & Clips</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Beach Jewelry</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Nature Jewelry</a>
-        </li>
-        <li class="header-main__li">
-          <a class="nav-link" href="#">Silver Hoops</a>
-        </li>
-      </ul>
-    </li>
-    <li class="header-main__li">
-      <a href="#" @click.prevent="goDeepMenu" class="nav-link has-children"
-        >Community</a
-      >
-    </li>
-    <li class="header-main__li">
-      <a href="#" @click.prevent="goDeepMenu" class="nav-link has-children"
-        >Sell Handmade</a
-      >
-    </li>
-    <li class="header-main__li">
-      <a href="#" @click.prevent="goDeepMenu" class="nav-link has-children"
-        >My Account</a
-      >
-    </li> -->
   </ul>
 </template>
 <script>
-// import FilterMobile from "@/components/FilterProduct/FilterMobile.vue";
-// import BuildMenuMobile from "@/components/Header/BuildMenuMobile.vue";
 
 export default {
   name: "BuildMenuMobile",
@@ -585,106 +56,106 @@ export default {
       menu: [
         {
           name: 'Jewelry',
-          url: '#', 
+          url: "HomePage", 
           children: [
-            {name: 'All Jewelry', url: '#'},
-            {name: 'Anklets', url: '#'},
-            {name: 'Beach Jewelry', url: '#'},
-            {name: 'Bracelets', url: '#', children: [
-              {name: 'level1.4.1', url: '#'},
-              {name: 'level1.4.2', url: '#'},
-              {name: 'level1.4.3', url: '#'},
-              {name: 'level1.4.4', url: '#'},
-              {name: 'level1.4.5', url: '#'},
-              {name: 'level1.4.6', url: '#'},
-              {name: 'level1.4.7', url: '#'},
+            {name: 'All Jewelry', url: "HomePage"},
+            {name: 'Anklets', url: "HomePage"},
+            {name: 'Beach Jewelry', url: "HomePage"},
+            {name: 'Bracelets', url: "HomePage", children: [
+              {name: 'level1.4.1', url: "HomePage"},
+              {name: 'level1.4.2', url: "HomePage"},
+              {name: 'level1.4.3', url: "HomePage"},
+              {name: 'level1.4.4', url: "HomePage"},
+              {name: 'level1.4.5', url: "HomePage"},
+              {name: 'level1.4.6', url: "HomePage"},
+              {name: 'level1.4.7', url: "HomePage"},
             ]},
-            {name: 'Bridal Jewelry', url: '#'},
-            {name: 'Brooches & Pins', url: '#'},
-            {name: 'Celtic', url: '#'},
-            {name: 'Chains', url: '#'},
-            {name: 'Chokers', url: '#'},
-            {name: 'Earrings', url: '#'},
+            {name: 'Bridal Jewelry', url: "HomePage"},
+            {name: 'Brooches & Pins', url: "HomePage"},
+            {name: 'Celtic', url: "HomePage"},
+            {name: 'Chains', url: "HomePage"},
+            {name: 'Chokers', url: "HomePage"},
+            {name: 'Earrings', url: "HomePage"},
           ]
         },{
           name: 'Clothing',
-          url: '#', 
+          url: "HomePage", 
           children: [
-            {name: 'level2.1', url: '#'},
-            {name: 'level2.2', url: '#'},
-            {name: 'level2.3', url: '#'},
-            {name: 'level2.4', url: '#'},
-            {name: 'level2.5', url: '#'},
-            {name: 'level2.6', url: '#'},
-            {name: 'level2.7', url: '#'},
+            {name: 'level2.1', url: "HomePage"},
+            {name: 'level2.2', url: "HomePage"},
+            {name: 'level2.3', url: "HomePage"},
+            {name: 'level2.4', url: "HomePage"},
+            {name: 'level2.5', url: "HomePage"},
+            {name: 'level2.6', url: "HomePage"},
+            {name: 'level2.7', url: "HomePage"},
           ]
         },
         {
           name: 'Accessories',
-          url: '#', 
+          url: "HomePage", 
           children: [
-            {name: 'level3.1', url: '#'},
-            {name: 'level3.2', url: '#'},
-            {name: 'level3.3', url: '#'},
-            {name: 'level3.4', url: '#', children: [
-              {name: 'level3.4.1', url: '#'},
-              {name: 'level3.4.2', url: '#'},
-              {name: 'level3.4.3', url: '#'},
-              {name: 'level3.4.4', url: '#', children: [
-                {name: 'level3.4.4.1', url: '#'},
-                {name: 'level3.4.4.2', url: '#'},
-                {name: 'level3.4.4.3', url: '#'},
-                {name: 'level3.4.4.4', url: '#'}
+            {name: 'level3.1', url: "HomePage"},
+            {name: 'level3.2', url: "HomePage"},
+            {name: 'level3.3', url: "HomePage"},
+            {name: 'level3.4', url: "HomePage", children: [
+              {name: 'level3.4.1', url: "HomePage"},
+              {name: 'level3.4.2', url: "HomePage"},
+              {name: 'level3.4.3', url: "HomePage"},
+              {name: 'level3.4.4', url: "HomePage", children: [
+                {name: 'level3.4.4.1', url: "HomePage"},
+                {name: 'level3.4.4.2', url: "HomePage"},
+                {name: 'level3.4.4.3', url: "HomePage"},
+                {name: 'level3.4.4.4', url: "HomePage"}
               ]}
             ]},
-            {name: 'level3.5', url: '#'},
-            {name: 'level3.6', url: '#'},
-            {name: 'level3.7', url: '#'},
-            {name: 'level3.8', url: '#'},
-            {name: 'level3.9', url: '#'},
-            {name: 'level3.10', url: '#'},
-            {name: 'level3.11', url: '#'},
-            {name: 'level3.12', url: '#'},
-            {name: 'level3.13', url: '#', children: [
-              {name: 'level3.4.1', url: '#'},
-              {name: 'level3.4.2', url: '#'},
-              {name: 'level3.4.3', url: '#'},
-              {name: 'level3.4.4', url: '#', children: [
-                {name: 'level3.4.4.1', url: '#'},
-                {name: 'level3.4.4.2', url: '#'},
-                {name: 'level3.4.4.3', url: '#'},
-                {name: 'level3.4.4.4', url: '#'}
+            {name: 'level3.5', url: "HomePage"},
+            {name: 'level3.6', url: "HomePage"},
+            {name: 'level3.7', url: "HomePage"},
+            {name: 'level3.8', url: "HomePage"},
+            {name: 'level3.9', url: "HomePage"},
+            {name: 'level3.10', url: "HomePage"},
+            {name: 'level3.11', url: "HomePage"},
+            {name: 'level3.12', url: "HomePage"},
+            {name: 'level3.13', url: "HomePage", children: [
+              {name: 'level3.4.1', url: "HomePage"},
+              {name: 'level3.4.2', url: "HomePage"},
+              {name: 'level3.4.3', url: "HomePage"},
+              {name: 'level3.4.4', url: "HomePage", children: [
+                {name: 'level3.4.4.1', url: "HomePage"},
+                {name: 'level3.4.4.2', url: "HomePage"},
+                {name: 'level3.4.4.3', url: "HomePage"},
+                {name: 'level3.4.4.4', url: "HomePage"}
               ]}
             ]},
           ]
         },
         {
           name: 'Home Decor',
-          url: '#'
+          url: "HomePage"
         },
         {
           name: 'Bath & Body',
-          url: '#'
+          url: "HomePage"
         },
         {
           name: 'Toys & Games',
-          url: '#'
+          url: "HomePage"
         },
         {
           name: 'More',
-          url: '#'
+          url: "HomePage"
         },
         {
           name: 'Community',
-          url: '#'
+          url: "Community"
         },
         {
           name: 'Sell Handmade',
-          url: '#'
+          url: "HomePage"
         },
         {
           name: 'My Account',
-          url: '#'
+          url: "HomePage"
         },
         
       ]
@@ -694,7 +165,6 @@ export default {
   components: {},
   methods: {
     goDeepMenu(e) {
-      console.log(this.$refs.menuMobile, e);
       if(e.target.nextElementSibling && e.target.nextElementSibling.tagName == 'UL'){
         e.preventDefault();
         e.target.nextElementSibling.style.left = "0";
@@ -725,7 +195,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .header-main__ul {
-  max-height: calc(85vh - 62px);
+  max-height: calc(100vh - 162px);
   overflow-y: auto;
   list-style-type: none;
   margin: 0;

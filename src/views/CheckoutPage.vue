@@ -62,7 +62,7 @@
       <b-container fluid>
         <b-row class="gray-bg">
           <b-col cols="12" sm="12" md="6" lg="6" xl="6">
-            <ShipmentInfo :quantity="product.length" :products="product" />
+            <ShipmentInfo :quantity="product.length" :products="product" :index="index" />
           </b-col>
           <b-col
             cols="12"

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-container v-onDesctopShow class="header-main" fluid>
+    <b-container v-if="!isMobile" class="header-main" fluid>
       <b-row class="header-main__top">
         <b-col cols="6" xl="3" lg="4" class="header-logo mb-1 mt-1">
           <router-link :to="{ name: 'HomePage' }">

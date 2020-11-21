@@ -55,8 +55,11 @@
 
     </div>
     <div class="d-flex flex-row flex-wrap mt-3 mb-2 justify-content-sm-center justify-content-center justify-content-md-start justify-content-lg-start justify-content-xl-start">
-      <div class="order-item__actions order-item__remove mr-5 d-flex align-items-center" @click="removeProductFromBag(product.bag.id)">REMOVE</div>
-      <div class="order-item__actions order-item__edit d-flex align-items-center">EDIT</div>
+      <a class="order-item__actions order-item__remove mr-5 d-flex align-items-center" @click="removeProductFromBag(product.bag.id)">REMOVE</a>
+      <!-- <div class="order-item__actions order-item__edit d-flex align-items-center">EDIT</div> -->
+      <router-link class="order-item__actions order-item__edit d-flex align-items-center" :to="{ name: 'ShoppingBag' }">
+        EDIT
+      </router-link>
     </div>
   </div>
 </div>
@@ -185,15 +188,21 @@ export default {
     }
   }
 
-  &__edit::before {
-    content: url("~@/assets/edit.svg");
-    width: 30px;
-    height: 20px;
+  &__edit{
+    color: #212529;
+    &::before {
+      content: url("~@/assets/edit.svg");
+      width: 30px;
+      height: 20px;
+    }
   }
-  &__remove::before {
-    content: url("~@/assets/remove.svg");
-    width: 30px;
-    height: 33px;
+  &__remove{
+    color: #212529;
+    &::before {
+      content: url("~@/assets/remove.svg");
+      width: 30px;
+      height: 33px;
+    }
   }
 }
 

@@ -105,7 +105,10 @@ export default {
 @media only screen and (max-width: 768px) {
   .why-buy-here__title {
     font-size:22px;
-    padding: 30px 30px 30px;
+    padding: 50px 30px 30px;
+  }
+  .why-buy-here__card p {
+    font-size: 14px;
   }
 }
 
